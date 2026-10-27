@@ -72,23 +72,52 @@ fn extract_author_block(doc: &Html) -> String {
     out
 }
 
-fn extract_emails(doc: &Html, author_block: &str) -> Vec<String> {
+/// The document's front matter: everything before the first numbered section.
+///
+/// Contact addresses are often not inside `div.ltx_authors` — LaTeXML drops
+/// them into a footnote beside the title or the abstract. Scanning the whole
+/// document instead would harvest addresses out of the bibliography and out of
+/// other people's cited work, so we stop at the first section.
+fn front_matter(doc: &Html, html: &str) -> String {
+    let cut = html.find("<section").unwrap_or(html.len());
+    let head = &html[..cut];
+    // Strip tags so an address split across markup still matches.
+    let text: String = Html::parse_fragment(head).root_element().text().collect();
+    if text.trim().is_empty() {
+        // A document with no <section> at all: fall back to its whole text.
+        doc.root_element().text().collect()
+    } else {
+        text
+    }
+}
+
+fn push_email(found: &mut Vec<String>, addr: &str) {
+    let addr = addr.to_lowercase();
+    if email_re().is_match(&addr) && !found.contains(&addr) {
+        found.push(addr);
+    }
+}
+
+fn extract_emails(doc: &Html, author_block: &str, html: &str) -> Vec<String> {
     let mut found: Vec<String> = Vec::new();
 
     // mailto: links are unambiguous, so take those first.
     for el in doc.select(&sel("a[href^='mailto:']")) {
         if let Some(href) = el.value().attr("href") {
-            let addr = href.trim_start_matches("mailto:").split('?').next().unwrap_or("");
-            if email_re().is_match(addr) && !found.iter().any(|f| f == addr) {
-                found.push(addr.to_lowercase());
-            }
+            push_email(
+                &mut found,
+                href.trim_start_matches("mailto:").split('?').next().unwrap_or(""),
+            );
         }
     }
-    // Then plain text in the author block, where contact addresses live.
+    // Then the author block, then the wider front matter.
     for m in email_re().find_iter(author_block) {
-        let addr = m.as_str().to_lowercase();
-        if !found.contains(&addr) {
-            found.push(addr);
+        push_email(&mut found, m.as_str());
+    }
+    if found.is_empty() {
+        let head = front_matter(doc, html);
+        for m in email_re().find_iter(&head) {
+            push_email(&mut found, m.as_str());
         }
     }
     found
@@ -136,8 +165,32 @@ fn normalise_affiliation(raw: &str) -> Option<String> {
         }
     }
 
-    let s = clean(&s);
+    // Last, because the footnote marker sits *behind* the label: LaTeXML emits
+    // "Affiliation:\u{a0}1University of North Florida". Stripping the marker
+    // before the label would leave the digit glued to the institution name.
+    let s = strip_marker(&clean(&s));
     looks_institutional(&s).then_some(s)
+}
+
+/// Drop the footnote marker LaTeXML glues to the front of an affiliation —
+/// "1University of North Florida" is the superscript 1 from the author list.
+/// Only strips when a letter follows, so "3M Company" survives.
+fn strip_marker(s: &str) -> String {
+    let t = s.trim_start_matches([' ', '*', '†', '‡', '§', '¶', ',', ';']);
+    let digits: String = t.chars().take_while(|c| c.is_ascii_digit()).collect();
+    if digits.is_empty() {
+        return t.to_string();
+    }
+    let rest = &t[digits.len()..];
+    // "3M Company" — a marker is followed by a capital starting a word, and a
+    // real name like "3M" has no space before the rest. Require that what
+    // follows begins an alphabetic run of at least three characters.
+    let alpha_run = rest.chars().take_while(|c| c.is_alphabetic()).count();
+    if alpha_run >= 3 && rest.chars().next().is_some_and(|c| c.is_uppercase()) {
+        rest.trim().to_string()
+    } else {
+        t.to_string()
+    }
 }
 
 /// Add a candidate affiliation if it looks like an institution and is new.
@@ -218,7 +271,7 @@ pub fn parse_html(html: &str) -> Extracted {
     let doc = Html::parse_document(html);
     let block = extract_author_block(&doc);
     Extracted {
-        emails: extract_emails(&doc, &block),
+        emails: extract_emails(&doc, &block, html),
         affiliations: extract_affiliations(&doc, &block),
         intro: extract_intro(&doc),
     }
@@ -473,6 +526,62 @@ Technical University of Munich, Garching
         let second = (p.authors[0].email.clone(), p.contact_emails.clone(), p.affiliations.len());
         assert_eq!(first, second, "re-enrichment must not accumulate");
         assert!(p.contact_emails.is_empty(), "claimed address leaked: {:?}", p.contact_emails);
+    }
+
+    #[test]
+    fn footnote_markers_are_stripped_from_affiliations() {
+        assert_eq!(
+            normalise_affiliation("1University of North Florida, Jacksonville, FL, USA")
+                .as_deref(),
+            Some("University of North Florida, Jacksonville, FL, USA")
+        );
+    }
+
+    #[test]
+    fn marker_behind_the_label_is_also_stripped() {
+        // Regression: arXiv:2610.31702's author block is
+        // "Affiliation:\u{a0}1University of North Florida, ...". Stripping the
+        // marker before the label left the "1" glued to the name, and the
+        // institution lookup then matched nothing.
+        assert_eq!(
+            normalise_affiliation(
+                "Affiliation:\u{a0}1University of North Florida, Jacksonville, FL, USA"
+            )
+            .as_deref(),
+            Some("University of North Florida, Jacksonville, FL, USA")
+        );
+    }
+
+    #[test]
+    fn a_numeric_company_name_survives_marker_stripping() {
+        assert_eq!(strip_marker("3M Company"), "3M Company");
+        assert_eq!(strip_marker("2University of Munich"), "University of Munich");
+    }
+
+    #[test]
+    fn emails_outside_the_author_block_are_still_found() {
+        // LaTeXML often puts the contact address in a title footnote rather
+        // than inside div.ltx_authors.
+        let doc = r#"<html><body>
+          <div class="ltx_authors"><span class="ltx_personname">A Person</span></div>
+          <div class="ltx_note_content">Correspondence: a.person@uni-muenchen.de</div>
+          <section class="ltx_section"><h2 class="ltx_title ltx_title_section">1 Introduction</h2>
+            <div class="ltx_para"><p class="ltx_p">Cites someone@elsewhere.edu heavily.</p></div>
+          </section>
+        </body></html>"#;
+        let ex = parse_html(doc);
+        assert_eq!(ex.emails, vec!["a.person@uni-muenchen.de"]);
+    }
+
+    #[test]
+    fn addresses_in_the_body_are_not_harvested() {
+        let doc = r#"<html><body>
+          <div class="ltx_authors"><span class="ltx_personname">A Person</span></div>
+          <section class="ltx_section"><h2 class="ltx_title ltx_title_section">1 Introduction</h2>
+            <div class="ltx_para"><p class="ltx_p">Contact notmine@elsewhere.edu for data.</p></div>
+          </section>
+        </body></html>"#;
+        assert!(parse_html(doc).emails.is_empty(), "must not scrape the body");
     }
 
     #[test]
