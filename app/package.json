@@ -12,7 +12,7 @@
   "dependencies": {
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-opener": "^2",
-    "maplibre-gl": "^4.7.1"
+    "maplibre-gl": "^6.4.1"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2",
