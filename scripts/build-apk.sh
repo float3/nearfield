@@ -63,6 +63,10 @@ fi
 
 # 2. Regenerate the Android project.
 cd "$ROOT/app"
+# A clean checkout has no node_modules, so `npm run build` would not find tsc.
+if [[ ! -d node_modules ]]; then
+  if [[ -f package-lock.json ]]; then npm ci; else npm install; fi
+fi
 npm run build
 npx tauri android init >/dev/null
 
