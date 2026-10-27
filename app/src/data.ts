@@ -61,6 +61,22 @@ export async function fetchPaperDetail(id: string): Promise<Paper> {
   return t.invoke<Paper>("fetch_paper", { id });
 }
 
+/**
+ * Open a mail composer addressed to these people.
+ *
+ * An Android WebView cannot *navigate* to `mailto:` — it reports
+ * ERR_UNKNOWN_URL_SCHEME — so the URI has to be handed to the OS as an intent
+ * instead. The address is deliberately not percent-encoded: `@` is legal in a
+ * mailto path and encoding it produces `name%40host`, which mail apps show
+ * verbatim. Only the subject is escaped.
+ */
+export async function openMail(to: string[], subject: string): Promise<void> {
+  const addresses = to.filter(Boolean).join(",");
+  if (!addresses) return;
+  const url = `mailto:${addresses}?subject=${encodeURIComponent(subject)}`;
+  await openExternal(url);
+}
+
 /** Hand a URL to whichever app the phone uses for it (your PDF reader). */
 export async function openExternal(url: string): Promise<void> {
   const t = tauri();

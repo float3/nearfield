@@ -11,6 +11,7 @@ import {
   loadDigest,
   loadIndex,
   openExternal,
+  openMail,
   type Place,
 } from "./data";
 import {
@@ -24,6 +25,7 @@ import {
   type Origin,
 } from "./origin";
 import { PaperMap, escapeHtml, legendHtml } from "./map";
+import { Nav, viewFromHash, type Tab, type View } from "./nav";
 import {
   allEmails,
   formatKm,
@@ -276,11 +278,11 @@ function openOriginSheet(): void {
   renderSaved();
   el("place-results").innerHTML = "";
   el("gps-status").textContent = "";
-  el("origin-sheet").hidden = false;
+  nav.go({ view: "origin", tab: baseTab() });
 }
 
 function closeOriginSheet(): void {
-  el("origin-sheet").hidden = true;
+  nav.back();
 }
 
 async function useCurrentLocation(): Promise<void> {
@@ -440,7 +442,6 @@ function renderDiagnostics(d: Digest): void {
 function renderSheet(p: Paper): void {
   const emails = allEmails(p);
   const pins = pinsFor(p);
-  const subject = encodeURIComponent(`Re: ${p.title}`);
 
   const authors = p.authors
     .map((a) => {
@@ -451,7 +452,7 @@ function renderSheet(p: Paper): void {
         );
       }
       const mail = a.email
-        ? `<a href="mailto:${encodeURIComponent(a.email)}?subject=${subject}">${escapeHtml(a.email)}</a>`
+        ? `<a class="mail-link" href="#" data-mail="${escapeHtml(a.email)}">${escapeHtml(a.email)}</a>`
         : "";
       return `<li>
         <div><span class="dot dot-${a.geo_source}"></span>${escapeHtml(a.name)}</div>
@@ -465,13 +466,13 @@ function renderSheet(p: Paper): void {
     ? `<h3>Other addresses on the paper</h3><p class="aff">${(p.contact_emails ?? [])
         .map(
           (e) =>
-            `<a href="mailto:${encodeURIComponent(e)}?subject=${subject}">${escapeHtml(e)}</a>`,
+            `<a class="mail-link" href="#" data-mail="${escapeHtml(e)}">${escapeHtml(e)}</a>`,
         )
         .join("<br>")}</p>`
     : "";
 
   const mailAll = emails.length
-    ? `<p><a class="mailall" href="mailto:${emails.map(encodeURIComponent).join(",")}?subject=${subject}">Email all ${emails.length} authors</a></p>`
+    ? `<p><button class="mailall" data-mail-all="1">Email all ${emails.length} authors</button></p>`
     : `<p class="muted">No addresses found on this paper.</p>`;
 
   const intro = p.intro
@@ -496,6 +497,20 @@ function renderSheet(p: Paper): void {
     ${unattributed}
     ${mailAll}
   `;
+
+  const mailSubject = `Re: ${p.title}`;
+  for (const a of el("sheet-body").querySelectorAll<HTMLElement>("[data-mail]")) {
+    a.addEventListener("click", (ev) => {
+      ev.preventDefault();
+      void openMail([a.dataset.mail ?? ""], mailSubject);
+    });
+  }
+  el("sheet-body")
+    .querySelector<HTMLElement>("[data-mail-all]")
+    ?.addEventListener("click", (ev) => {
+      ev.preventDefault();
+      void openMail(emails, mailSubject);
+    });
 
   const fetchBtn = document.getElementById("fetch-intro");
   fetchBtn?.addEventListener("click", () => void onFetchIntro(p, fetchBtn as HTMLButtonElement));
@@ -532,15 +547,11 @@ async function onFetchIntro(p: Paper, button: HTMLButtonElement): Promise<void> 
 }
 
 function openSheet(p: Paper): void {
-  current = p;
-  renderSheet(p);
-  el("sheet").hidden = false;
-  el("sheet-body").scrollTop = 0;
+  nav.go({ view: "paper", tab: baseTab(), id: p.id });
 }
 
 function closeSheet(): void {
-  el("sheet").hidden = true;
-  current = null;
+  nav.back();
 }
 
 // --- day loading --------------------------------------------------------
@@ -561,12 +572,8 @@ async function show(date: string): Promise<void> {
   }
 }
 
-type Tab = "list" | "map" | "diag";
-
-function selectTab(which: Tab, pushHash = true): void {
-  if (pushHash && location.hash.slice(1) !== which) {
-    history.replaceState(null, "", `#${which}`);
-  }
+/** Show a tab. Pure rendering: navigation is the Nav's job. */
+function showTab(which: Tab): void {
   for (const t of ["list", "map", "diag"] as Tab[]) {
     el(`pane-${t}`).hidden = t !== which;
     el(`tab-${t}`).setAttribute("aria-selected", String(t === which));
@@ -578,6 +585,35 @@ function selectTab(which: Tab, pushHash = true): void {
   if (which === "diag" && digest) {
     renderDiagnostics(digest);
   }
+}
+
+/**
+ * Draw a whole view. Called by the navigator, including on back, so every
+ * overlay is closed unless the state says it is open.
+ */
+function renderView(s: View): void {
+  showTab(s.tab);
+
+  const paper =
+    s.view === "paper" ? (digest?.papers.find((p) => p.id === s.id) ?? null) : null;
+  if (paper) {
+    current = paper;
+    renderSheet(paper);
+    el("sheet-body").scrollTop = 0;
+  } else if (s.view !== "paper") {
+    current = null;
+  }
+
+  el("sheet").hidden = paper === null;
+  el("origin-sheet").hidden = s.view !== "origin";
+  el("settings-sheet").hidden = s.view !== "settings";
+}
+
+let nav: Nav;
+
+/** The tab an overlay sits on top of, so back returns to it. */
+function baseTab(): Tab {
+  return nav.current.tab;
 }
 
 // --- settings -----------------------------------------------------------
@@ -599,7 +635,7 @@ function renderChannelChoice(buildChannel: string | undefined): void {
 }
 
 async function openSettings(): Promise<void> {
-  el("settings-sheet").hidden = false;
+  nav.go({ view: "settings", tab: baseTab() });
   el("update-status").textContent = "";
   el("update-status").className = "muted";
 
@@ -611,7 +647,7 @@ async function openSettings(): Promise<void> {
 }
 
 function closeSettings(): void {
-  el("settings-sheet").hidden = true;
+  nav.back();
 }
 
 function setChannel(c: Channel, buildChannel: string | undefined): void {
@@ -686,12 +722,15 @@ async function offerUpdate(): Promise<void> {
 
 async function boot(): Promise<void> {
   el("legend").innerHTML = legendHtml();
-  el("tab-list").addEventListener("click", () => selectTab("list"));
-  el("tab-map").addEventListener("click", () => selectTab("map"));
-  el("tab-diag").addEventListener("click", () => selectTab("diag"));
-  // Deep links: #map and #diag open straight onto those panes.
-  const hash = location.hash.slice(1);
-  if (hash === "map" || hash === "diag") selectTab(hash, false);
+
+  // The deep-linked view is the first history entry, so back from it exits
+  // rather than stepping through states the user never visited.
+  const initial = viewFromHash(location.hash);
+  nav = new Nav(renderView, initial);
+
+  for (const t of ["list", "map", "diag"] as Tab[]) {
+    el(`tab-${t}`).addEventListener("click", () => nav.go({ view: "tab", tab: t }));
+  }
   el("sheet-close").addEventListener("click", closeSheet);
   el("origin-btn").addEventListener("click", openOriginSheet);
   el("settings-btn").addEventListener("click", () => void openSettings());
@@ -719,16 +758,15 @@ async function boot(): Promise<void> {
     if (!current) return;
     const pin = nearestPin(current, pinsFor(current)) ?? pinsFor(current)[0];
     if (!pin) return;
-    closeSheet();
-    selectTab("map");
+    // Replace rather than push: the paper is where we came from, so one back
+    // should leave the map, not drop straight back into the paper.
+    nav.replace({ view: "tab", tab: "map" });
     paperMap.flyTo(pin.lat, pin.lon);
   });
 
+  // Escape behaves like the Android back gesture.
   window.addEventListener("keydown", (e) => {
-    if (e.key !== "Escape") return;
-    if (!el("sheet").hidden) closeSheet();
-    else if (!el("origin-sheet").hidden) closeOriginSheet();
-    else if (!el("settings-sheet").hidden) closeSettings();
+    if (e.key === "Escape" && nav.current.view !== "tab") nav.back();
   });
 
   try {
@@ -744,8 +782,9 @@ async function boot(): Promise<void> {
     return;
   }
   await show(latest.date);
-  const h = location.hash.slice(1);
-  if (h === "map" || h === "diag") selectTab(h as Tab, false);
+  // The digest is only now available, so a #p/<id> deep link can finally be
+  // drawn; re-render whatever state we are in.
+  nav.refresh();
   void offerUpdate();
 }
 

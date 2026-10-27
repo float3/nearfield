@@ -1,11 +1,14 @@
 {
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
-  "description": "Opening a paper in the phone's own PDF reader, and reading the device location so the digest can be ranked from where you are.",
-  "windows": ["main"],
+  "description": "Opening a paper in the phone's own PDF reader, composing mail to its authors, and reading the device location so the digest can be ranked from where you are. allow-open-url grants the command but carries no scope, and an empty allow-list denies every URL, so allow-default-urls supplies the mailto:/tel:/http:/https: scope those buttons need.",
+  "windows": [
+    "main"
+  ],
   "permissions": [
     "core:default",
     "opener:allow-open-url",
+    "opener:allow-default-urls",
     "geolocation:allow-check-permissions",
     "geolocation:allow-request-permissions",
     "geolocation:allow-get-current-position"
