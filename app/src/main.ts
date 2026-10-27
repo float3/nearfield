@@ -580,6 +580,77 @@ function selectTab(which: Tab, pushHash = true): void {
   }
 }
 
+// --- settings -----------------------------------------------------------
+
+const CHANNEL_KEY = "nearfield-channel";
+type Channel = "stable" | "nightly";
+
+/** The channel to follow: the user's choice, else the one this build came from. */
+function activeChannel(): Channel | undefined {
+  const stored = localStorage.getItem(CHANNEL_KEY);
+  return stored === "stable" || stored === "nightly" ? stored : undefined;
+}
+
+function renderChannelChoice(buildChannel: string | undefined): void {
+  const chosen = activeChannel() ?? (buildChannel as Channel | undefined);
+  for (const c of ["stable", "nightly"] as Channel[]) {
+    el(`ch-${c}`).setAttribute("aria-checked", String(chosen === c));
+  }
+}
+
+async function openSettings(): Promise<void> {
+  el("settings-sheet").hidden = false;
+  el("update-status").textContent = "";
+  el("update-status").className = "muted";
+
+  const info = await appInfo();
+  el("build-info").textContent = info
+    ? `Nearfield ${info.version} · built on the ${info.channel} channel`
+    : "Running in a browser — updates and channels only apply to the app.";
+  renderChannelChoice(info?.channel);
+}
+
+function closeSettings(): void {
+  el("settings-sheet").hidden = true;
+}
+
+function setChannel(c: Channel, buildChannel: string | undefined): void {
+  localStorage.setItem(CHANNEL_KEY, c);
+  renderChannelChoice(buildChannel);
+  void runUpdateCheck();
+}
+
+/** The manual "Check for updates" button. */
+async function runUpdateCheck(): Promise<void> {
+  const status = el("update-status");
+  status.className = "muted";
+
+  if (!canFetchOnDemand()) {
+    status.className = "err";
+    status.textContent = "Updates only work in the app.";
+    return;
+  }
+  status.textContent = "Checking…";
+  try {
+    const update = await checkUpdate(activeChannel());
+    if (!update) {
+      status.className = "muted";
+      status.textContent = "You are on the latest build for this channel.";
+      return;
+    }
+    status.className = "muted";
+    status.innerHTML =
+      `${escapeHtml(update.version)} is available. ` +
+      `<button id="install-now" class="inline-btn">Install</button>`;
+    document.getElementById("install-now")?.addEventListener("click", () => {
+      void openExternal(update.url);
+    });
+  } catch (e) {
+    status.className = "err";
+    status.textContent = e instanceof Error ? e.message : String(e);
+  }
+}
+
 /**
  * Offer an update if this build's channel has a newer one.
  *
@@ -594,7 +665,7 @@ async function offerUpdate(): Promise<void> {
   }
   let update;
   try {
-    update = await checkUpdate();
+    update = await checkUpdate(activeChannel());
   } catch {
     return; // Offline or the channel is unreachable; not worth a message.
   }
@@ -623,6 +694,14 @@ async function boot(): Promise<void> {
   if (hash === "map" || hash === "diag") selectTab(hash, false);
   el("sheet-close").addEventListener("click", closeSheet);
   el("origin-btn").addEventListener("click", openOriginSheet);
+  el("settings-btn").addEventListener("click", () => void openSettings());
+  el("settings-close").addEventListener("click", closeSettings);
+  el("check-updates").addEventListener("click", () => void runUpdateCheck());
+  for (const c of ["stable", "nightly"] as Channel[]) {
+    el(`ch-${c}`).addEventListener("click", () => {
+      void appInfo().then((i) => setChannel(c, i?.channel));
+    });
+  }
   el("origin-close").addEventListener("click", closeOriginSheet);
   el("use-gps").addEventListener("click", () => void useCurrentLocation());
   el<HTMLFormElement>("place-form").addEventListener("submit", (ev) => {
@@ -649,6 +728,7 @@ async function boot(): Promise<void> {
     if (e.key !== "Escape") return;
     if (!el("sheet").hidden) closeSheet();
     else if (!el("origin-sheet").hidden) closeOriginSheet();
+    else if (!el("settings-sheet").hidden) closeSettings();
   });
 
   try {

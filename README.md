@@ -195,12 +195,20 @@ Two channels, both built by the `apk` workflow:
 
 | Channel | Trigger | Tag | Where it lands |
 |---|---|---|---|
-| nightly | 03:00 UTC, if anything was committed in the last 24h | rolling `nightly` | prerelease, same download URL every time |
+| nightly | **every code commit to main**, plus 03:00 UTC as a fallback | rolling `nightly` | prerelease, same download URL every time |
 | stable | pushing a `v*` tag | that tag | normal release |
+
+Commits that only touch `data/`, `cache/`, `updates/` or markdown do not
+trigger a build — otherwise the nightly digest would rebuild the app daily and
+a release would retrigger itself. A burst of commits collapses into one build;
+tag builds are never cancelled.
 
 Each build writes `updates/<channel>.json`, which the app polls on launch and
 compares against its own compiled-in version. A newer build raises a banner;
-tapping it hands the APK to Android.
+tapping it hands the APK to Android. **Settings** (the gear) has a manual
+*Check for updates* and a channel switch — switching offers the other channel's
+build even when it is not strictly newer, since going nightly → stable is a
+downgrade by version but is what you asked for.
 
 **Android will not let a sideloaded app update itself silently.** Tauri's
 official updater is desktop-only — its README marks Android unsupported and its

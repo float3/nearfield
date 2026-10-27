@@ -168,8 +168,17 @@ struct UpdateInfo {
 #[tauri::command]
 async fn check_update(
     state: tauri::State<'_, AppState>,
+    channel: Option<String>,
 ) -> Result<Option<UpdateInfo>, String> {
-    let url = format!("{UPDATE_BASE}/{CHANNEL}.json");
+    // The channel lands in a URL path, and it can come from a stored
+    // preference, so only the two known names are allowed through.
+    let channel = match channel.as_deref() {
+        None => CHANNEL,
+        Some("stable") => "stable",
+        Some("nightly") => "nightly",
+        Some(other) => return Err(format!("unknown channel: {other}")),
+    };
+    let url = format!("{UPDATE_BASE}/{channel}.json");
     let body = state
         .http
         .get_text(&url)
@@ -178,7 +187,14 @@ async fn check_update(
     let m: Manifest =
         serde_json::from_str(&body).map_err(|e| format!("bad update manifest: {e}"))?;
 
-    if nearfield_core::version::is_newer(&m.version, VERSION) {
+    // Switching channels should offer the other channel's build even when it
+    // is not strictly newer — moving from nightly back to stable is a
+    // downgrade by version but is what the user asked for.
+    let switching = channel != CHANNEL;
+    if switching || nearfield_core::version::is_newer(&m.version, VERSION) {
+        if m.version == VERSION {
+            return Ok(None);
+        }
         Ok(Some(UpdateInfo {
             version: m.version,
             notes: m.notes,

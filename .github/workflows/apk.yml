@@ -1,11 +1,20 @@
 name: apk
 
 # Two channels:
-#   nightly — built every night from main, published as a rolling prerelease
+#   nightly — built on every code commit to main (and nightly as a fallback),
+#             published as a rolling prerelease under one tag
 #   stable  — built when you push a v* tag, published as a normal release
 # The app polls updates/<channel>.json and offers whatever is newer than itself.
 on:
   push:
+    branches: [main]
+    # The workflows commit their own output back to main; without these a
+    # release would retrigger itself and a digest would rebuild the app.
+    paths-ignore:
+      - "data/**"
+      - "cache/**"
+      - "updates/**"
+      - "**/*.md"
     tags: ["v*"]
   schedule:
     - cron: "0 3 * * *"
@@ -16,6 +25,12 @@ on:
         type: choice
         options: [nightly, stable]
         default: nightly
+
+# A burst of commits should produce one build, not a queue of them. Tags are
+# never cancelled: a stable release must always finish.
+concurrency:
+  group: apk-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref_type != 'tag' }}
 
 permissions:
   contents: write
@@ -60,7 +75,7 @@ jobs:
         id: churn
         if: ${{ github.event_name == 'schedule' }}
         run: |
-          # A nightly with no new commits is just noise in the releases list.
+          # Only the scheduled run needs this: a push already means a change.
           if [[ -z "$(git log --since='24 hours ago' --oneline)" ]]; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
             echo "No commits in 24h; skipping."

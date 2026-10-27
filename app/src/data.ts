@@ -152,8 +152,12 @@ export async function appInfo(): Promise<AppInfo | null> {
  * Check this build's release channel for something newer. `null` means up to
  * date — or that we are in a browser, where there is nothing to update.
  */
-export async function checkUpdate(): Promise<UpdateInfo | null> {
+export async function checkUpdate(channel?: string): Promise<UpdateInfo | null> {
   const t = tauri();
   if (!t) return null;
-  return (await t.invoke<UpdateInfo | null>("check_update")) ?? null;
+  return (await t.invoke<UpdateInfo | null>("check_update", { channel })) ?? null;
+}
+
+export function isApp(): boolean {
+  return tauri() !== null;
 }

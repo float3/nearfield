@@ -720,3 +720,69 @@ main {
   line-height: 1;
   color: var(--text-muted);
 }
+
+/* --- settings ----------------------------------------------------------- */
+
+.icon-btn {
+  padding: 3px 7px;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--text-secondary);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.choice {
+  display: flex;
+  gap: 8px;
+}
+
+.choice-opt {
+  flex: 1;
+  text-align: left;
+  padding: 10px 11px;
+  font: inherit;
+  color: inherit;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.choice-opt[aria-checked="true"] {
+  border-color: var(--series-1);
+  background: var(--surface-3);
+}
+
+.choice-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 550;
+}
+
+/* The selected channel is named, never signalled by colour alone. */
+.choice-opt[aria-checked="true"] .choice-name::after {
+  content: " ✓";
+  color: var(--series-1);
+}
+
+.choice-sub {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.inline-btn {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 550;
+  padding: 4px 9px;
+  margin-left: 4px;
+  color: #fff;
+  background: var(--series-1);
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}

@@ -15,6 +15,8 @@
           <button class="origin-btn" id="origin-btn" aria-haspopup="dialog">
             <span id="origin-label">Munich</span>
           </button>
+          <button class="icon-btn" id="settings-btn" aria-haspopup="dialog"
+                  aria-label="Settings" title="Settings">&#9881;</button>
         </div>
         <div class="stats" id="stats"></div>
         <div class="timeline" id="timeline" role="group" aria-label="Published days"></div>
@@ -44,6 +46,41 @@
           <div class="legend" id="legend"></div>
         </section>
       </main>
+    </div>
+
+    <div class="sheet" id="settings-sheet" hidden role="dialog" aria-modal="true"
+         aria-label="Settings">
+      <div class="sheet-bar">
+        <button id="settings-close" aria-label="Back">&larr; Back</button>
+        <span class="grow"></span>
+      </div>
+      <div class="sheet-body">
+        <h2>Settings</h2>
+
+        <h3>This build</h3>
+        <p class="muted" id="build-info">&mdash;</p>
+
+        <h3>Release channel</h3>
+        <div class="choice" role="radiogroup" aria-label="Release channel">
+          <button class="choice-opt" id="ch-stable" role="radio" aria-checked="false">
+            <span class="choice-name">Stable</span>
+            <span class="choice-sub">tagged releases only</span>
+          </button>
+          <button class="choice-opt" id="ch-nightly" role="radio" aria-checked="false">
+            <span class="choice-name">Nightly</span>
+            <span class="choice-sub">every commit to main</span>
+          </button>
+        </div>
+
+        <button class="origin-action" id="check-updates">Check for updates</button>
+        <div id="update-status" class="muted"></div>
+
+        <h3>About</h3>
+        <p class="muted">
+          Android never lets a sideloaded app install itself silently, so an
+          update opens in the system installer and you confirm it there.
+        </p>
+      </div>
     </div>
 
     <div class="sheet" id="origin-sheet" hidden role="dialog" aria-modal="true"
