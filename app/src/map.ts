@@ -4,11 +4,20 @@
 // distinct shape, so the encoding survives colour-vision deficiency and the
 // aqua slot's low contrast on the light surface.
 
-import maplibregl, { type Map as MlMap, type LngLatLike } from "maplibre-gl";
+// maplibre-gl v6 dropped its default export, so everything is named.
+import {
+  LngLatBounds,
+  Map as MlMap,
+  Marker,
+  NavigationControl,
+  Popup,
+  type LngLatLike,
+  type StyleSpecification,
+} from "maplibre-gl";
 import type { Digest, GeoSource, Paper } from "./types";
 import { pinsFor, formatKm, SOURCE_LABEL } from "./types";
 
-const OSM_STYLE: maplibregl.StyleSpecification = {
+const OSM_STYLE: StyleSpecification = {
   version: 8,
   sources: {
     osm: {
@@ -26,7 +35,7 @@ const SOURCE_ORDER: GeoSource[] = ["paper_html", "author_prior", "openalex_work"
 
 export class PaperMap {
   private map: MlMap | null = null;
-  private markers: maplibregl.Marker[] = [];
+  private markers: Marker[] = [];
   /** Only auto-fit once, so a view you panned is not yanked back. */
   private fitted = false;
 
@@ -42,15 +51,16 @@ export class PaperMap {
       this.map.resize();
       return this.map;
     }
-    this.map = new maplibregl.Map({
+    const map = new MlMap({
       container: this.container,
       style: OSM_STYLE,
       center: [home.lon, home.lat] as LngLatLike,
       zoom: 3,
       attributionControl: { compact: true },
     });
-    this.map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
-    return this.map;
+    map.addControl(new NavigationControl({ showCompass: false }), "top-right");
+    this.map = map;
+    return map;
   }
 
   private marker(color: string, shape: GeoSource): HTMLElement {
@@ -87,7 +97,7 @@ export class PaperMap {
     const map = this.ensure(digest.home);
     for (const m of this.markers) m.remove();
     this.markers = [];
-    const bounds = new maplibregl.LngLatBounds();
+    const bounds = new LngLatBounds();
     bounds.extend([digest.home.lon, digest.home.lat]);
 
     // Home marker is deliberately not a series colour — it is not a category.
@@ -99,9 +109,9 @@ export class PaperMap {
     homeEl.style.boxShadow = "0 0 0 2px var(--surface-1)";
     homeEl.title = digest.home.label;
     this.markers.push(
-      new maplibregl.Marker({ element: homeEl })
+      new Marker({ element: homeEl })
         .setLngLat([digest.home.lon, digest.home.lat])
-        .setPopup(new maplibregl.Popup({ offset: 14 }).setText(digest.home.label))
+        .setPopup(new Popup({ offset: 14 }).setText(digest.home.label))
         .addTo(map),
     );
 
@@ -114,7 +124,7 @@ export class PaperMap {
       for (const pin of pinsFor(paper)) {
         const el = this.marker(this.colorFor(pin.source), pin.source);
         const where = [pin.label, pin.city, pin.country].filter(Boolean).join(", ");
-        const popup = new maplibregl.Popup({ offset: 14, maxWidth: "260px" }).setHTML(
+        const popup = new Popup({ offset: 14, maxWidth: "260px" }).setHTML(
           `<div style="font:13px/1.4 system-ui">
              <div style="font-weight:600;margin-bottom:3px">${escapeHtml(paper.title)}</div>
              <div>${escapeHtml(where)}</div>
@@ -126,7 +136,7 @@ export class PaperMap {
           this.onPick(paper);
         });
         this.markers.push(
-          new maplibregl.Marker({ element: el })
+          new Marker({ element: el })
             .setLngLat([pin.lon, pin.lat])
             .setPopup(popup)
             .addTo(map),
