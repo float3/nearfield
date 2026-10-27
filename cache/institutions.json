@@ -127,6 +127,22 @@
     "lat": 43.15478,
     "lon": -77.61556
   },
+  "https://openalex.org/I101479585": {
+    "display_name": "South China Agricultural University",
+    "ror": "https://ror.org/05v9jqt67",
+    "country": "CN",
+    "city": "Guangzhou",
+    "lat": 23.11667,
+    "lon": 113.25
+  },
+  "https://openalex.org/I102208913": {
+    "display_name": "Shihezi University",
+    "ror": "https://ror.org/04x0kvm78",
+    "country": "CN",
+    "city": "Shihezi",
+    "lat": 44.3023,
+    "lon": 86.03694
+  },
   "https://openalex.org/I102502594": {
     "display_name": "Northern Illinois University",
     "ror": "https://ror.org/012wxa772",
@@ -134,6 +150,62 @@
     "city": "DeKalb",
     "lat": 41.92947006225586,
     "lon": -88.75035858154297
+  },
+  "https://openalex.org/I10535382": {
+    "display_name": "Chongqing University of Posts and Telecommunications",
+    "ror": "https://ror.org/03dgaqz26",
+    "country": "CN",
+    "city": "Chongqing",
+    "lat": 29.56026,
+    "lon": 106.55771
+  },
+  "https://openalex.org/I10660446": {
+    "display_name": "Kunming University of Science and Technology",
+    "ror": "https://ror.org/00xyeez13",
+    "country": "CN",
+    "city": "Kunming",
+    "lat": 25.03889,
+    "lon": 102.71833
+  },
+  "https://openalex.org/I106645853": {
+    "display_name": "Changchun University of Science and Technology",
+    "ror": "https://ror.org/007mntk44",
+    "country": "CN",
+    "city": "Changchun",
+    "lat": 43.880001068115234,
+    "lon": 125.3227767944336
+  },
+  "https://openalex.org/I108688024": {
+    "display_name": "Qingdao University",
+    "ror": "https://ror.org/021cj6z65",
+    "country": "CN",
+    "city": "Qingdao",
+    "lat": 36.06488037109375,
+    "lon": 120.3804168701172
+  },
+  "https://openalex.org/I109935558": {
+    "display_name": "Ningbo University",
+    "ror": "https://ror.org/03et85d35",
+    "country": "CN",
+    "city": "Ningbo",
+    "lat": 29.87819,
+    "lon": 121.54945
+  },
+  "https://openalex.org/I110440473": {
+    "display_name": "Xi'an University of Science and Technology",
+    "ror": "https://ror.org/046fkpt18",
+    "country": "CN",
+    "city": "Xi'an",
+    "lat": 34.258331298828125,
+    "lon": 108.9286117553711
+  },
+  "https://openalex.org/I111950717": {
+    "display_name": "Macau University of Science and Technology",
+    "ror": "https://ror.org/03jqs2n27",
+    "country": "MO",
+    "city": "Macao",
+    "lat": 22.20056,
+    "lon": 113.54611
   },
   "https://openalex.org/I114027177": {
     "display_name": "University of North Carolina at Chapel Hill",
@@ -143,6 +215,38 @@
     "lat": 35.9132,
     "lon": -79.05584
   },
+  "https://openalex.org/I118185606": {
+    "display_name": "Aga Khan University",
+    "ror": "https://ror.org/03gd0dm95",
+    "country": "PK",
+    "city": "Karachi",
+    "lat": 24.8608,
+    "lon": 67.0104
+  },
+  "https://openalex.org/I119273862": {
+    "display_name": "Central South University of Forestry and Technology",
+    "ror": "https://ror.org/02czw2k81",
+    "country": "CN",
+    "city": "Changsha",
+    "lat": 28.19874,
+    "lon": 112.97087
+  },
+  "https://openalex.org/I125839683": {
+    "display_name": "Beijing Institute of Technology",
+    "ror": "https://ror.org/01skt4w74",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
+  },
+  "https://openalex.org/I126520041": {
+    "display_name": "University of Science and Technology of China",
+    "ror": "https://ror.org/04c4dkn09",
+    "country": "CN",
+    "city": "Hefei",
+    "lat": 31.86389,
+    "lon": 117.28083
+  },
   "https://openalex.org/I1282105669": {
     "display_name": "Argonne National Laboratory",
     "ror": "https://ror.org/05gvnxz63",
@@ -150,6 +254,86 @@
     "city": "Lemont",
     "lat": 41.673641204833984,
     "lon": -88.0017318725586
+  },
+  "https://openalex.org/I1282311441": {
+    "display_name": "Lawrence Livermore National Laboratory",
+    "ror": "https://ror.org/041nk4h53",
+    "country": "US",
+    "city": "Livermore",
+    "lat": 37.68187,
+    "lon": -121.76801
+  },
+  "https://openalex.org/I1283280774": {
+    "display_name": "Brigham and Women's Hospital",
+    "ror": "https://ror.org/04b6nzv94",
+    "country": "US",
+    "city": "Boston",
+    "lat": 42.35843,
+    "lon": -71.05977
+  },
+  "https://openalex.org/I1284762954": {
+    "display_name": "Zhejiang A & F University",
+    "ror": "https://ror.org/02vj4rn06",
+    "country": "CN",
+    "city": "Lin’an Shi",
+    "lat": 30.23333,
+    "lon": 119.71667
+  },
+  "https://openalex.org/I1285929390": {
+    "display_name": "Hubei University of Medicine",
+    "ror": "https://ror.org/01dr2b756",
+    "country": "CN",
+    "city": "Shiyan",
+    "lat": 32.6475,
+    "lon": 110.77806
+  },
+  "https://openalex.org/I1285933455": {
+    "display_name": "Physikalisch-Technische Bundesanstalt",
+    "ror": "https://ror.org/05r3f7h03",
+    "country": "DE",
+    "city": "Braunschweig",
+    "lat": 52.26594,
+    "lon": 10.52673
+  },
+  "https://openalex.org/I1290206253": {
+    "display_name": "Microsoft (United States)",
+    "ror": "https://ror.org/00d0nc645",
+    "country": "US",
+    "city": "Redmond",
+    "lat": 47.67399,
+    "lon": -122.12151
+  },
+  "https://openalex.org/I12912129": {
+    "display_name": "Northeastern University",
+    "ror": "https://ror.org/04t5xt781",
+    "country": "US",
+    "city": "Boston",
+    "lat": 42.35843,
+    "lon": -71.05977
+  },
+  "https://openalex.org/I130238516": {
+    "display_name": "University of Minnesota",
+    "ror": "https://ror.org/017zqws13",
+    "country": "US",
+    "city": "Minneapolis",
+    "lat": 44.97997,
+    "lon": -93.26384
+  },
+  "https://openalex.org/I130701444": {
+    "display_name": "Georgia Institute of Technology",
+    "ror": "https://ror.org/01zkghx44",
+    "country": "US",
+    "city": "Atlanta",
+    "lat": 33.749,
+    "lon": -84.38798
+  },
+  "https://openalex.org/I132053463": {
+    "display_name": "Université Libre de Bruxelles",
+    "ror": "https://ror.org/01r9htc13",
+    "country": "BE",
+    "city": "Brussels",
+    "lat": 50.85045,
+    "lon": 4.34878
   },
   "https://openalex.org/I1324840837": {
     "display_name": "Hewlett-Packard (United States)",
@@ -159,6 +343,62 @@
     "lat": 37.44188,
     "lon": -122.14302
   },
+  "https://openalex.org/I1330165540": {
+    "display_name": "Federal Institute For Materials Research and Testing",
+    "ror": "https://ror.org/03x516a66",
+    "country": "DE",
+    "city": "Berlin",
+    "lat": 52.52437,
+    "lon": 13.41053
+  },
+  "https://openalex.org/I1336964347": {
+    "display_name": "International Bamboo and Rattan Organization",
+    "ror": "https://ror.org/02h5sfg65",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.907501220703125,
+    "lon": 116.39723205566406
+  },
+  "https://openalex.org/I134687103": {
+    "display_name": "Nanjing Tech University",
+    "ror": "https://ror.org/03sd35x91",
+    "country": "CN",
+    "city": "Nanjing",
+    "lat": 32.06167,
+    "lon": 118.77778
+  },
+  "https://openalex.org/I136199984": {
+    "display_name": "Harvard University",
+    "ror": "https://ror.org/03vek6s52",
+    "country": "US",
+    "city": "Cambridge",
+    "lat": 42.3751,
+    "lon": -71.10561
+  },
+  "https://openalex.org/I137902535": {
+    "display_name": "North Carolina State University",
+    "ror": "https://ror.org/04tj63d06",
+    "country": "US",
+    "city": "Raleigh",
+    "lat": 35.7721,
+    "lon": -78.63861
+  },
+  "https://openalex.org/I139024713": {
+    "display_name": "Guangdong University of Technology",
+    "ror": "https://ror.org/04azbjn80",
+    "country": "CN",
+    "city": "Guangzhou",
+    "lat": 23.11667,
+    "lon": 113.25
+  },
+  "https://openalex.org/I139660479": {
+    "display_name": "Central South University",
+    "ror": "https://ror.org/00f1zfq44",
+    "country": "CN",
+    "city": "Changsha",
+    "lat": 28.19874,
+    "lon": 112.97087
+  },
   "https://openalex.org/I142606810": {
     "display_name": "Pacific Northwest National Laboratory",
     "ror": "https://ror.org/05h992307",
@@ -166,6 +406,246 @@
     "city": "Richland",
     "lat": 46.28569,
     "lon": -119.28446
+  },
+  "https://openalex.org/I143247161": {
+    "display_name": "Babasaheb Bhimrao Ambedkar University",
+    "ror": "https://ror.org/04x7ccp17",
+    "country": "IN",
+    "city": "Lucknow",
+    "lat": 26.83928,
+    "lon": 80.92313
+  },
+  "https://openalex.org/I143868143": {
+    "display_name": "Anhui University",
+    "ror": "https://ror.org/05th6yx34",
+    "country": "CN",
+    "city": "Hefei",
+    "lat": 31.86389,
+    "lon": 117.28083
+  },
+  "https://openalex.org/I1456306": {
+    "display_name": "North China University of Technology",
+    "ror": "https://ror.org/01nky7652",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.907501220703125,
+    "lon": 116.39723205566406
+  },
+  "https://openalex.org/I149735164": {
+    "display_name": "Hengyang Normal University",
+    "ror": "https://ror.org/006bvjm48",
+    "country": "CN",
+    "city": "Hengyang",
+    "lat": 26.88946,
+    "lon": 112.61888
+  },
+  "https://openalex.org/I150229711": {
+    "display_name": "University of Electronic Science and Technology of China",
+    "ror": "https://ror.org/04qr3zq92",
+    "country": "CN",
+    "city": "Chengdu",
+    "lat": 30.66667,
+    "lon": 104.06667
+  },
+  "https://openalex.org/I150807315": {
+    "display_name": "Guangxi University",
+    "ror": "https://ror.org/02c9qn167",
+    "country": "CN",
+    "city": "Nanning",
+    "lat": 22.816669464111328,
+    "lon": 108.3166732788086
+  },
+  "https://openalex.org/I152269853": {
+    "display_name": "Qilu University of Technology",
+    "ror": "https://ror.org/04hyzq608",
+    "country": "CN",
+    "city": "Jinan",
+    "lat": 36.668331146240234,
+    "lon": 116.99722290039062
+  },
+  "https://openalex.org/I154099455": {
+    "display_name": "Shandong University",
+    "ror": "https://ror.org/0207yh398",
+    "country": "CN",
+    "city": "Jinan",
+    "lat": 36.66833,
+    "lon": 116.99722
+  },
+  "https://openalex.org/I157773358": {
+    "display_name": "Sun Yat-sen University",
+    "ror": "https://ror.org/0064kty71",
+    "country": "CN",
+    "city": "Guangzhou",
+    "lat": 23.11667,
+    "lon": 113.25
+  },
+  "https://openalex.org/I158842170": {
+    "display_name": "Chongqing University",
+    "ror": "https://ror.org/023rhb549",
+    "country": "CN",
+    "city": "Chongqing",
+    "lat": 29.56026,
+    "lon": 106.55771
+  },
+  "https://openalex.org/I159948400": {
+    "display_name": "Jinan University",
+    "ror": "https://ror.org/02xe5ns62",
+    "country": "CN",
+    "city": "Guangzhou",
+    "lat": 23.11667,
+    "lon": 113.25
+  },
+  "https://openalex.org/I160354086": {
+    "display_name": "Guangxi Medical University",
+    "ror": "https://ror.org/03dveyr97",
+    "country": "CN",
+    "city": "Nanning",
+    "lat": 22.81667,
+    "lon": 108.31667
+  },
+  "https://openalex.org/I160993911": {
+    "display_name": "Queensland University of Technology",
+    "ror": "https://ror.org/03pnv4752",
+    "country": "AU",
+    "city": "Brisbane",
+    "lat": -27.46794,
+    "lon": 153.02809
+  },
+  "https://openalex.org/I161318765": {
+    "display_name": "University of California, Los Angeles",
+    "ror": "https://ror.org/046rm7j60",
+    "country": "US",
+    "city": "Los Angeles",
+    "lat": 34.05223,
+    "lon": -118.24368
+  },
+  "https://openalex.org/I165745306": {
+    "display_name": "Southwest Petroleum University",
+    "ror": "https://ror.org/03h17x602",
+    "country": "CN",
+    "city": "Chengdu",
+    "lat": 30.666669845581055,
+    "lon": 104.0666732788086
+  },
+  "https://openalex.org/I165932596": {
+    "display_name": "National University of Singapore",
+    "ror": "https://ror.org/01tgyzw49",
+    "country": "SG",
+    "city": "Singapore",
+    "lat": 1.28967,
+    "lon": 103.85007
+  },
+  "https://openalex.org/I16733864": {
+    "display_name": "National Taiwan University",
+    "ror": "https://ror.org/05bqach95",
+    "country": "TW",
+    "city": "Taipei",
+    "lat": 25.05306,
+    "lon": 121.52639
+  },
+  "https://openalex.org/I168719708": {
+    "display_name": "City University of Hong Kong",
+    "ror": "https://ror.org/03q8dnn23",
+    "country": "HK",
+    "city": "Hong Kong",
+    "lat": 22.27832,
+    "lon": 114.17469
+  },
+  "https://openalex.org/I170201317": {
+    "display_name": "University of Pittsburgh",
+    "ror": "https://ror.org/01an3r305",
+    "country": "US",
+    "city": "Pittsburgh",
+    "lat": 40.44062,
+    "lon": -79.99589
+  },
+  "https://openalex.org/I170215575": {
+    "display_name": "National University of Defense Technology",
+    "ror": "https://ror.org/05d2yfz11",
+    "country": "CN",
+    "city": "Changsha",
+    "lat": 28.19874,
+    "lon": 112.97087
+  },
+  "https://openalex.org/I172675005": {
+    "display_name": "Nanyang Technological University",
+    "ror": "https://ror.org/02e7b5302",
+    "country": "SG",
+    "city": "Singapore",
+    "lat": 1.28967,
+    "lon": 103.85007
+  },
+  "https://openalex.org/I174385955": {
+    "display_name": "Hefei Normal University",
+    "ror": "https://ror.org/01b64k086",
+    "country": "CN",
+    "city": "Hefei",
+    "lat": 31.86389,
+    "lon": 117.28083
+  },
+  "https://openalex.org/I177725633": {
+    "display_name": "Chinese University of Hong Kong",
+    "ror": "https://ror.org/00t33hh48",
+    "country": "HK",
+    "city": "Hong Kong",
+    "lat": 22.27832,
+    "lon": 114.17469
+  },
+  "https://openalex.org/I179420787": {
+    "display_name": "Indian Council of Agricultural Research",
+    "ror": "https://ror.org/04fw54a43",
+    "country": "IN",
+    "city": "New Delhi",
+    "lat": 28.62137,
+    "lon": 77.2148
+  },
+  "https://openalex.org/I180519160": {
+    "display_name": "Copenhagen Business School",
+    "ror": "https://ror.org/04sppb023",
+    "country": "DK",
+    "city": "Copenhagen",
+    "lat": 55.67594146728515,
+    "lon": 12.565529823303224
+  },
+  "https://openalex.org/I181679659": {
+    "display_name": "Shanghai University of Finance and Economics",
+    "ror": "https://ror.org/00wtvfq62",
+    "country": "CN",
+    "city": "Shanghai",
+    "lat": 31.22222,
+    "lon": 121.45806
+  },
+  "https://openalex.org/I183067930": {
+    "display_name": "Shanghai Jiao Tong University",
+    "ror": "https://ror.org/0220qvk04",
+    "country": "CN",
+    "city": "Shanghai",
+    "lat": 31.22222,
+    "lon": 121.45806
+  },
+  "https://openalex.org/I185261750": {
+    "display_name": "University of Toronto",
+    "ror": "https://ror.org/03dbr7087",
+    "country": "CA",
+    "city": "Toronto",
+    "lat": 43.70643,
+    "lon": -79.39864
+  },
+  "https://openalex.org/I185443292": {
+    "display_name": "Wayne State University",
+    "ror": "https://ror.org/01070mq45",
+    "country": "US",
+    "city": "Detroit",
+    "lat": 42.33143,
+    "lon": -83.04575
+  },
+  "https://openalex.org/I192327786": {
+    "display_name": "Heilongjiang University of Chinese Medicine",
+    "ror": "https://ror.org/05x1ptx12",
+    "country": "CN",
+    "city": "Harbin",
+    "lat": 45.75,
+    "lon": 126.6500015258789
   },
   "https://openalex.org/I192455969": {
     "display_name": "York University",
@@ -175,6 +655,110 @@
     "lat": 43.70643,
     "lon": -79.39864
   },
+  "https://openalex.org/I19820366": {
+    "display_name": "Chinese Academy of Sciences",
+    "ror": "https://ror.org/034t30j35",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
+  },
+  "https://openalex.org/I20089843": {
+    "display_name": "Princeton University",
+    "ror": "https://ror.org/00hx57361",
+    "country": "US",
+    "city": "Princeton",
+    "lat": 40.34872,
+    "lon": -74.65905
+  },
+  "https://openalex.org/I204465549": {
+    "display_name": "Washington University in St. Louis",
+    "ror": "https://ror.org/01yc7t268",
+    "country": "US",
+    "city": "St Louis",
+    "lat": 38.62727,
+    "lon": -90.19789
+  },
+  "https://openalex.org/I205274468": {
+    "display_name": "Trinity College Dublin",
+    "ror": "https://ror.org/02tyrky19",
+    "country": "IE",
+    "city": "Dublin",
+    "lat": 53.33306121826172,
+    "lon": -6.248889923095703
+  },
+  "https://openalex.org/I205783295": {
+    "display_name": "Cornell University",
+    "ror": "https://ror.org/05bnh6r87",
+    "country": "US",
+    "city": "Ithaca",
+    "lat": 42.44063,
+    "lon": -76.49661
+  },
+  "https://openalex.org/I23923803": {
+    "display_name": "University of Exeter",
+    "ror": "https://ror.org/03yghzc09",
+    "country": "GB",
+    "city": "Exeter",
+    "lat": 50.72359848022461,
+    "lon": -3.527509927749634
+  },
+  "https://openalex.org/I24943067": {
+    "display_name": "Fudan University",
+    "ror": "https://ror.org/013q1eq08",
+    "country": "CN",
+    "city": "Shanghai",
+    "lat": 31.22222,
+    "lon": 121.45806
+  },
+  "https://openalex.org/I25846049": {
+    "display_name": "National Tsing Hua University",
+    "ror": "https://ror.org/00zdnkx70",
+    "country": "TW",
+    "city": "Hsinchu",
+    "lat": 24.793611526489254,
+    "lon": 120.9927749633789
+  },
+  "https://openalex.org/I258800397": {
+    "display_name": "New York University Shanghai",
+    "ror": "https://ror.org/02vpsdb40",
+    "country": "CN",
+    "city": "Shanghai",
+    "lat": 31.22221946716309,
+    "lon": 121.45806121826172
+  },
+  "https://openalex.org/I26092322": {
+    "display_name": "Stellenbosch University",
+    "ror": "https://ror.org/05bk57929",
+    "country": "ZA",
+    "city": "Stellenbosch",
+    "lat": -33.93462,
+    "lon": 18.86676
+  },
+  "https://openalex.org/I273065767": {
+    "display_name": "Catholic University of Health and Allied Sciences",
+    "ror": "https://ror.org/015qmyq14",
+    "country": "TZ",
+    "city": "Mwanza",
+    "lat": -2.51667,
+    "lon": 32.9
+  },
+  "https://openalex.org/I27688046": {
+    "display_name": "Hunan Institute of Engineering",
+    "ror": "https://ror.org/03zj2rn70",
+    "country": "CN",
+    "city": "Xiangtan",
+    "lat": 27.85,
+    "lon": 112.9
+  },
+  "https://openalex.org/I277688954": {
+    "display_name": "Université Paris-Saclay",
+    "ror": "https://ror.org/03xjwb503",
+    "country": "FR",
+    "city": "Gif-sur-Yvette",
+    "lat": 48.68333,
+    "lon": 2.13333
+  },
   "https://openalex.org/I27804330": {
     "display_name": "Brown University",
     "ror": "https://ror.org/05gq02987",
@@ -182,6 +766,30 @@
     "city": "Providence",
     "lat": 41.82399,
     "lon": -71.41283
+  },
+  "https://openalex.org/I2799495847": {
+    "display_name": "University of Tennessee System",
+    "ror": "https://ror.org/00xzqjh13",
+    "country": "US",
+    "city": "Knoxville",
+    "lat": 35.96064,
+    "lon": -83.92074
+  },
+  "https://openalex.org/I2800129641": {
+    "display_name": "Great Ormond Street Hospital",
+    "ror": "https://ror.org/00zn2c847",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50852966308594,
+    "lon": -0.12574000656604767
+  },
+  "https://openalex.org/I2801357902": {
+    "display_name": "Instituto de Salud Carlos III",
+    "ror": "https://ror.org/00ca2c886",
+    "country": "ES",
+    "city": "Madrid",
+    "lat": 40.4165,
+    "lon": -3.70256
   },
   "https://openalex.org/I2801370615": {
     "display_name": "Queen Giovanna Hospital",
@@ -191,6 +799,14 @@
     "lat": 42.69751,
     "lon": 23.32415
   },
+  "https://openalex.org/I2801795740": {
+    "display_name": "Hospital de Sant Pau",
+    "ror": "https://ror.org/059n1d175",
+    "country": "ES",
+    "city": "Barcelona",
+    "lat": 41.38879,
+    "lon": 2.15899
+  },
   "https://openalex.org/I30147112": {
     "display_name": "Medical University of Sofia",
     "ror": "https://ror.org/01n9zy652",
@@ -198,6 +814,30 @@
     "city": "Sofia",
     "lat": 42.69751,
     "lon": 23.32415
+  },
+  "https://openalex.org/I31637741": {
+    "display_name": "Inner Mongolia University of Science and Technology",
+    "ror": "https://ror.org/044rgx723",
+    "country": "CN",
+    "city": "Baotou",
+    "lat": 40.6516,
+    "lon": 109.84389
+  },
+  "https://openalex.org/I32574673": {
+    "display_name": "Shantou University",
+    "ror": "https://ror.org/01a099706",
+    "country": "CN",
+    "city": "Shantou",
+    "lat": 23.354890823364254,
+    "lon": 116.6787567138672
+  },
+  "https://openalex.org/I32971472": {
+    "display_name": "Yale University",
+    "ror": "https://ror.org/03v76x132",
+    "country": "US",
+    "city": "New Haven",
+    "lat": 41.30815,
+    "lon": -72.92816
   },
   "https://openalex.org/I33213144": {
     "display_name": "University of Florida",
@@ -207,6 +847,22 @@
     "lat": 29.65163,
     "lon": -82.32483
   },
+  "https://openalex.org/I35440088": {
+    "display_name": "ETH Zurich",
+    "ror": "https://ror.org/05a28rw58",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
+  },
+  "https://openalex.org/I37461747": {
+    "display_name": "Wuhan University",
+    "ror": "https://ror.org/033vjfk17",
+    "country": "CN",
+    "city": "Wuhan",
+    "lat": 30.58333,
+    "lon": 114.26667
+  },
   "https://openalex.org/I38645685": {
     "display_name": "Spirit AeroSystems (United States)",
     "ror": "https://ror.org/04mekkx88",
@@ -214,6 +870,62 @@
     "city": "Wichita",
     "lat": 37.62092208862305,
     "lon": -97.29044342041016
+  },
+  "https://openalex.org/I3923682": {
+    "display_name": "Soochow University",
+    "ror": "https://ror.org/05t8y2r12",
+    "country": "CN",
+    "city": "Suzhou",
+    "lat": 31.30408,
+    "lon": 120.59538
+  },
+  "https://openalex.org/I4210088164": {
+    "display_name": "Changchun Institute of Optics, Fine Mechanics and Physics",
+    "ror": "https://ror.org/012rct222",
+    "country": "CN",
+    "city": "Changchun",
+    "lat": 43.88,
+    "lon": 125.32278
+  },
+  "https://openalex.org/I4210090411": {
+    "display_name": "Google DeepMind (United Kingdom)",
+    "ror": "https://ror.org/00971b260",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50853,
+    "lon": -0.12574
+  },
+  "https://openalex.org/I4210093964": {
+    "display_name": "Peking University Cancer Hospital",
+    "ror": "https://ror.org/00nyxxr91",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.92726516723633,
+    "lon": 116.28932189941406
+  },
+  "https://openalex.org/I4210097354": {
+    "display_name": "Sun Yat-sen Memorial Hospital",
+    "ror": "https://ror.org/01px77p81",
+    "country": "CN",
+    "city": "Guangzhou",
+    "lat": 23.109411239624023,
+    "lon": 113.25577545166016
+  },
+  "https://openalex.org/I4210098460": {
+    "display_name": "Shanghai University of Traditional Chinese Medicine",
+    "ror": "https://ror.org/00z27jk27",
+    "country": "CN",
+    "city": "Shanghai",
+    "lat": 31.22222,
+    "lon": 121.45806
+  },
+  "https://openalex.org/I4210105785": {
+    "display_name": "Intelligent Systems Research (United States)",
+    "ror": "https://ror.org/01reevc91",
+    "country": "US",
+    "city": "Thousand Oaks",
+    "lat": 34.148231506347656,
+    "lon": -118.76197052001952
   },
   "https://openalex.org/I4210108178": {
     "display_name": "Spirit AeroSystems (United Kingdom)",
@@ -223,6 +935,46 @@
     "lat": 55.51235580444336,
     "lon": -4.59527587890625
   },
+  "https://openalex.org/I4210111959": {
+    "display_name": "Shanghai Advanced Research Institute",
+    "ror": "https://ror.org/02br7py06",
+    "country": "CN",
+    "city": "Pudong",
+    "lat": 31.23995,
+    "lon": 121.50094
+  },
+  "https://openalex.org/I4210112085": {
+    "display_name": "Navarre Institute of Health Research",
+    "ror": "https://ror.org/023d5h353",
+    "country": "ES",
+    "city": "Pamplona",
+    "lat": 42.81687,
+    "lon": -1.64323
+  },
+  "https://openalex.org/I4210116924": {
+    "display_name": "Chinese University of Hong Kong, Shenzhen",
+    "ror": "https://ror.org/02d5ks197",
+    "country": "CN",
+    "city": "Shenzhen",
+    "lat": 22.54554,
+    "lon": 114.0683
+  },
+  "https://openalex.org/I4210120522": {
+    "display_name": "Shantou University Medical College",
+    "ror": "https://ror.org/02gxych78",
+    "country": "CN",
+    "city": "Shantou",
+    "lat": 23.368139266967773,
+    "lon": 116.71479034423828
+  },
+  "https://openalex.org/I4210120984": {
+    "display_name": "Service Régional Vaudois de Transfusion Sanguine",
+    "ror": "https://ror.org/02wkp0463",
+    "country": "CH",
+    "city": "Lausanne",
+    "lat": 46.542945861816406,
+    "lon": 6.66117000579834
+  },
   "https://openalex.org/I4210122178": {
     "display_name": "Hewlett Packard Enterprise (United States)",
     "ror": "https://ror.org/020x0c621",
@@ -230,6 +982,110 @@
     "city": "Palo Alto",
     "lat": 37.41459655761719,
     "lon": -122.14637756347656
+  },
+  "https://openalex.org/I4210126939": {
+    "display_name": "ZheJiang Academy of Agricultural Sciences",
+    "ror": "https://ror.org/02qbc3192",
+    "country": "CN",
+    "city": "Hangzhou",
+    "lat": 30.29364967346191,
+    "lon": 120.1614227294922
+  },
+  "https://openalex.org/I4210128584": {
+    "display_name": "The Alan Turing Institute",
+    "ror": "https://ror.org/035dkdb55",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50853,
+    "lon": -0.12574
+  },
+  "https://openalex.org/I4210133934": {
+    "display_name": "Bernstein Center for Computational Neuroscience Tübingen",
+    "ror": "https://ror.org/03kfnwp54",
+    "country": "DE",
+    "city": "Tübingen",
+    "lat": 48.52266,
+    "lon": 9.05222
+  },
+  "https://openalex.org/I4210135003": {
+    "display_name": "Clinica Universidad de Navarra",
+    "ror": "https://ror.org/03phm3r45",
+    "country": "ES",
+    "city": "Pamplona",
+    "lat": 42.816871643066406,
+    "lon": -1.6432299613952637
+  },
+  "https://openalex.org/I4210135521": {
+    "display_name": "Max Planck Institute for Intelligent Systems",
+    "ror": "https://ror.org/04fq9j139",
+    "country": "DE",
+    "city": "Stuttgart",
+    "lat": 48.782318115234375,
+    "lon": 9.177020072937012
+  },
+  "https://openalex.org/I4210136793": {
+    "display_name": "Peng Cheng Laboratory",
+    "ror": "https://ror.org/03qdqbt06",
+    "country": "CN",
+    "city": "Shenzhen",
+    "lat": 22.54554,
+    "lon": 114.0683
+  },
+  "https://openalex.org/I4210136953": {
+    "display_name": "Laboratoire d’Électronique, Informatique et Image",
+    "ror": "https://ror.org/04gnd7c94",
+    "country": "FR",
+    "city": "Dijon",
+    "lat": 47.31666946411133,
+    "lon": 5.016670227050781
+  },
+  "https://openalex.org/I4210146711": {
+    "display_name": "Sun Yat-sen University Cancer Center",
+    "ror": "https://ror.org/0400g8r85",
+    "country": "CN",
+    "city": "Guangzhou",
+    "lat": 23.11667,
+    "lon": 113.25
+  },
+  "https://openalex.org/I4210147308": {
+    "display_name": "Directorate of Medicinal and Aromatic Plants Research",
+    "ror": "https://ror.org/04n3c2195",
+    "country": "IN",
+    "city": "Anand",
+    "lat": 22.552509307861328,
+    "lon": 72.9552001953125
+  },
+  "https://openalex.org/I4210158318": {
+    "display_name": "Second Affiliated Hospital of Zhejiang University",
+    "ror": "https://ror.org/059cjpv64",
+    "country": "CN",
+    "city": "Hangzhou",
+    "lat": 30.25167465209961,
+    "lon": 120.17648315429688
+  },
+  "https://openalex.org/I4210159575": {
+    "display_name": "Huashan Hospital",
+    "ror": "https://ror.org/05201qm87",
+    "country": "CN",
+    "city": "Shanghai",
+    "lat": 31.22221946716309,
+    "lon": 121.45806121826172
+  },
+  "https://openalex.org/I4210161852": {
+    "display_name": "Hospital Universitario Ramón y Cajal",
+    "ror": "https://ror.org/050eq1942",
+    "country": "ES",
+    "city": "Madrid",
+    "lat": 40.416500091552734,
+    "lon": -3.7025599479675297
+  },
+  "https://openalex.org/I4210162994": {
+    "display_name": "Xijing University",
+    "ror": "https://ror.org/05xsjkb63",
+    "country": "CN",
+    "city": "Xi'an",
+    "lat": 34.25833,
+    "lon": 108.92861
   },
   "https://openalex.org/I4210163432": {
     "display_name": "Hewlett Packard Enterprise (Ireland)",
@@ -239,6 +1095,46 @@
     "lat": 53.292537689208984,
     "lon": -9.007353782653809
   },
+  "https://openalex.org/I4210165038": {
+    "display_name": "University of Chinese Academy of Sciences",
+    "ror": "https://ror.org/05qbk4x57",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
+  },
+  "https://openalex.org/I4210165766": {
+    "display_name": "Max Planck Institute for Biology",
+    "ror": "https://ror.org/0243gzr89",
+    "country": "DE",
+    "city": "Tübingen",
+    "lat": 48.54203796386719,
+    "lon": 9.059455871582031
+  },
+  "https://openalex.org/I4387153466": {
+    "display_name": "Weill Cornell Medicine",
+    "ror": "https://ror.org/02r109517",
+    "country": "US",
+    "city": "New York",
+    "lat": 40.71427,
+    "lon": -74.00597
+  },
+  "https://openalex.org/I4401726832": {
+    "display_name": "Tübingen AI Center",
+    "ror": "https://ror.org/0107nyd78",
+    "country": null,
+    "city": "Tübingen",
+    "lat": 48.52265930175781,
+    "lon": 9.052220344543455
+  },
+  "https://openalex.org/I4403386549": {
+    "display_name": "Munich Center for Machine Learning",
+    "ror": "https://ror.org/02nfy3535",
+    "country": null,
+    "city": "Munich",
+    "lat": 48.137428283691406,
+    "lon": 11.57548999786377
+  },
   "https://openalex.org/I4405262925": {
     "display_name": "Laboratory for Laser Energetics",
     "ror": "https://ror.org/006rjbv46",
@@ -246,6 +1142,62 @@
     "city": "Rochester",
     "lat": 43.15478,
     "lon": -77.61556
+  },
+  "https://openalex.org/I4405263145": {
+    "display_name": "ELLIS Institute Tübingen",
+    "ror": "https://ror.org/036z3g533",
+    "country": "DE",
+    "city": "Tübingen",
+    "lat": 48.52266,
+    "lon": 9.05222
+  },
+  "https://openalex.org/I4405273316": {
+    "display_name": "Frontiers Center for Brain Science of the Ministry of Education",
+    "ror": "https://ror.org/05n8v1c41",
+    "country": "CN",
+    "city": "Shanghai",
+    "lat": 31.22222,
+    "lon": 121.45806
+  },
+  "https://openalex.org/I44461941": {
+    "display_name": "University of Houston",
+    "ror": "https://ror.org/048sx0r50",
+    "country": "US",
+    "city": "Houston",
+    "lat": 29.763280868530273,
+    "lon": -95.36327362060548
+  },
+  "https://openalex.org/I45129253": {
+    "display_name": "University College London",
+    "ror": "https://ror.org/02jx3x895",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50853,
+    "lon": -0.12574
+  },
+  "https://openalex.org/I45928872": {
+    "display_name": "Alibaba Group (China)",
+    "ror": "https://ror.org/00k642b80",
+    "country": "CN",
+    "city": "Hangzhou",
+    "lat": 30.29365,
+    "lon": 120.16142
+  },
+  "https://openalex.org/I47720641": {
+    "display_name": "Huazhong University of Science and Technology",
+    "ror": "https://ror.org/00p991c53",
+    "country": "CN",
+    "city": "Wuhan",
+    "lat": 30.58333,
+    "lon": 114.26667
+  },
+  "https://openalex.org/I5124864": {
+    "display_name": "École Polytechnique Fédérale de Lausanne",
+    "ror": "https://ror.org/02s376052",
+    "country": "CH",
+    "city": "Lausanne",
+    "lat": 46.516,
+    "lon": 6.63282
   },
   "https://openalex.org/I51556381": {
     "display_name": "University of Virginia",
@@ -263,6 +1215,14 @@
     "lat": 46.4900016784668,
     "lon": -80.9900131225586
   },
+  "https://openalex.org/I53411278": {
+    "display_name": "Chengdu University of Traditional Chinese Medicine",
+    "ror": "https://ror.org/00pcrz470",
+    "country": "CN",
+    "city": "Chengdu",
+    "lat": 30.66667,
+    "lon": 104.06667
+  },
   "https://openalex.org/I5388228": {
     "display_name": "University of Rochester",
     "ror": "https://ror.org/022kthw22",
@@ -271,6 +1231,166 @@
     "lat": 43.15478,
     "lon": -77.61556
   },
+  "https://openalex.org/I55521800": {
+    "display_name": "Goldsmiths University of London",
+    "ror": "https://ror.org/01khx4a30",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50852966308594,
+    "lon": -0.12574000656604767
+  },
+  "https://openalex.org/I55712492": {
+    "display_name": "Zhejiang University of Technology",
+    "ror": "https://ror.org/02djqfd08",
+    "country": "CN",
+    "city": "Hangzhou",
+    "lat": 30.29364967346191,
+    "lon": 120.1614227294922
+  },
+  "https://openalex.org/I59028903": {
+    "display_name": "Ocean University of China",
+    "ror": "https://ror.org/04rdtx186",
+    "country": "CN",
+    "city": "Qingdao",
+    "lat": 36.06488037109375,
+    "lon": 120.3804168701172
+  },
+  "https://openalex.org/I62916508": {
+    "display_name": "Technical University of Munich",
+    "ror": "https://ror.org/02kkvpp62",
+    "country": "DE",
+    "city": "Munich",
+    "lat": 48.13743,
+    "lon": 11.57549
+  },
+  "https://openalex.org/I63966007": {
+    "display_name": "Massachusetts Institute of Technology",
+    "ror": "https://ror.org/042nb2s44",
+    "country": "US",
+    "city": "Cambridge",
+    "lat": 42.3751,
+    "lon": -71.10561
+  },
+  "https://openalex.org/I64189192": {
+    "display_name": "International Institute of Information Technology, Hyderabad",
+    "ror": "https://ror.org/05f11g639",
+    "country": "IN",
+    "city": "Hyderabad",
+    "lat": 17.38405,
+    "lon": 78.45636
+  },
+  "https://openalex.org/I66867065": {
+    "display_name": "East China Normal University",
+    "ror": "https://ror.org/02n96ep67",
+    "country": "CN",
+    "city": "Shanghai",
+    "lat": 31.22221946716309,
+    "lon": 121.45806121826172
+  },
+  "https://openalex.org/I75027704": {
+    "display_name": "University of Tennessee at Knoxville",
+    "ror": "https://ror.org/020f3ap87",
+    "country": "US",
+    "city": "Knoxville",
+    "lat": 35.96064,
+    "lon": -83.92074
+  },
+  "https://openalex.org/I8087733": {
+    "display_name": "University of Tübingen",
+    "ror": "https://ror.org/03a1kwz48",
+    "country": "DE",
+    "city": "Tübingen",
+    "lat": 48.52266,
+    "lon": 9.05222
+  },
+  "https://openalex.org/I82880672": {
+    "display_name": "Beihang University",
+    "ror": "https://ror.org/00wk2mp56",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
+  },
+  "https://openalex.org/I84653119": {
+    "display_name": "Academia Sinica",
+    "ror": "https://ror.org/05bxb3784",
+    "country": "TW",
+    "city": "Taipei",
+    "lat": 25.05306,
+    "lon": 121.52639
+  },
+  "https://openalex.org/I86501945": {
+    "display_name": "University of Delaware",
+    "ror": "https://ror.org/01sbq1a82",
+    "country": "US",
+    "city": "Newark",
+    "lat": 39.68372,
+    "lon": -75.74966
+  },
+  "https://openalex.org/I887064364": {
+    "display_name": "University of Amsterdam",
+    "ror": "https://ror.org/04dkp9463",
+    "country": "NL",
+    "city": "Amsterdam",
+    "lat": 52.37403,
+    "lon": 4.88969
+  },
+  "https://openalex.org/I89095802": {
+    "display_name": "Central University of Gujarat",
+    "ror": "https://ror.org/04y3rfg91",
+    "country": "IN",
+    "city": "Gandhinagar",
+    "lat": 23.2166690826416,
+    "lon": 72.6833267211914
+  },
+  "https://openalex.org/I891191580": {
+    "display_name": "Aalborg University",
+    "ror": "https://ror.org/04m5j1k67",
+    "country": "DK",
+    "city": "Aalborg",
+    "lat": 57.048,
+    "lon": 9.9187
+  },
+  "https://openalex.org/I90610280": {
+    "display_name": "South China University of Technology",
+    "ror": "https://ror.org/0530pts50",
+    "country": "CN",
+    "city": "Guangzhou",
+    "lat": 23.116670608520508,
+    "lon": 113.25
+  },
+  "https://openalex.org/I92403157": {
+    "display_name": "University of Science and Technology Beijing",
+    "ror": "https://ror.org/02egmk993",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
+  },
+  "https://openalex.org/I9341345": {
+    "display_name": "University of Lübeck",
+    "ror": "https://ror.org/00t3r8h32",
+    "country": "DE",
+    "city": "Lübeck",
+    "lat": 53.86893,
+    "lon": 10.68729
+  },
+  "https://openalex.org/I95457486": {
+    "display_name": "University of California, Berkeley",
+    "ror": "https://ror.org/01an7q238",
+    "country": "US",
+    "city": "Berkeley",
+    "lat": 37.87159,
+    "lon": -122.27275
+  },
+  "https://openalex.org/I97018004": {
+    "display_name": "Stanford University",
+    "ror": "https://ror.org/00f54p054",
+    "country": "US",
+    "city": "Stanford",
+    "lat": 37.42411,
+    "lon": -122.16608
+  },
   "https://openalex.org/I98358874": {
     "display_name": "Delft University of Technology",
     "ror": "https://ror.org/02e2c7k09",
@@ -278,5 +1398,13 @@
     "city": "Delft",
     "lat": 52.00667,
     "lon": 4.35556
+  },
+  "https://openalex.org/I99065089": {
+    "display_name": "Tsinghua University",
+    "ror": "https://ror.org/03cve4549",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
   }
 }
