@@ -219,7 +219,7 @@ impl OpenAlex {
             self.tripped = true;
             tracing::warn!(
                 failures = self.consecutive_failures,
-                "OpenAlex keeps failing (throttled?); stopping lookups for this                  run — cached locations still apply and the next run continues"
+                "OpenAlex keeps failing (throttled?); stopping lookups for                  this run — cached locations apply and the next run continues"
             );
         }
     }
