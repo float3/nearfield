@@ -7,6 +7,7 @@
 //! only those and dedupe by arXiv id (papers cross-listed into several
 //! categories otherwise appear more than once).
 
+use crate::diagnostics::Diagnostics;
 use crate::http::Http;
 use crate::model::{Author, GeoSource, Paper};
 use anyhow::Result;
@@ -74,7 +75,7 @@ fn split_authors(creators: &str) -> Vec<Author> {
     out.into_iter().map(Author::new).collect()
 }
 
-fn parse_feed(xml: &str, announced: &str) -> Vec<Paper> {
+fn parse_feed(xml: &str, announced: &str, diag: &mut Diagnostics) -> Vec<Paper> {
     let mut reader = Reader::from_str(xml);
     reader.config_mut().trim_text(false);
 
@@ -119,14 +120,31 @@ fn parse_feed(xml: &str, announced: &str) -> Vec<Paper> {
                         "item" => {
                             let it = item.take().expect("inside an item");
                             if it.announce_type == "new" {
-                                if let Some(id) = extract_id(&it) {
+                                let parsed_id = extract_id(&it);
+                                if parsed_id.is_none() {
+                                    // Dropped silently would mean quietly
+                                    // losing papers, so say so.
+                                    diag.items_unidentified.record(if it.title.is_empty() {
+                                        "<untitled item>".to_string()
+                                    } else {
+                                        it.title.clone()
+                                    });
+                                }
+                                if let Some(id) = parsed_id {
+                                    let authors = split_authors(&it.creators);
+                                    if authors.is_empty() {
+                                        // Without names the paper can never be
+                                        // placed, so it is worth reporting.
+                                        diag.papers_without_authors
+                                            .record(format!("{id}: {}", it.title));
+                                    }
                                     papers.push(Paper {
                                         id,
                                         title: it.title.clone(),
                                         abstract_text: extract_abstract(&it.description),
                                         categories: it.categories.clone(),
                                         announced: announced.to_string(),
-                                        authors: split_authors(&it.creators),
+                                        authors,
                                         affiliations: Vec::new(),
                                         contact_emails: Vec::new(),
                                         distance_km: None,
@@ -155,15 +173,20 @@ fn parse_feed(xml: &str, announced: &str) -> Vec<Paper> {
 
 /// Harvest every listed category, dedupe by id, and merge category lists so a
 /// cross-listed paper keeps all of its categories.
-pub async fn harvest(http: &Http, categories: &[String], announced: &str) -> Result<Vec<Paper>> {
+pub async fn harvest(
+    http: &Http,
+    categories: &[String],
+    announced: &str,
+    diag: &mut Diagnostics,
+) -> Result<Vec<Paper>> {
     let mut merged: BTreeMap<String, Paper> = BTreeMap::new();
-    let mut failed = 0usize;
+    diag.feeds_attempted = categories.len();
 
     for cat in categories {
         let url = format!("{FEED_BASE}/{cat}");
         match http.get_text(&url).await {
             Ok(xml) => {
-                let found = parse_feed(&xml, announced);
+                let found = parse_feed(&xml, announced, diag);
                 tracing::info!(cat, count = found.len(), "harvested");
                 for p in found {
                     merged
@@ -179,13 +202,17 @@ pub async fn harvest(http: &Http, categories: &[String], announced: &str) -> Res
                 }
             }
             Err(e) => {
-                failed += 1;
+                diag.feeds_failed.record(format!("{cat}: {e}"));
                 tracing::warn!(cat, error = %e, "feed failed, skipping");
             }
         }
     }
-    if failed > 0 {
-        tracing::warn!(failed, total = categories.len(), "some feeds unavailable");
+    if diag.feeds_failed.count > 0 {
+        tracing::warn!(
+            failed = diag.feeds_failed.count,
+            total = categories.len(),
+            "some feeds unavailable"
+        );
     }
     Ok(merged.into_values().collect())
 }
@@ -221,14 +248,14 @@ Abstract: Nope.</description>
 
     #[test]
     fn keeps_new_drops_replacements() {
-        let ps = parse_feed(FEED, "2026-10-27");
+        let ps = parse_feed(FEED, "2026-10-27", &mut Diagnostics::default());
         assert_eq!(ps.len(), 1, "replacements must be dropped");
         assert_eq!(ps[0].id, "2610.31702");
     }
 
     #[test]
     fn parses_the_fields_we_depend_on() {
-        let ps = parse_feed(FEED, "2026-10-27");
+        let ps = parse_feed(FEED, "2026-10-27", &mut Diagnostics::default());
         let p = &ps[0];
         assert_eq!(p.title, "Collaborative In-Context Learning");
         assert_eq!(p.abstract_text, "Indoor radio map estimation is essential.");
@@ -252,6 +279,6 @@ Abstract: Nope.</description>
 
     #[test]
     fn garbage_xml_does_not_panic() {
-        let _ = parse_feed("<rss><channel><item><title>x", "d");
+        let _ = parse_feed("<rss><channel><item><title>x", "d", &mut Diagnostics::default());
     }
 }

@@ -18,6 +18,7 @@
         <div class="tabs" role="tablist">
           <button id="tab-list" role="tab" aria-selected="true">Nearest first</button>
           <button id="tab-map" role="tab" aria-selected="false">Map</button>
+          <button id="tab-diag" role="tab" aria-selected="false">Parsing</button>
         </div>
       </header>
 
@@ -31,6 +32,9 @@
         <section class="pane" id="pane-list" role="tabpanel">
           <div id="list"></div>
           <div class="version" id="version"></div>
+        </section>
+        <section class="pane" id="pane-diag" role="tabpanel" hidden>
+          <div id="diag"></div>
         </section>
         <section class="pane" id="pane-map" role="tabpanel" hidden>
           <div id="map"></div>

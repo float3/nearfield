@@ -18,6 +18,7 @@ import {
   SOURCE_LABEL,
   type Digest,
   type IndexEntry,
+  type Issue,
   type Paper,
 } from "./types";
 
@@ -107,6 +108,131 @@ function renderList(d: Digest): void {
       if (p) openSheet(p);
     });
   }
+}
+
+// --- parsing report -----------------------------------------------------
+
+/** Mirrors Diagnostics::issues() in the Rust core. */
+const ISSUE_SPECS: { key: string; what: string; fix: string; actionable: boolean }[] = [
+  {
+    key: "affiliations_unresolved",
+    what: "Affiliation read off the paper matched no institution",
+    fix: "These papers fall back to the author prior instead of their printed address.",
+    actionable: true,
+  },
+  {
+    key: "intro_not_found",
+    what: "Paper had HTML but no section was recognised as the introduction",
+    fix: "The heading form may be unhandled — 'Background', 'Motivation', unnumbered.",
+    actionable: true,
+  },
+  {
+    key: "emails_not_found",
+    what: "Paper had HTML but no contact address was found",
+    fix: "Some papers print none; if arXiv shows one, the front-matter cut is wrong.",
+    actionable: true,
+  },
+  {
+    key: "papers_without_authors",
+    what: "Feed entry carried no author names",
+    fix: "These cannot be placed at all.",
+    actionable: true,
+  },
+  {
+    key: "items_unidentified",
+    what: "Feed item had no readable arXiv id and was dropped",
+    fix: "This silently loses papers — worth checking the feed format.",
+    actionable: true,
+  },
+  {
+    key: "feeds_failed",
+    what: "A category feed could not be fetched",
+    fix: "Usually transient; a nightly repeat means the feed name changed.",
+    actionable: true,
+  },
+  {
+    key: "institutions_without_geo",
+    what: "Institution resolved but has no coordinates upstream",
+    fix: "An OpenAlex data gap; ROR sometimes has coordinates where it does not.",
+    actionable: true,
+  },
+  { key: "html_errors", what: "Fetching the paper HTML failed", fix: "Usually rate limiting.", actionable: true },
+  { key: "authors_unknown", what: "OpenAlex had no record of this author", fix: "", actionable: false },
+  { key: "html_absent", what: "arXiv has no HTML rendering of the paper", fix: "", actionable: false },
+];
+
+function issuesFrom(d: Digest): Issue[] {
+  const diag = d.diagnostics;
+  if (!diag) return [];
+  const out: Issue[] = [];
+  for (const spec of ISSUE_SPECS) {
+    const t = diag[spec.key] as { count?: number; samples?: string[] } | undefined;
+    if (!t?.count) continue;
+    out.push({
+      kind: spec.key,
+      what: spec.what,
+      fix: spec.fix,
+      count: t.count,
+      samples: t.samples ?? [],
+      actionable: spec.actionable,
+    });
+  }
+  out.sort((a, b) =>
+    a.actionable === b.actionable ? b.count - a.count : Number(b.actionable) - Number(a.actionable),
+  );
+  return out;
+}
+
+function renderDiagnostics(d: Digest): void {
+  const diag = d.diagnostics;
+  if (!diag) {
+    el("diag").innerHTML = `<p class="muted" style="padding:14px">
+      This digest predates parsing reports.</p>`;
+    return;
+  }
+  const issues = issuesFrom(d);
+  const notes: string[] = [];
+  if (diag.lookup_budget_hit) {
+    notes.push("The lookup budget was reached — later runs will place the rest.");
+  }
+  if (diag.openalex_degraded) {
+    notes.push("OpenAlex was throttled, so lookups stopped early.");
+  }
+
+  const header = `<div class="diag-head">
+    <div>${d.stats.harvested} papers from ${diag.feeds_attempted} feeds · ${diag.enrich_attempted} read in full</div>
+    ${notes.map((n) => `<div class="diag-note">${escapeHtml(n)}</div>`).join("")}
+  </div>`;
+
+  if (issues.length === 0) {
+    el("diag").innerHTML =
+      header + `<p class="muted" style="padding:14px">Nothing failed to parse.</p>`;
+    return;
+  }
+
+  el("diag").innerHTML =
+    header +
+    issues
+      .map((i) => {
+        const samples = (i.samples ?? []).slice(0, 12);
+        return `<div class="issue">
+        <div class="issue-top">
+          <span class="badge${i.actionable ? " badge-fix" : ""}">${i.actionable ? "fix" : "expected"}</span>
+          <span class="issue-count">${i.count}</span>
+          <span class="issue-what">${escapeHtml(i.what)}</span>
+        </div>
+        ${i.fix ? `<div class="issue-fix">${escapeHtml(i.fix)}</div>` : ""}
+        ${
+          samples.length
+            ? `<details class="issue-samples">
+                 <summary>${samples.length} example${samples.length === 1 ? "" : "s"}</summary>
+                 <ul>${samples.map((s) => `<li>${escapeHtml(s)}</li>`).join("")}</ul>
+               </details>`
+            : ""
+        }
+      </div>`;
+      })
+      .join("");
 }
 
 // --- detail sheet -------------------------------------------------------
@@ -228,24 +354,29 @@ async function show(date: string): Promise<void> {
     renderList(digest);
     renderTimeline();
     if (!el("pane-map").hidden) paperMap.render(digest);
+    if (!el("pane-diag").hidden) renderDiagnostics(digest);
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
     el("list").innerHTML = `<p class="err" style="padding:14px">Could not load ${date}: ${escapeHtml(msg)}</p>`;
   }
 }
 
-function selectTab(which: "list" | "map", pushHash = true): void {
+type Tab = "list" | "map" | "diag";
+
+function selectTab(which: Tab, pushHash = true): void {
   if (pushHash && location.hash.slice(1) !== which) {
     history.replaceState(null, "", `#${which}`);
   }
-  const isMap = which === "map";
-  el("pane-list").hidden = isMap;
-  el("pane-map").hidden = !isMap;
-  el("tab-list").setAttribute("aria-selected", String(!isMap));
-  el("tab-map").setAttribute("aria-selected", String(isMap));
-  if (isMap && digest) {
+  for (const t of ["list", "map", "diag"] as Tab[]) {
+    el(`pane-${t}`).hidden = t !== which;
+    el(`tab-${t}`).setAttribute("aria-selected", String(t === which));
+  }
+  if (which === "map" && digest) {
     paperMap.render(digest);
     paperMap.resize();
+  }
+  if (which === "diag" && digest) {
+    renderDiagnostics(digest);
   }
 }
 
@@ -286,8 +417,10 @@ async function boot(): Promise<void> {
   el("legend").innerHTML = legendHtml();
   el("tab-list").addEventListener("click", () => selectTab("list"));
   el("tab-map").addEventListener("click", () => selectTab("map"));
-  // Deep link: #map opens straight onto the map.
-  if (location.hash === "#map") selectTab("map", false);
+  el("tab-diag").addEventListener("click", () => selectTab("diag"));
+  // Deep links: #map and #diag open straight onto those panes.
+  const hash = location.hash.slice(1);
+  if (hash === "map" || hash === "diag") selectTab(hash, false);
   el("sheet-close").addEventListener("click", closeSheet);
 
   el("sheet-pdf").addEventListener("click", () => {
@@ -322,7 +455,8 @@ async function boot(): Promise<void> {
     return;
   }
   await show(latest.date);
-  if (location.hash === "#map") selectTab("map", false);
+  const h = location.hash.slice(1);
+  if (h === "map" || h === "diag") selectTab(h as Tab, false);
   void offerUpdate();
 }
 

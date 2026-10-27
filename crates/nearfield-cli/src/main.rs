@@ -45,6 +45,17 @@ enum Command {
         /// Bare arXiv id, e.g. 2610.31702
         id: String,
     },
+    /// Print what a day's ingestion failed to parse.
+    Report {
+        /// Date to report on (YYYY-MM-DD). Defaults to the latest digest.
+        #[arg(long)]
+        date: Option<String>,
+        /// Show the sample strings behind each issue.
+        #[arg(long)]
+        samples: bool,
+        #[arg(long, default_value = "data")]
+        out_dir: PathBuf,
+    },
     /// Rebuild data/index.json from the digests on disk.
     Index {
         #[arg(long, default_value = "data")]
@@ -76,6 +87,49 @@ fn contact() -> String {
 
 fn api_key() -> Option<String> {
     std::env::var("OPENALEX_API_KEY").ok().filter(|k| !k.trim().is_empty())
+}
+
+/// Print the day's parsing failures, worst first.
+///
+/// The point is to make extraction improvable: each actionable issue carries
+/// the raw strings that defeated it, so a fix can be written against real
+/// input rather than guessed at.
+fn print_report(digest: &nearfield_core::Digest, samples: bool) {
+    let d = &digest.diagnostics;
+    println!("Parsing report for {}", digest.date);
+    println!(
+        "  {} papers harvested from {} feeds | {} enriched",
+        digest.stats.harvested, d.feeds_attempted, digest.stats.enriched
+    );
+    if d.lookup_budget_hit {
+        println!("  note: the lookup budget was reached; later runs will place the rest");
+    }
+    if d.openalex_degraded {
+        println!("  note: OpenAlex was throttled and lookups stopped early");
+    }
+
+    let issues = d.issues();
+    if issues.is_empty() {
+        println!("  nothing failed to parse");
+        return;
+    }
+    println!();
+    for issue in issues {
+        let tag = if issue.actionable { "FIX " } else { "note" };
+        println!("[{tag}] {:>5}x {}", issue.count, issue.what);
+        if issue.actionable && !issue.fix.is_empty() {
+            println!("         -> {}", issue.fix);
+        }
+        if samples {
+            for s in issue.samples.iter().take(10) {
+                println!("         . {s}");
+            }
+        }
+    }
+    if !samples {
+        println!();
+        println!("Re-run with --samples to see the strings behind each issue.");
+    }
 }
 
 #[tokio::main]
@@ -128,8 +182,22 @@ async fn main() -> Result<()> {
                 "harvested {} | located {} | unlocated {} | enriched {} | with email {}",
                 s.harvested, s.located, s.unlocated, s.enriched, s.with_email
             );
+            println!("parsing: {}", digest.diagnostics.summary());
+            if digest.diagnostics.needs_attention() {
+                println!("run `nearfield report --samples` to see what to fix");
+            }
             // Written for the workflow to pick up as the push notification body.
-            std::fs::write("work/summary.txt", pipeline::summarise(&digest)).ok();
+            std::fs::write(
+                "work/summary.txt",
+                format!(
+                    "{}
+
+Parsing: {}",
+                    pipeline::summarise(&digest),
+                    digest.diagnostics.summary()
+                ),
+            )
+            .ok();
         }
 
         Command::Fetch { id } => {
@@ -154,6 +222,24 @@ async fn main() -> Result<()> {
                 anyhow::bail!("no HTML rendering available for arXiv:{id}");
             }
             println!("{}", serde_json::to_string_pretty(&p)?);
+        }
+
+        Command::Report { date, samples, out_dir } => {
+            let date = match date {
+                Some(d) => d,
+                None => {
+                    let entries = pipeline::update_index(&out_dir)?;
+                    entries
+                        .first()
+                        .map(|e| e.date.clone())
+                        .ok_or_else(|| anyhow::anyhow!("no digests in {}", out_dir.display()))?
+                }
+            };
+            let path = out_dir.join(format!("{date}.json"));
+            let text = std::fs::read_to_string(&path)
+                .with_context(|| format!("reading {}", path.display()))?;
+            let digest: nearfield_core::Digest = serde_json::from_str(&text)?;
+            print_report(&digest, samples);
         }
 
         Command::Index { out_dir } => {

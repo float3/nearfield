@@ -57,6 +57,36 @@ the caches persist: papers left unplaced today get placed by later runs, and
 after the first week most days need almost no network. Expect a sparse map on
 day one — that is the cache warming, not a failure.
 
+## The parsing report
+
+Extraction from arXiv's HTML is heuristic: LaTeXML's output varies by template,
+and every publisher lays an author block out differently. So each run records
+what it could not parse — and keeps the **raw strings**, not just counts, so a
+fix can be written against real input instead of guessed at.
+
+```sh
+cargo run -p nearfield-cli -- report --samples
+```
+
+```
+[FIX ]     9x Affiliation read off the paper matched no institution
+         -> Look at the samples: if they share a shape, teach
+            normalise_affiliation to strip it.
+         . Equal contribution. University of Somewhere
+         . *Corresponding author, Institute of Things
+[note]   212x OpenAlex had no record of this author
+```
+
+Issues are split into **fix** (something in the parser could be better) and
+**expected** (a paper with no HTML rendering, an author with no publication
+history — nothing to do). Fixable issues sort first regardless of count, so a
+single dropped paper outranks two hundred first-time authors.
+
+The same report travels inside each digest and appears under the app's
+**Parsing** tab, so the day's failures are visible on the phone without
+digging. Both `affiliations_unresolved` and `intro_not_found` have already paid
+for themselves — see the commit history for two parser fixes they produced.
+
 ## Running it
 
 ```sh

@@ -11,6 +11,7 @@
 //! repo geolocates most of a day's papers without touching the network.
 
 use crate::cache::JsonCache;
+use crate::diagnostics::Diagnostics;
 use crate::geo::Point;
 use crate::http::Http;
 use crate::model::{Author, GeoSource};
@@ -293,23 +294,31 @@ impl OpenAlex {
     /// trustworthy source. When an author has several appointments we take the
     /// one closest to Munich: a joint LMU/MIT affiliation means they are
     /// reachable in Munich, which is the question being asked.
-    pub async fn place_author(&mut self, author: &mut Author) {
+    pub async fn place_author(&mut self, author: &mut Author, diag: &mut Diagnostics) {
         if author.geo_source.rank() >= GeoSource::AuthorPrior.rank() && author.located() {
             return;
         }
         let Some(rec) = self.author_record(&author.name).await else { return };
         if rec.institution_ids.is_empty() {
+            diag.authors_unknown.record(author.name.clone());
             return;
         }
 
         let mut best: Option<(f64, InstitutionRecord)> = None;
         for id in rec.institution_ids.iter().take(4) {
             if let Some(inst) = self.institution(id).await {
-                if let Some(p) = inst.point() {
-                    let d = p.from_munich_km();
-                    if best.as_ref().map_or(true, |(bd, _)| d < *bd) {
-                        best = Some((d, inst));
+                match inst.point() {
+                    Some(p) => {
+                        let d = p.from_munich_km();
+                        if best.as_ref().map_or(true, |(bd, _)| d < *bd) {
+                            best = Some((d, inst));
+                        }
                     }
+                    // Resolved, but upstream has no coordinates for it.
+                    None if !inst.display_name.is_empty() => {
+                        diag.institutions_without_geo.record(inst.display_name.clone());
+                    }
+                    None => {}
                 }
             }
         }

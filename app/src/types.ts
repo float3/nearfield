@@ -51,11 +51,34 @@ export interface Stats {
   with_email: number;
 }
 
+export interface Issue {
+  kind: string;
+  what: string;
+  fix?: string;
+  count: number;
+  samples?: string[];
+  actionable: boolean;
+}
+
+export interface Tally {
+  count: number;
+  samples?: string[];
+}
+
+export interface Diagnostics {
+  feeds_attempted: number;
+  enrich_attempted: number;
+  lookup_budget_hit: boolean;
+  openalex_degraded: boolean;
+  [key: string]: unknown;
+}
+
 export interface Digest {
   date: string;
   generated_at: string;
   home: { lat: number; lon: number; label: string };
   stats: Stats;
+  diagnostics?: Diagnostics;
   papers: Paper[];
 }
 

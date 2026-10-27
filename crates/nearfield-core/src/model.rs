@@ -219,6 +219,10 @@ pub struct Digest {
     pub generated_at: String,
     pub home: Home,
     pub stats: Stats,
+    /// What this run could not parse. Travels with the digest so the app can
+    /// show it without a second request.
+    #[serde(default)]
+    pub diagnostics: crate::diagnostics::Diagnostics,
     pub papers: Vec<Paper>,
 }
 
@@ -265,6 +269,34 @@ mod tests {
         p.resolve_distance();
         assert_eq!(p.distance_km, Some(4.0));
         assert_eq!(p.geo_source, GeoSource::PaperHtml);
+    }
+
+    #[test]
+    fn a_tum_mit_collaboration_ranks_as_tum() {
+        // One nearby author is enough: a paper with a TUM author and an MIT
+        // author is a paper you could walk to a seminar about.
+        let mut tum = Author::new("Someone at TUM");
+        tum.lat = Some(48.13743);
+        tum.lon = Some(11.57549);
+        tum.distance_km = Some(crate::geo::Point { lat: 48.13743, lon: 11.57549 }.from_munich_km());
+        tum.geo_source = GeoSource::AuthorPrior;
+
+        let mut mit = Author::new("Someone at MIT");
+        mit.lat = Some(42.3601);
+        mit.lon = Some(-71.0942);
+        mit.distance_km = Some(crate::geo::Point { lat: 42.3601, lon: -71.0942 }.from_munich_km());
+        mit.geo_source = GeoSource::AuthorPrior;
+
+        // Author order must not matter.
+        for authors in [vec![mit.clone(), tum.clone()], vec![tum.clone(), mit.clone()]] {
+            let mut p = paper_with(authors);
+            p.resolve_distance();
+            assert!(
+                p.distance_km.unwrap() < 2.0,
+                "should rank as TUM-near, got {:?}",
+                p.distance_km
+            );
+        }
     }
 
     #[test]

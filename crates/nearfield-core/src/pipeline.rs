@@ -11,6 +11,7 @@
 //! are placed by later runs, and the cache warms until most days need almost
 //! no network at all.
 
+use crate::diagnostics::Diagnostics;
 use crate::geo::MUNICH;
 use crate::http::Http;
 use crate::model::{Digest, Home, Paper, Stats};
@@ -77,6 +78,8 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     std::fs::create_dir_all(&cfg.out_dir).ok();
     std::fs::create_dir_all(&cfg.cache_dir).ok();
 
+    let mut diag = Diagnostics::default();
+
     // 1. Harvest the day.
     let mut papers = if cfg.reuse_harvest && cfg.digest_path().exists() {
         let s = std::fs::read_to_string(cfg.digest_path())?;
@@ -84,7 +87,7 @@ pub async fn run(cfg: Config) -> Result<Digest> {
         tracing::info!(count = d.papers.len(), "reusing existing harvest");
         d.papers
     } else {
-        let p = arxiv::harvest(&http, &cfg.categories, &cfg.date).await?;
+        let p = arxiv::harvest(&http, &cfg.categories, &cfg.date, &mut diag).await?;
         tracing::info!(count = p.len(), "harvest complete");
         p
     };
@@ -98,13 +101,14 @@ pub async fn run(cfg: Config) -> Result<Digest> {
                 budget_hit = true;
                 break;
             }
-            oa.place_author(a).await;
+            oa.place_author(a, &mut diag).await;
         }
         p.resolve_distance();
         if budget_hit {
             break;
         }
     }
+    diag.lookup_budget_hit = budget_hit;
     if budget_hit {
         tracing::warn!(
             max = cfg.max_lookups,
@@ -122,6 +126,7 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     sort_by_distance(&mut papers);
 
     let n = cfg.prefetch.min(papers.len());
+    diag.enrich_attempted = n;
     let mut enriched_ok = 0usize;
     for p in papers.iter_mut().take(n) {
         match paper::enrich(&http, p).await {
@@ -132,13 +137,28 @@ pub async fn run(cfg: Config) -> Result<Digest> {
                     if oa.lookups < cfg.max_lookups.saturating_add(cfg.prefetch * 4) {
                         oa.place_affiliation(aff).await;
                     }
+                    if aff.institution.is_none() {
+                        // The raw text that defeated the institution lookup —
+                        // the single most useful thing for improving parsing.
+                        diag.affiliations_unresolved.record(aff.raw.clone());
+                    }
+                }
+                if p.intro.is_none() {
+                    diag.intro_not_found.record(p.id.clone());
+                }
+                if p.emails().is_empty() {
+                    diag.emails_not_found.record(p.id.clone());
                 }
                 p.resolve_distance();
             }
-            Ok(false) => {}
-            Err(e) => tracing::warn!(id = %p.id, error = %e, "enrichment failed"),
+            Ok(false) => diag.html_absent.record(p.id.clone()),
+            Err(e) => {
+                diag.html_errors.record(format!("{}: {e}", p.id));
+                tracing::warn!(id = %p.id, error = %e, "enrichment failed");
+            }
         }
     }
+    diag.openalex_degraded = oa.degraded();
     tracing::info!(attempted = n, succeeded = enriched_ok, "enrichment done");
     oa.save_caches()?;
 
@@ -150,6 +170,7 @@ pub async fn run(cfg: Config) -> Result<Digest> {
         generated_at: chrono::Utc::now().to_rfc3339(),
         home: Home { lat: MUNICH.lat, lon: MUNICH.lon, label: "Munich".into() },
         stats: stats_for(&papers),
+        diagnostics: diag,
         papers,
     };
 
@@ -315,6 +336,7 @@ mod tests {
             generated_at: "now".into(),
             home: Home { lat: MUNICH.lat, lon: MUNICH.lon, label: "Munich".into() },
             stats: stats_for(&[p("a", None)]),
+            diagnostics: Diagnostics::default(),
             papers: vec![p("a", None)],
         };
         assert!(summarise(&d).contains("none placed"));
