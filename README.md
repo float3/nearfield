@@ -74,6 +74,32 @@ the caches persist: papers left unplaced today get placed by later runs, and
 after the first week most days need almost no network. Expect a sparse map on
 day one — that is the cache warming, not a failure.
 
+## Measuring from somewhere else
+
+Munich is the default, not an assumption. Every author and affiliation carries
+its own coordinates, so changing the origin is arithmetic on data already on
+the phone — instant, offline, no re-harvest.
+
+In the app, the pill in the header opens **Measure from**:
+
+- **Use my current location** — device GPS, so a trip re-ranks itself.
+- **Look up a place** — any place name, or a bare `lat,lon`. Looked-up places
+  are saved, so a destination is a one-tap switch afterwards.
+- **Saved** — including the origin the digest was built against.
+
+What the phone *cannot* do is read a paper it has no introduction for: the
+nightly job prefetches the nearest ~50 from its own origin, so after moving the
+origin the new top papers may need their **Fetch introduction & emails** button.
+To avoid that before a trip, build a digest against the destination up front:
+
+```sh
+cargo run -p nearfield-cli -- run --origin "Kyoto" --prefetch 50
+cargo run -p nearfield-cli -- where "Garching bei München"   # check a lookup
+```
+
+The `digest` workflow takes the same `origin` input, so a travel digest can be
+dispatched from the Actions tab without a checkout.
+
 ## The parsing report
 
 Extraction from arXiv's HTML is heuristic: LaTeXML's output varies by template,

@@ -8,6 +8,7 @@
 
 use nearfield_core::http::Http;
 use nearfield_core::model::{Digest, GeoSource, Paper};
+use nearfield_core::geocode::{self, Place};
 use nearfield_core::{paper, pipeline::IndexEntry};
 use std::path::PathBuf;
 use std::time::Duration;
@@ -189,10 +190,26 @@ async fn check_update(
     }
 }
 
+/// Look up a place name for the origin picker.
+///
+/// Lives in Rust because Nominatim sends no cross-origin headers, and because
+/// their usage policy wants an identifying User-Agent and one request a
+/// second — both of which the shared client already honours.
+#[tauri::command]
+async fn geocode_place(
+    state: tauri::State<'_, AppState>,
+    query: String,
+) -> Result<Vec<Place>, String> {
+    geocode::search(&state.http, &query, 6)
+        .await
+        .map_err(|e| format!("place lookup failed: {e}"))
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
+        .plugin(tauri_plugin_geolocation::init())
         .setup(|app| {
             let cache_dir = app
                 .path()
@@ -206,6 +223,8 @@ pub fn run() {
             let h = http.clone();
             tauri::async_runtime::block_on(async move {
                 h.set_rate("arxiv.org", Duration::from_secs(3)).await;
+                // Nominatim asks for at most one request a second.
+                h.set_rate("nominatim.openstreetmap.org", Duration::from_secs(1)).await;
             });
 
             app.manage(AppState { http, cache_dir });
@@ -216,7 +235,8 @@ pub fn run() {
             load_digest,
             fetch_paper,
             app_info,
-            check_update
+            check_update,
+            geocode_place
         ])
         .run(tauri::generate_context!())
         .expect("error while running nearfield");

@@ -12,7 +12,7 @@
 //! no network at all.
 
 use crate::diagnostics::Diagnostics;
-use crate::geo::MUNICH;
+use crate::geo::Point;
 use crate::http::Http;
 use crate::model::{Digest, Home, Paper, Stats};
 use crate::openalex::OpenAlex;
@@ -24,6 +24,11 @@ use std::time::Duration;
 pub struct Config {
     /// Announcement date, YYYY-MM-DD.
     pub date: String,
+    /// Where distances are measured from. Munich by default, but a trip is
+    /// worth preparing for: build a digest against the destination and the
+    /// nearest papers there get read in full ahead of time.
+    pub origin: Point,
+    pub origin_label: String,
     pub categories: Vec<String>,
     /// How many of the nearest papers get their introduction and emails
     /// fetched tonight.
@@ -74,6 +79,7 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     http.set_rate("rss.arxiv.org", Duration::from_secs(3)).await;
     http.set_rate("arxiv.org", Duration::from_secs(3)).await;
     http.set_rate("api.openalex.org", Duration::from_millis(120)).await;
+    http.set_rate("nominatim.openstreetmap.org", Duration::from_secs(1)).await;
 
     std::fs::create_dir_all(&cfg.out_dir).ok();
     std::fs::create_dir_all(&cfg.cache_dir).ok();
@@ -85,7 +91,21 @@ pub async fn run(cfg: Config) -> Result<Digest> {
         let s = std::fs::read_to_string(cfg.digest_path())?;
         let d: Digest = serde_json::from_str(&s).context("reading existing digest")?;
         tracing::info!(count = d.papers.len(), "reusing existing harvest");
-        d.papers
+        let mut papers = d.papers;
+        // The stored distances were measured from whatever origin built it.
+        if (d.home.lat - cfg.origin.lat).abs() > f64::EPSILON
+            || (d.home.lon - cfg.origin.lon).abs() > f64::EPSILON
+        {
+            tracing::info!(
+                from = %d.home.label,
+                to = %cfg.origin_label,
+                "re-ranking the existing harvest against a new origin"
+            );
+            for p in papers.iter_mut() {
+                p.reproject(&cfg.origin);
+            }
+        }
+        papers
     } else {
         let p = arxiv::harvest(&http, &cfg.categories, &cfg.date, &mut diag).await?;
         tracing::info!(count = p.len(), "harvest complete");
@@ -93,7 +113,8 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     };
 
     // 2. Place authors from publication history, within budget.
-    let mut oa = OpenAlex::new(http.clone(), cfg.api_key.clone(), &cfg.cache_dir)?;
+    let mut oa =
+        OpenAlex::new(http.clone(), cfg.api_key.clone(), &cfg.cache_dir, cfg.origin)?;
     let mut budget_hit = false;
     for p in papers.iter_mut() {
         for a in p.authors.iter_mut() {
@@ -168,7 +189,11 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     let digest = Digest {
         date: cfg.date.clone(),
         generated_at: chrono::Utc::now().to_rfc3339(),
-        home: Home { lat: MUNICH.lat, lon: MUNICH.lon, label: "Munich".into() },
+        home: Home {
+            lat: cfg.origin.lat,
+            lon: cfg.origin.lon,
+            label: cfg.origin_label.clone(),
+        },
         stats: stats_for(&papers),
         diagnostics: diag,
         papers,
@@ -251,8 +276,9 @@ pub fn summarise(digest: &Digest) -> String {
         Some(nearest) => {
             let where_ = nearest_place(nearest).unwrap_or_else(|| "unknown".into());
             format!(
-                "{} new papers. Nearest: {} ({:.0} km) — {}",
+                "{} new papers. Nearest {}: {} ({:.0} km) — {}",
                 digest.stats.harvested,
+                digest.home.label,
                 where_,
                 nearest.distance_km.unwrap_or_default(),
                 nearest.title,
@@ -265,6 +291,7 @@ pub fn summarise(digest: &Digest) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::geo::{MUNICH, MUNICH_LABEL};
     use crate::model::{Author, GeoSource};
 
     fn p(id: &str, d: Option<f64>) -> Paper {
@@ -334,7 +361,7 @@ mod tests {
         let d = Digest {
             date: "2026-10-27".into(),
             generated_at: "now".into(),
-            home: Home { lat: MUNICH.lat, lon: MUNICH.lon, label: "Munich".into() },
+            home: Home { lat: MUNICH.lat, lon: MUNICH.lon, label: MUNICH_LABEL.into() },
             stats: stats_for(&[p("a", None)]),
             diagnostics: Diagnostics::default(),
             papers: vec![p("a", None)],

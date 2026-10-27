@@ -14,6 +14,9 @@ on:
         description: "How many of the nearest papers to read fully."
         required: false
         default: "50"
+      origin:
+        description: "Measure from here: a place name or lat,lon. Blank = Munich."
+        required: false
 
 permissions:
   contents: write
@@ -56,6 +59,7 @@ jobs:
           ./target/release/nearfield run \
             ${{ inputs.date && format('--date {0}', inputs.date) || '' }} \
             --prefetch "${{ inputs.prefetch || '50' }}" \
+            ${{ inputs.origin && format('--origin "{0}"', inputs.origin) || '' }} \
             --max-lookups 4000
 
       - name: Commit the day's digest and the warmed caches

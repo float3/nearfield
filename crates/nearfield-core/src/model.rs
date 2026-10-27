@@ -134,7 +134,8 @@ pub struct Paper {
     /// corresponding author is usually in here.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub contact_emails: Vec<String>,
-    /// Distance of the *closest* author to Munich. `None` if nobody placed.
+    /// Distance of the *closest* author to the digest's origin.
+    /// `None` if nobody was placed.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub distance_km: Option<f64>,
     pub geo_source: GeoSource,
@@ -157,7 +158,7 @@ impl Paper {
 
     /// Recompute the paper-level distance: the closest placed author or
     /// unattributed affiliation. A paper is ranked by its nearest person,
-    /// since the question is whether anyone on it is reachable from Munich.
+    /// since the question is whether anyone on it is reachable from here.
     pub fn resolve_distance(&mut self) {
         let mut best: Option<(f64, GeoSource)> = None;
         for a in &self.authors {
@@ -187,6 +188,31 @@ impl Paper {
                 self.geo_source = GeoSource::None;
             }
         }
+    }
+
+    /// Recompute every distance against a different origin.
+    ///
+    /// Coordinates travel with each author and affiliation, so moving the
+    /// origin is pure arithmetic — no re-harvest, and it works offline on a
+    /// digest already on the phone.
+    pub fn reproject(&mut self, origin: &crate::geo::Point) {
+        for a in self.authors.iter_mut() {
+            a.distance_km = match (a.lat, a.lon) {
+                (Some(lat), Some(lon)) => {
+                    Some(crate::geo::Point { lat, lon }.distance_km(origin))
+                }
+                _ => None,
+            };
+        }
+        for f in self.affiliations.iter_mut() {
+            f.distance_km = match (f.lat, f.lon) {
+                (Some(lat), Some(lon)) => {
+                    Some(crate::geo::Point { lat, lon }.distance_km(origin))
+                }
+                _ => None,
+            };
+        }
+        self.resolve_distance();
     }
 
     /// Every address we found, author-attributed first, deduped.
@@ -278,13 +304,15 @@ mod tests {
         let mut tum = Author::new("Someone at TUM");
         tum.lat = Some(48.13743);
         tum.lon = Some(11.57549);
-        tum.distance_km = Some(crate::geo::Point { lat: 48.13743, lon: 11.57549 }.from_munich_km());
+        tum.distance_km =
+            Some(crate::geo::Point { lat: 48.13743, lon: 11.57549 }.distance_km(&crate::geo::MUNICH));
         tum.geo_source = GeoSource::AuthorPrior;
 
         let mut mit = Author::new("Someone at MIT");
         mit.lat = Some(42.3601);
         mit.lon = Some(-71.0942);
-        mit.distance_km = Some(crate::geo::Point { lat: 42.3601, lon: -71.0942 }.from_munich_km());
+        mit.distance_km =
+            Some(crate::geo::Point { lat: 42.3601, lon: -71.0942 }.distance_km(&crate::geo::MUNICH));
         mit.geo_source = GeoSource::AuthorPrior;
 
         // Author order must not matter.

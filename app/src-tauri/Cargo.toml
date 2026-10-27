@@ -24,3 +24,4 @@ serde_json = "1"
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "sync"] }
 anyhow = "1"
 tracing = "0.1"
+tauri-plugin-geolocation = "2.5.0"

@@ -76,6 +76,60 @@ export function canFetchOnDemand(): boolean {
   return tauri() !== null;
 }
 
+export interface Place {
+  label: string;
+  lat: number;
+  lon: number;
+  kind?: string;
+}
+
+/** Look a place name up. Needs the app: Nominatim blocks cross-origin reads. */
+export async function geocode(query: string): Promise<Place[]> {
+  const t = tauri();
+  if (!t) {
+    throw new Error("Place search needs the app — Nominatim blocks browser requests.");
+  }
+  return t.invoke<Place[]>("geocode_place", { query });
+}
+
+/**
+ * The device's current position.
+ *
+ * In the app this goes through the Tauri geolocation plugin, which handles the
+ * Android runtime permission prompt; in a browser it falls back to the
+ * Geolocation API.
+ */
+export async function currentPosition(): Promise<{ lat: number; lon: number }> {
+  if (tauri()) {
+    const geo = await import("@tauri-apps/plugin-geolocation");
+    let perm = await geo.checkPermissions();
+    if (perm.location === "prompt" || perm.location === "prompt-with-rationale") {
+      perm = await geo.requestPermissions(["location"]);
+    }
+    if (perm.location !== "granted") {
+      throw new Error("Location permission denied.");
+    }
+    const pos = await geo.getCurrentPosition({
+      enableHighAccuracy: false,
+      timeout: 15000,
+      maximumAge: 300000,
+    });
+    return { lat: pos.coords.latitude, lon: pos.coords.longitude };
+  }
+
+  return new Promise((resolve, reject) => {
+    if (!navigator.geolocation) {
+      reject(new Error("This browser has no location support."));
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      (pos) => resolve({ lat: pos.coords.latitude, lon: pos.coords.longitude }),
+      (err) => reject(new Error(err.message || "Could not get your location.")),
+      { enableHighAccuracy: false, timeout: 15000, maximumAge: 300000 },
+    );
+  });
+}
+
 export interface AppInfo {
   version: string;
   channel: string;

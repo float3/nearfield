@@ -1,9 +1,15 @@
-//! Distance arithmetic. The home point is Munich; everything is ranked by how
-//! far an author's institution sits from it.
+//! Distance arithmetic.
+//!
+//! The origin is a parameter, not a constant: the same digest is read from
+//! home in Munich and from wherever you happen to be, and a trip is worth
+//! preparing for in advance. Munich is only the default.
 
 use serde::{Deserialize, Serialize};
 
+/// The default origin.
 pub const MUNICH: Point = Point { lat: 48.1372, lon: 11.5756 };
+pub const MUNICH_LABEL: &str = "Munich";
+
 const EARTH_RADIUS_KM: f64 = 6371.0088;
 
 #[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
@@ -23,8 +29,20 @@ impl Point {
         2.0 * EARTH_RADIUS_KM * a.sqrt().asin()
     }
 
-    pub fn from_munich_km(&self) -> f64 {
-        self.distance_km(&MUNICH)
+    /// Reject coordinates that cannot be real, so a bad `--origin` or a
+    /// confused GPS fix fails loudly instead of silently ranking nonsense.
+    pub fn is_valid(&self) -> bool {
+        self.lat.is_finite()
+            && self.lon.is_finite()
+            && (-90.0..=90.0).contains(&self.lat)
+            && (-180.0..=180.0).contains(&self.lon)
+    }
+
+    /// Parse a `"lat,lon"` pair.
+    pub fn parse(s: &str) -> Option<Point> {
+        let (a, b) = s.split_once(',')?;
+        let p = Point { lat: a.trim().parse().ok()?, lon: b.trim().parse().ok()? };
+        p.is_valid().then_some(p)
     }
 }
 
@@ -33,40 +51,66 @@ mod tests {
     use super::*;
 
     #[test]
-    fn munich_to_itself_is_zero() {
-        assert!(MUNICH.from_munich_km() < 0.001);
+    fn a_point_is_zero_from_itself() {
+        assert!(MUNICH.distance_km(&MUNICH) < 0.001);
     }
 
     #[test]
-    fn tum_is_walking_distance() {
+    fn tum_is_walking_distance_from_munich() {
         // Technical University of Munich, per ROR 02kkvpp62.
         let tum = Point { lat: 48.13743, lon: 11.57549 };
-        assert!(tum.from_munich_km() < 2.0, "got {}", tum.from_munich_km());
-    }
-
-    #[test]
-    fn known_long_haul() {
-        // Munich -> MIT (Cambridge, MA), great-circle ~6184 km. Cross-checked
-        // against London->NYC (5570 km) and Munich->Tokyo (9369 km), both of
-        // which this formula reproduces to within a few km of published values.
-        let mit = Point { lat: 42.3601, lon: -71.0942 };
-        let d = mit.from_munich_km();
-        assert!((d - 6184.0).abs() < 20.0, "got {d}");
+        assert!(tum.distance_km(&MUNICH) < 2.0, "got {}", tum.distance_km(&MUNICH));
     }
 
     #[test]
     fn matches_published_distances() {
+        // Cross-checks of the formula against known great-circle distances.
+        let mit = Point { lat: 42.3601, lon: -71.0942 };
+        assert!((mit.distance_km(&MUNICH) - 6184.0).abs() < 20.0);
+
         let london = Point { lat: 51.5074, lon: -0.1278 };
         let nyc = Point { lat: 40.7128, lon: -74.0060 };
         assert!((london.distance_km(&nyc) - 5570.0).abs() < 25.0);
 
         let tokyo = Point { lat: 35.6762, lon: 139.6503 };
-        assert!((tokyo.from_munich_km() - 9369.0).abs() < 40.0);
+        assert!((tokyo.distance_km(&MUNICH) - 9369.0).abs() < 40.0);
+    }
+
+    #[test]
+    fn distance_is_symmetric() {
+        let a = Point { lat: 35.6762, lon: 139.6503 };
+        let b = Point { lat: -33.8688, lon: 151.2093 };
+        assert!((a.distance_km(&b) - b.distance_km(&a)).abs() < 1e-9);
+    }
+
+    #[test]
+    fn the_origin_actually_changes_the_answer() {
+        // The whole point of making this a parameter: MIT is far from Munich
+        // and next door to Boston.
+        let mit = Point { lat: 42.3601, lon: -71.0942 };
+        let boston = Point { lat: 42.3601, lon: -71.0589 };
+        assert!(mit.distance_km(&MUNICH) > 6000.0);
+        assert!(mit.distance_km(&boston) < 5.0);
     }
 
     #[test]
     fn antipodal_sanity() {
         let nz = Point { lat: -48.1372, lon: -168.4244 };
-        assert!(nz.from_munich_km() > 19_900.0);
+        assert!(nz.distance_km(&MUNICH) > 19_900.0);
+    }
+
+    #[test]
+    fn parses_a_coordinate_pair() {
+        assert_eq!(Point::parse("48.1372, 11.5756"), Some(MUNICH));
+        assert_eq!(Point::parse("35.6762,139.6503").map(|p| p.lat), Some(35.6762));
+    }
+
+    #[test]
+    fn rejects_impossible_coordinates() {
+        assert!(Point::parse("91,0").is_none(), "latitude past the pole");
+        assert!(Point::parse("0,181").is_none(), "longitude past the date line");
+        assert!(Point::parse("not,a,point").is_none());
+        assert!(Point::parse("48.1372").is_none(), "needs both halves");
+        assert!(!Point { lat: f64::NAN, lon: 0.0 }.is_valid());
     }
 }

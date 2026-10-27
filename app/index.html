@@ -12,6 +12,9 @@
         <div class="titlebar">
           <h1>Nearfield</h1>
           <span class="date" id="hdr-date"></span>
+          <button class="origin-btn" id="origin-btn" aria-haspopup="dialog">
+            <span id="origin-label">Munich</span>
+          </button>
         </div>
         <div class="stats" id="stats"></div>
         <div class="timeline" id="timeline" role="group" aria-label="Published days"></div>
@@ -41,6 +44,35 @@
           <div class="legend" id="legend"></div>
         </section>
       </main>
+    </div>
+
+    <div class="sheet" id="origin-sheet" hidden role="dialog" aria-modal="true"
+         aria-label="Choose where to measure from">
+      <div class="sheet-bar">
+        <button id="origin-close" aria-label="Back">&larr; Back</button>
+        <span class="grow"></span>
+      </div>
+      <div class="sheet-body">
+        <h2>Measure from</h2>
+        <p class="muted">
+          Distances are recomputed on the spot from coordinates already in the
+          digest — no network needed.
+        </p>
+
+        <button class="origin-action" id="use-gps">Use my current location</button>
+        <div id="gps-status" class="muted"></div>
+
+        <h3>Look up a place</h3>
+        <form id="place-form" autocomplete="off">
+          <input id="place-query" type="search" placeholder="Garching, Tokyo, 48.14,11.58"
+                 aria-label="Place name or coordinates" />
+          <button type="submit" id="place-go">Find</button>
+        </form>
+        <div id="place-results"></div>
+
+        <h3>Saved</h3>
+        <div id="saved-places"></div>
+      </div>
     </div>
 
     <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true">

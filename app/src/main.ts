@@ -5,11 +5,24 @@ import {
   appInfo,
   canFetchOnDemand,
   checkUpdate,
+  currentPosition,
   fetchPaperDetail,
+  geocode,
   loadDigest,
   loadIndex,
   openExternal,
+  type Place,
 } from "./data";
+import {
+  forgetPlace,
+  homeOrigin,
+  loadOrigin,
+  loadSaved,
+  reproject,
+  savePlace,
+  saveOrigin,
+  type Origin,
+} from "./origin";
 import { PaperMap, escapeHtml, legendHtml } from "./map";
 import {
   allEmails,
@@ -20,6 +33,7 @@ import {
   type IndexEntry,
   type Issue,
   type Paper,
+  type Pin,
 } from "./types";
 
 const el = <T extends HTMLElement>(id: string): T => {
@@ -31,6 +45,8 @@ const el = <T extends HTMLElement>(id: string): T => {
 let digest: Digest | null = null;
 let index: IndexEntry[] = [];
 let current: Paper | null = null;
+/** null means "wherever this digest was ranked against". */
+let origin: Origin | null = loadOrigin();
 
 const paperMap = new PaperMap(el("map"), (p) => openSheet(p));
 
@@ -77,13 +93,25 @@ function renderTimeline(): void {
   sel?.scrollIntoView({ inline: "center", block: "nearest" });
 }
 
+/** The pin responsible for a paper's distance. Mirrors nearest_place() in the core. */
+function nearestPin(p: Paper, pins: Pin[]): Pin | undefined {
+  if (p.distance_km == null || pins.length === 0) return undefined;
+  let best = pins[0];
+  for (const pin of pins) {
+    if (best && pin.distance_km < best.distance_km) best = pin;
+  }
+  return best;
+}
+
 function renderList(d: Digest): void {
   el("list").innerHTML = d.papers
     .map((p, i) => {
       const pins = pinsFor(p);
-      const first = pins[0];
-      const where = first
-        ? [first.label, first.city].filter(Boolean).join(", ")
+      // Name the place that *set* the distance, not whichever author happens
+      // to be listed first — otherwise a 0 km paper reads "Chongqing".
+      const nearest = nearestPin(p, pins);
+      const where = nearest
+        ? [nearest.label, nearest.city].filter(Boolean).join(", ")
         : "not located";
       const extra = pins.length > 1 ? ` +${pins.length - 1} more` : "";
       return `<button class="paper" data-i="${i}">
@@ -107,6 +135,178 @@ function renderList(d: Digest): void {
       const p = d.papers[i];
       if (p) openSheet(p);
     });
+  }
+}
+
+// --- origin -------------------------------------------------------------
+
+function activeOrigin(d: Digest): Origin {
+  return origin ?? homeOrigin(d);
+}
+
+/** Re-rank the loaded digest and redraw everything that shows a distance. */
+function applyOrigin(d: Digest): void {
+  const o = activeOrigin(d);
+  reproject(d, o);
+  // The map's home marker is the origin in use, not the build location.
+  d.home = { lat: o.lat, lon: o.lon, label: o.label };
+  el("origin-label").textContent = o.label;
+  el("origin-btn").setAttribute(
+    "title",
+    `Measuring from ${o.label} (${o.lat.toFixed(3)}, ${o.lon.toFixed(3)})`,
+  );
+  renderStats(d);
+  renderList(d);
+  paperMap.refit();
+  if (!el("pane-map").hidden) paperMap.render(d);
+}
+
+function setOrigin(o: Origin | null): void {
+  origin = o;
+  saveOrigin(o);
+  if (digest) applyOrigin(digest);
+}
+
+/** Nominatim display names are long; keep the place and the country. */
+function shortPlace(label: string): string {
+  const parts = label.split(",").map((s) => s.trim()).filter(Boolean);
+  const first = parts[0];
+  const last = parts[parts.length - 1];
+  if (parts.length > 1 && first && last && first !== last) {
+    return `${first}, ${last}`;
+  }
+  return first ?? label;
+}
+
+function originFromPlace(p: Place, kind: Origin["kind"]): Origin {
+  const label =
+    p.kind === "coordinates"
+      ? `${p.lat.toFixed(3)}, ${p.lon.toFixed(3)}`
+      : shortPlace(p.label);
+  return { lat: p.lat, lon: p.lon, label, kind };
+}
+
+function renderSaved(): void {
+  const rows: string[] = [];
+
+  if (digest) {
+    const h = homeOrigin(digest);
+    const isHome = origin === null;
+    rows.push(
+      `<button class="place-row${isHome ? " place-current" : ""}" data-home="1">` +
+        `<span class="place-name">${escapeHtml(h.label)}</span>` +
+        `<span class="place-sub">where this digest was ranked${isHome ? " · in use" : ""}</span>` +
+        `</button>`,
+    );
+  }
+
+  const saved = loadSaved();
+  for (const [i, p] of saved.entries()) {
+    const inUse =
+      origin != null &&
+      Math.abs(origin.lat - p.lat) < 1e-6 &&
+      Math.abs(origin.lon - p.lon) < 1e-6;
+    rows.push(
+      `<button class="place-row${inUse ? " place-current" : ""}" data-saved="${i}">` +
+        `<span class="place-name">${escapeHtml(p.label)}</span>` +
+        `<span class="place-sub">${p.lat.toFixed(3)}, ${p.lon.toFixed(3)}${inUse ? " · in use" : ""}</span>` +
+        `<span class="place-forget" data-forget="${i}" role="button" aria-label="Forget this place">×</span>` +
+        `</button>`,
+    );
+  }
+
+  el("saved-places").innerHTML = rows.join("");
+
+  el("saved-places")
+    .querySelector<HTMLElement>("[data-home]")
+    ?.addEventListener("click", () => {
+      setOrigin(null);
+      renderSaved();
+      closeOriginSheet();
+    });
+
+  for (const b of el("saved-places").querySelectorAll<HTMLElement>("[data-saved]")) {
+    b.addEventListener("click", (ev) => {
+      const place = loadSaved()[Number(b.dataset.saved)];
+      if (!place) return;
+      if ((ev.target as HTMLElement).dataset.forget != null) {
+        ev.stopPropagation();
+        forgetPlace(place);
+        renderSaved();
+        return;
+      }
+      setOrigin({ lat: place.lat, lon: place.lon, label: place.label, kind: "custom" });
+      renderSaved();
+      closeOriginSheet();
+    });
+  }
+}
+
+function renderPlaceResults(places: Place[]): void {
+  if (places.length === 0) {
+    el("place-results").innerHTML = `<p class="muted">Nothing matched.</p>`;
+    return;
+  }
+  el("place-results").innerHTML = places
+    .map(
+      (p, i) =>
+        `<button class="place-row" data-hit="${i}">` +
+        `<span class="place-name">${escapeHtml(shortPlace(p.label))}</span>` +
+        `<span class="place-sub">${p.lat.toFixed(3)}, ${p.lon.toFixed(3)}${
+          p.kind ? ` · ${escapeHtml(p.kind)}` : ""
+        }</span></button>`,
+    )
+    .join("");
+
+  for (const b of el("place-results").querySelectorAll<HTMLButtonElement>("[data-hit]")) {
+    b.addEventListener("click", () => {
+      const p = places[Number(b.dataset.hit)];
+      if (!p) return;
+      const o = originFromPlace(p, "custom");
+      // Looked-up places are kept, so preparing for a trip is a one-off.
+      savePlace({ lat: o.lat, lon: o.lon, label: o.label });
+      setOrigin(o);
+      renderSaved();
+      closeOriginSheet();
+    });
+  }
+}
+
+function openOriginSheet(): void {
+  renderSaved();
+  el("place-results").innerHTML = "";
+  el("gps-status").textContent = "";
+  el("origin-sheet").hidden = false;
+}
+
+function closeOriginSheet(): void {
+  el("origin-sheet").hidden = true;
+}
+
+async function useCurrentLocation(): Promise<void> {
+  const status = el("gps-status");
+  status.className = "muted";
+  status.textContent = "Finding you…";
+  try {
+    const pos = await currentPosition();
+    setOrigin({ lat: pos.lat, lon: pos.lon, label: "My location", kind: "current" });
+    renderSaved();
+    closeOriginSheet();
+  } catch (e) {
+    status.className = "err";
+    status.textContent = e instanceof Error ? e.message : String(e);
+  }
+}
+
+async function runPlaceSearch(): Promise<void> {
+  const q = el<HTMLInputElement>("place-query").value;
+  if (!q.trim()) return;
+  el("place-results").innerHTML = `<p class="muted">Searching…</p>`;
+  try {
+    renderPlaceResults(await geocode(q));
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    el("place-results").innerHTML = `<p class="err">${escapeHtml(msg)}</p>`;
   }
 }
 
@@ -350,10 +550,10 @@ async function show(date: string): Promise<void> {
   try {
     digest = await loadDigest(date);
     paperMap.refit();
-    renderStats(digest);
-    renderList(digest);
+    // Ranks against the chosen origin, which may not be the one the pipeline
+    // built with. Also renders the stats, list and map.
+    applyOrigin(digest);
     renderTimeline();
-    if (!el("pane-map").hidden) paperMap.render(digest);
     if (!el("pane-diag").hidden) renderDiagnostics(digest);
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
@@ -422,6 +622,13 @@ async function boot(): Promise<void> {
   const hash = location.hash.slice(1);
   if (hash === "map" || hash === "diag") selectTab(hash, false);
   el("sheet-close").addEventListener("click", closeSheet);
+  el("origin-btn").addEventListener("click", openOriginSheet);
+  el("origin-close").addEventListener("click", closeOriginSheet);
+  el("use-gps").addEventListener("click", () => void useCurrentLocation());
+  el<HTMLFormElement>("place-form").addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    void runPlaceSearch();
+  });
 
   el("sheet-pdf").addEventListener("click", () => {
     if (current) void openExternal(`https://arxiv.org/pdf/${current.id}`);
@@ -431,7 +638,7 @@ async function boot(): Promise<void> {
   });
   el("sheet-locate").addEventListener("click", () => {
     if (!current) return;
-    const pin = pinsFor(current)[0];
+    const pin = nearestPin(current, pinsFor(current)) ?? pinsFor(current)[0];
     if (!pin) return;
     closeSheet();
     selectTab("map");
@@ -439,7 +646,9 @@ async function boot(): Promise<void> {
   });
 
   window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !el("sheet").hidden) closeSheet();
+    if (e.key !== "Escape") return;
+    if (!el("sheet").hidden) closeSheet();
+    else if (!el("origin-sheet").hidden) closeOriginSheet();
   });
 
   try {

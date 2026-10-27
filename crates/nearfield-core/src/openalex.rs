@@ -117,6 +117,9 @@ const FAILURE_LIMIT: usize = 12;
 
 pub struct OpenAlex {
     http: Http,
+    /// Where distances are measured from when choosing between an author's
+    /// several appointments.
+    origin: Point,
     key: Arc<Mutex<KeyState>>,
     pub authors: JsonCache<AuthorRecord>,
     pub institutions: JsonCache<InstitutionRecord>,
@@ -139,13 +142,19 @@ pub fn normalise_name(name: &str) -> String {
 }
 
 impl OpenAlex {
-    pub fn new(http: Http, key: Option<String>, cache_dir: &std::path::Path) -> Result<Self> {
+    pub fn new(
+        http: Http,
+        key: Option<String>,
+        cache_dir: &std::path::Path,
+        origin: Point,
+    ) -> Result<Self> {
         let state = match key.filter(|k| !k.trim().is_empty()) {
             Some(k) => KeyState::Use(k),
             None => KeyState::Keyless,
         };
         Ok(Self {
             http,
+            origin,
             key: Arc::new(Mutex::new(state)),
             authors: JsonCache::load(cache_dir.join("authors.json"))?,
             institutions: JsonCache::load(cache_dir.join("institutions.json"))?,
@@ -317,8 +326,8 @@ impl OpenAlex {
     ///
     /// Does nothing if the author already has a location from a more
     /// trustworthy source. When an author has several appointments we take the
-    /// one closest to Munich: a joint LMU/MIT affiliation means they are
-    /// reachable in Munich, which is the question being asked.
+    /// one closest to the origin: a joint LMU/MIT appointment means they are
+    /// reachable from Munich, which is the question being asked.
     pub async fn place_author(&mut self, author: &mut Author, diag: &mut Diagnostics) {
         if author.geo_source.rank() >= GeoSource::AuthorPrior.rank() && author.located() {
             return;
@@ -334,7 +343,7 @@ impl OpenAlex {
             if let Some(inst) = self.institution(id).await {
                 match inst.point() {
                     Some(p) => {
-                        let d = p.from_munich_km();
+                        let d = p.distance_km(&self.origin);
                         if best.as_ref().map_or(true, |(bd, _)| d < *bd) {
                             best = Some((d, inst));
                         }
@@ -442,7 +451,7 @@ impl OpenAlex {
         aff.city = rec.city.clone();
         aff.lat = rec.lat;
         aff.lon = rec.lon;
-        aff.distance_km = rec.point().map(|p| p.from_munich_km());
+        aff.distance_km = rec.point().map(|p| p.distance_km(&self.origin));
     }
 
     pub fn save_caches(&mut self) -> Result<()> {
@@ -465,7 +474,13 @@ mod tests {
     fn client() -> OpenAlex {
         let dir = std::env::temp_dir().join(format!("nf-oa-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();
-        OpenAlex::new(Http::new("test@example.invalid").unwrap(), None, &dir).unwrap()
+        OpenAlex::new(
+            Http::new("test@example.invalid").unwrap(),
+            None,
+            &dir,
+            crate::geo::MUNICH,
+        )
+        .unwrap()
     }
 
     #[test]
@@ -512,6 +527,6 @@ mod tests {
             lat: Some(48.13743),
             lon: Some(11.57549),
         };
-        assert!(rec.point().unwrap().from_munich_km() < 2.0);
+        assert!(rec.point().unwrap().distance_km(&crate::geo::MUNICH) < 2.0);
     }
 }
