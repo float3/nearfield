@@ -125,6 +125,11 @@ pub struct OpenAlex {
     tripped: bool,
 }
 
+/// Did this failure come from rate limiting rather than a bad request?
+fn is_rate_limited(e: &anyhow::Error) -> bool {
+    e.to_string().contains("429")
+}
+
 /// Cache key for an author name: case- and whitespace-insensitive.
 pub fn normalise_name(name: &str) -> String {
     name.split_whitespace()
@@ -196,6 +201,18 @@ impl OpenAlex {
         self.consecutive_failures = 0;
     }
 
+    /// A rate-limit refusal is terminal for this run: the daily budget does
+    /// not refill while we wait, so every further lookup would pay the same
+    /// cost to fail the same way. Stop immediately rather than after a dozen.
+    fn note_rate_limited(&mut self) {
+        if !self.tripped {
+            self.tripped = true;
+            tracing::warn!(
+                "OpenAlex is rate limiting (daily budget spent?); stopping                  lookups for this run — cached locations still apply"
+            );
+        }
+    }
+
     fn note_failure(&mut self) {
         self.consecutive_failures += 1;
         if self.consecutive_failures >= FAILURE_LIMIT && !self.tripped {
@@ -225,7 +242,11 @@ impl OpenAlex {
             Ok(r) => r,
             Err(e) => {
                 tracing::warn!(id, error = %e, "institution lookup failed");
-                self.note_failure();
+                if is_rate_limited(&e) {
+                    self.note_rate_limited();
+                } else {
+                    self.note_failure();
+                }
                 return None;
             }
         };
@@ -272,7 +293,11 @@ impl OpenAlex {
             Ok(r) => r,
             Err(e) => {
                 tracing::warn!(name, error = %e, "author lookup failed");
-                self.note_failure();
+                if is_rate_limited(&e) {
+                    self.note_rate_limited();
+                } else {
+                    self.note_failure();
+                }
                 return None;
             }
         };
@@ -361,7 +386,11 @@ impl OpenAlex {
             Ok(r) => r,
             Err(e) => {
                 tracing::warn!(raw = %aff.raw, error = %e, "affiliation lookup failed");
-                self.note_failure();
+                if is_rate_limited(&e) {
+                    self.note_rate_limited();
+                } else {
+                    self.note_failure();
+                }
                 return;
             }
         };

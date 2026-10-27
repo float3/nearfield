@@ -123,6 +123,21 @@ fn extract_emails(doc: &Html, author_block: &str, html: &str) -> Vec<String> {
     found
 }
 
+/// Prefixes LaTeXML puts in front of an affiliation. `thanks:` comes from
+/// `\thanks{}`, `Address:` from the AMS templates. Every one of these was
+/// found by reading the parsing report's unresolved-affiliation samples.
+const LABELS: [&str; 6] = [
+    "Affiliation:",
+    "Address:",
+    "address:",
+    "thanks:",
+    "Thanks:",
+    "Correspondence:",
+];
+
+/// Labels that introduce a contact address inside an affiliation run.
+const EMAIL_LABELS: [&str; 4] = ["E-mail:", "Email:", "email:", "e-mail:"];
+
 /// Tidy one affiliation candidate into something an institution search can
 /// actually match, or `None` if it is not an affiliation at all.
 ///
@@ -149,18 +164,24 @@ fn normalise_affiliation(raw: &str) -> Option<String> {
             None => org.to_string(),
         };
     } else {
-        // Drop an inline email and anything labelling it.
-        if let Some(i) = s.find("Email:") {
-            let (before, after) = s.split_at(i);
-            let after = email_re().replace(&after["Email:".len()..], "");
-            s = clean(&format!("{before} {after}"));
+        // Drop an inline address and whatever labels it. Real sample:
+        // "thanks: School of Mathematics, ... E-mail: wujincao@shufe.edu.cn."
+        for label in EMAIL_LABELS {
+            if let Some(i) = s.find(label) {
+                let (before, after) = s.split_at(i);
+                let after = email_re().replace(&after[label.len()..], "");
+                s = clean(&format!("{before} {after}"));
+            }
         }
-        // Strip repeated `Affiliation:` labels, keeping the last segment,
-        // which is where the actual institution ends up.
-        while let Some(i) = s.rfind("Affiliation:") {
-            s = clean(&s[i + "Affiliation:".len()..]);
-            if s.is_empty() {
-                break;
+        // Strip the leading label, keeping the last segment when several are
+        // concatenated — that is where the institution ends up.
+        for label in LABELS {
+            while let Some(i) = s.rfind(label) {
+                let tail = clean(&s[i + label.len()..]);
+                if tail.is_empty() {
+                    break;
+                }
+                s = tail;
             }
         }
     }
@@ -169,6 +190,8 @@ fn normalise_affiliation(raw: &str) -> Option<String> {
     // "Affiliation:\u{a0}1University of North Florida". Stripping the marker
     // before the label would leave the digit glued to the institution name.
     let s = strip_marker(&clean(&s));
+    // `\thanks{}` text ends in a full stop that is not part of the name.
+    let s = s.trim_end_matches(['.', ',', ';', ' ']).to_string();
     looks_institutional(&s).then_some(s)
 }
 
@@ -496,6 +519,29 @@ Technical University of Munich, Garching
             "Delft University of Technology Affiliation: Delft University".to_string(),
         ]);
         assert_eq!(v, vec!["Delft University of Technology"]);
+    }
+
+    // Both of these came out of a real parsing report as affiliations that
+    // matched no institution, because the label was going into the search.
+    const TALCA: &str =
+        "Address: Instituto de Matemáticas, Universidad de Talca, Casilla 721, Talca, Chile";
+    const SHUFE: &str = "thanks: School of Mathematics, Shanghai University of Finance and Economics, Shanghai 200433, People's Republic of China. E-mail: wujincao@shufe.edu.cn.";
+
+    #[test]
+    fn address_label_is_stripped() {
+        assert_eq!(
+            normalise_affiliation(TALCA).as_deref(),
+            Some("Instituto de Matemáticas, Universidad de Talca, Casilla 721, Talca, Chile")
+        );
+    }
+
+    #[test]
+    fn thanks_label_and_trailing_email_are_stripped() {
+        let got = normalise_affiliation(SHUFE).expect("should parse");
+        assert!(got.starts_with("School of Mathematics"), "got {got}");
+        assert!(!got.contains('@'), "address leaked into the name: {got}");
+        assert!(!got.ends_with('.'), "trailing stop kept: {got}");
+        assert!(got.ends_with("People's Republic of China"), "got {got}");
     }
 
     #[test]
