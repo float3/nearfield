@@ -62,12 +62,23 @@ jobs:
         run: |
           git config user.name  "nearfield"
           git config user.email "actions@users.noreply.github.com"
+          # Both workflows push to main, and a human may too, so a plain
+          # push races. Rebase onto whatever landed and retry.
+          push_with_retry() {
+            for attempt in 1 2 3 4 5; do
+              if git push origin "HEAD:$1"; then return 0; fi
+              echo "push rejected (attempt $attempt); rebasing onto origin/$1"
+              git pull --rebase --autostash origin "$1" || return 1
+              sleep $((attempt * 3))
+            done
+            return 1
+          }
           git add data cache
           if git diff --cached --quiet; then
             echo "nothing changed"
           else
             git commit -m "digest: $(date -u +%F)"
-            git push
+            push_with_retry "${{ github.event.repository.default_branch }}"
           fi
 
       - uses: actions/setup-node@v4
