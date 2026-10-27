@@ -1,0 +1,226 @@
+name: apk
+
+# Two channels:
+#   nightly — built every night from main, published as a rolling prerelease
+#   stable  — built when you push a v* tag, published as a normal release
+# The app polls updates/<channel>.json and offers whatever is newer than itself.
+on:
+  push:
+    tags: ["v*"]
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "Channel to build"
+        type: choice
+        options: [nightly, stable]
+        default: nightly
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    outputs:
+      version: ${{ steps.meta.outputs.version }}
+      channel: ${{ steps.meta.outputs.channel }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Work out channel and version
+        id: meta
+        run: |
+          if [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
+            CHANNEL=stable
+            VERSION="${GITHUB_REF_NAME#v}"
+          else
+            CHANNEL="${{ inputs.channel || 'nightly' }}"
+            BASE=$(python3 -c "import json;print(json.load(open('app/src-tauri/tauri.conf.json'))['version'])")
+            if [[ "$CHANNEL" == "nightly" ]]; then
+              VERSION="${BASE}+nightly.$(date -u +%Y%m%d).$(git rev-parse --short HEAD)"
+            else
+              VERSION="$BASE"
+            fi
+          fi
+          echo "channel=$CHANNEL" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          # Android demands a strictly increasing integer; minutes-since-epoch
+          # keeps several builds a day distinct and fits in an int32.
+          echo "version_code=$(( $(date -u +%s) / 60 - 29000000 ))" >> "$GITHUB_OUTPUT"
+          echo "Building $VERSION on $CHANNEL"
+
+      - name: Skip the nightly if nothing changed
+        id: churn
+        if: ${{ github.event_name == 'schedule' }}
+        run: |
+          # A nightly with no new commits is just noise in the releases list.
+          if [[ -z "$(git log --since='24 hours ago' --oneline)" ]]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "No commits in 24h; skipping."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-java@v4
+        if: ${{ steps.churn.outputs.skip != 'true' }}
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: actions/setup-node@v4
+        if: ${{ steps.churn.outputs.skip != 'true' }}
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Rust with Android targets
+        if: ${{ steps.churn.outputs.skip != 'true' }}
+        run: |
+          rustup target add aarch64-linux-android armv7-linux-androideabi \
+                            i686-linux-android x86_64-linux-android
+
+      - uses: actions/cache@v4
+        if: ${{ steps.churn.outputs.skip != 'true' }}
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            app/src-tauri/target
+          key: apk-cargo-${{ hashFiles('app/src-tauri/Cargo.toml', 'crates/**/Cargo.toml') }}
+
+      - name: Restore the signing key
+        if: ${{ steps.churn.outputs.skip != 'true' }}
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          if [[ -z "$KEYSTORE_B64" ]]; then
+            echo "::error::ANDROID_KEYSTORE_BASE64 is not set — see README."
+            exit 1
+          fi
+          mkdir -p signing
+          echo "$KEYSTORE_B64" | base64 -d > signing/nearfield.jks
+          cat > signing/keystore.properties <<EOF
+          storeFile=$PWD/signing/nearfield.jks
+          storePassword=$KEYSTORE_PASSWORD
+          keyAlias=nearfield
+          keyPassword=$KEYSTORE_PASSWORD
+          EOF
+
+      - name: Build the APK
+        if: ${{ steps.churn.outputs.skip != 'true' }}
+        env:
+          NEARFIELD_CHANNEL: ${{ steps.meta.outputs.channel }}
+          NEARFIELD_VERSION: ${{ steps.meta.outputs.version }}
+          NEARFIELD_VERSION_CODE: ${{ steps.meta.outputs.version_code }}
+          NEARFIELD_CONTACT: ${{ secrets.NEARFIELD_CONTACT }}
+        run: |
+          # The runner ships an NDK already; build-apk.sh only probes
+          # $ANDROID_HOME/ndk when NDK_HOME is unset.
+          export NDK_HOME="${ANDROID_NDK_LATEST_HOME:-$ANDROID_NDK_HOME}"
+          echo "using NDK at $NDK_HOME"
+          bash scripts/build-apk.sh
+
+      - name: Name the artifact
+        if: ${{ steps.churn.outputs.skip != 'true' }}
+        id: artifact
+        run: |
+          SRC=app/src-tauri/gen/android/app/build/outputs/apk/universal/release/app-universal-release.apk
+          OUT="nearfield-${{ steps.meta.outputs.channel }}.apk"
+          cp "$SRC" "$OUT"
+          echo "path=$OUT" >> "$GITHUB_OUTPUT"
+          ls -la "$OUT"
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ steps.churn.outputs.skip != 'true' }}
+        with:
+          name: ${{ steps.artifact.outputs.path }}
+          path: ${{ steps.artifact.outputs.path }}
+
+      # Nightly uses one rolling tag so the download URL never changes.
+      - name: Publish the release
+        if: ${{ steps.churn.outputs.skip != 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          CHANNEL="${{ steps.meta.outputs.channel }}"
+          VERSION="${{ steps.meta.outputs.version }}"
+          if [[ "$CHANNEL" == "nightly" ]]; then
+            TAG=nightly
+            gh release delete "$TAG" --yes --cleanup-tag 2>/dev/null || true
+            gh release create "$TAG" "${{ steps.artifact.outputs.path }}" \
+              --title "Nightly $VERSION" \
+              --notes "Automated nightly build of $VERSION. Sideload and Android will ask you to confirm the install." \
+              --prerelease
+          else
+            TAG="${GITHUB_REF_NAME:-v$VERSION}"
+            gh release create "$TAG" "${{ steps.artifact.outputs.path }}" \
+              --title "Nearfield $VERSION" \
+              --notes "Stable release $VERSION." \
+              --clobber 2>/dev/null \
+            || gh release upload "$TAG" "${{ steps.artifact.outputs.path }}" --clobber
+          fi
+
+      - name: Write the channel manifest
+        if: ${{ steps.churn.outputs.skip != 'true' }}
+        run: |
+          CHANNEL="${{ steps.meta.outputs.channel }}"
+          VERSION="${{ steps.meta.outputs.version }}"
+          if [[ "$CHANNEL" == "nightly" ]]; then
+            TAG=nightly
+          else
+            TAG="${GITHUB_REF_NAME:-v$VERSION}"
+          fi
+          mkdir -p updates
+          cat > "updates/$CHANNEL.json" <<EOF
+          {
+            "version": "$VERSION",
+            "notes": "$CHANNEL build",
+            "url": "https://github.com/${{ github.repository }}/releases/download/$TAG/nearfield-$CHANNEL.apk",
+            "pub_date": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          }
+          EOF
+          cat "updates/$CHANNEL.json"
+          git config user.name  "nearfield"
+          git config user.email "actions@users.noreply.github.com"
+          git add updates
+          if ! git diff --cached --quiet; then
+            git commit -m "release: $CHANNEL $VERSION"
+            # The tag build is detached; put the manifest on the default branch.
+            git push origin HEAD:${{ github.event.repository.default_branch }}
+          fi
+
+  # Republish the site so the new manifest is live immediately rather than at
+  # the next digest run. Shares a concurrency group with the digest workflow so
+  # the two deploys cannot interleave.
+  pages:
+    needs: build
+    if: ${{ needs.build.outputs.version != '' }}
+    runs-on: ubuntu-latest
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - run: bash scripts/assemble-site.sh
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - uses: actions/deploy-pages@v4

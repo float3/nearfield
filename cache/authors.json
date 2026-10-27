@@ -1,0 +1,138 @@
+{
+  "aarne lees": {
+    "institution_ids": [
+      "https://openalex.org/I4405262925",
+      "https://openalex.org/I5388228"
+    ],
+    "works_count": 48
+  },
+  "ashiqur rahmana": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "austin yunker": {
+    "institution_ids": [
+      "https://openalex.org/I1282105669"
+    ],
+    "works_count": 24
+  },
+  "dennis heijmans": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "h. \\c{c}a\\u{g}r{\\i} bilgi": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "hamed alhoori": {
+    "institution_ids": [
+      "https://openalex.org/I102502594"
+    ],
+    "works_count": 93
+  },
+  "jie xu": {
+    "institution_ids": [
+      "https://openalex.org/I142606810"
+    ],
+    "works_count": 614
+  },
+  "kubilay atasu": {
+    "institution_ids": [
+      "https://openalex.org/I98358874"
+    ],
+    "works_count": 62
+  },
+  "rahman ejaz": {
+    "institution_ids": [
+      "https://openalex.org/I27804330"
+    ],
+    "works_count": 182
+  },
+  "rajkumar kettimuthu": {
+    "institution_ids": [
+      "https://openalex.org/I1282105669"
+    ],
+    "works_count": 227
+  },
+  "ricardo luna gutierrez": {
+    "institution_ids": [
+      "https://openalex.org/I4210122178"
+    ],
+    "works_count": 24
+  },
+  "riccardo betti": {
+    "institution_ids": [
+      "https://openalex.org/I4405262925",
+      "https://openalex.org/I5388228"
+    ],
+    "works_count": 805
+  },
+  "rui wang": {
+    "institution_ids": [
+      "https://openalex.org/I192455969",
+      "https://openalex.org/I52353378"
+    ],
+    "works_count": 503
+  },
+  "sahand ghorbanpour": {
+    "institution_ids": [
+      "https://openalex.org/I4210122178"
+    ],
+    "works_count": 29
+  },
+  "siddharth nayak": {
+    "institution_ids": [
+      "https://openalex.org/I114027177",
+      "https://openalex.org/I51556381"
+    ],
+    "works_count": 66
+  },
+  "soumyendu sarkar": {
+    "institution_ids": [
+      "https://openalex.org/I1324840837",
+      "https://openalex.org/I4210122178",
+      "https://openalex.org/I4210163432"
+    ],
+    "works_count": 39
+  },
+  "varchas gopalaswamy": {
+    "institution_ids": [
+      "https://openalex.org/I4405262925",
+      "https://openalex.org/I5388228"
+    ],
+    "works_count": 95
+  },
+  "vasil vasilev": {
+    "institution_ids": [
+      "https://openalex.org/I2801370615",
+      "https://openalex.org/I30147112"
+    ],
+    "works_count": 46
+  },
+  "venkata devesh reddy seethi": {
+    "institution_ids": [
+      "https://openalex.org/I102502594"
+    ],
+    "works_count": 12
+  },
+  "vineet gundecha": {
+    "institution_ids": [
+      "https://openalex.org/I1324840837",
+      "https://openalex.org/I4210122178"
+    ],
+    "works_count": 34
+  },
+  "yuanzhe peng": {
+    "institution_ids": [
+      "https://openalex.org/I33213144"
+    ],
+    "works_count": 16
+  },
+  "zachary kral": {
+    "institution_ids": [
+      "https://openalex.org/I38645685",
+      "https://openalex.org/I4210108178"
+    ],
+    "works_count": 20
+  }
+}

@@ -1,0 +1,107 @@
+name: digest
+
+# arXiv announces new submissions at 00:00 US Eastern on weekdays, which is
+# 04:00/05:00 UTC depending on DST. 06:00 UTC is comfortably after it.
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Date to build (YYYY-MM-DD). Blank = today."
+        required: false
+      prefetch:
+        description: "How many of the nearest papers to read fully."
+        required: false
+        default: "50"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: digest
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    env:
+      NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: cargo-${{ runner.os }}-${{ hashFiles('Cargo.toml', 'crates/**/Cargo.toml') }}
+
+      - name: Build the pipeline
+        run: cargo build --release -p nearfield-cli
+
+      - name: Harvest, geolocate and rank
+        env:
+          # Free key, own $1/day budget. Without it OpenAlex throttles the
+          # whole runner IP to a shared $0.10/day and most papers stay unplaced.
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+          NEARFIELD_CONTACT: ${{ secrets.NEARFIELD_CONTACT }}
+        run: |
+          mkdir -p work
+          ./target/release/nearfield run \
+            ${{ inputs.date && format('--date {0}', inputs.date) || '' }} \
+            --prefetch "${{ inputs.prefetch || '50' }}" \
+            --max-lookups 4000
+
+      - name: Commit the day's digest and the warmed caches
+        run: |
+          git config user.name  "nearfield"
+          git config user.email "actions@users.noreply.github.com"
+          git add data cache
+          if git diff --cached --quiet; then
+            echo "nothing changed"
+          else
+            git commit -m "digest: $(date -u +%F)"
+            git push
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Assemble the site
+        run: bash scripts/assemble-site.sh
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Notify the phone
+        if: ${{ env.NTFY_TOPIC != '' }}
+        run: |
+          curl -fsS \
+            -H "Title: Nearfield" \
+            -H "Tags: page_facing_up" \
+            -H "Click: https://float3.github.io/nearfield/" \
+            -d "$(cat work/summary.txt)" \
+            "https://ntfy.sh/${NTFY_TOPIC}" || echo "notification failed, continuing"
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

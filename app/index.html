@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Nearfield</title>
+  </head>
+  <body class="viz-root">
+    <div id="app">
+      <header>
+        <div class="titlebar">
+          <h1>Nearfield</h1>
+          <span class="date" id="hdr-date"></span>
+        </div>
+        <div class="stats" id="stats"></div>
+        <div class="timeline" id="timeline" role="group" aria-label="Published days"></div>
+        <div class="tabs" role="tablist">
+          <button id="tab-list" role="tab" aria-selected="true">Nearest first</button>
+          <button id="tab-map" role="tab" aria-selected="false">Map</button>
+        </div>
+      </header>
+
+      <div class="updatebar" id="updatebar" hidden>
+        <span id="update-text"></span>
+        <button id="update-get">Install</button>
+        <button id="update-dismiss" aria-label="Dismiss">&times;</button>
+      </div>
+
+      <main>
+        <section class="pane" id="pane-list" role="tabpanel">
+          <div id="list"></div>
+          <div class="version" id="version"></div>
+        </section>
+        <section class="pane" id="pane-map" role="tabpanel" hidden>
+          <div id="map"></div>
+          <div class="legend" id="legend"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true">
+      <div class="sheet-bar">
+        <button id="sheet-close" aria-label="Back">&larr; Back</button>
+        <span class="grow"></span>
+        <button id="sheet-locate">Map</button>
+        <button id="sheet-abs">Abstract</button>
+        <button id="sheet-pdf">PDF</button>
+      </div>
+      <div class="sheet-body" id="sheet-body"></div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,282 @@
+{
+  "aff:affiliation: delft university of technology": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:affiliation: delft university of technology affiliation: delft, the netherlands affiliation: {dheijmans, cbilgi, r.wang-8, katasu}@tudelft.nl": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:affiliation: technological school electronic systems (tues)": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:affiliation: technological school electronic systems (tues) and massachusetts institute of technology": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:alhoori@niu.edu organization=northern illinois university, city=dekalb, postcode=60115, state=il, country=usa organization=spirit aerosystems (boeing), city=wichita, postcode=67210, state=ks, country=usa organization=argonne national laboratory, city=lemont, postcode=60439, state=il, country=usa": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:argonne national laboratory": {
+    "display_name": "Argonne National Laboratory",
+    "ror": "https://ror.org/05gvnxz63",
+    "country": "US",
+    "city": "Lemont",
+    "lat": 41.673641204833984,
+    "lon": -88.0017318725586
+  },
+  "aff:delft university of technology": {
+    "display_name": "Delft University of Technology",
+    "ror": "https://ror.org/02e2c7k09",
+    "country": "NL",
+    "city": "Delft",
+    "lat": 52.00667,
+    "lon": 4.35556
+  },
+  "aff:email: vasil.g.vasilev.2022@elsys-bg.org affiliation: technological school electronic systems (tues) and massachusetts institute of technology": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:massachusetts institute of technology": {
+    "display_name": "Massachusetts Institute of Technology",
+    "ror": "https://ror.org/042nb2s44",
+    "country": "US",
+    "city": "Cambridge",
+    "lat": 42.3751,
+    "lon": -71.10561
+  },
+  "aff:northern illinois university": {
+    "display_name": "Northern Illinois University",
+    "ror": "https://ror.org/012wxa772",
+    "country": "US",
+    "city": "DeKalb",
+    "lat": 41.92947006225586,
+    "lon": -88.75035858154297
+  },
+  "aff:organization=argonne national laboratory": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:organization=argonne national laboratory, city=lemont, postcode=60439, state=il, country=usa": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:organization=northern illinois university": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:organization=northern illinois university, city=dekalb, postcode=60115, state=il, country=usa": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:technological school electronic systems (tues)": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:university of rochester": {
+    "display_name": "University of Rochester",
+    "ror": "https://ror.org/022kthw22",
+    "country": "US",
+    "city": "Rochester",
+    "lat": 43.15478,
+    "lon": -77.61556
+  },
+  "https://openalex.org/I102502594": {
+    "display_name": "Northern Illinois University",
+    "ror": "https://ror.org/012wxa772",
+    "country": "US",
+    "city": "DeKalb",
+    "lat": 41.92947006225586,
+    "lon": -88.75035858154297
+  },
+  "https://openalex.org/I114027177": {
+    "display_name": "University of North Carolina at Chapel Hill",
+    "ror": "https://ror.org/0130frc33",
+    "country": "US",
+    "city": "Chapel Hill",
+    "lat": 35.9132,
+    "lon": -79.05584
+  },
+  "https://openalex.org/I1282105669": {
+    "display_name": "Argonne National Laboratory",
+    "ror": "https://ror.org/05gvnxz63",
+    "country": "US",
+    "city": "Lemont",
+    "lat": 41.673641204833984,
+    "lon": -88.0017318725586
+  },
+  "https://openalex.org/I1324840837": {
+    "display_name": "Hewlett-Packard (United States)",
+    "ror": "https://ror.org/059rn9488",
+    "country": "US",
+    "city": "Palo Alto",
+    "lat": 37.44188,
+    "lon": -122.14302
+  },
+  "https://openalex.org/I142606810": {
+    "display_name": "Pacific Northwest National Laboratory",
+    "ror": "https://ror.org/05h992307",
+    "country": "US",
+    "city": "Richland",
+    "lat": 46.28569,
+    "lon": -119.28446
+  },
+  "https://openalex.org/I192455969": {
+    "display_name": "York University",
+    "ror": "https://ror.org/05fq50484",
+    "country": "CA",
+    "city": "Toronto",
+    "lat": 43.70643,
+    "lon": -79.39864
+  },
+  "https://openalex.org/I27804330": {
+    "display_name": "Brown University",
+    "ror": "https://ror.org/05gq02987",
+    "country": "US",
+    "city": "Providence",
+    "lat": 41.82399,
+    "lon": -71.41283
+  },
+  "https://openalex.org/I2801370615": {
+    "display_name": "Queen Giovanna Hospital",
+    "ror": "https://ror.org/050fh0z31",
+    "country": "BG",
+    "city": "Sofia",
+    "lat": 42.69751,
+    "lon": 23.32415
+  },
+  "https://openalex.org/I30147112": {
+    "display_name": "Medical University of Sofia",
+    "ror": "https://ror.org/01n9zy652",
+    "country": "BG",
+    "city": "Sofia",
+    "lat": 42.69751,
+    "lon": 23.32415
+  },
+  "https://openalex.org/I33213144": {
+    "display_name": "University of Florida",
+    "ror": "https://ror.org/02y3ad647",
+    "country": "US",
+    "city": "Gainesville",
+    "lat": 29.65163,
+    "lon": -82.32483
+  },
+  "https://openalex.org/I38645685": {
+    "display_name": "Spirit AeroSystems (United States)",
+    "ror": "https://ror.org/04mekkx88",
+    "country": "US",
+    "city": "Wichita",
+    "lat": 37.62092208862305,
+    "lon": -97.29044342041016
+  },
+  "https://openalex.org/I4210108178": {
+    "display_name": "Spirit AeroSystems (United Kingdom)",
+    "ror": "https://ror.org/01rxfp867",
+    "country": "GB",
+    "city": "Prestwick",
+    "lat": 55.51235580444336,
+    "lon": -4.59527587890625
+  },
+  "https://openalex.org/I4210122178": {
+    "display_name": "Hewlett Packard Enterprise (United States)",
+    "ror": "https://ror.org/020x0c621",
+    "country": "US",
+    "city": "Palo Alto",
+    "lat": 37.41459655761719,
+    "lon": -122.14637756347656
+  },
+  "https://openalex.org/I4210163432": {
+    "display_name": "Hewlett Packard Enterprise (Ireland)",
+    "ror": "https://ror.org/05cc0x492",
+    "country": "IE",
+    "city": "Galway",
+    "lat": 53.292537689208984,
+    "lon": -9.007353782653809
+  },
+  "https://openalex.org/I4405262925": {
+    "display_name": "Laboratory for Laser Energetics",
+    "ror": "https://ror.org/006rjbv46",
+    "country": "US",
+    "city": "Rochester",
+    "lat": 43.15478,
+    "lon": -77.61556
+  },
+  "https://openalex.org/I51556381": {
+    "display_name": "University of Virginia",
+    "ror": "https://ror.org/0153tk833",
+    "country": "US",
+    "city": "Charlottesville",
+    "lat": 38.02931,
+    "lon": -78.47668
+  },
+  "https://openalex.org/I52353378": {
+    "display_name": "Laurentian University",
+    "ror": "https://ror.org/03rcwtr18",
+    "country": "CA",
+    "city": "Sudbury",
+    "lat": 46.4900016784668,
+    "lon": -80.9900131225586
+  },
+  "https://openalex.org/I5388228": {
+    "display_name": "University of Rochester",
+    "ror": "https://ror.org/022kthw22",
+    "country": "US",
+    "city": "Rochester",
+    "lat": 43.15478,
+    "lon": -77.61556
+  },
+  "https://openalex.org/I98358874": {
+    "display_name": "Delft University of Technology",
+    "ror": "https://ror.org/02e2c7k09",
+    "country": "NL",
+    "city": "Delft",
+    "lat": 52.00667,
+    "lon": 4.35556
+  }
+}
