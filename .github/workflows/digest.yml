@@ -89,7 +89,7 @@ jobs:
           curl -fsS \
             -H "Title: Nearfield" \
             -H "Tags: page_facing_up" \
-            -H "Click: https://float3.github.io/nearfield/" \
+            -H "Click: https://hilll.dev/nearfield/" \
             -d "$(cat work/summary.txt)" \
             "https://ntfy.sh/${NTFY_TOPIC}" || echo "notification failed, continuing"
 

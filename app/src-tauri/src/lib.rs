@@ -13,8 +13,8 @@ use std::path::PathBuf;
 use std::time::Duration;
 use tauri::Manager;
 
-const DATA_BASE: &str = "https://float3.github.io/nearfield/data";
-const UPDATE_BASE: &str = "https://float3.github.io/nearfield/updates";
+const DATA_BASE: &str = "https://hilll.dev/nearfield/data";
+const UPDATE_BASE: &str = "https://hilll.dev/nearfield/updates";
 /// Contact address sent to arXiv in the User-Agent, as their acceptable-use
 /// policy asks. Injected at build time from `NEARFIELD_CONTACT` so a real
 /// address never sits in public source; an unset build falls back to a
