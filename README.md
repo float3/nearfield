@@ -49,6 +49,23 @@ Introductions come from arXiv's LaTeXML HTML, not the PDF. A PDF's
 cross-reference table lives at the *end* of the file, so a partial download
 cannot be parsed at all, and a full one is ~10× the bytes for a worse result.
 
+### Rate limits, and why a throttled run is fast
+
+Keyless OpenAlex gives the **whole IP** a shared $0.10/day, and an institution
+search costs $0.001 — about 100 lookups a day for everyone on that address,
+which a CI runner exhausts instantly. Once spent, every request returns 429.
+
+That is a *daily* budget, so it cannot clear inside a run. Retrying it is pure
+waste: an early version spent 27 minutes doing nothing, because each lookup
+burned four attempts at the server's `Retry-After` and the circuit breaker only
+tripped after a dozen consecutive failures. Now a 429 gets at most one short
+retry, a rate-limit error trips the breaker immediately, and `Retry-After` is
+capped so no server can park the job for an hour. The same run takes 27 seconds
+and still produces a digest from cache.
+
+So a throttled night degrades to "today's papers, yesterday's locations" rather
+than to a hung job — and `openalex_degraded` says so in the parsing report.
+
 ### Lookup budget
 
 A cold cache needs roughly 12,000 OpenAlex author lookups for a full day, which
