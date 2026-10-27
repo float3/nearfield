@@ -33,8 +33,20 @@ pub struct Config {
     /// How many of the nearest papers get their introduction and emails
     /// fetched tonight.
     pub prefetch: usize,
-    /// Ceiling on OpenAlex calls for this run.
+    /// Ceiling on OpenAlex calls for this run. A safety net; the real limit
+    /// is `budget_usd`.
     pub max_lookups: usize,
+    /// What this run may spend at OpenAlex, in USD.
+    pub budget_usd: f64,
+    /// Extra allowance reserved for resolving affiliations read off papers.
+    pub affiliation_budget_usd: f64,
+    /// How many *paid* author lookups a single paper may consume.
+    ///
+    /// A day's biggest paper has 251 authors. Without a cap it would eat a
+    /// quarter of the daily allowance on its own, so the budget is spread
+    /// across many papers instead — three authors is usually enough to place
+    /// one, and cached authors are free and do not count against it.
+    pub max_authors_per_paper: usize,
     pub out_dir: PathBuf,
     pub cache_dir: PathBuf,
     pub contact: String,
@@ -115,14 +127,26 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     // 2. Place authors from publication history, within budget.
     let mut oa =
         OpenAlex::new(http.clone(), cfg.api_key.clone(), &cfg.cache_dir, cfg.origin)?;
+    oa.budget_usd = cfg.budget_usd;
+
     let mut budget_hit = false;
     for p in papers.iter_mut() {
+        let mut paid_here = 0usize;
         for a in p.authors.iter_mut() {
-            if oa.lookups >= cfg.max_lookups {
+            if oa.lookups >= cfg.max_lookups || oa.out_of_budget() {
                 budget_hit = true;
                 break;
             }
+            // Only *paid* lookups count against the per-paper cap; a cached
+            // author costs nothing and is always worth placing.
+            let before = oa.spent_usd;
             oa.place_author(a, &mut diag).await;
+            if oa.spent_usd > before {
+                paid_here += 1;
+                if paid_here >= cfg.max_authors_per_paper {
+                    break;
+                }
+            }
         }
         p.resolve_distance();
         if budget_hit {
@@ -132,7 +156,9 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     diag.lookup_budget_hit = budget_hit;
     if budget_hit {
         tracing::warn!(
-            max = cfg.max_lookups,
+            spent_usd = format!("{:.3}", oa.spent_usd),
+            budget_usd = format!("{:.2}", cfg.budget_usd),
+            lookups = oa.lookups,
             "lookup budget reached; remaining papers will be placed by a later run"
         );
     }
@@ -155,9 +181,11 @@ pub async fn run(cfg: Config) -> Result<Digest> {
                 enriched_ok += 1;
                 // Affiliations off the paper override the author prior.
                 for aff in p.affiliations.iter_mut() {
-                    if oa.lookups < cfg.max_lookups.saturating_add(cfg.prefetch * 4) {
-                        oa.place_affiliation(aff).await;
-                    }
+                    // Affiliations are authoritative and their cache saturates
+                    // — there are only so many institutions — so they get a
+                    // reserved slice of the allowance beyond the author sweep.
+                    oa.budget_usd = cfg.budget_usd + cfg.affiliation_budget_usd;
+                    oa.place_affiliation(aff).await;
                     if aff.institution.is_none() {
                         // The raw text that defeated the institution lookup —
                         // the single most useful thing for improving parsing.
@@ -180,7 +208,14 @@ pub async fn run(cfg: Config) -> Result<Digest> {
         }
     }
     diag.openalex_degraded = oa.degraded();
-    tracing::info!(attempted = n, succeeded = enriched_ok, "enrichment done");
+    diag.spent_usd = oa.spent_usd;
+    diag.lookups = oa.lookups;
+    tracing::info!(
+        attempted = n,
+        succeeded = enriched_ok,
+        spent_usd = format!("{:.3}", oa.spent_usd),
+        "enrichment done"
+    );
     oa.save_caches()?;
 
     // 4. Correcting distances may have reordered the nearest papers.

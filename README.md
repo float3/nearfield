@@ -66,13 +66,39 @@ and still produces a digest from cache.
 So a throttled night degrades to "today's papers, yesterday's locations" rather
 than to a hung job — and `openalex_degraded` says so in the parsing report.
 
-### Lookup budget
+### What a day costs
 
-A cold cache needs roughly 12,000 OpenAlex author lookups for a full day, which
-costs more than the free $1/day allowance. So `--max-lookups` caps each run and
-the caches persist: papers left unplaced today get placed by later runs, and
-after the first week most days need almost no network. Expect a sparse map on
-day one — that is the cache warming, not a failure.
+OpenAlex prices by call, and the asymmetry drives the whole design
+(figures from `X-RateLimit-Cost-USD`):
+
+| Call | Cost | Used for |
+|---|---|---|
+| `authors?search=` | **$0.001** | placing an author from their history |
+| `institutions?search=` | $0.001 | an affiliation read off a paper |
+| `institutions/<id>`, `works/<id>` | **free** | following an id we already hold |
+
+A real day holds **10,070 distinct author names**, so sweeping all of them costs
+about **$10** against a free key's **$1/day**.
+
+Exact matching would be ten times cheaper — `filter=display_name:` costs
+$0.0001 — but it is useless here: arXiv writes *Nils Thuerey* where OpenAlex
+stores *Nils Thürey*, and on thirty real names the exact filter matched **none**.
+Fuzzy search is what makes this work, so the budget is the constraint.
+
+Three things follow:
+
+- **`--budget` is the real limit**, not a call count, since id lookups are free.
+  The default leaves headroom under $1.
+- **`--max-authors-per-paper` (3)** stops one paper eating the day. The largest
+  paper in that sample had **251 authors**; uncapped it would spend a quarter of
+  the allowance by itself. Cached authors are free and do not count.
+- **The caches are committed**, so each run makes the next cheaper. Expect a
+  sparse map for the first weeks — that is the cache warming, not a failure.
+
+Affiliations are the better long-run investment: there are only so many
+institutions, so that cache saturates, while new author names arrive every day.
+Raising `--prefetch` buys authoritative locations at the cost of politeness time
+rather than money.
 
 ## Measuring from somewhere else
 

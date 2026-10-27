@@ -25,9 +25,19 @@ enum Command {
         /// How many of the nearest papers get intro + emails fetched.
         #[arg(long, default_value_t = 50)]
         prefetch: usize,
-        /// Ceiling on OpenAlex lookups this run.
-        #[arg(long, default_value_t = 4000)]
+        /// Hard ceiling on OpenAlex calls. The real limit is --budget.
+        #[arg(long, default_value_t = 20000)]
         max_lookups: usize,
+        /// What to spend at OpenAlex, in USD. A free key allows $1 a day, and
+        /// a fuzzy author search costs $0.001 — so this buys ~900 of them.
+        #[arg(long, default_value_t = nearfield_core::openalex::DEFAULT_BUDGET_USD)]
+        budget: f64,
+        /// Extra allowance for resolving affiliations read off papers.
+        #[arg(long, default_value_t = 0.05)]
+        affiliation_budget: f64,
+        /// Paid author lookups a single paper may consume.
+        #[arg(long, default_value_t = 3)]
+        max_authors_per_paper: usize,
         /// Comma-separated categories. Defaults to data/categories.json.
         #[arg(long)]
         categories: Option<String>,
@@ -180,6 +190,9 @@ async fn main() -> Result<()> {
             date,
             prefetch,
             max_lookups,
+            budget,
+            affiliation_budget,
+            max_authors_per_paper,
             categories,
             reuse_harvest,
             origin,
@@ -195,6 +208,7 @@ async fn main() -> Result<()> {
                 categories = categories.len(),
                 prefetch,
                 max_lookups,
+                budget,
                 origin = %origin_label,
                 "starting run"
             );
@@ -205,6 +219,9 @@ async fn main() -> Result<()> {
                 categories,
                 prefetch,
                 max_lookups,
+                budget_usd: budget,
+                affiliation_budget_usd: affiliation_budget,
+                max_authors_per_paper,
                 out_dir,
                 cache_dir,
                 contact: contact(),
@@ -218,6 +235,10 @@ async fn main() -> Result<()> {
             println!(
                 "harvested {} | located {} | unlocated {} | enriched {} | with email {}",
                 s.harvested, s.located, s.unlocated, s.enriched, s.with_email
+            );
+                    println!(
+                "openalex: {} lookups, ${:.3} spent",
+                digest.diagnostics.lookups, digest.diagnostics.spent_usd
             );
             println!("parsing: {}", digest.diagnostics.summary());
             if digest.diagnostics.needs_attention() {

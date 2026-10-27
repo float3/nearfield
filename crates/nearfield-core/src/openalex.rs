@@ -22,6 +22,20 @@ use tokio::sync::Mutex;
 
 const API: &str = "https://api.openalex.org";
 
+/// What OpenAlex charges, measured from `X-RateLimit-Cost-USD`.
+///
+/// Searches cost; lookups by id are free. That asymmetry drives the whole
+/// budget: a full arXiv day holds ~10,000 distinct author names, and only a
+/// fuzzy search can find them (arXiv writes "Nils Thuerey" where OpenAlex
+/// stores "Nils Thürey", so exact `display_name` filters miss ~everything —
+/// measured at 0/30 on real names). So ~$10 of searches against $1 a day.
+pub const SEARCH_COST_USD: f64 = 0.001;
+pub const ID_LOOKUP_COST_USD: f64 = 0.0;
+
+/// Default daily allowance, just under the free key's $1 so a long run cannot
+/// tip into refusals.
+pub const DEFAULT_BUDGET_USD: f64 = 0.90;
+
 /// What we keep about an author, keyed by normalised name.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AuthorRecord {
@@ -124,6 +138,10 @@ pub struct OpenAlex {
     pub authors: JsonCache<AuthorRecord>,
     pub institutions: JsonCache<InstitutionRecord>,
     pub lookups: usize,
+    /// What this run has spent, in USD, by OpenAlex's own accounting.
+    pub spent_usd: f64,
+    /// Stop paying once this much has been spent.
+    pub budget_usd: f64,
     consecutive_failures: usize,
     tripped: bool,
 }
@@ -159,6 +177,8 @@ impl OpenAlex {
             authors: JsonCache::load(cache_dir.join("authors.json"))?,
             institutions: JsonCache::load(cache_dir.join("institutions.json"))?,
             lookups: 0,
+            spent_usd: 0.0,
+            budget_usd: DEFAULT_BUDGET_USD,
             consecutive_failures: 0,
             tripped: false,
         })
@@ -206,6 +226,21 @@ impl OpenAlex {
         self.tripped
     }
 
+    /// Is there room for another paid call?
+    pub fn can_spend(&self, cost: f64) -> bool {
+        !self.tripped && self.spent_usd + cost <= self.budget_usd
+    }
+
+    fn charge(&mut self, cost: f64) {
+        self.lookups += 1;
+        self.spent_usd += cost;
+    }
+
+    /// Has the daily allowance run out?
+    pub fn out_of_budget(&self) -> bool {
+        !self.can_spend(SEARCH_COST_USD)
+    }
+
     fn note_success(&mut self) {
         self.consecutive_failures = 0;
     }
@@ -243,7 +278,8 @@ impl OpenAlex {
         }
         let short = id.rsplit('/').next().unwrap_or(id).to_string();
         let path = format!("/institutions/{short}");
-        self.lookups += 1;
+        // Lookup by id is free, so it is never budget-gated.
+        self.charge(ID_LOOKUP_COST_USD);
         let resp: InstitutionResponse = match self
             .get(&path, &[("select", "id,display_name,ror,geo")])
             .await
@@ -284,10 +320,10 @@ impl OpenAlex {
         if let Some(rec) = self.authors.get(&key) {
             return Some(rec.clone());
         }
-        if self.tripped {
+        if !self.can_spend(SEARCH_COST_USD) {
             return None;
         }
-        self.lookups += 1;
+        self.charge(SEARCH_COST_USD);
         let resp: AuthorsResponse = match self
             .get(
                 "/authors",
@@ -377,10 +413,10 @@ impl OpenAlex {
             self.fill_affiliation(aff, &rec);
             return;
         }
-        if self.tripped {
+        if !self.can_spend(SEARCH_COST_USD) {
             return;
         }
-        self.lookups += 1;
+        self.charge(SEARCH_COST_USD);
         let resp: InstitutionsResponse = match self
             .get(
                 "/institutions",
@@ -481,6 +517,47 @@ mod tests {
             crate::geo::MUNICH,
         )
         .unwrap()
+    }
+
+    #[test]
+    fn budget_stops_paid_calls_but_not_free_ones() {
+        let mut oa = client();
+        oa.budget_usd = 0.003; // three searches
+        for _ in 0..3 {
+            assert!(oa.can_spend(SEARCH_COST_USD));
+            oa.charge(SEARCH_COST_USD);
+        }
+        assert!(oa.out_of_budget(), "a fourth search must not be affordable");
+        // Lookups by id are free, so they stay available.
+        assert!(oa.can_spend(ID_LOOKUP_COST_USD));
+    }
+
+    #[test]
+    fn free_lookups_never_exhaust_the_budget() {
+        let mut oa = client();
+        oa.budget_usd = 0.001;
+        for _ in 0..10_000 {
+            oa.charge(ID_LOOKUP_COST_USD);
+        }
+        assert!(!oa.out_of_budget(), "id lookups are free and must not count");
+        assert_eq!(oa.lookups, 10_000, "they are still counted for reporting");
+    }
+
+    #[test]
+    fn a_tripped_breaker_blocks_spending_regardless_of_budget() {
+        let mut oa = client();
+        oa.budget_usd = 100.0;
+        oa.note_rate_limited();
+        assert!(!oa.can_spend(SEARCH_COST_USD));
+        assert!(oa.out_of_budget());
+    }
+
+    #[test]
+    fn a_days_authors_cost_more_than_a_days_budget() {
+        // The constraint the design is built around: a real arXiv day holds
+        // ~10,000 distinct author names, and a free key allows $1.
+        let a_day = 10_070.0 * SEARCH_COST_USD;
+        assert!(a_day > 10.0 * DEFAULT_BUDGET_USD, "got {a_day}");
     }
 
     #[test]

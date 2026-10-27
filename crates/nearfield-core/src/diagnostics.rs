@@ -100,6 +100,11 @@ pub struct Diagnostics {
 
     /// The run stopped looking things up before finishing.
     pub lookup_budget_hit: bool,
+    /// What the run spent at OpenAlex, by their own accounting.
+    #[serde(default)]
+    pub spent_usd: f64,
+    #[serde(default)]
+    pub lookups: usize,
     /// OpenAlex failed repeatedly and the breaker tripped.
     pub openalex_degraded: bool,
 }
@@ -236,7 +241,7 @@ impl Diagnostics {
             bits.push("OpenAlex throttled".to_string());
         }
         if self.lookup_budget_hit {
-            bits.push("lookup budget reached".to_string());
+            bits.push(format!("budget spent (${:.2})", self.spent_usd));
         }
         if bits.is_empty() {
             "nothing failed to parse".to_string()
