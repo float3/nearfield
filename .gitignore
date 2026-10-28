@@ -1,5 +1,8 @@
 /target
 /work
+# The offline author index and the snapshot extracts it is built from: too
+# large for git. `nearfield index-authors` rebuilds them.
+/cache/snapshot
 /.env
 node_modules
 dist

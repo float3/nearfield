@@ -9,7 +9,14 @@ license = "MIT"
 
 [workspace.dependencies]
 anyhow = "1"
+arrow-array = "60"
+bytes = "1"
 chrono = { version = "0.4", features = ["serde"] }
+flate2 = "1"
+# Only the Snappy codec: that is what the OpenAlex snapshot is written with,
+# and the default feature set drags in zstd, brotli and lz4 for nothing.
+parquet = { version = "60", default-features = false, features = ["arrow", "async", "snap"] }
+unicode-normalization = "0.1"
 clap = { version = "4", features = ["derive"] }
 futures = "0.3"
 regex = "1"

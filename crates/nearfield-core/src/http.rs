@@ -144,6 +144,59 @@ impl Http {
         unreachable!("loop returns or bails")
     }
 
+    /// GET one byte range `[start, end)` of a large object.
+    ///
+    /// This is what makes the OpenAlex snapshot usable at all: a parquet file
+    /// keeps each column in its own contiguous stretch, so the few columns we
+    /// want can be pulled out of a 50 GB entity without fetching the rest.
+    /// The retry policy is the plain one — S3 has no daily budget to respect,
+    /// but it does occasionally answer 503 under load.
+    pub async fn get_range(&self, url: &str, start: u64, end: u64) -> Result<bytes::Bytes> {
+        const ATTEMPTS: u32 = 4;
+        let mut backoff = Duration::from_secs(2);
+        let range = format!("bytes={start}-{}", end.saturating_sub(1));
+
+        for attempt in 1..=ATTEMPTS {
+            self.wait_turn(url).await;
+            let resp = self
+                .client
+                .get(url)
+                .header(reqwest::header::RANGE, &range)
+                .send()
+                .await;
+            let err = match resp {
+                Ok(r) if r.status() == reqwest::StatusCode::PARTIAL_CONTENT => {
+                    let body = r.bytes().await.context("reading range body")?;
+                    if body.len() as u64 != end - start {
+                        anyhow::bail!(
+                            "short range read: wanted {} bytes, got {} from {url}",
+                            end - start,
+                            body.len()
+                        );
+                    }
+                    return Ok(body);
+                }
+                // A 200 means the server ignored the Range header; treating
+                // its full body as the slice would silently corrupt the parse.
+                Ok(r) if r.status().is_success() => {
+                    anyhow::bail!("server ignored Range header: {url}")
+                }
+                Ok(r) if r.status() == reqwest::StatusCode::NOT_FOUND => {
+                    anyhow::bail!("404 {url}")
+                }
+                Ok(r) => anyhow::anyhow!("{} for {range} of {url}", r.status()),
+                Err(e) => anyhow::Error::from(e).context(format!("GET {range} of {url}")),
+            };
+            if attempt == ATTEMPTS {
+                return Err(err);
+            }
+            tracing::warn!(error = %err, "retrying range read");
+            sleep(retry_wait(None, backoff)).await;
+            backoff *= 2;
+        }
+        unreachable!("loop returns or bails")
+    }
+
     pub async fn get_json<T: serde::de::DeserializeOwned>(&self, url: &str) -> Result<T> {
         let body = self.get_text(url).await?;
         serde_json::from_str(&body).with_context(|| format!("parsing JSON from {url}"))

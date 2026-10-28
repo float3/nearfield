@@ -105,6 +105,12 @@ pub struct Diagnostics {
     pub spent_usd: f64,
     #[serde(default)]
     pub lookups: usize,
+    /// Authors placed from the offline snapshot index, at no cost.
+    #[serde(default)]
+    pub authors_from_snapshot: usize,
+    /// Which snapshot release the index was built from, when one was loaded.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub snapshot_release: Option<String>,
     /// OpenAlex failed repeatedly and the breaker tripped.
     pub openalex_degraded: bool,
 }

@@ -3,10 +3,20 @@ name = "nearfield-core"
 version.workspace = true
 edition.workspace = true
 
+[features]
+# Reading the OpenAlex parquet snapshot pulls in arrow, which the Android app
+# has no use for: it only ever *consults* the finished index. The CLI turns
+# this on to build it.
+snapshot = ["dep:parquet", "dep:arrow-array"]
+
 [dependencies]
 anyhow.workspace = true
+arrow-array = { workspace = true, optional = true }
+bytes.workspace = true
 chrono.workspace = true
+flate2.workspace = true
 futures.workspace = true
+parquet = { workspace = true, optional = true }
 regex.workspace = true
 reqwest.workspace = true
 scraper.workspace = true
@@ -15,3 +25,4 @@ serde_json.workspace = true
 quick-xml.workspace = true
 tokio.workspace = true
 tracing.workspace = true
+unicode-normalization.workspace = true

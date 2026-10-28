@@ -16,9 +16,10 @@ use crate::geo::Point;
 use crate::http::Http;
 use crate::model::{Digest, Home, Paper, Stats};
 use crate::openalex::OpenAlex;
-use crate::{arxiv, paper};
+use crate::{arxiv, paper, snapshot};
 use anyhow::{Context, Result};
 use std::path::{Path, PathBuf};
+use std::sync::Arc;
 use std::time::Duration;
 
 pub struct Config {
@@ -53,6 +54,9 @@ pub struct Config {
     pub api_key: Option<String>,
     /// Skip the harvest and re-process an existing digest instead.
     pub reuse_harvest: bool,
+    /// The offline author index (`nearfield index-authors`). Missing is
+    /// fine: the run then pays for every new name as it always did.
+    pub snapshot: Option<PathBuf>,
 }
 
 impl Config {
@@ -140,17 +144,35 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     let mut oa =
         OpenAlex::new(http.clone(), cfg.api_key.clone(), &cfg.cache_dir, cfg.origin)?;
     oa.budget_usd = cfg.budget_usd;
+    oa.max_lookups = cfg.max_lookups;
+    match cfg.snapshot.as_deref().filter(|p| p.exists()) {
+        Some(path) => {
+            let idx = snapshot::AuthorIndex::load(path)
+                .with_context(|| format!("loading author index {}", path.display()))?;
+            tracing::info!(
+                keys = idx.len(),
+                institutions = idx.institutions_len(),
+                release = idx.release(),
+                "offline author index loaded"
+            );
+            diag.snapshot_release = Some(idx.release().to_string());
+            oa.snapshot = Some(Arc::new(idx));
+        }
+        None => tracing::info!(
+            "no offline author index; every new name costs an API search \
+             (build one with `nearfield index-authors`)"
+        ),
+    }
 
-    let mut budget_hit = false;
+    // Every paper is visited even once the budget is spent: the snapshot
+    // and the cache keep answering for free, and `place_author` simply
+    // declines to pay. Before the index existed the loop stopped at the
+    // first refusal, which left the rest of the day unplaced.
     for p in papers.iter_mut() {
         let mut paid_here = 0usize;
         for a in p.authors.iter_mut() {
-            if oa.lookups >= cfg.max_lookups || oa.out_of_budget() {
-                budget_hit = true;
-                break;
-            }
             // Only *paid* lookups count against the per-paper cap; a cached
-            // author costs nothing and is always worth placing.
+            // or indexed author costs nothing and is always worth placing.
             let before = oa.spent_usd;
             oa.place_author(a, &mut diag).await;
             if oa.spent_usd > before {
@@ -161,24 +183,23 @@ pub async fn run(cfg: Config) -> Result<Digest> {
             }
         }
         p.resolve_distance();
-        if budget_hit {
-            break;
-        }
     }
-    diag.lookup_budget_hit = budget_hit;
-    if budget_hit {
+    diag.lookup_budget_hit = oa.refused > 0;
+    if oa.refused > 0 {
         tracing::warn!(
+            refused = oa.refused,
             spent_usd = format!("{:.3}", oa.spent_usd),
             budget_usd = format!("{:.2}", cfg.budget_usd),
             lookups = oa.lookups,
-            "lookup budget reached; remaining papers will be placed by a later run"
+            "lookup budget reached; the remaining names will be tried by a later run"
         );
     }
-    // Papers after the budget cut still need their distance computed from
-    // whatever the cache already knew.
-    for p in papers.iter_mut() {
-        p.resolve_distance();
-    }
+    tracing::info!(
+        from_snapshot = oa.snapshot_hits,
+        api_calls = oa.lookups,
+        spent_usd = format!("{:.3}", oa.spent_usd),
+        "authors placed"
+    );
     oa.save_caches()?;
 
     // 3. Rank, then spend real fetches on the nearest few.
@@ -222,6 +243,7 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     diag.openalex_degraded = oa.degraded();
     diag.spent_usd = oa.spent_usd;
     diag.lookups = oa.lookups;
+    diag.authors_from_snapshot = oa.snapshot_hits;
     tracing::info!(
         attempted = n,
         succeeded = enriched_ok,

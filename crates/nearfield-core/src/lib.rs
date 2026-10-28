@@ -7,9 +7,13 @@ pub mod geo;
 pub mod geocode;
 pub mod http;
 pub mod model;
+pub mod names;
 pub mod openalex;
 pub mod paper;
 pub mod pipeline;
+pub mod snapshot;
+#[cfg(feature = "snapshot")]
+pub mod snapshot_fetch;
 pub mod version;
 
 pub use geo::{Point, MUNICH, MUNICH_LABEL};

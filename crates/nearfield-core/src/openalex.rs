@@ -15,6 +15,7 @@ use crate::diagnostics::Diagnostics;
 use crate::geo::Point;
 use crate::http::Http;
 use crate::model::{Author, GeoSource};
+use crate::snapshot::AuthorIndex;
 use anyhow::Result;
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
@@ -137,7 +138,19 @@ pub struct OpenAlex {
     key: Arc<Mutex<KeyState>>,
     pub authors: JsonCache<AuthorRecord>,
     pub institutions: JsonCache<InstitutionRecord>,
+    /// The offline index built from the snapshot, consulted before any paid
+    /// search. `None` when it has not been built; everything then falls
+    /// through to the API as before.
+    pub snapshot: Option<Arc<AuthorIndex>>,
+    /// Authors this run placed from the snapshot rather than the API.
+    pub snapshot_hits: usize,
     pub lookups: usize,
+    /// Hard ceiling on API calls of any kind for this run. Snapshot and
+    /// cache hits are not API calls and never count.
+    pub max_lookups: usize,
+    /// Paid searches this run wanted to make and could not, for budget or
+    /// breaker. Non-zero means some authors wait for a later run.
+    pub refused: usize,
     /// What this run has spent, in USD, by OpenAlex's own accounting.
     pub spent_usd: f64,
     /// Stop paying once this much has been spent.
@@ -176,7 +189,11 @@ impl OpenAlex {
             key: Arc::new(Mutex::new(state)),
             authors: JsonCache::load(cache_dir.join("authors.json"))?,
             institutions: JsonCache::load(cache_dir.join("institutions.json"))?,
+            snapshot: None,
+            snapshot_hits: 0,
             lookups: 0,
+            max_lookups: usize::MAX,
+            refused: 0,
             spent_usd: 0.0,
             budget_usd: DEFAULT_BUDGET_USD,
             consecutive_failures: 0,
@@ -226,9 +243,14 @@ impl OpenAlex {
         self.tripped
     }
 
+    /// May this run make another API call at all, paid or free?
+    fn api_allowed(&self) -> bool {
+        !self.tripped && self.lookups < self.max_lookups
+    }
+
     /// Is there room for another paid call?
     pub fn can_spend(&self, cost: f64) -> bool {
-        !self.tripped && self.spent_usd + cost <= self.budget_usd
+        self.api_allowed() && self.spent_usd + cost <= self.budget_usd
     }
 
     fn charge(&mut self, cost: f64) {
@@ -269,11 +291,18 @@ impl OpenAlex {
     }
 
     /// Resolve an institution id to coordinates, caching the result.
+    ///
+    /// The snapshot's institution table answers before the network, and its
+    /// answers are *not* written to the committed cache: they are free every
+    /// night, and copying ten thousand of them in would only bloat the repo.
     pub async fn institution(&mut self, id: &str) -> Option<InstitutionRecord> {
         if let Some(rec) = self.institutions.get(id) {
             return Some(rec.clone());
         }
-        if self.tripped {
+        if let Some(rec) = self.snapshot.as_ref().and_then(|s| s.institution(id)) {
+            return Some(rec.clone());
+        }
+        if !self.api_allowed() {
             return None;
         }
         let short = id.rsplit('/').next().unwrap_or(id).to_string();
@@ -314,13 +343,29 @@ impl OpenAlex {
         Some(rec)
     }
 
-    /// Look up an author by name, caching both hits and misses.
+    /// Look up an author by name: committed cache, then the offline
+    /// snapshot, then — only if both are silent — a paid search.
+    ///
+    /// A cached *miss* ranks below the snapshot on purpose. The API search
+    /// that produced it is fuzzy and may simply have been wrong, while the
+    /// index folds spellings deterministically; and a snapshot answer is
+    /// never written back, so the committed cache only ever grows by what the
+    /// API was actually asked.
     pub async fn author_record(&mut self, name: &str) -> Option<AuthorRecord> {
         let key = normalise_name(name);
-        if let Some(rec) = self.authors.get(&key) {
+        let cached = self.authors.get(&key).cloned();
+        if let Some(rec) = cached.as_ref().filter(|r| !r.institution_ids.is_empty()) {
             return Some(rec.clone());
         }
+        if let Some(ids) = self.snapshot.as_ref().and_then(|s| s.lookup(name)) {
+            self.snapshot_hits += 1;
+            return Some(AuthorRecord { institution_ids: ids, works_count: 0 });
+        }
+        if cached.is_some() {
+            return cached;
+        }
         if !self.can_spend(SEARCH_COST_USD) {
+            self.refused += 1;
             return None;
         }
         self.charge(SEARCH_COST_USD);

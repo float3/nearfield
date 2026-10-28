@@ -8,7 +8,7 @@ name = "nearfield"
 path = "src/main.rs"
 
 [dependencies]
-nearfield-core = { path = "../nearfield-core" }
+nearfield-core = { path = "../nearfield-core", features = ["snapshot"] }
 anyhow.workspace = true
 chrono.workspace = true
 clap.workspace = true
