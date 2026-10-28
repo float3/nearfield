@@ -126,6 +126,29 @@ cargo run -p nearfield-cli -- where "Garching bei München"   # check a lookup
 The `digest` workflow takes the same `origin` input, so a travel digest can be
 dispatched from the Actions tab without a checkout.
 
+## Offline, and earlier days
+
+Earlier days are the timeline strip under the stats: tap a bar to load that
+day. Bars for days held on the phone are underlined.
+
+Every day you open is kept, and reopened from storage when there is no signal.
+**Settings → Offline** adds the part that needs doing *before* you lose signal:
+it lists every published day with its size, and **Save every day for offline**
+pulls down the ones you have not opened. Days can be removed individually to
+reclaim space.
+
+Stored gzipped: a digest is ~4.4 MB of JSON but ~1.5 MB compressed, which is
+the difference between 132 MB and 45 MB for a month of history. Caches written
+before compression are still read as plain JSON, so an upgrade does not discard
+them.
+
+One limit worth knowing before a flight: the nightly job reads the nearest ~50
+papers in full, and those introductions and emails travel inside the digest, so
+they are genuinely offline. A paper outside that window still needs the network
+for its introduction — saving a day cannot change that. Building a digest
+against your destination (`--origin`) beforehand moves the prefetch window to
+where you are going.
+
 ## The parsing report
 
 Extraction from arXiv's HTML is heuristic: LaTeXML's output varies by template,

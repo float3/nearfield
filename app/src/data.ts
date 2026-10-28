@@ -146,6 +146,37 @@ export async function currentPosition(): Promise<{ lat: number; lon: number }> {
   });
 }
 
+export interface SavedDay {
+  date: string;
+  bytes: number;
+}
+
+export interface DownloadReport {
+  saved: string[];
+  failed: string[];
+  bytes: number;
+}
+
+/** Days readable with no signal. Empty in a browser, which has no store. */
+export async function savedDays(): Promise<SavedDay[]> {
+  const t = tauri();
+  if (!t) return [];
+  return t.invoke<SavedDay[]>("saved_days");
+}
+
+/** Pull days down for later — the before-a-flight button. */
+export async function downloadDays(dates: string[]): Promise<DownloadReport> {
+  const t = tauri();
+  if (!t) throw new Error("Saving days for offline needs the app.");
+  return t.invoke<DownloadReport>("download_days", { dates });
+}
+
+export async function removeDay(date: string): Promise<void> {
+  const t = tauri();
+  if (!t) return;
+  await t.invoke("remove_day", { date });
+}
+
 export interface AppInfo {
   version: string;
   channel: string;

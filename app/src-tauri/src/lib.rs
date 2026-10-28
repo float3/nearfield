@@ -49,6 +49,44 @@ impl AppState {
     }
 }
 
+/// Store a day gzipped.
+///
+/// A digest is ~4.4 MB of JSON but only ~1.5 MB on the wire, because Pages
+/// serves it compressed. Keeping a month of history is the difference between
+/// 132 MB and 45 MB of the phone's storage, so we re-compress before writing.
+fn write_cached(path: &std::path::Path, body: &str) -> std::io::Result<()> {
+    use flate2::{write::GzEncoder, Compression};
+    use std::io::Write;
+    let mut enc = GzEncoder::new(Vec::new(), Compression::default());
+    enc.write_all(body.as_bytes())?;
+    std::fs::write(path, enc.finish()?)
+}
+
+fn read_cached(path: &std::path::Path) -> std::io::Result<String> {
+    use flate2::read::GzDecoder;
+    use std::io::Read;
+    let raw = std::fs::read(path)?;
+    // Caches written before compression was introduced are plain JSON, and a
+    // reinstall is not worth forcing on anyone.
+    if raw.starts_with(&[0x1f, 0x8b]) {
+        let mut s = String::new();
+        GzDecoder::new(&raw[..]).read_to_string(&mut s)?;
+        Ok(s)
+    } else {
+        String::from_utf8(raw)
+            .map_err(|e| std::io::Error::new(std::io::ErrorKind::InvalidData, e))
+    }
+}
+
+/// Fetch a JSON document and keep a copy for offline use.
+async fn fetch_and_cache(state: &AppState, name: &str) -> Result<String, String> {
+    let url = format!("{DATA_BASE}/{name}");
+    let body = state.http.get_text(&url).await.map_err(|e| e.to_string())?;
+    std::fs::create_dir_all(&state.cache_dir).ok();
+    write_cached(&state.cache_path(name), &body).ok();
+    Ok(body)
+}
+
 /// Fetch a JSON document, falling back to the on-disk copy when offline.
 async fn cached_json<T>(state: &AppState, name: &str) -> Result<T, String>
 where
@@ -57,23 +95,22 @@ where
     let url = format!("{DATA_BASE}/{name}");
     match state.http.get_text(&url).await {
         Ok(body) => {
-            // Only overwrite the cache once the payload actually parses, so a
-            // broken deploy cannot destroy a good offline copy.
+            // Only cache once the payload actually parses, so a broken deploy
+            // cannot destroy a good offline copy.
             match serde_json::from_str::<T>(&body) {
                 Ok(parsed) => {
                     std::fs::create_dir_all(&state.cache_dir).ok();
-                    std::fs::write(state.cache_path(name), &body).ok();
+                    write_cached(&state.cache_path(name), &body).ok();
                     Ok(parsed)
                 }
                 Err(e) => Err(format!("{name} from the server is malformed: {e}")),
             }
         }
         Err(net) => {
-            let path = state.cache_path(name);
-            let body = std::fs::read_to_string(&path)
-                .map_err(|_| format!("offline and nothing cached for {name} ({net})"))?;
+            let body = read_cached(&state.cache_path(name))
+                .map_err(|_| format!("offline and nothing saved for {name} ({net})"))?;
             serde_json::from_str::<T>(&body)
-                .map_err(|e| format!("cached {name} is unreadable: {e}"))
+                .map_err(|e| format!("saved {name} is unreadable: {e}"))
         }
     }
 }
@@ -125,6 +162,94 @@ async fn fetch_paper(
         )),
         Err(e) => Err(e.to_string()),
     }
+}
+
+// --- offline storage ----------------------------------------------------
+
+/// A date the phone holds, and what it costs in storage.
+#[derive(serde::Serialize)]
+struct SavedDay {
+    date: String,
+    bytes: u64,
+}
+
+fn is_date(s: &str) -> bool {
+    s.len() == 10 && s.chars().all(|c| c.is_ascii_digit() || c == '-')
+}
+
+/// Which days are readable with no signal.
+#[tauri::command]
+fn saved_days(state: tauri::State<'_, AppState>) -> Vec<SavedDay> {
+    let Ok(entries) = std::fs::read_dir(&state.cache_dir) else {
+        return Vec::new();
+    };
+    let mut out: Vec<SavedDay> = entries
+        .flatten()
+        .filter_map(|e| {
+            let name = e.file_name().to_string_lossy().into_owned();
+            let date = name.strip_suffix(".json")?;
+            if !is_date(date) {
+                return None;
+            }
+            Some(SavedDay {
+                date: date.to_string(),
+                bytes: e.metadata().map(|m| m.len()).unwrap_or(0),
+            })
+        })
+        .collect();
+    out.sort_by(|a, b| b.date.cmp(&a.date));
+    out
+}
+
+#[derive(serde::Serialize)]
+struct DownloadReport {
+    saved: Vec<String>,
+    failed: Vec<String>,
+    bytes: u64,
+}
+
+/// Download days for later, without having to open each one first.
+///
+/// This is the before-a-flight button: the digest already carries the
+/// introductions and emails for the nearest papers, so a saved day is fully
+/// readable offline. Papers outside that nightly prefetch still need the
+/// network for their introduction, which no amount of caching can change.
+#[tauri::command]
+async fn download_days(
+    state: tauri::State<'_, AppState>,
+    dates: Vec<String>,
+) -> Result<DownloadReport, String> {
+    let mut report = DownloadReport { saved: vec![], failed: vec![], bytes: 0 };
+    for date in dates {
+        if !is_date(&date) {
+            report.failed.push(date);
+            continue;
+        }
+        let name = format!("{date}.json");
+        match fetch_and_cache(&state, &name).await {
+            Ok(_) => {
+                report.bytes += std::fs::metadata(state.cache_path(&name))
+                    .map(|m| m.len())
+                    .unwrap_or(0);
+                report.saved.push(date);
+            }
+            Err(e) => {
+                tracing::warn!(%date, error = %e, "could not save day");
+                report.failed.push(date);
+            }
+        }
+    }
+    Ok(report)
+}
+
+/// Free the storage a day is using.
+#[tauri::command]
+fn remove_day(state: tauri::State<'_, AppState>, date: String) -> Result<(), String> {
+    if !is_date(&date) {
+        return Err(format!("not a date: {date}"));
+    }
+    std::fs::remove_file(state.cache_path(&format!("{date}.json")))
+        .map_err(|e| format!("could not remove {date}: {e}"))
 }
 
 #[derive(serde::Serialize)]
@@ -252,7 +377,10 @@ pub fn run() {
             fetch_paper,
             app_info,
             check_update,
-            geocode_place
+            geocode_place,
+            saved_days,
+            download_days,
+            remove_day
         ])
         .run(tauri::generate_context!())
         .expect("error while running nearfield");

@@ -12,7 +12,11 @@ import {
   loadIndex,
   openExternal,
   openMail,
+  downloadDays,
+  removeDay,
+  savedDays,
   type Place,
+  type SavedDay,
 } from "./data";
 import {
   forgetPlace,
@@ -77,8 +81,12 @@ function renderTimeline(): void {
       const h = Math.max(3, Math.round((e.papers / max) * 30));
       const sel = digest?.date === e.date;
       const near = e.nearest_km != null ? `, nearest ${formatKm(e.nearest_km)}` : "";
-      return `<button class="tl-day" data-date="${e.date}" aria-current="${sel}"
-        title="${e.date}: ${e.papers} papers, ${e.located} placed${near}">
+      const offline = offlineDays.has(e.date);
+      return `<button class="tl-day${offline ? " tl-saved" : ""}" data-date="${e.date}"
+        aria-current="${sel}"
+        title="${e.date}: ${e.papers} papers, ${e.located} placed${near}${
+          offline ? " · saved offline" : ""
+        }">
         <span class="tl-bar" style="height:${h}px"></span>
         <span class="tl-label">${e.date.slice(8)}</span>
       </button>`;
@@ -188,7 +196,7 @@ function originFromPlace(p: Place, kind: Origin["kind"]): Origin {
   return { lat: p.lat, lon: p.lon, label, kind };
 }
 
-function renderSaved(): void {
+function renderSavedPlaces(): void {
   const rows: string[] = [];
 
   if (digest) {
@@ -223,7 +231,7 @@ function renderSaved(): void {
     .querySelector<HTMLElement>("[data-home]")
     ?.addEventListener("click", () => {
       setOrigin(null);
-      renderSaved();
+      renderSavedPlaces();
       closeOriginSheet();
     });
 
@@ -234,11 +242,11 @@ function renderSaved(): void {
       if ((ev.target as HTMLElement).dataset.forget != null) {
         ev.stopPropagation();
         forgetPlace(place);
-        renderSaved();
+        renderSavedPlaces();
         return;
       }
       setOrigin({ lat: place.lat, lon: place.lon, label: place.label, kind: "custom" });
-      renderSaved();
+      renderSavedPlaces();
       closeOriginSheet();
     });
   }
@@ -268,14 +276,14 @@ function renderPlaceResults(places: Place[]): void {
       // Looked-up places are kept, so preparing for a trip is a one-off.
       savePlace({ lat: o.lat, lon: o.lon, label: o.label });
       setOrigin(o);
-      renderSaved();
+      renderSavedPlaces();
       closeOriginSheet();
     });
   }
 }
 
 function openOriginSheet(): void {
-  renderSaved();
+  renderSavedPlaces();
   el("place-results").innerHTML = "";
   el("gps-status").textContent = "";
   nav.go({ view: "origin", tab: baseTab() });
@@ -292,7 +300,7 @@ async function useCurrentLocation(): Promise<void> {
   try {
     const pos = await currentPosition();
     setOrigin({ lat: pos.lat, lon: pos.lon, label: "My location", kind: "current" });
-    renderSaved();
+    renderSavedPlaces();
     closeOriginSheet();
   } catch (e) {
     status.className = "err";
@@ -616,6 +624,92 @@ function baseTab(): Tab {
   return nav.current.tab;
 }
 
+// --- offline ------------------------------------------------------------
+
+/** Dates held on the phone, refreshed whenever storage changes. */
+let offlineDays = new Set<string>();
+
+function formatBytes(n: number): string {
+  if (n < 1024) return `${n} B`;
+  if (n < 1024 * 1024) return `${Math.round(n / 1024)} kB`;
+  return `${(n / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+async function refreshSaved(): Promise<void> {
+  const days = await savedDays();
+  offlineDays = new Set(days.map((d) => d.date));
+  renderTimeline();
+  renderOffline(days);
+}
+
+function renderOffline(days: SavedDay[]): void {
+  const total = days.reduce((n, d) => n + d.bytes, 0);
+  const missing = index.filter((e) => !offlineDays.has(e.date)).length;
+
+  if (!canFetchOnDemand()) {
+    el("offline-summary").textContent =
+      "Saving days for offline only applies to the app.";
+    el("offline-days").innerHTML = "";
+    el<HTMLButtonElement>("save-all").disabled = true;
+    return;
+  }
+
+  el("offline-summary").textContent =
+    `${days.length} of ${index.length} day${index.length === 1 ? "" : "s"} saved` +
+    ` · ${formatBytes(total)}` +
+    (missing ? ` · ${missing} not saved yet` : " · nothing left to fetch");
+  el<HTMLButtonElement>("save-all").disabled = missing === 0;
+
+  el("offline-days").innerHTML = index
+    .map((e) => {
+      const day = days.find((d) => d.date === e.date);
+      const sub = day
+        ? `saved · ${formatBytes(day.bytes)}`
+        : `${e.papers} papers · not saved`;
+      return (
+        `<button class="place-row${day ? " place-current" : ""}" data-day="${e.date}">` +
+        `<span class="place-name">${e.date}</span>` +
+        `<span class="place-sub">${sub}</span>` +
+        (day
+          ? `<span class="place-forget" data-drop="${e.date}" role="button" aria-label="Remove">×</span>`
+          : "") +
+        `</button>`
+      );
+    })
+    .join("");
+
+  for (const b of el("offline-days").querySelectorAll<HTMLElement>("[data-day]")) {
+    b.addEventListener("click", (ev) => {
+      const date = b.dataset.day;
+      if (!date) return;
+      const drop = (ev.target as HTMLElement).dataset.drop;
+      if (drop) {
+        ev.stopPropagation();
+        void removeDay(drop).then(refreshSaved);
+        return;
+      }
+      void saveDays([date]);
+    });
+  }
+}
+
+async function saveDays(dates: string[]): Promise<void> {
+  const status = el("offline-summary");
+  status.className = "muted";
+  status.textContent = `Saving ${dates.length} day${dates.length === 1 ? "" : "s"}…`;
+  try {
+    const report = await downloadDays(dates);
+    await refreshSaved();
+    if (report.failed.length) {
+      status.className = "err";
+      status.textContent = `Could not save: ${report.failed.join(", ")}`;
+    }
+  } catch (e) {
+    status.className = "err";
+    status.textContent = e instanceof Error ? e.message : String(e);
+  }
+}
+
 // --- settings -----------------------------------------------------------
 
 const CHANNEL_KEY = "nearfield-channel";
@@ -639,6 +733,7 @@ async function openSettings(): Promise<void> {
   el("update-status").textContent = "";
   el("update-status").className = "muted";
 
+  void refreshSaved();
   const info = await appInfo();
   el("build-info").textContent = info
     ? `Nearfield ${info.version} · built on the ${info.channel} channel`
@@ -736,6 +831,9 @@ async function boot(): Promise<void> {
   el("settings-btn").addEventListener("click", () => void openSettings());
   el("settings-close").addEventListener("click", closeSettings);
   el("check-updates").addEventListener("click", () => void runUpdateCheck());
+  el("save-all").addEventListener("click", () => {
+    void saveDays(index.filter((e) => !offlineDays.has(e.date)).map((e) => e.date));
+  });
   for (const c of ["stable", "nightly"] as Channel[]) {
     el(`ch-${c}`).addEventListener("click", () => {
       void appInfo().then((i) => setChannel(c, i?.channel));
@@ -781,6 +879,7 @@ async function boot(): Promise<void> {
     el("list").innerHTML = `<p class="muted" style="padding:14px">No digests published yet.</p>`;
     return;
   }
+  await refreshSaved();
   await show(latest.date);
   // The digest is only now available, so a #p/<id> deep link can finally be
   // drawn; re-render whatever state we are in.

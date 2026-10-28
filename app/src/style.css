@@ -797,3 +797,16 @@ main {
 button.mailall {
   font: inherit;
 }
+
+/* A saved day is marked on its own, not by colour alone: the underline is
+   visible in forced-colours and to a monochrome reader. */
+.tl-day.tl-saved .tl-label {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.origin-action:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
