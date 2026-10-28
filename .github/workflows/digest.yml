@@ -73,7 +73,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: cache/snapshot/authors.idx
-          key: authors-index-${{ steps.idx.outputs.quarter }}
+          key: authors-index-mw1-${{ steps.idx.outputs.quarter }}
 
       - name: Build the author index
         if: ${{ steps.index-cache.outputs.cache-hit != 'true' }}
@@ -81,7 +81,10 @@ jobs:
           NEARFIELD_CONTACT: ${{ secrets.NEARFIELD_CONTACT }}
         run: |
           # ~5.5 GB fetched and ~2.5 minutes to build; only on a cache miss.
-          ./target/release/nearfield index-authors --dir cache/snapshot
+          # --min-works 1 keeps the single-work authors: measured 89.0%
+          # of a real day's names against 87.3% at the default of 2, for
+          # 665 MB instead of 525 MB. Worth it against a 10 GB cache.
+          ./target/release/nearfield index-authors --dir cache/snapshot --min-works 1
           # The extracts have served their purpose and would bloat the cache.
           find cache/snapshot -name '*.jsonl*' -delete || true
           ls -la cache/snapshot/authors.idx

@@ -339,6 +339,9 @@ pub struct AuthorIndex {
     release: String,
     institutions: Vec<InstitutionExtract>,
     by_id: HashMap<u64, u32>,
+    /// Folded institution name -> row, so an affiliation read off a paper
+    /// resolves offline instead of costing a search.
+    by_name: HashMap<u64, u32>,
 }
 
 impl AuthorIndex {
@@ -368,6 +371,17 @@ impl AuthorIndex {
             .enumerate()
             .map(|(i, inst)| (inst.id, i as u32))
             .collect();
+        // Folded names, built at load rather than stored: 143k entries costs
+        // milliseconds and keeps the on-disk format unchanged.
+        let mut by_name: HashMap<u64, u32> = HashMap::with_capacity(tail.institutions.len());
+        for (i, inst) in tail.institutions.iter().enumerate() {
+            let k = names::key(&inst.record.display_name);
+            if k.len() >= 6 {
+                // First writer wins: the institution table is ordered by id,
+                // and a lower id is the older, more canonical record.
+                by_name.entry(hash_key(&k)).or_insert(i as u32);
+            }
+        }
         Ok(Self {
             data,
             n_keys,
@@ -375,6 +389,7 @@ impl AuthorIndex {
             release: tail.release,
             institutions: tail.institutions,
             by_id,
+            by_name,
         })
     }
 
@@ -453,6 +468,36 @@ impl AuthorIndex {
         let n = numeric_id(id)?;
         self.by_id.get(&n).map(|&ix| &self.institutions[ix as usize].record)
     }
+
+    /// Resolve an affiliation string to an institution, without the network.
+    ///
+    /// The snapshot already carries all 143,455 institution names; only ids
+    /// were indexed, so an affiliation read off a paper still cost a search.
+    /// That is what left 219 of them unresolved the moment the daily
+    /// allowance ran out, including plain ones like "University of
+    /// Regensburg, 93053 Regensburg, Germany".
+    ///
+    /// Affiliations are written as a trail from the specific to the general —
+    /// institution, city, postcode, country — so each comma-separated segment
+    /// is tried in turn and the first that names an institution wins. The
+    /// whole string is tried first, for the rare name that contains a comma.
+    pub fn institution_by_name(&self, affiliation: &str) -> Option<&InstitutionRecord> {
+        let whole = crate::names::key(affiliation);
+        if let Some(&ix) = self.by_name.get(&hash_key(&whole)) {
+            return Some(&self.institutions[ix as usize].record);
+        }
+        for segment in affiliation.split(',') {
+            let k = crate::names::key(segment);
+            // One- and two-letter fragments match noise, not institutions.
+            if k.len() < 6 {
+                continue;
+            }
+            if let Some(&ix) = self.by_name.get(&hash_key(&k)) {
+                return Some(&self.institutions[ix as usize].record);
+            }
+        }
+        None
+    }
 }
 
 #[cfg(test)]
@@ -507,6 +552,27 @@ mod tests {
         }
         w.finish().unwrap();
         dir
+    }
+
+    #[test]
+    fn an_affiliation_resolves_by_name_without_the_network() {
+        // A real sample that went unresolved the moment the allowance ran
+        // out, even though the snapshot has held the institution all along.
+        let dir = fixture(&[author(1, "Someone", &[], 5, &[162_018_573])]);
+        build(&dir, &BuildPolicy::default()).unwrap();
+        let idx = AuthorIndex::load(&dir.join(INDEX_FILE)).unwrap();
+
+        let got = idx
+            .institution_by_name("Technical University of Munich, 80333 Munich, Germany")
+            .expect("the institution segment should match");
+        assert_eq!(got.display_name, "Technical University of Munich");
+
+        // The whole string matches too when it happens to be the bare name.
+        assert!(idx.institution_by_name("Technical University of Munich").is_some());
+        assert!(idx.institution_by_name("Somewhere Entirely Else").is_none());
+        // Short fragments must not match noise.
+        assert!(idx.institution_by_name("DE, 80333, Germany").is_none());
+        std::fs::remove_dir_all(&dir).ok();
     }
 
     #[test]

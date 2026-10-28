@@ -458,6 +458,20 @@ impl OpenAlex {
             self.fill_affiliation(aff, &rec);
             return;
         }
+        // The snapshot names every institution it knows, so ask it before
+        // paying. Without this, affiliations were the last paid path: 219 of
+        // them went unresolved the moment the daily allowance ran out.
+        if let Some(rec) = self
+            .snapshot
+            .as_ref()
+            .and_then(|s| s.institution_by_name(&aff.raw))
+            .cloned()
+        {
+            self.snapshot_hits += 1;
+            self.institutions.put(key, rec.clone());
+            self.fill_affiliation(aff, &rec);
+            return;
+        }
         if !self.can_spend(SEARCH_COST_USD) {
             return;
         }
