@@ -218,11 +218,18 @@ pub async fn run(cfg: Config) -> Result<Digest> {
                     // — there are only so many institutions — so they get a
                     // reserved slice of the allowance beyond the author sweep.
                     oa.budget_usd = cfg.budget_usd + cfg.affiliation_budget_usd;
+                    // Whether we could afford to ask at all decides which
+                    // bucket a failure belongs in below.
+                    let asked = !oa.out_of_budget();
                     oa.place_affiliation(aff).await;
                     if aff.institution.is_none() {
-                        // The raw text that defeated the institution lookup —
-                        // the single most useful thing for improving parsing.
-                        diag.affiliations_unresolved.record(aff.raw.clone());
+                        // Distinguish a genuine miss from one we never asked
+                        // about: only the former says anything about parsing.
+                        if asked {
+                            diag.affiliations_unresolved.record(aff.raw.clone());
+                        } else {
+                            diag.affiliations_unchecked.record(aff.raw.clone());
+                        }
                     }
                 }
                 if p.intro.is_none() {

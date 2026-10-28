@@ -87,10 +87,15 @@ pub struct Diagnostics {
     /// HTML parsed but no contact address was found anywhere in the front matter.
     #[serde(default)]
     pub emails_not_found: Tally,
-    /// Affiliation strings that matched no institution — the richest signal
-    /// for improving `normalise_affiliation`.
+    /// Affiliation strings that were searched for and matched no institution
+    /// — the richest signal for improving `normalise_affiliation`.
     #[serde(default)]
     pub affiliations_unresolved: Tally,
+    /// Affiliations never looked up because the allowance ran out. Counting
+    /// these as parse failures overstated them: "Technical University of
+    /// Munich, Germany" resolves perfectly well when there is budget to ask.
+    #[serde(default)]
+    pub affiliations_unchecked: Tally,
     /// Institutions that resolved but carry no coordinates upstream.
     #[serde(default)]
     pub institutions_without_geo: Tally,
@@ -142,6 +147,13 @@ impl Diagnostics {
              back to the author prior.",
             &self.affiliations_unresolved,
             true,
+        );
+        add(
+            "affiliation_unchecked",
+            "Affiliation was read off the paper but never looked up".to_string(),
+            "The allowance ran out before these. Not a parsing problem — they              are placed by a later run, or for free once the offline author              index is built.",
+            &self.affiliations_unchecked,
+            false,
         );
         add(
             "intro_not_found",

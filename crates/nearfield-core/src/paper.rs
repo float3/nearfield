@@ -45,13 +45,28 @@ fn clean(s: &str) -> String {
 /// Does this string look like an institution rather than a street address or
 /// a stray footnote? Requires an institution-ish word.
 fn looks_institutional(s: &str) -> bool {
+    // Acknowledgement prose mentions institutions without being one. Seen in
+    // the parsing report as "The authors thank the International Max Planck
+    // Research ...", filed as an affiliation and searched for verbatim.
+    const PROSE: [&str; 6] = [
+        "the authors thank",
+        "we thank",
+        "we acknowledge",
+        "this work was supported",
+        "funded by",
+        "we are grateful",
+    ];
+    let lower = s.to_lowercase();
+    if PROSE.iter().any(|p| lower.contains(p)) {
+        return false;
+    }
+
     const MARKERS: [&str; 14] = [
         "universit", "institut", "college", "school", "laborator", "labs",
         "academy", "hospital", "center", "centre", "department", "faculty",
         "cnrs", "max planck",
     ];
-    let l = s.to_lowercase();
-    s.len() >= 6 && s.len() <= 300 && MARKERS.iter().any(|m| l.contains(m))
+    s.len() >= 6 && s.len() <= 300 && MARKERS.iter().any(|m| lower.contains(m))
 }
 
 /// What a single paper's HTML yielded.
@@ -126,13 +141,15 @@ fn extract_emails(doc: &Html, author_block: &str, html: &str) -> Vec<String> {
 /// Prefixes LaTeXML puts in front of an affiliation. `thanks:` comes from
 /// `\thanks{}`, `Address:` from the AMS templates. Every one of these was
 /// found by reading the parsing report's unresolved-affiliation samples.
-const LABELS: [&str; 6] = [
+const LABELS: [&str; 8] = [
     "Affiliation:",
     "Address:",
     "address:",
     "thanks:",
     "Thanks:",
     "Correspondence:",
+    "Note:",
+    "note:",
 ];
 
 /// Labels that introduce a contact address inside an affiliation run.
@@ -204,7 +221,9 @@ fn strip_marker(s: &str) -> String {
     if digits.is_empty() {
         return t.to_string();
     }
-    let rest = &t[digits.len()..];
+    // The marker may be glued on ("1University") or spaced off
+    // ("1 Technical University of Munich"); both are footnote markers.
+    let rest = t[digits.len()..].trim_start();
     // "3M Company" — a marker is followed by a capital starting a word, and a
     // real name like "3M" has no space before the rest. Require that what
     // follows begins an alphabetic run of at least three characters.
@@ -542,6 +561,46 @@ Technical University of Munich, Garching
         assert!(!got.contains('@'), "address leaked into the name: {got}");
         assert!(!got.ends_with('.'), "trailing stop kept: {got}");
         assert!(got.ends_with("People's Republic of China"), "got {got}");
+    }
+
+    #[test]
+    fn a_spaced_footnote_marker_is_stripped() {
+        // From the parsing report: "1 Technical University of Munich, Munich,
+        // Germany" went into the institution search with the marker attached.
+        assert_eq!(
+            normalise_affiliation("1 Technical University of Munich, Munich, Germany")
+                .as_deref(),
+            Some("Technical University of Munich, Munich, Germany")
+        );
+        assert_eq!(strip_marker("2 Munich Center for Machine Learning"),
+                   "Munich Center for Machine Learning");
+    }
+
+    #[test]
+    fn a_note_label_is_stripped() {
+        let got = normalise_affiliation(
+            "Note: Department of Mathematics, Friedrich-Alexander-Universität Erlangen",
+        );
+        assert_eq!(
+            got.as_deref(),
+            Some("Department of Mathematics, Friedrich-Alexander-Universität Erlangen")
+        );
+    }
+
+    #[test]
+    fn acknowledgements_are_not_affiliations() {
+        // "The authors thank the International Max Planck Research ..." was
+        // being searched for verbatim as though it named an institution.
+        assert!(normalise_affiliation(
+            "The authors thank the International Max Planck Research School"
+        )
+        .is_none());
+        assert!(normalise_affiliation(
+            "This work was supported by the Max Planck Institute"
+        )
+        .is_none());
+        // A real affiliation that merely contains a marker word still passes.
+        assert!(normalise_affiliation("Max Planck Institute for Physics").is_some());
     }
 
     #[test]
