@@ -535,6 +535,14 @@
     "lat": 48.78232,
     "lon": 9.17702
   },
+  "https://openalex.org/I100135526": {
+    "display_name": "BGI Group (China)",
+    "ror": "https://ror.org/045pn2j94",
+    "country": "CN",
+    "city": "Shenzhen",
+    "lat": 22.54554,
+    "lon": 114.0683
+  },
   "https://openalex.org/I100188998": {
     "display_name": "Harbin University of Science and Technology",
     "ror": "https://ror.org/04e6y1282",
@@ -878,6 +886,14 @@
     "city": "Shanghai",
     "lat": 31.22221946716309,
     "lon": 121.45806121826172
+  },
+  "https://openalex.org/I11701301": {
+    "display_name": "Griffith University",
+    "ror": "https://ror.org/02sc3r913",
+    "country": "AU",
+    "city": "Brisbane",
+    "lat": -27.46794,
+    "lon": 153.02809
   },
   "https://openalex.org/I1174212": {
     "display_name": "University of Southern California",
@@ -1271,6 +1287,14 @@
     "lat": -33.86785,
     "lon": 151.20732
   },
+  "https://openalex.org/I129708740": {
+    "display_name": "Fujian Medical University",
+    "ror": "https://ror.org/050s6ns64",
+    "country": "CN",
+    "city": "Fuzhou",
+    "lat": 26.061389923095703,
+    "lon": 119.3061065673828
+  },
   "https://openalex.org/I1297127228": {
     "display_name": "Space Telescope Science Institute",
     "ror": "https://ror.org/036f5mx38",
@@ -1398,6 +1422,14 @@
     "city": "Corvallis",
     "lat": 44.56457,
     "lon": -123.26204
+  },
+  "https://openalex.org/I1312857945": {
+    "display_name": "Natural Resources Defense Council",
+    "ror": "https://ror.org/05tff2467",
+    "country": "US",
+    "city": "New York",
+    "lat": 40.74057388305664,
+    "lon": -73.99340057373047
   },
   "https://openalex.org/I1312996466": {
     "display_name": "Safdarjang Hospital",
@@ -1527,6 +1559,14 @@
     "lat": 59.32938003540039,
     "lon": 18.06871032714844
   },
+  "https://openalex.org/I133529467": {
+    "display_name": "Sharif University of Technology",
+    "ror": "https://ror.org/024c2fq17",
+    "country": "IR",
+    "city": "Tehran",
+    "lat": 35.69439,
+    "lon": 51.42151
+  },
   "https://openalex.org/I1336964347": {
     "display_name": "International Bamboo and Rattan Organization",
     "ror": "https://ror.org/02h5sfg65",
@@ -1590,6 +1630,14 @@
     "city": "Chevy Chase",
     "lat": 39.00287,
     "lon": -77.07115
+  },
+  "https://openalex.org/I134446601": {
+    "display_name": "Berkeley College",
+    "ror": "https://ror.org/02xewxa75",
+    "country": "US",
+    "city": "New York",
+    "lat": 40.71427,
+    "lon": -74.00597
   },
   "https://openalex.org/I134687103": {
     "display_name": "Nanjing Tech University",
@@ -1783,6 +1831,14 @@
     "lat": 31.86389,
     "lon": 117.28083
   },
+  "https://openalex.org/I14116566": {
+    "display_name": "Wuhan Polytechnic University",
+    "ror": "https://ror.org/05w0e5j23",
+    "country": "CN",
+    "city": "Wuhan",
+    "lat": 30.583330154418945,
+    "lon": 114.26667022705078
+  },
   "https://openalex.org/I141596103": {
     "display_name": "University of Lisbon",
     "ror": "https://ror.org/01c27hj86",
@@ -1870,6 +1926,14 @@
     "city": "Hefei",
     "lat": 31.86389,
     "lon": 117.28083
+  },
+  "https://openalex.org/I144112489": {
+    "display_name": "McGovern Institute for Brain Research",
+    "ror": "https://ror.org/05ymca674",
+    "country": "US",
+    "city": "Cambridge",
+    "lat": 42.375099182128906,
+    "lon": -71.1056137084961
   },
   "https://openalex.org/I144448172": {
     "display_name": "Vanguard University",
@@ -2246,6 +2310,14 @@
     "city": "Chongqing",
     "lat": 29.56026,
     "lon": 106.55771
+  },
+  "https://openalex.org/I159247623": {
+    "display_name": "Mansoura University",
+    "ror": "https://ror.org/01k8vtd75",
+    "country": "EG",
+    "city": "Al Mansurah",
+    "lat": 31.03637,
+    "lon": 31.38069
   },
   "https://openalex.org/I159948400": {
     "display_name": "Jinan University",
@@ -2630,6 +2702,14 @@
     "city": "Hefei",
     "lat": 31.86389,
     "lon": 117.28083
+  },
+  "https://openalex.org/I17442442": {
+    "display_name": "State Grid Corporation of China (China)",
+    "ror": "https://ror.org/05twwhs70",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
   },
   "https://openalex.org/I174442536": {
     "display_name": "South Central Minzu University",
@@ -3839,6 +3919,14 @@
     "lat": 40.71427,
     "lon": -74.00597
   },
+  "https://openalex.org/I2799736854": {
+    "display_name": "Nanjing Institute of Technology",
+    "ror": "https://ror.org/00n6txq60",
+    "country": "CN",
+    "city": "Nanjing",
+    "lat": 32.06167,
+    "lon": 118.77778
+  },
   "https://openalex.org/I2799850029": {
     "display_name": "Dongguan University of Technology",
     "ror": "https://ror.org/01m8p7q42",
@@ -4079,6 +4167,14 @@
     "lat": 9.01169490814209,
     "lon": 38.783321380615234
   },
+  "https://openalex.org/I2802508454": {
+    "display_name": "University of Medicine and Pharmacy at Ho Chi Minh City",
+    "ror": "https://ror.org/025kb2624",
+    "country": "VN",
+    "city": "Ho Chi Minh City",
+    "lat": 10.82302,
+    "lon": 106.62965
+  },
   "https://openalex.org/I2802615301": {
     "display_name": "China Aerospace Science and Technology Corporation",
     "ror": "https://ror.org/01z8tr155",
@@ -4094,6 +4190,14 @@
     "city": "Munich",
     "lat": 48.13743,
     "lon": 11.57549
+  },
+  "https://openalex.org/I2802759292": {
+    "display_name": "Franche-Comté Électronique Mécanique Thermique et Optique - Sciences et Technologies",
+    "ror": "https://ror.org/004fmxv66",
+    "country": "FR",
+    "city": "Besançon",
+    "lat": 47.24878,
+    "lon": 6.01815
   },
   "https://openalex.org/I2802905149": {
     "display_name": "Federal Reserve Board of Governors",
@@ -4799,6 +4903,14 @@
     "lat": 16.430830001831055,
     "lon": 80.56815338134766
   },
+  "https://openalex.org/I4210100991": {
+    "display_name": "University Medical Center HCMC",
+    "ror": "https://ror.org/0154qvp54",
+    "country": "VN",
+    "city": "Ho Chi Minh City",
+    "lat": 10.828916549682615,
+    "lon": 106.61614227294922
+  },
   "https://openalex.org/I4210101301": {
     "display_name": "Northeast Institute of Geography and Agroecology",
     "ror": "https://ror.org/01a9z1q73",
@@ -5471,6 +5583,14 @@
     "lat": 51.50853,
     "lon": -0.12574
   },
+  "https://openalex.org/I4210128710": {
+    "display_name": "Robert Bosch (United Kingdom)",
+    "ror": "https://ror.org/031zzq071",
+    "country": "GB",
+    "city": "Milton Keynes",
+    "lat": 52.06598281860352,
+    "lon": -0.8117820024490356
+  },
   "https://openalex.org/I4210128921": {
     "display_name": "The First Affiliated Hospital, Sun Yat-sen University",
     "ror": "https://ror.org/037p24858",
@@ -5670,6 +5790,14 @@
     "city": "Shanghai",
     "lat": 31.22221946716309,
     "lon": 121.45806121826172
+  },
+  "https://openalex.org/I4210140143": {
+    "display_name": "Dynamic Systems (United States)",
+    "ror": "https://ror.org/043vm9914",
+    "country": "US",
+    "city": "Austin",
+    "lat": 30.23734474182129,
+    "lon": -97.79002380371094
   },
   "https://openalex.org/I4210140493": {
     "display_name": "Collaborative Innovation Center of Advanced Microstructures",
@@ -6871,6 +6999,14 @@
     "lat": 31.22222,
     "lon": 121.45806
   },
+  "https://openalex.org/I4405278264": {
+    "display_name": "Trung tâm Y Sinh học Phân tử",
+    "ror": "https://ror.org/05hdkmf40",
+    "country": "VN",
+    "city": "Ho Chi Minh City",
+    "lat": 10.82302,
+    "lon": 106.62965
+  },
   "https://openalex.org/I4405278301": {
     "display_name": "VNU International School",
     "ror": "https://ror.org/05n473c60",
@@ -7335,6 +7471,14 @@
     "lat": 23.710399627685547,
     "lon": 90.40744018554688
   },
+  "https://openalex.org/I62853816": {
+    "display_name": "Beijing University of Civil Engineering and Architecture",
+    "ror": "https://ror.org/02yj0p855",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.907501220703125,
+    "lon": 116.39723205566406
+  },
   "https://openalex.org/I62916508": {
     "display_name": "Technical University of Munich",
     "ror": "https://ror.org/02kkvpp62",
@@ -7687,6 +7831,14 @@
     "lat": 1.28967,
     "lon": 103.85007
   },
+  "https://openalex.org/I80143920": {
+    "display_name": "Shandong University of Science and Technology",
+    "ror": "https://ror.org/04gtjhw98",
+    "country": "CN",
+    "city": "Qingdao",
+    "lat": 36.06488037109375,
+    "lon": 120.3804168701172
+  },
   "https://openalex.org/I80626142": {
     "display_name": "Henan Medical University",
     "ror": "https://ror.org/038hzq450",
@@ -7902,6 +8054,14 @@
     "city": "Dalian",
     "lat": 38.91222,
     "lon": 121.60222
+  },
+  "https://openalex.org/I884002606": {
+    "display_name": "Paul Ehrlich Institut",
+    "ror": "https://ror.org/00yssnc44",
+    "country": "DE",
+    "city": "Langen",
+    "lat": 49.98955,
+    "lon": 8.66852
   },
   "https://openalex.org/I887064364": {
     "display_name": "University of Amsterdam",
