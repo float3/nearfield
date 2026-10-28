@@ -67,24 +67,142 @@ fn extract_abstract(description: &str) -> String {
     }
 }
 
-/// `dc:creator` is a comma-separated author list. Splitting on commas is the
-/// only option the feed gives us; we repair the common name-suffix case.
-fn split_authors(creators: &str) -> Vec<Author> {
-    const SUFFIXES: [&str; 8] = ["Jr.", "Jr", "Sr.", "Sr", "II", "III", "IV", "PhD"];
-    let mut out: Vec<String> = Vec::new();
-    for part in creators.split(',') {
-        let p = part.trim();
-        if p.is_empty() {
+/// Undo the TeX escapes arXiv leaves in `dc:creator`.
+///
+/// Real samples: `B{\l}a\.zej Osi\'nski`, `Micha{\l} Zaj\k{a}c`,
+/// `Gu{\dh}laugur Johannesson`. Left alone these never match anything.
+/// Exact accents matter less than they look, because the index folds
+/// diacritics anyway — the point is to recover the letters.
+fn decode_tex(s: &str) -> String {
+    // Keyed without the leading backslash; the caller has already consumed it.
+    const LIGATURES: [(&str, &str); 12] = [
+        ("ss", "ß"), ("ae", "æ"), ("AE", "Æ"), ("dh", "ð"),
+        ("dj", "đ"), ("aa", "å"), ("AA", "Å"), ("l", "ł"),
+        ("L", "Ł"), ("o", "ø"), ("O", "Ø"), ("i", "i"),
+    ];
+    let mut out = String::with_capacity(s.len());
+    let mut chars = s.chars().peekable();
+
+    while let Some(c) = chars.next() {
+        if c != '\\' {
+            // Braces are grouping, not content.
+            if c != '{' && c != '}' {
+                out.push(c);
+            }
             continue;
         }
-        if SUFFIXES.contains(&p) {
+        // A named ligature, longest first so \ae beats \a.
+        let rest: String = chars.clone().collect();
+        if let Some((seq, rep)) = LIGATURES
+            .iter()
+            .filter(|(seq, _)| rest.starts_with(*seq))
+            .max_by_key(|(seq, _)| seq.len())
+        {
+            for _ in 0..seq.len() {
+                chars.next();
+            }
+            out.push_str(rep);
+            continue;
+        }
+        // An accent command: \'e, \\"o, \c{c}, \k{a}. Drop the
+        // accent and keep the letter it decorates.
+        match chars.next() {
+            Some(acc) => {
+                if acc.is_ascii_alphabetic() {
+                    // \c{c} style: skip to the braced letter.
+                    while matches!(chars.peek(), Some('{')) {
+                        chars.next();
+                    }
+                }
+                for c in chars.by_ref() {
+                    if c == '{' {
+                        continue;
+                    }
+                    if c == '}' {
+                        break;
+                    }
+                    out.push(c);
+                    break;
+                }
+                let _ = acc;
+            }
+            None => break,
+        }
+    }
+    out.split_whitespace().collect::<Vec<_>>().join(" ")
+}
+
+/// Does this look like an institution rather than a person?
+///
+/// `dc:creator` mixes them: "Haishen Peng, Univ. of Waterloo, New Haven"
+/// splits into three "authors", two of which are places. Dropping them stops
+/// the digest inventing people and stops them counting as unresolved.
+fn looks_like_a_place(s: &str) -> bool {
+    const MARKERS: [&str; 20] = [
+        "univ", "institut", "college", "school", "laborator", " lab", "labs",
+        "academy", "hospital", "center", "centre", "department", "dept",
+        "faculty", "cnrs", "observator", "agency", "society", "division",
+        "corporation",
+    ];
+    let l = s.to_lowercase();
+    MARKERS.iter().any(|m| l.contains(m)) || s.chars().any(|c| c.is_ascii_digit())
+}
+
+/// Split `dc:creator` into people.
+///
+/// The field is comma-separated, but a comma inside a parenthesised
+/// affiliation is not a separator — "Yun Wang (Caltech/IPAC), Massimo
+/// Robberto (STScI)" is two authors, and splitting blindly produced
+/// fragments like "Gregory D. Wirth (BAE Systems -- Space &". So the split
+/// tracks parenthesis depth, then strips the affiliation each name carries.
+fn split_authors(creators: &str) -> Vec<Author> {
+    const SUFFIXES: [&str; 8] = ["Jr.", "Jr", "Sr.", "Sr", "II", "III", "IV", "PhD"];
+
+    let mut pieces: Vec<String> = Vec::new();
+    let mut depth = 0i32;
+    let mut cur = String::new();
+    for c in creators.chars() {
+        match c {
+            '(' | '[' => {
+                depth += 1;
+                cur.push(c);
+            }
+            ')' | ']' => {
+                depth = (depth - 1).max(0);
+                cur.push(c);
+            }
+            ',' if depth == 0 => {
+                pieces.push(std::mem::take(&mut cur));
+            }
+            _ => cur.push(c),
+        }
+    }
+    pieces.push(cur);
+
+    let mut out: Vec<String> = Vec::new();
+    for piece in pieces {
+        // Drop the parenthesised affiliation, balanced or not — arXiv
+        // truncates these, leaving an unclosed bracket.
+        let name = match piece.find(['(', '[']) {
+            Some(i) => &piece[..i],
+            None => &piece[..],
+        };
+        let name = decode_tex(name);
+        let name = name.trim().trim_matches(|c: char| c == '-' || c == ';').trim();
+        if name.is_empty() {
+            continue;
+        }
+        if SUFFIXES.contains(&name) {
             if let Some(last) = out.last_mut() {
                 last.push_str(", ");
-                last.push_str(p);
-                continue;
+                last.push_str(name);
             }
+            continue;
         }
-        out.push(p.to_string());
+        if looks_like_a_place(name) {
+            continue;
+        }
+        out.push(name.to_string());
     }
     out.into_iter().map(Author::new).collect()
 }
@@ -317,6 +435,64 @@ Abstract: Nope.</description>
         assert_eq!(p.announced, "2026-10-27");
         let names: Vec<_> = p.authors.iter().map(|a| a.name.as_str()).collect();
         assert_eq!(names, vec!["Yuanzhe Peng", "Jie Xu"]);
+    }
+
+    #[test]
+    fn a_parenthesised_affiliation_is_not_a_separator() {
+        // Real sample: splitting on every comma produced fragments like
+        // "Gregory D. Wirth (BAE Systems -- Space &".
+        let a = split_authors(
+            "Yun Wang (Caltech/IPAC), Massimo Robberto (STScI),              Gregory D. Wirth (BAE Systems -- Space & Defense, Boulder)",
+        );
+        let names: Vec<_> = a.iter().map(|x| x.name.as_str()).collect();
+        assert_eq!(names, vec!["Yun Wang", "Massimo Robberto", "Gregory D. Wirth"]);
+    }
+
+    #[test]
+    fn an_unclosed_affiliation_still_yields_the_name() {
+        let a = split_authors("Aditi Vijayan (Arizona State University");
+        assert_eq!(a.len(), 1);
+        assert_eq!(a[0].name, "Aditi Vijayan");
+    }
+
+    #[test]
+    fn places_are_not_people() {
+        // "Haishen Peng, Univ. of Waterloo, New Haven" invented two authors.
+        let names: Vec<String> = split_authors("Haishen Peng, Univ. of Waterloo")
+            .iter()
+            .map(|a| a.name.clone())
+            .collect();
+        assert_eq!(names, vec!["Haishen Peng"]);
+        assert!(split_authors("Lanzhou 730000").is_empty(), "a postcode is not a person");
+        assert!(
+            split_authors("Perimeter Institute for Theoretical Physics").is_empty()
+        );
+    }
+
+    #[test]
+    fn tex_escapes_are_decoded() {
+        // Real names from the digest that matched nothing while still escaped.
+        // A raw string keeps the TeX exactly as arXiv sends it.
+        let got: Vec<String> =
+            split_authors(r"B{\l}a\.zej Osi\'nski, Micha{\l} Zaj\k{a}c, Fran\c{c}ois Visconti")
+                .iter()
+                .map(|a| a.name.clone())
+                .collect();
+
+        assert_eq!(got.len(), 3, "got {got:?}");
+        assert!(
+            !got.iter().any(|n| n.contains('\\')),
+            "escape syntax survived: {got:?}"
+        );
+        assert!(
+            !got.iter().any(|n| n.contains('{') || n.contains('}')),
+            "braces survived: {got:?}"
+        );
+        // The letters must come through; the exact accent matters less,
+        // because the index folds diacritics before matching.
+        assert!(got[0].starts_with("B"), "got {got:?}");
+        assert!(got[1].to_lowercase().contains("zaj"), "got {got:?}");
+        assert!(got[2].to_lowercase().starts_with("fran"), "got {got:?}");
     }
 
     #[test]
