@@ -189,13 +189,20 @@ jobs:
         run: |
           CHANNEL="${{ steps.meta.outputs.channel }}"
           VERSION="${{ steps.meta.outputs.version }}"
-          if [[ "$CHANNEL" == "nightly" ]]; then
-            TAG=nightly
-          else
-            TAG="${GITHUB_REF_NAME:-v$VERSION}"
-          fi
-          mkdir -p updates
-          cat > "updates/$CHANNEL.json" <<EOF
+          BRANCH="${{ github.event.repository.default_branch }}"
+          if [[ "$CHANNEL" == "nightly" ]]; then TAG=nightly; else TAG="${GITHUB_REF_NAME:-v$VERSION}"; fi
+          git config user.name  "nearfield"
+          git config user.email "actions@users.noreply.github.com"
+
+          # The manifest is generated, not authored, so never rebase it: two
+          # builds rewriting the same file conflict, which is exactly how the
+          # channel came to advertise an older build than the one released.
+          # Regenerate on top of whatever landed instead.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin "$BRANCH"
+            git reset --hard "origin/$BRANCH"
+            mkdir -p updates
+            cat > "updates/$CHANNEL.json" <<EOF
           {
             "version": "$VERSION",
             "notes": "$CHANNEL build",
@@ -203,26 +210,21 @@ jobs:
             "pub_date": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           }
           EOF
-          cat "updates/$CHANNEL.json"
-          git config user.name  "nearfield"
-          git config user.email "actions@users.noreply.github.com"
-          # Both workflows push to main, and a human may too, so a plain
-          # push races. Rebase onto whatever landed and retry.
-          push_with_retry() {
-            for attempt in 1 2 3 4 5; do
-              if git push origin "HEAD:$1"; then return 0; fi
-              echo "push rejected (attempt $attempt); rebasing onto origin/$1"
-              git pull --rebase --autostash origin "$1" || return 1
-              sleep $((attempt * 3))
-            done
-            return 1
-          }
-          git add updates
-          if ! git diff --cached --quiet; then
+            git add updates
+            if git diff --cached --quiet; then
+              echo "manifest already matches this build"
+              exit 0
+            fi
             git commit -m "release: $CHANNEL $VERSION"
-            # The tag build is detached; put the manifest on the default branch.
-            push_with_retry "${{ github.event.repository.default_branch }}"
-          fi
+            if git push origin "HEAD:$BRANCH"; then
+              cat "updates/$CHANNEL.json"
+              exit 0
+            fi
+            echo "push lost a race (attempt $attempt); regenerating"
+            sleep $((attempt * 3))
+          done
+          echo "::error::could not publish the manifest; the channel would           advertise a stale build"
+          exit 1
 
   # Republish the site so the new manifest is live immediately rather than at
   # the next digest run. Shares a concurrency group with the digest workflow so

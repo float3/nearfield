@@ -72,7 +72,12 @@ jobs:
             for attempt in 1 2 3 4 5; do
               if git push origin "HEAD:$1"; then return 0; fi
               echo "push rejected (attempt $attempt); rebasing onto origin/$1"
-              git pull --rebase --autostash origin "$1" || return 1
+              if ! git pull --rebase --autostash origin "$1"; then
+                # Leaving a half-finished rebase makes the next attempt fail
+                # for a different reason and hides the real one.
+                git rebase --abort 2>/dev/null || true
+                return 1
+              fi
               sleep $((attempt * 3))
             done
             return 1
