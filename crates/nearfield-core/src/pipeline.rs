@@ -34,6 +34,9 @@ pub struct Config {
     /// How many of the nearest papers get their introduction and emails
     /// fetched tonight.
     pub prefetch: usize,
+    /// How many *unplaced* papers to read for their affiliations. This is the
+    /// only lever that places a paper whose authors OpenAlex has never seen.
+    pub prefetch_unplaced: usize,
     /// Ceiling on OpenAlex calls for this run. A safety net; the real limit
     /// is `budget_usd`.
     pub max_lookups: usize,
@@ -258,6 +261,54 @@ pub async fn run(cfg: Config) -> Result<Digest> {
         "enrichment done"
     );
     oa.save_caches()?;
+
+    // 3b. Rescue papers nothing could place.
+    //
+    // The prefetch above reads the *nearest* papers, which by definition are
+    // already located — it can never place anything. A paper with no placed
+    // author is usually one whose authors are new to OpenAlex, and the only
+    // remaining evidence is the affiliation printed on the paper itself. So
+    // spend a second allowance of fetches there, where it can actually change
+    // the answer.
+    let unplaced: Vec<usize> = papers
+        .iter()
+        .enumerate()
+        .filter(|(_, p)| p.distance_km.is_none() && !p.enriched)
+        .map(|(i, _)| i)
+        .take(cfg.prefetch_unplaced)
+        .collect();
+
+    let attempted = unplaced.len();
+    let mut rescued = 0usize;
+    for i in unplaced {
+        let p = &mut papers[i];
+        match paper::enrich(&http, p).await {
+            Ok(true) => {
+                for aff in p.affiliations.iter_mut() {
+                    oa.budget_usd = cfg.budget_usd + cfg.affiliation_budget_usd;
+                    let asked = !oa.out_of_budget();
+                    oa.place_affiliation(aff).await;
+                    if aff.institution.is_none() {
+                        if asked {
+                            diag.affiliations_unresolved.record(aff.raw.clone());
+                        } else {
+                            diag.affiliations_unchecked.record(aff.raw.clone());
+                        }
+                    }
+                }
+                p.resolve_distance();
+                if p.distance_km.is_some() {
+                    rescued += 1;
+                }
+            }
+            Ok(false) => diag.html_absent.record(p.id.clone()),
+            Err(e) => diag.html_errors.record(format!("{}: {e}", p.id)),
+        }
+    }
+    if attempted > 0 {
+        tracing::info!(attempted, rescued, "placed from the paper's own affiliations");
+    }
+    diag.rescued_from_paper = rescued;
 
     // 4. Never lose ground to a previous run of this day.
     let stored = cfg.out_dir.join(format!("{announced}.json"));

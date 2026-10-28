@@ -17,6 +17,10 @@ on:
       origin:
         description: "Measure from here: a place name or lat,lon. Blank = Munich."
         required: false
+      prefetch_unplaced:
+        description: "Unplaced papers to read for their affiliations."
+        required: false
+        default: "250"
 
 permissions:
   contents: write
@@ -95,6 +99,7 @@ jobs:
             --prefetch "${{ inputs.prefetch || '50' }}" \
             ${{ inputs.origin && format('--origin "{0}"', inputs.origin) || '' }} \
             --snapshot cache/snapshot/authors.idx \
+            --prefetch-unplaced "${{ inputs.prefetch_unplaced || '250' }}" \
             --max-lookups 4000
 
       - name: Commit the day's digest and the warmed caches

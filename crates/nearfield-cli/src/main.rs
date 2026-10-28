@@ -25,6 +25,11 @@ enum Command {
         /// How many of the nearest papers get intro + emails fetched.
         #[arg(long, default_value_t = 50)]
         prefetch: usize,
+        /// How many unplaced papers to read for their affiliations. The
+        /// nearest papers are already located, so this is the only prefetch
+        /// that can place anything new.
+        #[arg(long, default_value_t = 150)]
+        prefetch_unplaced: usize,
         /// Hard ceiling on OpenAlex calls. The real limit is --budget.
         #[arg(long, default_value_t = 20000)]
         max_lookups: usize,
@@ -252,6 +257,12 @@ fn print_report(digest: &nearfield_core::Digest, samples: bool) {
     if d.openalex_degraded {
         println!("  note: OpenAlex was throttled and lookups stopped early");
     }
+    if d.rescued_from_paper > 0 {
+        println!(
+            "  {} paper(s) placed only by reading their own affiliations",
+            d.rescued_from_paper
+        );
+    }
 
     let issues = d.issues();
     if issues.is_empty() {
@@ -292,6 +303,7 @@ async fn main() -> Result<()> {
         Command::Run {
             date,
             prefetch,
+            prefetch_unplaced,
             max_lookups,
             budget,
             affiliation_budget,
@@ -311,6 +323,7 @@ async fn main() -> Result<()> {
                 %date,
                 categories = categories.len(),
                 prefetch,
+                prefetch_unplaced,
                 max_lookups,
                 budget,
                 origin = %origin_label,
@@ -322,6 +335,7 @@ async fn main() -> Result<()> {
                 origin_label,
                 categories,
                 prefetch,
+                prefetch_unplaced,
                 max_lookups,
                 budget_usd: budget,
                 affiliation_budget_usd: affiliation_budget,

@@ -105,6 +105,9 @@ pub struct Diagnostics {
 
     /// The run stopped looking things up before finishing.
     pub lookup_budget_hit: bool,
+    /// Papers placed only because their own affiliations were read.
+    #[serde(default)]
+    pub rescued_from_paper: usize,
     /// What the run spent at OpenAlex, by their own accounting.
     #[serde(default)]
     pub spent_usd: f64,
