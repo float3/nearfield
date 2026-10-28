@@ -26,6 +26,20 @@ struct Item {
     categories: Vec<String>,
     announce_type: String,
     guid: String,
+    pub_date: String,
+}
+
+/// The announcement date arXiv itself stamps on a feed item.
+///
+/// arXiv announces at 00:00 US Eastern, which is 04:00 or 05:00 UTC depending
+/// on daylight saving. Naming a digest after the wall clock therefore files
+/// the previous announcement under today's date for any run before ~05:00 UTC
+/// — which produced two identical 2447-paper days. The feed knows which
+/// announcement it is, so ask it: "Tue, 27 Oct 2026 00:00:00 -0400" is the
+/// 27th in arXiv's own timezone, whatever the clock says here.
+fn announced_on(pub_date: &str) -> Option<String> {
+    let dt = chrono::DateTime::parse_from_rfc2822(pub_date.trim()).ok()?;
+    Some(dt.date_naive().format("%Y-%m-%d").to_string())
 }
 
 /// Pull the bare arXiv id out of the strings arXiv puts it in:
@@ -75,7 +89,7 @@ fn split_authors(creators: &str) -> Vec<Author> {
     out.into_iter().map(Author::new).collect()
 }
 
-fn parse_feed(xml: &str, announced: &str, diag: &mut Diagnostics) -> Vec<Paper> {
+fn parse_feed(xml: &str, fallback: &str, diag: &mut Diagnostics) -> Vec<Paper> {
     let mut reader = Reader::from_str(xml);
     reader.config_mut().trim_text(false);
 
@@ -117,6 +131,7 @@ fn parse_feed(xml: &str, announced: &str, diag: &mut Diagnostics) -> Vec<Paper> 
                         }
                         "announce_type" | "arxiv:announce_type" => it.announce_type = text,
                         "guid" => it.guid = text,
+                        "pubDate" => it.pub_date = text,
                         "item" => {
                             let it = item.take().expect("inside an item");
                             if it.announce_type == "new" {
@@ -143,7 +158,8 @@ fn parse_feed(xml: &str, announced: &str, diag: &mut Diagnostics) -> Vec<Paper> 
                                         title: it.title.clone(),
                                         abstract_text: extract_abstract(&it.description),
                                         categories: it.categories.clone(),
-                                        announced: announced.to_string(),
+                                        announced: announced_on(&it.pub_date)
+                                            .unwrap_or_else(|| fallback.to_string()),
                                         authors,
                                         affiliations: Vec::new(),
                                         contact_emails: Vec::new(),
@@ -173,12 +189,20 @@ fn parse_feed(xml: &str, announced: &str, diag: &mut Diagnostics) -> Vec<Paper> 
 
 /// Harvest every listed category, dedupe by id, and merge category lists so a
 /// cross-listed paper keeps all of its categories.
+/// Harvest result: the papers, and which announcement they came from.
+pub struct Harvest {
+    pub papers: Vec<Paper>,
+    /// The date arXiv stamped on the feeds, which is what the digest is named
+    /// after. `None` if no feed carried a parseable date.
+    pub announced: Option<String>,
+}
+
 pub async fn harvest(
     http: &Http,
     categories: &[String],
-    announced: &str,
+    fallback: &str,
     diag: &mut Diagnostics,
-) -> Result<Vec<Paper>> {
+) -> Result<Harvest> {
     let mut merged: BTreeMap<String, Paper> = BTreeMap::new();
     diag.feeds_attempted = categories.len();
 
@@ -186,7 +210,7 @@ pub async fn harvest(
         let url = format!("{FEED_BASE}/{cat}");
         match http.get_text(&url).await {
             Ok(xml) => {
-                let found = parse_feed(&xml, announced, diag);
+                let found = parse_feed(&xml, fallback, diag);
                 tracing::info!(cat, count = found.len(), "harvested");
                 for p in found {
                     merged
@@ -214,7 +238,19 @@ pub async fn harvest(
             "some feeds unavailable"
         );
     }
-    Ok(merged.into_values().collect())
+    let papers: Vec<Paper> = merged.into_values().collect();
+    // Feeds should agree, but take the most common date rather than trusting
+    // whichever category happened to be harvested first.
+    let mut tally: BTreeMap<&str, usize> = BTreeMap::new();
+    for p in &papers {
+        *tally.entry(p.announced.as_str()).or_default() += 1;
+    }
+    let announced = tally
+        .into_iter()
+        .max_by_key(|(_, n)| *n)
+        .map(|(d, _)| d.to_string());
+
+    Ok(Harvest { papers, announced })
 }
 
 #[cfg(test)]
@@ -233,6 +269,7 @@ Abstract: Indoor radio map estimation is essential.</description>
   <category>cs.LG</category>
   <category>cs.AI</category>
   <arxiv:announce_type>new</arxiv:announce_type>
+  <pubDate>Tue, 27 Oct 2026 00:00:00 -0400</pubDate>
   <dc:creator>Yuanzhe Peng, Jie Xu</dc:creator>
 </item>
 <item>
@@ -245,6 +282,23 @@ Abstract: Nope.</description>
   <dc:creator>Someone Else</dc:creator>
 </item>
 </channel></rss>"#;
+
+    #[test]
+    fn the_announcement_date_comes_from_the_feed() {
+        // Regression: a run at 00:34 UTC named the 27th's announcement
+        // "2026-10-28" and published 2447 duplicate papers under both dates.
+        assert_eq!(
+            announced_on("Tue, 27 Oct 2026 00:00:00 -0400").as_deref(),
+            Some("2026-10-27")
+        );
+        let ps = parse_feed(FEED, "2099-01-01", &mut Diagnostics::default());
+        assert_eq!(ps[0].announced, "2026-10-27", "the clock must not win");
+    }
+
+    #[test]
+    fn an_unparseable_date_falls_back() {
+        assert!(announced_on("not a date").is_none());
+    }
 
     #[test]
     fn keeps_new_drops_replacements() {

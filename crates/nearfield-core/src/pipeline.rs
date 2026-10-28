@@ -98,7 +98,9 @@ pub async fn run(cfg: Config) -> Result<Digest> {
 
     let mut diag = Diagnostics::default();
 
-    // 1. Harvest the day.
+    // 1. Harvest the day. The digest is named after the announcement the
+    //    feeds actually carry, not the local clock — see arxiv::announced_on.
+    let mut announced = cfg.date.clone();
     let mut papers = if cfg.reuse_harvest && cfg.digest_path().exists() {
         let s = std::fs::read_to_string(cfg.digest_path())?;
         let d: Digest = serde_json::from_str(&s).context("reading existing digest")?;
@@ -119,9 +121,19 @@ pub async fn run(cfg: Config) -> Result<Digest> {
         }
         papers
     } else {
-        let p = arxiv::harvest(&http, &cfg.categories, &cfg.date, &mut diag).await?;
-        tracing::info!(count = p.len(), "harvest complete");
-        p
+        let h = arxiv::harvest(&http, &cfg.categories, &cfg.date, &mut diag).await?;
+        if let Some(d) = h.announced.clone() {
+            if d != cfg.date {
+                tracing::info!(
+                    requested = %cfg.date,
+                    feed = %d,
+                    "naming the digest after the feed's announcement date"
+                );
+            }
+            announced = d;
+        }
+        tracing::info!(count = h.papers.len(), "harvest complete");
+        h.papers
     };
 
     // 2. Place authors from publication history, within budget.
@@ -222,7 +234,7 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     sort_by_distance(&mut papers);
 
     let digest = Digest {
-        date: cfg.date.clone(),
+        date: announced.clone(),
         generated_at: chrono::Utc::now().to_rfc3339(),
         home: Home {
             lat: cfg.origin.lat,
