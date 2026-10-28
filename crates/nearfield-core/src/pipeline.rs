@@ -259,7 +259,22 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     );
     oa.save_caches()?;
 
-    // 4. Correcting distances may have reordered the nearest papers.
+    // 4. Never lose ground to a previous run of this day.
+    let stored = cfg.out_dir.join(format!("{announced}.json"));
+    if let Ok(text) = std::fs::read_to_string(&stored) {
+        if let Ok(prev) = serde_json::from_str::<Digest>(&text) {
+            let recovered = carry_forward(&mut papers, &prev, &cfg.origin);
+            if recovered > 0 {
+                tracing::info!(
+                    recovered,
+                    was_located = prev.stats.located,
+                    "carried forward placements from the stored digest"
+                );
+            }
+        }
+    }
+
+    // Correcting distances may have reordered the nearest papers.
     sort_by_distance(&mut papers);
 
     let digest = Digest {
@@ -278,6 +293,73 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     write_digest(&cfg.out_dir, &digest)?;
     update_index(&cfg.out_dir)?;
     Ok(digest)
+}
+
+/// Carry forward anything a previous run of the same day already knew.
+///
+/// Re-running a day used to be a coin flip: a run whose allowance was already
+/// spent would overwrite a well-placed digest with a thin one, and the day got
+/// worse. It happened — 351 placements replaced by 58. A re-run should only
+/// ever add, so every location and every introduction the stored copy has and
+/// this run lacks is copied over before writing.
+fn carry_forward(papers: &mut [Paper], previous: &Digest, origin: &Point) -> usize {
+    use std::collections::HashMap;
+    let old: HashMap<&str, &Paper> =
+        previous.papers.iter().map(|p| (p.id.as_str(), p)).collect();
+    let mut recovered = 0usize;
+
+    for p in papers.iter_mut() {
+        let Some(prev) = old.get(p.id.as_str()) else { continue };
+
+        for a in p.authors.iter_mut() {
+            if a.located() {
+                continue;
+            }
+            if let Some(was) = prev.authors.iter().find(|q| q.name == a.name && q.located()) {
+                a.lat = was.lat;
+                a.lon = was.lon;
+                a.institution = was.institution.clone();
+                a.ror = was.ror.clone();
+                a.country = was.country.clone();
+                a.city = was.city.clone();
+                a.geo_source = was.geo_source;
+                a.email = a.email.clone().or_else(|| was.email.clone());
+                recovered += 1;
+            }
+        }
+
+        // Affiliations are keyed by the raw text they were read from.
+        for f in p.affiliations.iter_mut() {
+            if f.lat.is_some() {
+                continue;
+            }
+            if let Some(was) = prev
+                .affiliations
+                .iter()
+                .find(|q| q.raw == f.raw && q.lat.is_some())
+            {
+                f.lat = was.lat;
+                f.lon = was.lon;
+                f.institution = was.institution.clone();
+                f.ror = was.ror.clone();
+                f.country = was.country.clone();
+                f.city = was.city.clone();
+                recovered += 1;
+            }
+        }
+
+        // An introduction already fetched is worth more than a second fetch.
+        if !p.enriched && prev.enriched {
+            p.intro = prev.intro.clone();
+            p.affiliations = prev.affiliations.clone();
+            p.contact_emails = prev.contact_emails.clone();
+            p.enriched = true;
+        }
+
+        // Distances came from the stored digest's origin, so recompute.
+        p.reproject(origin);
+    }
+    recovered
 }
 
 fn write_digest(out_dir: &Path, digest: &Digest) -> Result<()> {
@@ -430,6 +512,78 @@ mod tests {
 
         assert_eq!(pa.distance_km, Some(670.7));
         assert_eq!(nearest_place(&pa).as_deref(), Some("Delft University of Technology"));
+    }
+
+    #[test]
+    fn a_rerun_never_loses_placements() {
+        // Regression: re-running 2026-10-27 on a spent budget replaced a
+        // digest with 351 placements by one with 58.
+        let mut fresh = p("a", None);
+        fresh.authors = vec![Author::new("Nils Thuerey")];
+
+        let mut stored = p("a", None);
+        let mut known = Author::new("Nils Thuerey");
+        known.lat = Some(48.13743);
+        known.lon = Some(11.57549);
+        known.institution = Some("Technical University of Munich".into());
+        known.geo_source = GeoSource::AuthorPrior;
+        stored.authors = vec![known];
+        stored.reproject(&MUNICH);
+
+        let previous = Digest {
+            date: "2026-10-27".into(),
+            generated_at: "then".into(),
+            home: Home { lat: MUNICH.lat, lon: MUNICH.lon, label: MUNICH_LABEL.into() },
+            stats: stats_for(std::slice::from_ref(&stored)),
+            diagnostics: Diagnostics::default(),
+            papers: vec![stored],
+        };
+
+        let mut papers = vec![fresh];
+        let recovered = carry_forward(&mut papers, &previous, &MUNICH);
+
+        assert_eq!(recovered, 1);
+        assert!(papers[0].distance_km.unwrap() < 2.0, "the placement came back");
+        assert_eq!(
+            papers[0].authors[0].institution.as_deref(),
+            Some("Technical University of Munich")
+        );
+    }
+
+    #[test]
+    fn a_rerun_does_not_overwrite_a_better_placement() {
+        // The fresh run knows where someone is; the stored one is stale.
+        let mut fresh = p("a", None);
+        let mut now = Author::new("Someone");
+        now.lat = Some(48.13743);
+        now.lon = Some(11.57549);
+        now.institution = Some("Fresh Institute".into());
+        fresh.authors = vec![now];
+        fresh.reproject(&MUNICH);
+
+        let mut stored = p("a", None);
+        let mut was = Author::new("Someone");
+        was.lat = Some(42.3601);
+        was.lon = Some(-71.0942);
+        was.institution = Some("Stale Institute".into());
+        stored.authors = vec![was];
+
+        let previous = Digest {
+            date: "2026-10-27".into(),
+            generated_at: "then".into(),
+            home: Home { lat: MUNICH.lat, lon: MUNICH.lon, label: MUNICH_LABEL.into() },
+            stats: stats_for(std::slice::from_ref(&stored)),
+            diagnostics: Diagnostics::default(),
+            papers: vec![stored],
+        };
+
+        let mut papers = vec![fresh];
+        carry_forward(&mut papers, &previous, &MUNICH);
+        assert_eq!(
+            papers[0].authors[0].institution.as_deref(),
+            Some("Fresh Institute"),
+            "a fresh placement must win over a stored one"
+        );
     }
 
     #[test]
