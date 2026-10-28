@@ -49,6 +49,27 @@ Introductions come from arXiv's LaTeXML HTML, not the PDF. A PDF's
 cross-reference table lives at the *end* of the file, so a partial download
 cannot be parsed at all, and a full one is ~10× the bytes for a worse result.
 
+### The offline author index
+
+`nearfield index-authors` builds a local name→institution index from the
+OpenAlex snapshot, and `run --snapshot` consults it before paying for anything.
+It resolves **87.8%** of a real day's 10,070 distinct author names for free, so
+the API becomes the fallback rather than the bottleneck.
+
+The authors entity is 101 million rows and 50.7 GB, which would be impractical
+to download. Parquet keeps each column of a row group in its own byte range, so
+only the five needed columns are fetched: **5.5 GB, about 15 minutes**,
+resumable at file boundaries. The index that falls out is 550 MB and builds in
+about two minutes.
+
+Where it lives: **the Actions cache**, not the repo. GitHub rejects any file
+over 100 MB outright, and LFS's free tier is 1 GB of bandwidth a month — a
+single nightly run would spend half of it. The cache holds 10 GB per repo, the
+nightly job keeps the entry warm, and the key rotates quarterly to match the
+snapshot's release cadence: a new quarter rebuilds once, every night after that
+restores. Only the index is cached; the extracts it was built from are not
+worth keeping.
+
 ### Rate limits, and why a throttled run is fast
 
 Keyless OpenAlex gives the **whole IP** a shared $0.10/day, and an institution

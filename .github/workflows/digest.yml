@@ -30,7 +30,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 110
     env:
       NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
     steps:
@@ -48,6 +48,40 @@ jobs:
       - name: Build the pipeline
         run: cargo build --release -p nearfield-cli
 
+      # The index is a single 550 MB file, so it cannot live in the repo:
+      # GitHub rejects any file over 100 MB, and LFS's free tier is 1 GB of
+      # bandwidth a month — one nightly run would spend half of it. The
+      # Actions cache holds 10 GB per repo, and a nightly job keeps the entry
+      # warm so it is never evicted for inactivity.
+      #
+      # Keyed by quarter because that is the snapshot's release cadence: a new
+      # quarter misses, rebuilds once, and every night after that restores.
+      # Only the index is cached, not the 5.5 GB of extracts it was built
+      # from — those are worth re-fetching once a quarter to keep the cache
+      # small.
+      - name: Work out the index cache key
+        id: idx
+        run: |
+          echo "quarter=$(date -u +%Y)Q$(( ($(date -u +%-m) - 1) / 3 + 1 ))" >> "$GITHUB_OUTPUT"
+
+      - name: Restore the offline author index
+        id: index-cache
+        uses: actions/cache@v4
+        with:
+          path: cache/snapshot/authors.idx
+          key: authors-index-${{ steps.idx.outputs.quarter }}
+
+      - name: Build the author index
+        if: ${{ steps.index-cache.outputs.cache-hit != 'true' }}
+        env:
+          NEARFIELD_CONTACT: ${{ secrets.NEARFIELD_CONTACT }}
+        run: |
+          # ~5.5 GB fetched and ~2.5 minutes to build; only on a cache miss.
+          ./target/release/nearfield index-authors --dir cache/snapshot
+          # The extracts have served their purpose and would bloat the cache.
+          find cache/snapshot -name '*.jsonl*' -delete || true
+          ls -la cache/snapshot/authors.idx
+
       - name: Harvest, geolocate and rank
         env:
           # Free key, own $1/day budget. Without it OpenAlex throttles the
@@ -60,6 +94,7 @@ jobs:
             ${{ inputs.date && format('--date {0}', inputs.date) || '' }} \
             --prefetch "${{ inputs.prefetch || '50' }}" \
             ${{ inputs.origin && format('--origin "{0}"', inputs.origin) || '' }} \
+            --snapshot cache/snapshot/authors.idx \
             --max-lookups 4000
 
       - name: Commit the day's digest and the warmed caches
