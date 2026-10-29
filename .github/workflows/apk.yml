@@ -235,7 +235,7 @@ jobs:
   # the two deploys cannot interleave.
   pages:
     needs: build
-    if: ${{ needs.build.outputs.version != '' }}
+    if: ${{ needs.build.outputs.version != '' && github.ref_type != 'tag' }}
     runs-on: ubuntu-latest
     concurrency:
       group: pages-deploy
@@ -256,3 +256,16 @@ jobs:
         with:
           path: site
       - uses: actions/deploy-pages@v4
+
+  # Only the default branch may deploy to github-pages, so a tag build asks
+  # the pages workflow to republish from it once the manifest is committed.
+  pages-after-release:
+    needs: build
+    if: ${{ needs.build.outputs.version != '' && github.ref_type == 'tag' }}
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --repo "${{ github.repository }}" --ref "${{ github.event.repository.default_branch }}"
