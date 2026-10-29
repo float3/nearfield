@@ -1,6 +1,6 @@
 [package]
 name = "nearfield-app"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Daily preprint digest, ranked by distance from a place you choose"
 

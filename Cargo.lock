@@ -1058,7 +1058,7 @@ dependencies = [
 
 [[package]]
 name = "nearfield-cli"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "chrono",
@@ -1072,7 +1072,7 @@ dependencies = [
 
 [[package]]
 name = "nearfield-core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "arrow-array",
