@@ -177,11 +177,15 @@ jobs:
               --prerelease
           else
             TAG="${GITHUB_REF_NAME:-v$VERSION}"
-            gh release create "$TAG" "${{ steps.artifact.outputs.path }}" \
-              --title "Nearfield $VERSION" \
-              --notes "Stable release $VERSION." \
-              --clobber 2>/dev/null \
-            || gh release upload "$TAG" "${{ steps.artifact.outputs.path }}" --clobber
+            # A rebuild of the same tag replaces the APK of the release it made.
+            if gh release view "$TAG" >/dev/null 2>&1; then
+              gh release upload "$TAG" "${{ steps.artifact.outputs.path }}" --clobber
+            else
+              gh release create "$TAG" "${{ steps.artifact.outputs.path }}" \
+                --title "Nearfield $VERSION" \
+                --notes "Stable release $VERSION." \
+                --verify-tag
+            fi
           fi
 
       - name: Write the channel manifest
