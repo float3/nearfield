@@ -15,7 +15,8 @@ export type View =
   | { view: "tab"; tab: Tab }
   | { view: "paper"; tab: Tab; id: string }
   | { view: "origin"; tab: Tab }
-  | { view: "settings"; tab: Tab };
+  | { view: "settings"; tab: Tab }
+  | { view: "filter"; tab: Tab };
 
 export function hashFor(s: View): string {
   switch (s.view) {
@@ -25,6 +26,8 @@ export function hashFor(s: View): string {
       return "#where";
     case "settings":
       return "#settings";
+    case "filter":
+      return "#filter";
     case "tab":
       return s.tab === "list" ? "#list" : `#${s.tab}`;
   }
@@ -39,6 +42,7 @@ export function viewFromHash(hash: string, tab: Tab = "list"): View {
   }
   if (h === "where") return { view: "origin", tab };
   if (h === "settings") return { view: "settings", tab };
+  if (h === "filter") return { view: "filter", tab };
   if (h === "map" || h === "diag") return { view: "tab", tab: h };
   return { view: "tab", tab: "list" };
 }

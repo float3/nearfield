@@ -29,6 +29,22 @@ import {
   saveOrigin,
   type Origin,
 } from "./origin";
+import {
+  addTopic,
+  allTopics,
+  applyFilter,
+  archiveOf,
+  ARCHIVE_NAMES,
+  categoryName,
+  EMPTY_FILTER,
+  inTopic,
+  isActive,
+  loadFilter,
+  removeTopic,
+  saveFilter,
+  type Filter,
+  type Topic,
+} from "./filter";
 import { PaperMap, escapeHtml, legendHtml } from "./map";
 import { Nav, viewFromHash, type Tab, type View } from "./nav";
 import {
@@ -54,6 +70,8 @@ let index: IndexEntry[] = [];
 let current: Paper | null = null;
 /** null means "wherever this digest was ranked against". */
 let origin: Origin | null = loadOrigin();
+let filter: Filter = loadFilter();
+let topics: Topic[] = allTopics();
 
 const paperMap = new PaperMap(el("map"), (p) => openSheet(p));
 
@@ -114,8 +132,26 @@ function nearestPin(p: Paper, pins: Pin[]): Pin | undefined {
   return best;
 }
 
+/** The day's papers that pass the filter, in ranked order. */
+function visible(d: Digest): Paper[] {
+  return applyFilter(d.papers, filter, topics);
+}
+
+/** The digest as the map should draw it: only the papers the list shows. */
+function forMap(d: Digest): Digest {
+  return isActive(filter) ? { ...d, papers: visible(d) } : d;
+}
+
 function renderList(d: Digest): void {
-  el("list").innerHTML = d.papers
+  const papers = visible(d);
+  renderFilterBar(d, papers.length);
+  if (papers.length === 0) {
+    el("list").innerHTML = `<p class="muted" style="padding:14px">No paper on ${escapeHtml(
+      d.date,
+    )} matches this filter.</p>`;
+    return;
+  }
+  el("list").innerHTML = papers
     .map((p, i) => {
       const pins = pinsFor(p);
       // Name the place that *set* the distance, not whichever author happens
@@ -143,10 +179,155 @@ function renderList(d: Digest): void {
   for (const b of el("list").querySelectorAll<HTMLButtonElement>(".paper")) {
     b.addEventListener("click", () => {
       const i = Number(b.dataset.i);
-      const p = d.papers[i];
+      const p = papers[i];
       if (p) openSheet(p);
     });
   }
+}
+
+function categoriesChipLabel(): string {
+  const n = filter.categories.length;
+  if (n === 0) return "Categories";
+  if (n === 1) return filter.categories[0] ?? "Categories";
+  return `${n} categories`;
+}
+
+function renderFilterBar(d: Digest, shown: number): void {
+  const query = el<HTMLInputElement>("filter-query");
+  if (document.activeElement !== query) query.value = filter.query;
+
+  const chip = (label: string, pressed: boolean, attrs: string) =>
+    `<button class="chip" aria-pressed="${pressed}" ${attrs}>${escapeHtml(label)}</button>`;
+  el("filter-chips").innerHTML = [
+    chip("All", filter.topic === null, 'data-topic=""'),
+    ...topics.map((t) => chip(t.name, filter.topic === t.name, `data-topic="${escapeHtml(t.name)}"`)),
+    chip(categoriesChipLabel(), filter.categories.length > 0, 'data-open="filter"'),
+  ].join("");
+
+  for (const b of el("filter-chips").querySelectorAll<HTMLButtonElement>(".chip")) {
+    b.addEventListener("click", () => {
+      if (b.dataset.open === "filter") {
+        openFilterSheet();
+        return;
+      }
+      const name = b.dataset.topic || null;
+      setFilter({ ...filter, topic: filter.topic === name ? null : name });
+    });
+  }
+
+  const count = el("filter-count");
+  count.hidden = !isActive(filter);
+  count.textContent = `${shown} of ${d.papers.length} papers`;
+}
+
+function setFilter(f: Filter): void {
+  filter = f;
+  saveFilter(f);
+  if (!digest) return;
+  renderList(digest);
+  if (!el("pane-map").hidden) paperMap.render(forMap(digest));
+  if (nav.current.view === "filter") renderFilterSheet(digest);
+}
+
+function openFilterSheet(): void {
+  nav.go({ view: "filter", tab: baseTab() });
+}
+
+function renderFilterSheet(d: Digest): void {
+  el("topic-list").innerHTML = topics
+    .map((t) => {
+      const n = d.papers.filter((p) => inTopic(p, t)).length;
+      const where = t.categories.length ? t.categories.join(", ") : "any category";
+      const words = t.words.length ? t.words.join(", ") : "any wording";
+      return `<div class="topic-row">
+        <button class="choice-opt topic-pick" role="radio" aria-checked="${filter.topic === t.name}"
+                data-topic="${escapeHtml(t.name)}">
+          <span class="choice-name">${escapeHtml(t.name)} <span class="muted">${n} today</span></span>
+          <span class="choice-sub">${escapeHtml(where)} · ${escapeHtml(words)}</span>
+        </button>
+        ${
+          t.builtin
+            ? ""
+            : `<button class="topic-remove" data-remove="${escapeHtml(t.name)}"
+                 aria-label="Delete ${escapeHtml(t.name)}">Delete</button>`
+        }
+      </div>`;
+    })
+    .join("");
+
+  for (const b of el("topic-list").querySelectorAll<HTMLButtonElement>(".topic-pick")) {
+    b.addEventListener("click", () => {
+      const name = b.dataset.topic ?? null;
+      setFilter({ ...filter, topic: filter.topic === name ? null : name });
+    });
+  }
+  for (const b of el("topic-list").querySelectorAll<HTMLButtonElement>(".topic-remove")) {
+    b.addEventListener("click", () => {
+      const name = b.dataset.remove;
+      if (!name) return;
+      removeTopic(name);
+      topics = allTopics();
+      setFilter({ ...filter, topic: filter.topic === name ? null : filter.topic });
+    });
+  }
+
+  const ticked = filter.categories;
+  el("topic-cats-note").textContent = ticked.length
+    ? `Limited to the ticked categories: ${ticked.join(", ")}.`
+    : "Tick categories below to limit the topic to them; with none ticked it covers every category.";
+
+  const counts = new Map<string, number>();
+  for (const p of d.papers) for (const c of p.categories) counts.set(c, (counts.get(c) ?? 0) + 1);
+  for (const c of ticked) if (!counts.has(c)) counts.set(c, 0);
+
+  const archives = new Map<string, string[]>();
+  for (const c of counts.keys()) {
+    const a = archiveOf(c);
+    archives.set(a, [...(archives.get(a) ?? []), c]);
+  }
+  const total = (cats: string[]) => cats.reduce((s, c) => s + (counts.get(c) ?? 0), 0);
+  el("category-list").innerHTML = [...archives.entries()]
+    .sort((a, b) => total(b[1]) - total(a[1]))
+    .map(([archive, cats]) => {
+      const rows = cats
+        .sort((a, b) => (counts.get(b) ?? 0) - (counts.get(a) ?? 0) || a.localeCompare(b))
+        .map(
+          (c) => `<button class="cat-opt" role="checkbox" aria-checked="${ticked.includes(c)}"
+                    data-cat="${escapeHtml(c)}">
+              <span class="cat-name">${escapeHtml(categoryName(c))}</span>
+              <span class="cat-code">${escapeHtml(c)}</span>
+              <span class="cat-n">${counts.get(c) ?? 0}</span>
+            </button>`,
+        )
+        .join("");
+      return `<h4>${escapeHtml(ARCHIVE_NAMES[archive] ?? archive)}</h4>${rows}`;
+    })
+    .join("");
+
+  for (const b of el("category-list").querySelectorAll<HTMLButtonElement>(".cat-opt")) {
+    b.addEventListener("click", () => {
+      const c = b.dataset.cat;
+      if (!c) return;
+      const next = filter.categories.includes(c)
+        ? filter.categories.filter((x) => x !== c)
+        : [...filter.categories, c];
+      setFilter({ ...filter, categories: next });
+    });
+  }
+}
+
+function saveTopicFromForm(): void {
+  const name = el<HTMLInputElement>("topic-name").value.trim();
+  if (!name) return;
+  const words = el<HTMLInputElement>("topic-words")
+    .value.split(",")
+    .map((w) => w.trim().toLowerCase())
+    .filter(Boolean);
+  addTopic({ name, categories: [...filter.categories], words });
+  topics = allTopics();
+  el<HTMLInputElement>("topic-name").value = "";
+  el<HTMLInputElement>("topic-words").value = "";
+  setFilter({ topic: name, categories: [], query: filter.query });
 }
 
 // --- origin -------------------------------------------------------------
@@ -169,7 +350,7 @@ function applyOrigin(d: Digest): void {
   renderStats(d);
   renderList(d);
   paperMap.refit();
-  if (!el("pane-map").hidden) paperMap.render(d);
+  if (!el("pane-map").hidden) paperMap.render(forMap(d));
 }
 
 function setOrigin(o: Origin | null): void {
@@ -588,7 +769,7 @@ function showTab(which: Tab): void {
     el(`tab-${t}`).setAttribute("aria-selected", String(t === which));
   }
   if (which === "map" && digest) {
-    paperMap.render(digest);
+    paperMap.render(forMap(digest));
     paperMap.resize();
   }
   if (which === "diag" && digest) {
@@ -616,6 +797,8 @@ function renderView(s: View): void {
   el("sheet").hidden = paper === null;
   el("origin-sheet").hidden = s.view !== "origin";
   el("settings-sheet").hidden = s.view !== "settings";
+  el("filter-sheet").hidden = s.view !== "filter";
+  if (s.view === "filter" && digest) renderFilterSheet(digest);
 }
 
 let nav: Nav;
@@ -869,6 +1052,18 @@ async function boot(): Promise<void> {
     });
   }
   el("origin-close").addEventListener("click", closeOriginSheet);
+  el("filter-close").addEventListener("click", () => nav.back());
+  el("filter-clear").addEventListener("click", () => setFilter({ ...EMPTY_FILTER }));
+  el<HTMLFormElement>("topic-form").addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    saveTopicFromForm();
+  });
+  let typing: number | undefined;
+  el<HTMLInputElement>("filter-query").addEventListener("input", (ev) => {
+    const value = (ev.target as HTMLInputElement).value;
+    window.clearTimeout(typing);
+    typing = window.setTimeout(() => setFilter({ ...filter, query: value }), 150);
+  });
   el("use-gps").addEventListener("click", () => void useCurrentLocation());
   el<HTMLFormElement>("place-form").addEventListener("submit", (ev) => {
     ev.preventDefault();

@@ -810,3 +810,138 @@ button.mailall {
   opacity: 0.45;
   cursor: default;
 }
+
+.filterbar {
+  padding: 8px 10px 6px;
+  border-top: 1px solid var(--border);
+}
+
+#filter-query,
+#topic-form input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 10px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+}
+
+#topic-form input {
+  margin-bottom: 6px;
+}
+
+.chips {
+  display: flex;
+  gap: 6px;
+  margin-top: 7px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.chip {
+  flex: none;
+  padding: 5px 11px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 550;
+  color: var(--text-secondary);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.chip[aria-pressed="true"] {
+  color: var(--text-primary);
+  border-color: var(--series-1);
+  background: var(--surface-3);
+}
+
+.filter-count {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.topic-row {
+  display: flex;
+  gap: 6px;
+  align-items: stretch;
+  margin-bottom: 6px;
+}
+
+.topic-row .choice-opt {
+  min-width: 0;
+}
+
+.topic-remove {
+  flex: none;
+  padding: 0 12px;
+  font: inherit;
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.sheet-body h4 {
+  margin: 14px 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.cat-opt {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+  align-items: baseline;
+  padding: 8px 10px;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.cat-opt::before {
+  content: "";
+  flex: none;
+  width: 13px;
+  height: 13px;
+  align-self: center;
+  border: 1.5px solid var(--text-muted);
+  border-radius: 3px;
+}
+
+.cat-opt[aria-checked="true"]::before {
+  border-color: var(--series-1);
+  background: var(--series-1);
+  box-shadow: inset 0 0 0 2px var(--surface-1);
+}
+
+.cat-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+}
+
+.cat-code,
+.cat-n {
+  flex: none;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.cat-n {
+  min-width: 2.5em;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}

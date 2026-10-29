@@ -25,6 +25,12 @@
           <button id="tab-map" role="tab" aria-selected="false">Map</button>
           <button id="tab-diag" role="tab" aria-selected="false">Parsing</button>
         </div>
+        <div class="filterbar" id="filterbar">
+          <input id="filter-query" type="search" placeholder="Search titles, abstracts, authors"
+                 aria-label="Search papers" autocomplete="off" />
+          <div class="chips" id="filter-chips" role="group" aria-label="Topics"></div>
+          <div class="filter-count muted" id="filter-count" hidden></div>
+        </div>
       </header>
 
       <div class="updatebar" id="updatebar" hidden>
@@ -85,6 +91,38 @@
           Android never lets a sideloaded app install itself silently, so an
           update opens in the system installer and you confirm it there.
         </p>
+      </div>
+    </div>
+
+    <div class="sheet" id="filter-sheet" hidden role="dialog" aria-modal="true"
+         aria-label="Filter papers">
+      <div class="sheet-bar">
+        <button id="filter-close" aria-label="Back">&larr; Back</button>
+        <span class="grow"></span>
+        <button id="filter-clear">Clear</button>
+      </div>
+      <div class="sheet-body">
+        <h2>Filter</h2>
+
+        <h3>Topics</h3>
+        <p class="muted">
+          A topic keeps papers in its categories whose title or abstract
+          contains one of its words.
+        </p>
+        <div id="topic-list"></div>
+
+        <h3>New topic</h3>
+        <form id="topic-form" autocomplete="off">
+          <input id="topic-name" type="text" placeholder="Name" aria-label="Topic name" required />
+          <input id="topic-words" type="text" placeholder="Words, separated by commas"
+                 aria-label="Words to look for" />
+          <p class="muted" id="topic-cats-note"></p>
+          <button type="submit" class="origin-action">Save topic</button>
+        </form>
+
+        <h3>Categories</h3>
+        <p class="muted">Ticking several shows papers in any of them. Counts are for this day.</p>
+        <div id="category-list"></div>
       </div>
     </div>
 
