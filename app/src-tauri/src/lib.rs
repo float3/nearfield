@@ -117,9 +117,44 @@ where
     }
 }
 
+/// The published days, and the saved copies of any day no longer published deleted.
+///
+/// A day is unpublished when it turns out to be wrong, as 2026-10-29 was: arXiv made no
+/// announcement and the feeds repeated the day before. Only an index fetched from the
+/// server prunes anything, so being offline never costs a saved day.
 #[tauri::command]
 async fn load_index(state: tauri::State<'_, AppState>) -> Result<Vec<IndexEntry>, String> {
-    cached_json::<Vec<IndexEntry>>(&state, "index.json").await
+    let url = format!("{DATA_BASE}/index.json");
+    let Ok(body) = state.http.get_text(&url).await else {
+        return cached_json::<Vec<IndexEntry>>(&state, "index.json").await;
+    };
+    let index: Vec<IndexEntry> = serde_json::from_str(&body)
+        .map_err(|e| format!("index.json from the server is malformed: {e}"))?;
+    std::fs::create_dir_all(&state.cache_dir).ok();
+    write_cached(&state.cache_path("index.json"), &body).ok();
+    prune_unpublished(&state.cache_dir, &index);
+    Ok(index)
+}
+
+fn prune_unpublished(cache_dir: &std::path::Path, index: &[IndexEntry]) {
+    if index.is_empty() {
+        return;
+    }
+    let Ok(entries) = std::fs::read_dir(cache_dir) else {
+        return;
+    };
+    for entry in entries.flatten() {
+        let name = entry.file_name().to_string_lossy().into_owned();
+        let Some(date) = name.strip_suffix(".json") else {
+            continue;
+        };
+        if is_date(date) && !index.iter().any(|e| e.date == date) {
+            match std::fs::remove_file(entry.path()) {
+                Ok(()) => tracing::info!(%date, "removed a saved day that is no longer published"),
+                Err(e) => tracing::warn!(%date, error = %e, "could not remove an unpublished day"),
+            }
+        }
+    }
 }
 
 #[tauri::command]
@@ -455,4 +490,34 @@ pub fn run() {
         ])
         .run(tauri::generate_context!())
         .expect("error while running nearfield");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn day(date: &str) -> IndexEntry {
+        IndexEntry { date: date.into(), papers: 1, located: 1, nearest_km: None }
+    }
+
+    #[test]
+    fn only_days_the_index_dropped_are_removed() {
+        let dir = std::env::temp_dir().join(format!("nf-prune-{}", std::process::id()));
+        std::fs::create_dir_all(dir.join("updates")).unwrap();
+        for name in ["2026-10-28.json", "2026-10-29.json", "index.json", "notes.json"] {
+            std::fs::write(dir.join(name), "{}").unwrap();
+        }
+
+        prune_unpublished(&dir, &[]);
+        assert!(dir.join("2026-10-29.json").exists(), "an empty index removes nothing");
+
+        prune_unpublished(&dir, &[day("2026-10-28")]);
+        assert!(dir.join("2026-10-28.json").exists());
+        assert!(!dir.join("2026-10-29.json").exists());
+        assert!(dir.join("index.json").exists());
+        assert!(dir.join("notes.json").exists());
+        assert!(dir.join("updates").exists());
+
+        std::fs::remove_dir_all(&dir).ok();
+    }
 }

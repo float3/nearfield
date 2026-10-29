@@ -1,9 +1,9 @@
 name: digest
 
-# 23:00 UTC is midnight in Central Europe in winter and 01:00 in summer, so
-# the day's papers are ready by the morning. arXiv announces the next batch
-# at 20:00 US Eastern, 00:00 or 01:00 UTC, so this still reads the batch
-# announced the evening before.
+# 23:00 UTC is midnight in Central Europe in winter and 01:00 in summer. arXiv
+# rebuilds its feeds at 00:00 US Eastern, 04:00 or 05:00 UTC, so this reads the
+# announcement the feeds have carried since that morning, and the digest is
+# named after it.
 on:
   schedule:
     - cron: "0 23 * * *"

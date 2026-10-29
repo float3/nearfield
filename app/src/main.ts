@@ -1108,7 +1108,26 @@ async function boot(): Promise<void> {
   // The digest is only now available, so a #p/<id> deep link can finally be
   // drawn; re-render whatever state we are in.
   nav.refresh();
+  askForOriginOnce();
   void offerUpdate();
+}
+
+const ORIGIN_ASKED_KEY = "nearfield-origin-asked";
+
+/**
+ * The first time the app opens, before a place has been chosen, open "Measure
+ * from": the digest is ranked from wherever it was built, which is someone
+ * else's city for most people. Going back keeps that place.
+ */
+function askForOriginOnce(): void {
+  if (origin !== null || nav.current.view !== "tab") return;
+  try {
+    if (localStorage.getItem(ORIGIN_ASKED_KEY)) return;
+    localStorage.setItem(ORIGIN_ASKED_KEY, "1");
+  } catch {
+    return;
+  }
+  openOriginSheet();
 }
 
 void boot();
