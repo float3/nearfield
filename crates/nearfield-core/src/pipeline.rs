@@ -139,6 +139,9 @@ pub async fn run(cfg: Config) -> Result<Digest> {
             announced = d;
         }
         tracing::info!(count = h.papers.len(), "harvest complete");
+        if let Some(repeat) = nothing_new(&cfg.out_dir, &announced, &h.papers) {
+            return Err(repeat.into());
+        }
         h.papers
     };
 
@@ -412,6 +415,71 @@ fn carry_forward(papers: &mut [Paper], previous: &Digest, origin: &Point) -> usi
     recovered
 }
 
+/// The feeds carried no new announcement, so there is no digest to write.
+///
+/// arXiv skips announcements on holidays and during outages, and its feeds
+/// then either go empty or keep serving a list that was already announced,
+/// under the new date. On 2026-10-29 every feed but `cs.AI` was empty, and
+/// `cs.AI` still held the 95 papers of the day before.
+#[derive(Debug)]
+pub struct NothingNew {
+    pub harvested: usize,
+    pub repeated: usize,
+    pub earlier: Option<String>,
+}
+
+impl std::fmt::Display for NothingNew {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match &self.earlier {
+            Some(date) if self.harvested > 0 => write!(
+                f,
+                "no new announcement: {} of the {} papers harvested are already in the digest for {date}",
+                self.repeated, self.harvested
+            ),
+            _ => write!(f, "no new announcement: the feeds held no new papers"),
+        }
+    }
+}
+
+impl std::error::Error for NothingNew {}
+
+/// Whether a harvest is no new announcement: empty, or at least half made of
+/// papers the most recent earlier digest already has. Consecutive
+/// announcements share no new submissions, so a real day overlaps by none.
+fn nothing_new(out_dir: &Path, announced: &str, papers: &[Paper]) -> Option<NothingNew> {
+    let earlier = latest_digest_before(out_dir, announced);
+    if papers.is_empty() {
+        return Some(NothingNew {
+            harvested: 0,
+            repeated: 0,
+            earlier: earlier.map(|d| d.date),
+        });
+    }
+    let earlier = earlier?;
+    let known: std::collections::HashSet<&str> =
+        earlier.papers.iter().map(|p| p.id.as_str()).collect();
+    let repeated = papers.iter().filter(|p| known.contains(p.id.as_str())).count();
+    (repeated * 2 >= papers.len()).then(|| NothingNew {
+        harvested: papers.len(),
+        repeated,
+        earlier: Some(earlier.date.clone()),
+    })
+}
+
+/// The newest digest in `out_dir` dated before `date`.
+fn latest_digest_before(out_dir: &Path, date: &str) -> Option<Digest> {
+    let mut dates: Vec<String> = std::fs::read_dir(out_dir)
+        .ok()?
+        .filter_map(|e| e.ok()?.file_name().into_string().ok())
+        .filter_map(|name| name.strip_suffix(".json").map(str::to_string))
+        .filter(|stem| stem.len() == 10 && stem.as_bytes()[4] == b'-' && stem.as_str() < date)
+        .collect();
+    dates.sort();
+    let latest = dates.pop()?;
+    let s = std::fs::read_to_string(out_dir.join(format!("{latest}.json"))).ok()?;
+    serde_json::from_str(&s).ok()
+}
+
 fn write_digest(out_dir: &Path, digest: &Digest) -> Result<()> {
     let path = out_dir.join(format!("{}.json", digest.date));
     let json = serde_json::to_string(digest)?;
@@ -647,5 +715,35 @@ mod tests {
             papers: vec![p("a", None)],
         };
         assert!(summarise(&d).contains("none placed"));
+    }
+
+    fn digest_on(date: &str, papers: Vec<Paper>) -> Digest {
+        Digest {
+            date: date.into(),
+            generated_at: "then".into(),
+            home: Home { lat: MUNICH.lat, lon: MUNICH.lon, label: MUNICH_LABEL.into() },
+            stats: stats_for(&papers),
+            diagnostics: Diagnostics::default(),
+            papers,
+        }
+    }
+
+    #[test]
+    fn a_repeated_or_empty_harvest_is_no_new_announcement() {
+        let dir = std::env::temp_dir().join(format!("nf-repeat-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        write_digest(&dir, &digest_on("2026-10-27", vec![p("old", None)])).unwrap();
+        write_digest(&dir, &digest_on("2026-10-28", vec![p("a", None), p("b", None)])).unwrap();
+
+        let repeat = nothing_new(&dir, "2026-10-29", &[p("a", None), p("b", None), p("c", None)])
+            .expect("two of three papers are the day before's");
+        assert_eq!((repeat.harvested, repeat.repeated), (3, 2));
+        assert_eq!(repeat.earlier.as_deref(), Some("2026-10-28"));
+
+        assert!(nothing_new(&dir, "2026-10-29", &[]).is_some());
+        assert!(nothing_new(&dir, "2026-10-29", &[p("c", None), p("d", None), p("a", None)]).is_none());
+        assert!(nothing_new(&dir, "2026-10-28", &[p("a", None)]).is_none());
+
+        std::fs::remove_dir_all(&dir).ok();
     }
 }

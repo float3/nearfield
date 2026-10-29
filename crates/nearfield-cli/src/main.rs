@@ -361,7 +361,15 @@ async fn main() -> Result<()> {
                 reuse_harvest,
                 snapshot: Some(snapshot),
             })
-            .await?;
+            .await;
+            let digest = match digest {
+                Err(e) if e.downcast_ref::<pipeline::NothingNew>().is_some() => {
+                    tracing::warn!("{e}; nothing written");
+                    println!("{e}");
+                    return Ok(());
+                }
+                other => other?,
+            };
 
             let s = &digest.stats;
             println!("{}", pipeline::summarise(&digest));
