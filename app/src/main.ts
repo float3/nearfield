@@ -956,8 +956,10 @@ async function installUpdate(
     });
     status.textContent = "Starting the installer…";
   } catch (e) {
+    const message = e instanceof Error ? e.message : String(e);
     status.className = "err";
-    status.textContent = e instanceof Error ? e.message : String(e);
+    status.innerHTML = `${escapeHtml(message)} <button class="inline-btn">Download in the browser</button>`;
+    status.querySelector("button")?.addEventListener("click", () => void openExternal(update.url));
   }
 }
 
