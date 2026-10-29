@@ -1,5 +1,5 @@
 // The map pane. Markers carry *identity* (where the location came from), not
-// magnitude — the map's geometry already encodes distance from Munich, so
+// magnitude — the map's geometry already encodes distance from the origin, so
 // colouring by distance would say the same thing twice. Each source also has a
 // distinct shape, so the encoding survives colour-vision deficiency and the
 // aqua slot's low contrast on the light surface.
@@ -146,7 +146,7 @@ export class PaperMap {
     }
 
     // Open on a view that actually contains the day's papers — a fixed zoom
-    // on Munich leaves everything outside Europe off-screen. Only on the
+    // on the origin leaves most of the world off-screen. Only on the
     // first render, so switching tabs does not yank a view you panned.
     if (!this.fitted && !bounds.isEmpty()) {
       this.fitted = true;

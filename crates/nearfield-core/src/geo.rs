@@ -1,14 +1,16 @@
 //! Distance arithmetic.
 //!
 //! The origin is a parameter, not a constant: the same digest is read from
-//! home in Munich and from wherever you happen to be, and a trip is worth
-//! preparing for in advance. Munich is only the default.
+//! home and from wherever you happen to be, and a trip is worth preparing
+//! for in advance.
 
 use serde::{Deserialize, Serialize};
 
-/// The default origin.
-pub const MUNICH: Point = Point { lat: 48.1372, lon: 11.5756 };
-pub const MUNICH_LABEL: &str = "Munich";
+/// A fixed point for the tests, which need some origin to measure from.
+#[cfg(test)]
+pub(crate) const MUNICH: Point = Point { lat: 48.1372, lon: 11.5756 };
+#[cfg(test)]
+pub(crate) const MUNICH_LABEL: &str = "Munich";
 
 const EARTH_RADIUS_KM: f64 = 6371.0088;
 

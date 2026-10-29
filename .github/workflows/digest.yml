@@ -1,10 +1,12 @@
 name: digest
 
-# arXiv announces new submissions at 00:00 US Eastern on weekdays, which is
-# 04:00/05:00 UTC depending on DST. 06:00 UTC is comfortably after it.
+# 23:00 UTC is midnight in Central Europe in winter and 01:00 in summer, so
+# the day's papers are ready by the morning. arXiv announces the next batch
+# at 20:00 US Eastern, 00:00 or 01:00 UTC, so this still reads the batch
+# announced the evening before.
 on:
   schedule:
-    - cron: "0 6 * * *"
+    - cron: "0 23 * * *"
   workflow_dispatch:
     inputs:
       date:
@@ -15,7 +17,7 @@ on:
         required: false
         default: "50"
       origin:
-        description: "Measure from here: a place name or lat,lon. Blank = Munich."
+        description: "Measure from here: a place name, lat,lon or Label@lat,lon. Blank = the NEARFIELD_ORIGIN variable."
         required: false
       prefetch_unplaced:
         description: "Unplaced papers to read for their affiliations."
@@ -95,6 +97,7 @@ jobs:
           # whole runner IP to a shared $0.10/day and most papers stay unplaced.
           OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
           NEARFIELD_CONTACT: ${{ secrets.NEARFIELD_CONTACT }}
+          NEARFIELD_ORIGIN: ${{ vars.NEARFIELD_ORIGIN }}
         run: |
           mkdir -p work
           ./target/release/nearfield run \

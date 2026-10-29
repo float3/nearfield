@@ -25,8 +25,7 @@ use std::time::Duration;
 pub struct Config {
     /// Announcement date, YYYY-MM-DD.
     pub date: String,
-    /// Where distances are measured from. Munich by default, but a trip is
-    /// worth preparing for: build a digest against the destination and the
+    /// Where distances are measured from. A trip is worth preparing for: build a digest against the destination and the
     /// nearest papers there get read in full ahead of time.
     pub origin: Point,
     pub origin_label: String,

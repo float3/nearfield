@@ -49,8 +49,9 @@ enum Command {
         /// Re-rank an existing digest instead of re-harvesting.
         #[arg(long)]
         reuse_harvest: bool,
-        /// Where to measure from: "lat,lon" or a place name to look up.
-        /// Defaults to Munich. Use this to prepare for a trip — the nearest
+        /// Where to measure from: a place name to look up, "lat,lon", or
+        /// "Label@lat,lon" to name a point without a lookup. Defaults to
+        /// NEARFIELD_ORIGIN. Use this to prepare for a trip — the nearest
         /// papers *there* get read in full ahead of time.
         #[arg(long)]
         origin: Option<String>,
@@ -209,13 +210,26 @@ fn load_categories(explicit: Option<String>) -> Result<Vec<String>> {
     Ok(serde_json::from_str(&s)?)
 }
 
-/// Resolve `--origin` to a point and a label.
+/// Resolve `--origin`, or `NEARFIELD_ORIGIN` without it, to a point and a label.
 async fn resolve_origin(
     arg: Option<String>,
 ) -> Result<(nearfield_core::Point, String)> {
-    let Some(q) = arg else {
-        return Ok((nearfield_core::MUNICH, nearfield_core::MUNICH_LABEL.to_string()));
+    let Some(q) = arg
+        .or_else(|| std::env::var("NEARFIELD_ORIGIN").ok())
+        .map(|q| q.trim().to_string())
+        .filter(|q| !q.is_empty())
+    else {
+        anyhow::bail!(
+            "no origin: pass --origin or set NEARFIELD_ORIGIN, e.g. \"Munich\" or \"Munich@48.1372,11.5756\""
+        );
     };
+    if let Some((label, coords)) = q.rsplit_once('@') {
+        if let Some(p) = nearfield_core::Point::parse(coords) {
+            if !label.trim().is_empty() {
+                return Ok((p, label.trim().to_string()));
+            }
+        }
+    }
     if let Some(p) = nearfield_core::Point::parse(&q) {
         return Ok((p, format!("{:.4}, {:.4}", p.lat, p.lon)));
     }

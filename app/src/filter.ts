@@ -1,3 +1,4 @@
+import defaults from "../topics.json";
 import type { Paper } from "./types";
 
 /**
@@ -25,90 +26,11 @@ export interface Filter {
 
 export const EMPTY_FILTER: Filter = { topic: null, categories: [], query: "" };
 
-export const BUILTIN_TOPICS: Topic[] = [
-  {
-    name: "AI safety",
-    builtin: true,
-    categories: ["cs.AI", "cs.LG", "cs.CL", "cs.CY", "cs.CR", "cs.HC", "cs.MA", "stat.ML"],
-    words: [
-      "ai safety",
-      "ai alignment",
-      "value alignment",
-      "safety alignment",
-      "llm alignment",
-      "alignment of large language",
-      "aligning large language",
-      "aligning llm",
-      "misalign",
-      "mechanistic interpretab",
-      "sparse autoencoder",
-      "steering vector",
-      "jailbreak",
-      "red team",
-      "red-team",
-      "reward hacking",
-      "rlhf",
-      "scalable oversight",
-      "deceptive alignment",
-      "sycophan",
-      "scheming",
-      "sandbag",
-      "power-seeking",
-      "corrigib",
-      "situational awareness",
-      "model organism",
-      "dangerous capabilit",
-      "existential risk",
-      "catastrophic risk",
-      "ai risk",
-      "ai governance",
-      "llm safety",
-      "safety of large language",
-      "safety evaluation",
-      "safety degradation",
-      "harmful content",
-      "guardrail",
-      "refusal",
-    ],
-  },
-  {
-    name: "Animal behavior",
-    builtin: true,
-    categories: ["q-bio", "physics.bio-ph", "nlin.AO", "cs.CV", "cs.SD", "eess.AS"],
-    words: [
-      "animal behavio",
-      "etholog",
-      "foraging",
-      "collective behavio",
-      "collective motion",
-      "flocking",
-      "fish school",
-      "animal migration",
-      "bird migration",
-      "birdsong",
-      "songbird",
-      "animal communication",
-      "animal vocali",
-      "bioacoustic",
-      "predator",
-      "courtship",
-      "mating behavio",
-      "social insect",
-      "ant colon",
-      "honeybee",
-      "primate behavio",
-      "zebrafish behavio",
-      "insect behavio",
-      "bird behavio",
-      "rodent behavio",
-      "mouse behavio",
-      "animal pose",
-      "wildlife",
-      "camera trap",
-      "livestock",
-    ],
-  },
-];
+/**
+ * The topics every install starts with, from `app/topics.json`. Edit that file
+ * to change them; topics saved in the app are kept on the device as well.
+ */
+export const BUILTIN_TOPICS: Topic[] = (defaults as Topic[]).map((t) => ({ ...t, builtin: true }));
 
 /** arXiv's own names for its archives, for grouping the category list. */
 export const ARCHIVE_NAMES: Record<string, string> = {

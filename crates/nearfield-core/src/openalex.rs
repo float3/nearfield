@@ -408,7 +408,7 @@ impl OpenAlex {
     /// Does nothing if the author already has a location from a more
     /// trustworthy source. When an author has several appointments we take the
     /// one closest to the origin: a joint LMU/MIT appointment means they are
-    /// reachable from Munich, which is the question being asked.
+    /// reachable from the origin, which is the question being asked.
     pub async fn place_author(&mut self, author: &mut Author, diag: &mut Diagnostics) {
         if author.geo_source.rank() >= GeoSource::AuthorPrior.rank() && author.located() {
             return;
