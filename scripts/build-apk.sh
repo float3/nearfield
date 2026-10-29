@@ -74,6 +74,7 @@ npx tauri android init >/dev/null
 GEN="$ROOT/app/src-tauri/gen/android"
 cp "$KEYPROPS" "$GEN/keystore.properties"
 python "$ROOT/scripts/inject-signing.py" "$GEN/app/build.gradle.kts"
+python "$ROOT/scripts/inject-manifest.py" "$GEN/app/src/main/AndroidManifest.xml"
 
 # 4. Stamp the version. Android requires a monotonically increasing
 #    versionCode, so nightlies use the date; tauri regenerates this file on

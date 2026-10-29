@@ -12,7 +12,9 @@ use nearfield_core::geocode::{self, Place};
 use nearfield_core::{paper, pipeline::IndexEntry};
 use std::path::PathBuf;
 use std::time::Duration;
-use tauri::Manager;
+mod install;
+
+use tauri::{Emitter, Manager};
 
 const DATA_BASE: &str = "https://hilll.dev/nearfield/data";
 const UPDATE_BASE: &str = "https://hilll.dev/nearfield/updates";
@@ -331,6 +333,74 @@ async fn check_update(
     }
 }
 
+/// Download an update and hand it to Android's installer.
+///
+/// The old flow opened the APK's URL in a browser: you left the app, waited
+/// in the notification shade, and tapped to find the download again. This
+/// fetches it in place, reporting progress, and then starts the installer
+/// directly. Android still asks you to confirm — that part is not ours to
+/// skip — but nothing else leaves the app.
+///
+/// The file lands in the cache directory because that is what the bundled
+/// FileProvider exposes; see `install::install_apk`.
+#[tauri::command]
+async fn download_and_install(
+    app: tauri::AppHandle,
+    state: tauri::State<'_, AppState>,
+    url: String,
+    version: String,
+) -> Result<(), String> {
+    use futures_util::StreamExt;
+
+    if !cfg!(target_os = "android") {
+        return Err("installing an APK only applies on Android".into());
+    }
+    if !url.starts_with("https://github.com/") {
+        return Err(format!("refusing to install from {url}"));
+    }
+
+    let dir = state.cache_dir.join("updates");
+    std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
+    let safe: String = version
+        .chars()
+        .map(|c| if c.is_ascii_alphanumeric() || c == '.' || c == '-' { c } else { '_' })
+        .collect();
+    let path = dir.join(format!("nearfield-{safe}.apk"));
+    let tmp = path.with_extension("apk.part");
+
+    let resp = state
+        .http
+        .client()
+        .get(&url)
+        .send()
+        .await
+        .map_err(|e| format!("could not start the download: {e}"))?
+        .error_for_status()
+        .map_err(|e| format!("the download was refused: {e}"))?;
+
+    let total = resp.content_length().unwrap_or(0);
+    let mut out = std::fs::File::create(&tmp).map_err(|e| e.to_string())?;
+    let mut done: u64 = 0;
+    let mut last_emit = 0u64;
+    let mut stream = resp.bytes_stream();
+
+    while let Some(chunk) = stream.next().await {
+        let chunk = chunk.map_err(|e| format!("the download stalled: {e}"))?;
+        use std::io::Write;
+        out.write_all(&chunk).map_err(|e| e.to_string())?;
+        done += chunk.len() as u64;
+        if total == 0 || done - last_emit > total / 100 {
+            last_emit = done;
+            let _ = app.emit("update-progress", (done, total));
+        }
+    }
+    drop(out);
+    std::fs::rename(&tmp, &path).map_err(|e| e.to_string())?;
+    let _ = app.emit("update-progress", (total.max(done), total.max(done)));
+
+    crate::install::install_apk(&path)
+}
+
 /// Look up a place name for the origin picker.
 ///
 /// Lives in Rust because Nominatim sends no cross-origin headers, and because
@@ -380,7 +450,8 @@ pub fn run() {
             geocode_place,
             saved_days,
             download_days,
-            remove_day
+            remove_day,
+            download_and_install
         ])
         .run(tauri::generate_context!())
         .expect("error while running nearfield");

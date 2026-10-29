@@ -205,6 +205,31 @@ export async function checkUpdate(channel?: string): Promise<UpdateInfo | null> 
   return (await t.invoke<UpdateInfo | null>("check_update", { channel })) ?? null;
 }
 
+/**
+ * Download an update in place and hand it to Android's installer.
+ *
+ * `onProgress` is called with bytes so far and the total, so the UI can show
+ * a bar instead of sending the user to a browser and a notification shade.
+ */
+export async function downloadAndInstall(
+  url: string,
+  version: string,
+  onProgress: (done: number, total: number) => void,
+): Promise<void> {
+  const t = tauri();
+  if (!t) throw new Error("Installing an update only works in the app.");
+
+  const { listen } = await import("@tauri-apps/api/event");
+  const stop = await listen<[number, number]>("update-progress", (e) => {
+    onProgress(e.payload[0], e.payload[1]);
+  });
+  try {
+    await t.invoke("download_and_install", { url, version });
+  } finally {
+    stop();
+  }
+}
+
 export function isApp(): boolean {
   return tauri() !== null;
 }

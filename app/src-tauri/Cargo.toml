@@ -26,3 +26,10 @@ anyhow = "1"
 tracing = "0.1"
 tauri-plugin-geolocation = "2.5.0"
 flate2 = "1.1.10"
+futures-util = { version = "0.3.34", default-features = false, features = ["std"] }
+
+# Launching Android's package installer needs a real Intent with a
+# FileProvider URI and a read grant, which no Tauri plugin exposes.
+[target.'cfg(target_os = "android")'.dependencies]
+jni = "0.21"
+ndk-context = "0.1"

@@ -12,6 +12,7 @@ import {
   loadIndex,
   openExternal,
   openMail,
+  downloadAndInstall,
   downloadDays,
   removeDay,
   savedDays,
@@ -751,6 +752,32 @@ function setChannel(c: Channel, buildChannel: string | undefined): void {
   void runUpdateCheck();
 }
 
+/**
+ * Fetch an update and start the installer, showing progress in `status`.
+ *
+ * Android shows its own confirmation, which is not ours to skip — but
+ * everything up to that point now happens inside the app.
+ */
+async function installUpdate(
+  update: { url: string; version: string },
+  status: HTMLElement,
+): Promise<void> {
+  status.className = "muted";
+  status.textContent = "Downloading…";
+  try {
+    await downloadAndInstall(update.url, update.version, (done, total) => {
+      const mb = (n: number) => (n / (1024 * 1024)).toFixed(1);
+      status.textContent = total
+        ? `Downloading ${mb(done)} of ${mb(total)} MB (${Math.round((100 * done) / total)}%)`
+        : `Downloading ${mb(done)} MB`;
+    });
+    status.textContent = "Starting the installer…";
+  } catch (e) {
+    status.className = "err";
+    status.textContent = e instanceof Error ? e.message : String(e);
+  }
+}
+
 /** The manual "Check for updates" button. */
 async function runUpdateCheck(): Promise<void> {
   const status = el("update-status");
@@ -774,7 +801,7 @@ async function runUpdateCheck(): Promise<void> {
       `${escapeHtml(update.version)} is available. ` +
       `<button id="install-now" class="inline-btn">Install</button>`;
     document.getElementById("install-now")?.addEventListener("click", () => {
-      void openExternal(update.url);
+      void installUpdate(update, status);
     });
   } catch (e) {
     status.className = "err";
@@ -808,7 +835,9 @@ async function offerUpdate(): Promise<void> {
     update.notes ? ` — ${update.notes}` : ""
   }`;
   bar.hidden = false;
-  el("update-get").addEventListener("click", () => void openExternal(update.url));
+  el("update-get").addEventListener("click", () => {
+    void installUpdate(update, el("update-text"));
+  });
   el("update-dismiss").addEventListener("click", () => {
     localStorage.setItem("dismissed-update", update.version);
     bar.hidden = true;

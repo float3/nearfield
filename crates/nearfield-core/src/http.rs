@@ -51,6 +51,12 @@ impl Http {
         Ok(Self { client, gates: Arc::new(Mutex::new(HashMap::new())) })
     }
 
+    /// The underlying client, for callers that need to stream a response
+    /// rather than buffer it — a 64 MB APK should not go through memory.
+    pub fn client(&self) -> &reqwest::Client {
+        &self.client
+    }
+
     /// Declare the minimum delay between requests to a host.
     pub async fn set_rate(&self, host: &str, gap: Duration) {
         let mut g = self.gates.lock().await;
