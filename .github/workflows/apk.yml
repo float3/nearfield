@@ -72,9 +72,6 @@ jobs:
           fi
           echo "channel=$CHANNEL" >> "$GITHUB_OUTPUT"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          # Android demands a strictly increasing integer; minutes-since-epoch
-          # keeps several builds a day distinct and fits in an int32.
-          echo "version_code=$(( $(date -u +%s) / 60 - 29000000 ))" >> "$GITHUB_OUTPUT"
           echo "Building $VERSION on $CHANNEL"
 
       - name: Skip the nightly if the app has not changed
@@ -152,7 +149,6 @@ jobs:
         env:
           NEARFIELD_CHANNEL: ${{ steps.meta.outputs.channel }}
           NEARFIELD_VERSION: ${{ steps.meta.outputs.version }}
-          NEARFIELD_VERSION_CODE: ${{ steps.meta.outputs.version_code }}
           NEARFIELD_CONTACT: ${{ secrets.NEARFIELD_CONTACT }}
         run: |
           # The runner ships an NDK already; build-apk.sh only probes
