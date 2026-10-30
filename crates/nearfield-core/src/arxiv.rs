@@ -29,17 +29,23 @@ struct Item {
     pub_date: String,
 }
 
-/// The announcement date arXiv itself stamps on a feed item.
+/// The day a feed item's announcement went out, which names the digest.
 ///
-/// arXiv announces at 00:00 US Eastern, which is 04:00 or 05:00 UTC depending
-/// on daylight saving. Naming a digest after the wall clock therefore files
-/// the previous announcement under today's date for any run before ~05:00 UTC
-/// — which produced two identical 2447-paper days. The feed knows which
-/// announcement it is, so ask it: "Tue, 27 Oct 2026 00:00:00 -0400" is the
-/// 27th in arXiv's own timezone, whatever the clock says here.
+/// arXiv sends each announcement at 20:00 US Eastern and stamps it with the
+/// following day: the list mailed on the evening of Thursday the 29th, of
+/// papers submitted up to 14:00 that afternoon, carries
+/// "Fri, 30 Oct 2026 00:00:00 -0400". A digest named after that stamp was a
+/// day ahead of the papers in it, and appeared before its own date had begun
+/// in Europe. So the digest is named after the evening it went out: the stamp's
+/// date in arXiv's own timezone, less one day.
+///
+/// Taking the date from the feed rather than the wall clock still matters: a
+/// run before the feeds are rebuilt reads the previous announcement, and
+/// naming it after the clock once published 2447 papers under two dates.
 fn announced_on(pub_date: &str) -> Option<String> {
     let dt = chrono::DateTime::parse_from_rfc2822(pub_date.trim()).ok()?;
-    Some(dt.date_naive().format("%Y-%m-%d").to_string())
+    let sent = dt.date_naive().pred_opt()?;
+    Some(sent.format("%Y-%m-%d").to_string())
 }
 
 /// Pull the bare arXiv id out of the strings arXiv puts it in:
@@ -431,14 +437,29 @@ Abstract: Nope.</description>
 
     #[test]
     fn the_announcement_date_comes_from_the_feed() {
-        // Regression: a run at 00:34 UTC named the 27th's announcement
-        // "2026-10-28" and published 2447 duplicate papers under both dates.
-        assert_eq!(
-            announced_on("Tue, 27 Oct 2026 00:00:00 -0400").as_deref(),
-            Some("2026-10-27")
-        );
+        // Regression: a run at 00:34 UTC named an announcement after the
+        // clock and published 2447 duplicate papers under two dates.
         let ps = parse_feed(FEED, "2099-01-01", &mut Diagnostics::default());
-        assert_eq!(ps[0].announced, "2026-10-27", "the clock must not win");
+        assert_eq!(ps[0].announced, "2026-10-26", "the clock must not win");
+    }
+
+    #[test]
+    fn a_digest_is_named_after_the_evening_it_went_out() {
+        // Thursday evening's list is stamped Friday; it is Thursday's digest.
+        assert_eq!(
+            announced_on("Fri, 30 Oct 2026 00:00:00 -0400").as_deref(),
+            Some("2026-10-29")
+        );
+        // Monday's feed holds Sunday evening's list.
+        assert_eq!(
+            announced_on("Mon, 02 Nov 2026 00:00:00 -0500").as_deref(),
+            Some("2026-11-01")
+        );
+        // Across a month boundary.
+        assert_eq!(
+            announced_on("Sun, 01 Nov 2026 00:00:00 -0500").as_deref(),
+            Some("2026-10-31")
+        );
     }
 
     #[test]
@@ -460,7 +481,7 @@ Abstract: Nope.</description>
         assert_eq!(p.title, "Collaborative In-Context Learning");
         assert_eq!(p.abstract_text, "Indoor radio map estimation is essential.");
         assert_eq!(p.categories, vec!["cs.LG", "cs.AI"]);
-        assert_eq!(p.announced, "2026-10-27");
+        assert_eq!(p.announced, "2026-10-26");
         let names: Vec<_> = p.authors.iter().map(|a| a.name.as_str()).collect();
         assert_eq!(names, vec!["Yuanzhe Peng", "Jie Xu"]);
     }
