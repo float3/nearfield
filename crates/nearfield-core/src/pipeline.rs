@@ -220,6 +220,13 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     diag.enrich_attempted = n;
     let mut enriched_ok = 0usize;
     for p in papers.iter_mut().take(n) {
+        // A re-run of the day reuses what an earlier run already read, so a
+        // larger --prefetch reaches papers that have not been read yet instead
+        // of fetching the same pages again.
+        if p.enriched {
+            enriched_ok += 1;
+            continue;
+        }
         match paper::enrich(&http, p).await {
             Ok(true) => {
                 enriched_ok += 1;
