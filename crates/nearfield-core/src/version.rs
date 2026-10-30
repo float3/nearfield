@@ -31,15 +31,19 @@ impl Version {
         let major = parts.next()?.parse().ok()?;
         let minor = parts.next().unwrap_or("0").parse().ok()?;
         let patch = parts.next().unwrap_or("0").parse().ok()?;
-        Some(Self { major, minor, patch, build })
+        Some(Self {
+            major,
+            minor,
+            patch,
+            build,
+        })
     }
 }
 
 /// Pull the first long run of digits out of a build suffix, which is the date.
 fn parse_build(b: &str) -> u64 {
     b.split(|c: char| !c.is_ascii_digit())
-        .filter(|p| p.len() >= 6)
-        .next()
+        .find(|p| p.len() >= 6)
         .and_then(|p| p.parse().ok())
         .unwrap_or(0)
 }

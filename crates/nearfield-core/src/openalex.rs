@@ -202,8 +202,10 @@ impl OpenAlex {
     }
 
     async fn url(&self, path: &str, params: &[(&str, &str)]) -> Result<String> {
-        let mut all: Vec<(String, String)> =
-            params.iter().map(|(k, v)| (k.to_string(), v.to_string())).collect();
+        let mut all: Vec<(String, String)> = params
+            .iter()
+            .map(|(k, v)| (k.to_string(), v.to_string()))
+            .collect();
         if let KeyState::Use(k) = &*self.key.lock().await {
             all.push(("api_key".to_string(), k.clone()));
         }
@@ -359,7 +361,10 @@ impl OpenAlex {
         }
         if let Some(ids) = self.snapshot.as_ref().and_then(|s| s.lookup(name)) {
             self.snapshot_hits += 1;
-            return Some(AuthorRecord { institution_ids: ids, works_count: 0 });
+            return Some(AuthorRecord {
+                institution_ids: ids,
+                works_count: 0,
+            });
         }
         if cached.is_some() {
             return cached;
@@ -394,10 +399,17 @@ impl OpenAlex {
         self.note_success();
         let rec = match resp.results.into_iter().next() {
             Some(hit) => AuthorRecord {
-                institution_ids: hit.last_known_institutions.into_iter().map(|i| i.id).collect(),
+                institution_ids: hit
+                    .last_known_institutions
+                    .into_iter()
+                    .map(|i| i.id)
+                    .collect(),
                 works_count: hit.works_count,
             },
-            None => AuthorRecord { institution_ids: Vec::new(), works_count: 0 },
+            None => AuthorRecord {
+                institution_ids: Vec::new(),
+                works_count: 0,
+            },
         };
         self.authors.put(key, rec.clone());
         Some(rec)
@@ -413,7 +425,9 @@ impl OpenAlex {
         if author.geo_source.rank() >= GeoSource::AuthorPrior.rank() && author.located() {
             return;
         }
-        let Some(rec) = self.author_record(&author.name).await else { return };
+        let Some(rec) = self.author_record(&author.name).await else {
+            return;
+        };
         if rec.institution_ids.is_empty() {
             diag.authors_unknown.record(author.name.clone());
             return;
@@ -425,13 +439,14 @@ impl OpenAlex {
                 match inst.point() {
                     Some(p) => {
                         let d = p.distance_km(&self.origin);
-                        if best.as_ref().map_or(true, |(bd, _)| d < *bd) {
+                        if best.as_ref().is_none_or(|(bd, _)| d < *bd) {
                             best = Some((d, inst));
                         }
                     }
                     // Resolved, but upstream has no coordinates for it.
                     None if !inst.display_name.is_empty() => {
-                        diag.institutions_without_geo.record(inst.display_name.clone());
+                        diag.institutions_without_geo
+                            .record(inst.display_name.clone());
                     }
                     None => {}
                 }
@@ -532,11 +547,7 @@ impl OpenAlex {
         self.fill_affiliation(aff, &rec);
     }
 
-    fn fill_affiliation(
-        &self,
-        aff: &mut crate::model::Affiliation,
-        rec: &InstitutionRecord,
-    ) {
+    fn fill_affiliation(&self, aff: &mut crate::model::Affiliation, rec: &InstitutionRecord) {
         if rec.display_name.is_empty() {
             return;
         }
@@ -598,7 +609,10 @@ mod tests {
         for _ in 0..10_000 {
             oa.charge(ID_LOOKUP_COST_USD);
         }
-        assert!(!oa.out_of_budget(), "id lookups are free and must not count");
+        assert!(
+            !oa.out_of_budget(),
+            "id lookups are free and must not count"
+        );
         assert_eq!(oa.lookups, 10_000, "they are still counted for reporting");
     }
 

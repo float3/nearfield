@@ -48,7 +48,10 @@ impl Http {
             .timeout(Duration::from_secs(60))
             .build()
             .context("building http client")?;
-        Ok(Self { client, gates: Arc::new(Mutex::new(HashMap::new())) })
+        Ok(Self {
+            client,
+            gates: Arc::new(Mutex::new(HashMap::new())),
+        })
     }
 
     /// The underlying client, for callers that need to stream a response
@@ -215,7 +218,10 @@ mod tests {
 
     #[test]
     fn falls_back_to_backoff_when_no_header() {
-        assert_eq!(retry_wait(None, Duration::from_secs(4)), Duration::from_secs(4));
+        assert_eq!(
+            retry_wait(None, Duration::from_secs(4)),
+            Duration::from_secs(4)
+        );
     }
 
     #[test]

@@ -18,18 +18,14 @@ use std::sync::OnceLock;
 /// in a mail client.
 fn email_re() -> &'static Regex {
     static RE: OnceLock<Regex> = OnceLock::new();
-    RE.get_or_init(|| {
-        Regex::new(r"(?i)\b[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,24}\b").unwrap()
-    })
+    RE.get_or_init(|| Regex::new(r"(?i)\b[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,24}\b").unwrap())
 }
 
 /// Section headings that mean "the introduction", across the numbering styles
 /// LaTeXML emits: "1 Introduction", "I Introduction", "Introduction".
 fn intro_re() -> &'static Regex {
     static RE: OnceLock<Regex> = OnceLock::new();
-    RE.get_or_init(|| {
-        Regex::new(r"(?i)^\s*(?:(?:[ivxlc]+|\d+)[.\s]+)?introduction\s*$").unwrap()
-    })
+    RE.get_or_init(|| Regex::new(r"(?i)^\s*(?:(?:[ivxlc]+|\d+)[.\s]+)?introduction\s*$").unwrap())
 }
 
 fn sel(s: &str) -> Selector {
@@ -39,7 +35,10 @@ fn sel(s: &str) -> Selector {
 /// Collapse whitespace and strip the footnote markers LaTeXML leaves inline.
 fn clean(s: &str) -> String {
     let joined = s.split_whitespace().collect::<Vec<_>>().join(" ");
-    joined.trim().trim_matches(|c: char| c == ',' || c == ';').to_string()
+    joined
+        .trim()
+        .trim_matches(|c: char| c == ',' || c == ';')
+        .to_string()
 }
 
 /// Does this string look like an institution rather than a street address or
@@ -62,9 +61,20 @@ fn looks_institutional(s: &str) -> bool {
     }
 
     const MARKERS: [&str; 14] = [
-        "universit", "institut", "college", "school", "laborator", "labs",
-        "academy", "hospital", "center", "centre", "department", "faculty",
-        "cnrs", "max planck",
+        "universit",
+        "institut",
+        "college",
+        "school",
+        "laborator",
+        "labs",
+        "academy",
+        "hospital",
+        "center",
+        "centre",
+        "department",
+        "faculty",
+        "cnrs",
+        "max planck",
     ];
     s.len() >= 6 && s.len() <= 300 && MARKERS.iter().any(|m| lower.contains(m))
 }
@@ -121,7 +131,10 @@ fn extract_emails(doc: &Html, author_block: &str, html: &str) -> Vec<String> {
         if let Some(href) = el.value().attr("href") {
             push_email(
                 &mut found,
-                href.trim_start_matches("mailto:").split('?').next().unwrap_or(""),
+                href.trim_start_matches("mailto:")
+                    .split('?')
+                    .next()
+                    .unwrap_or(""),
             );
         }
     }
@@ -237,7 +250,9 @@ fn strip_marker(s: &str) -> String {
 
 /// Add a candidate affiliation if it looks like an institution and is new.
 fn push_affiliation(out: &mut Vec<String>, candidate: &str) {
-    let Some(c) = normalise_affiliation(candidate) else { return };
+    let Some(c) = normalise_affiliation(candidate) else {
+        return;
+    };
     if !out.iter().any(|o| o == &c) {
         out.push(c);
     }
@@ -256,7 +271,11 @@ fn drop_concatenations(mut v: Vec<String>) -> Vec<String> {
 fn extract_affiliations(doc: &Html, author_block: &str) -> Vec<String> {
     let mut out: Vec<String> = Vec::new();
 
-    for s in ["span.ltx_role_affiliation", "span.ltx_author_notes", "span.ltx_contact"] {
+    for s in [
+        "span.ltx_role_affiliation",
+        "span.ltx_author_notes",
+        "span.ltx_contact",
+    ] {
         for el in doc.select(&sel(s)) {
             let t = el.text().collect::<String>();
             // An author-notes blob can hold several affiliations at once; the
@@ -283,7 +302,9 @@ fn extract_affiliations(doc: &Html, author_block: &str) -> Vec<String> {
 fn extract_intro(doc: &Html) -> Option<String> {
     let heading = sel("h2.ltx_title_section, h2.ltx_title, h1.ltx_title_section");
     for section in doc.select(&sel("section.ltx_section")) {
-        let Some(h) = section.select(&heading).next() else { continue };
+        let Some(h) = section.select(&heading).next() else {
+            continue;
+        };
         let title = clean(&h.text().collect::<String>());
         if !intro_re().is_match(&title) {
             continue;
@@ -333,7 +354,9 @@ fn email_matches_author(email: &str, author_name: &str) -> bool {
         })
         .filter(|p| !p.is_empty())
         .collect();
-    let Some(surname) = parts.last() else { return false };
+    let Some(surname) = parts.last() else {
+        return false;
+    };
     if surname.len() < 3 {
         return false;
     }
@@ -411,7 +434,11 @@ pub async fn enrich(http: &crate::http::Http, paper: &mut Paper) -> Result<bool>
 
 /// Author names, for the geolocation step.
 pub fn author_names(paper: &Paper) -> Vec<String> {
-    paper.authors.iter().map(|a: &Author| a.name.clone()).collect()
+    paper
+        .authors
+        .iter()
+        .map(|a: &Author| a.name.clone())
+        .collect()
 }
 
 #[cfg(test)]
@@ -449,7 +476,11 @@ Technical University of Munich, Garching
     fn finds_institutional_affiliations() {
         let a = parse_html(DOC).affiliations;
         assert!(a.iter().any(|x| x.contains("North Florida")), "{a:?}");
-        assert!(a.iter().any(|x| x.contains("Technical University of Munich")), "{a:?}");
+        assert!(
+            a.iter()
+                .any(|x| x.contains("Technical University of Munich")),
+            "{a:?}"
+        );
     }
 
     #[test]
@@ -457,12 +488,20 @@ Technical University of Munich, Garching
         let i = parse_html(DOC).intro.expect("intro found");
         assert!(i.contains("Indoor radio map estimation matters."));
         assert!(i.contains("We propose a method."));
-        assert!(!i.contains("Should not appear"), "leaked into next section: {i}");
+        assert!(
+            !i.contains("Should not appear"),
+            "leaked into next section: {i}"
+        );
     }
 
     #[test]
     fn roman_arabic_and_bare_headings_all_count_as_introduction() {
-        for h in ["I Introduction", "1 Introduction", "Introduction", "1. INTRODUCTION"] {
+        for h in [
+            "I Introduction",
+            "1 Introduction",
+            "Introduction",
+            "1. INTRODUCTION",
+        ] {
             assert!(intro_re().is_match(h), "{h} should match");
         }
         for h in ["Introduction to Topology", "II Related Work"] {
@@ -495,7 +534,10 @@ Technical University of Munich, Garching
         };
         apply(&mut p, parse_html(DOC));
         assert_eq!(p.authors[0].email.as_deref(), Some("y.peng@unf.edu"));
-        assert!(p.authors[1].email.is_none(), "must not guess Jie Xu's address");
+        assert!(
+            p.authors[1].email.is_none(),
+            "must not guess Jie Xu's address"
+        );
         assert!(p.enriched);
     }
 
@@ -528,7 +570,10 @@ Technical University of Munich, Garching
         let got = normalise_affiliation(
             "Email: vasil.g.vasilev.2022@elsys-bg.org Affiliation: Technological School Electronic Systems",
         );
-        assert_eq!(got.as_deref(), Some("Technological School Electronic Systems"));
+        assert_eq!(
+            got.as_deref(),
+            Some("Technological School Electronic Systems")
+        );
     }
 
     #[test]
@@ -568,12 +613,13 @@ Technical University of Munich, Garching
         // From the parsing report: "1 Technical University of Munich, Munich,
         // Germany" went into the institution search with the marker attached.
         assert_eq!(
-            normalise_affiliation("1 Technical University of Munich, Munich, Germany")
-                .as_deref(),
+            normalise_affiliation("1 Technical University of Munich, Munich, Germany").as_deref(),
             Some("Technical University of Munich, Munich, Germany")
         );
-        assert_eq!(strip_marker("2 Munich Center for Machine Learning"),
-                   "Munich Center for Machine Learning");
+        assert_eq!(
+            strip_marker("2 Munich Center for Machine Learning"),
+            "Munich Center for Machine Learning"
+        );
     }
 
     #[test]
@@ -595,10 +641,9 @@ Technical University of Munich, Garching
             "The authors thank the International Max Planck Research School"
         )
         .is_none());
-        assert!(normalise_affiliation(
-            "This work was supported by the Max Planck Institute"
-        )
-        .is_none());
+        assert!(
+            normalise_affiliation("This work was supported by the Max Planck Institute").is_none()
+        );
         // A real affiliation that merely contains a marker word still passes.
         assert!(normalise_affiliation("Max Planck Institute for Physics").is_some());
     }
@@ -626,18 +671,29 @@ Technical University of Munich, Garching
             enriched: false,
         };
         apply(&mut p, parse_html(DOC));
-        let first = (p.authors[0].email.clone(), p.contact_emails.clone(), p.affiliations.len());
+        let first = (
+            p.authors[0].email.clone(),
+            p.contact_emails.clone(),
+            p.affiliations.len(),
+        );
         apply(&mut p, parse_html(DOC));
-        let second = (p.authors[0].email.clone(), p.contact_emails.clone(), p.affiliations.len());
+        let second = (
+            p.authors[0].email.clone(),
+            p.contact_emails.clone(),
+            p.affiliations.len(),
+        );
         assert_eq!(first, second, "re-enrichment must not accumulate");
-        assert!(p.contact_emails.is_empty(), "claimed address leaked: {:?}", p.contact_emails);
+        assert!(
+            p.contact_emails.is_empty(),
+            "claimed address leaked: {:?}",
+            p.contact_emails
+        );
     }
 
     #[test]
     fn footnote_markers_are_stripped_from_affiliations() {
         assert_eq!(
-            normalise_affiliation("1University of North Florida, Jacksonville, FL, USA")
-                .as_deref(),
+            normalise_affiliation("1University of North Florida, Jacksonville, FL, USA").as_deref(),
             Some("University of North Florida, Jacksonville, FL, USA")
         );
     }
@@ -660,7 +716,10 @@ Technical University of Munich, Garching
     #[test]
     fn a_numeric_company_name_survives_marker_stripping() {
         assert_eq!(strip_marker("3M Company"), "3M Company");
-        assert_eq!(strip_marker("2University of Munich"), "University of Munich");
+        assert_eq!(
+            strip_marker("2University of Munich"),
+            "University of Munich"
+        );
     }
 
     #[test]
@@ -686,7 +745,10 @@ Technical University of Munich, Garching
             <div class="ltx_para"><p class="ltx_p">Contact notmine@elsewhere.edu for data.</p></div>
           </section>
         </body></html>"#;
-        assert!(parse_html(doc).emails.is_empty(), "must not scrape the body");
+        assert!(
+            parse_html(doc).emails.is_empty(),
+            "must not scrape the body"
+        );
     }
 
     #[test]

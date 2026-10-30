@@ -143,8 +143,7 @@ impl Diagnostics {
 
         add(
             "affiliation_unresolved",
-            "Affiliation text was read off the paper but matched no institution"
-                .to_string(),
+            "Affiliation text was read off the paper but matched no institution".to_string(),
             "Look at the samples: if they share a shape, teach normalise_affiliation \
              to strip it. These papers lose their authoritative location and fall \
              back to the author prior.",
@@ -160,8 +159,7 @@ impl Diagnostics {
         );
         add(
             "intro_not_found",
-            "The paper had HTML but no section was recognised as the introduction"
-                .to_string(),
+            "The paper had HTML but no section was recognised as the introduction".to_string(),
             "Check the heading these papers use; intro_re may need another form \
              (e.g. 'Background', 'Motivation', or an unnumbered heading).",
             &self.intro_not_found,
@@ -308,7 +306,13 @@ mod tests {
             issues[0].kind, "affiliation_unresolved",
             "a fixable issue outranks a large expected one"
         );
-        assert!(!issues.iter().find(|i| i.kind == "html_absent").unwrap().actionable);
+        assert!(
+            !issues
+                .iter()
+                .find(|i| i.kind == "html_absent")
+                .unwrap()
+                .actionable
+        );
     }
 
     #[test]

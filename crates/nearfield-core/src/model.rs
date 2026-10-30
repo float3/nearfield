@@ -198,17 +198,13 @@ impl Paper {
     pub fn reproject(&mut self, origin: &crate::geo::Point) {
         for a in self.authors.iter_mut() {
             a.distance_km = match (a.lat, a.lon) {
-                (Some(lat), Some(lon)) => {
-                    Some(crate::geo::Point { lat, lon }.distance_km(origin))
-                }
+                (Some(lat), Some(lon)) => Some(crate::geo::Point { lat, lon }.distance_km(origin)),
                 _ => None,
             };
         }
         for f in self.affiliations.iter_mut() {
             f.distance_km = match (f.lat, f.lon) {
-                (Some(lat), Some(lon)) => {
-                    Some(crate::geo::Point { lat, lon }.distance_km(origin))
-                }
+                (Some(lat), Some(lon)) => Some(crate::geo::Point { lat, lon }.distance_km(origin)),
                 _ => None,
             };
         }
@@ -304,19 +300,32 @@ mod tests {
         let mut tum = Author::new("Someone at TUM");
         tum.lat = Some(48.13743);
         tum.lon = Some(11.57549);
-        tum.distance_km =
-            Some(crate::geo::Point { lat: 48.13743, lon: 11.57549 }.distance_km(&crate::geo::MUNICH));
+        tum.distance_km = Some(
+            crate::geo::Point {
+                lat: 48.13743,
+                lon: 11.57549,
+            }
+            .distance_km(&crate::geo::MUNICH),
+        );
         tum.geo_source = GeoSource::AuthorPrior;
 
         let mut mit = Author::new("Someone at MIT");
         mit.lat = Some(42.3601);
         mit.lon = Some(-71.0942);
-        mit.distance_km =
-            Some(crate::geo::Point { lat: 42.3601, lon: -71.0942 }.distance_km(&crate::geo::MUNICH));
+        mit.distance_km = Some(
+            crate::geo::Point {
+                lat: 42.3601,
+                lon: -71.0942,
+            }
+            .distance_km(&crate::geo::MUNICH),
+        );
         mit.geo_source = GeoSource::AuthorPrior;
 
         // Author order must not matter.
-        for authors in [vec![mit.clone(), tum.clone()], vec![tum.clone(), mit.clone()]] {
+        for authors in [
+            vec![mit.clone(), tum.clone()],
+            vec![tum.clone(), mit.clone()],
+        ] {
             let mut p = paper_with(authors);
             p.resolve_distance();
             assert!(

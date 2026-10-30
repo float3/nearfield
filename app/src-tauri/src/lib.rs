@@ -6,9 +6,9 @@
 //! readable with no signal; and handing a PDF URL to the phone's own reader is
 //! an Android intent, not a navigation.
 
+use nearfield_core::geocode::{self, Place};
 use nearfield_core::http::Http;
 use nearfield_core::model::{Digest, GeoSource, Paper};
-use nearfield_core::geocode::{self, Place};
 use nearfield_core::{paper, pipeline::IndexEntry};
 use std::path::PathBuf;
 use std::time::Duration;
@@ -75,8 +75,7 @@ fn read_cached(path: &std::path::Path) -> std::io::Result<String> {
         GzDecoder::new(&raw[..]).read_to_string(&mut s)?;
         Ok(s)
     } else {
-        String::from_utf8(raw)
-            .map_err(|e| std::io::Error::new(std::io::ErrorKind::InvalidData, e))
+        String::from_utf8(raw).map_err(|e| std::io::Error::new(std::io::ErrorKind::InvalidData, e))
     }
 }
 
@@ -111,8 +110,7 @@ where
         Err(net) => {
             let body = read_cached(&state.cache_path(name))
                 .map_err(|_| format!("offline and nothing saved for {name} ({net})"))?;
-            serde_json::from_str::<T>(&body)
-                .map_err(|e| format!("saved {name} is unreadable: {e}"))
+            serde_json::from_str::<T>(&body).map_err(|e| format!("saved {name} is unreadable: {e}"))
         }
     }
 }
@@ -158,10 +156,7 @@ fn prune_unpublished(cache_dir: &std::path::Path, index: &[IndexEntry]) {
 }
 
 #[tauri::command]
-async fn load_digest(
-    state: tauri::State<'_, AppState>,
-    date: String,
-) -> Result<Digest, String> {
+async fn load_digest(state: tauri::State<'_, AppState>, date: String) -> Result<Digest, String> {
     // The date lands in a path, so refuse anything that is not one.
     if date.len() != 10 || !date.chars().all(|c| c.is_ascii_digit() || c == '-') {
         return Err(format!("not a date: {date}"));
@@ -171,11 +166,12 @@ async fn load_digest(
 
 /// Pull one paper's introduction and emails from arXiv right now.
 #[tauri::command]
-async fn fetch_paper(
-    state: tauri::State<'_, AppState>,
-    id: String,
-) -> Result<Paper, String> {
-    if id.is_empty() || !id.chars().all(|c| c.is_ascii_alphanumeric() || c == '.' || c == '/') {
+async fn fetch_paper(state: tauri::State<'_, AppState>, id: String) -> Result<Paper, String> {
+    if id.is_empty()
+        || !id
+            .chars()
+            .all(|c| c.is_ascii_alphanumeric() || c == '.' || c == '/')
+    {
         return Err(format!("not an arXiv id: {id}"));
     }
     let mut p = Paper {
@@ -256,7 +252,11 @@ async fn download_days(
     state: tauri::State<'_, AppState>,
     dates: Vec<String>,
 ) -> Result<DownloadReport, String> {
-    let mut report = DownloadReport { saved: vec![], failed: vec![], bytes: 0 };
+    let mut report = DownloadReport {
+        saved: vec![],
+        failed: vec![],
+        bytes: 0,
+    };
     for date in dates {
         if !is_date(&date) {
             report.failed.push(date);
@@ -297,7 +297,10 @@ struct AppInfo {
 
 #[tauri::command]
 fn app_info() -> AppInfo {
-    AppInfo { version: VERSION, channel: CHANNEL }
+    AppInfo {
+        version: VERSION,
+        channel: CHANNEL,
+    }
 }
 
 /// One channel's published build, as written by the release workflow.
@@ -398,7 +401,13 @@ async fn download_and_install(
     std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
     let safe: String = version
         .chars()
-        .map(|c| if c.is_ascii_alphanumeric() || c == '.' || c == '-' { c } else { '_' })
+        .map(|c| {
+            if c.is_ascii_alphanumeric() || c == '.' || c == '-' {
+                c
+            } else {
+                '_'
+            }
+        })
         .collect();
     let path = dir.join(format!("nearfield-{safe}.apk"));
     let tmp = path.with_extension("apk.part");
@@ -470,7 +479,8 @@ pub fn run() {
             tauri::async_runtime::block_on(async move {
                 h.set_rate("arxiv.org", Duration::from_secs(3)).await;
                 // Nominatim asks for at most one request a second.
-                h.set_rate("nominatim.openstreetmap.org", Duration::from_secs(1)).await;
+                h.set_rate("nominatim.openstreetmap.org", Duration::from_secs(1))
+                    .await;
             });
 
             app.manage(AppState { http, cache_dir });
@@ -497,19 +507,32 @@ mod tests {
     use super::*;
 
     fn day(date: &str) -> IndexEntry {
-        IndexEntry { date: date.into(), papers: 1, located: 1, nearest_km: None }
+        IndexEntry {
+            date: date.into(),
+            papers: 1,
+            located: 1,
+            nearest_km: None,
+        }
     }
 
     #[test]
     fn only_days_the_index_dropped_are_removed() {
         let dir = std::env::temp_dir().join(format!("nf-prune-{}", std::process::id()));
         std::fs::create_dir_all(dir.join("updates")).unwrap();
-        for name in ["2026-10-28.json", "2026-10-29.json", "index.json", "notes.json"] {
+        for name in [
+            "2026-10-28.json",
+            "2026-10-29.json",
+            "index.json",
+            "notes.json",
+        ] {
             std::fs::write(dir.join(name), "{}").unwrap();
         }
 
         prune_unpublished(&dir, &[]);
-        assert!(dir.join("2026-10-29.json").exists(), "an empty index removes nothing");
+        assert!(
+            dir.join("2026-10-29.json").exists(),
+            "an empty index removes nothing"
+        );
 
         prune_unpublished(&dir, &[day("2026-10-28")]);
         assert!(dir.join("2026-10-28.json").exists());

@@ -132,11 +132,14 @@ enum Command {
 fn measure_hit_rate(index: &std::path::Path, digest: &std::path::Path) -> Result<()> {
     use nearfield_core::snapshot::AuthorIndex;
     let idx = AuthorIndex::load(index)?;
-    let text = std::fs::read_to_string(digest)
-        .with_context(|| format!("reading {}", digest.display()))?;
+    let text =
+        std::fs::read_to_string(digest).with_context(|| format!("reading {}", digest.display()))?;
     let d: nearfield_core::Digest = serde_json::from_str(&text)?;
-    let mut names: Vec<String> =
-        d.papers.iter().flat_map(|p| p.authors.iter().map(|a| a.name.clone())).collect();
+    let mut names: Vec<String> = d
+        .papers
+        .iter()
+        .flat_map(|p| p.authors.iter().map(|a| a.name.clone()))
+        .collect();
     names.sort();
     names.dedup();
 
@@ -146,7 +149,7 @@ fn measure_hit_rate(index: &std::path::Path, digest: &std::path::Path) -> Result
             .any(|t| t.trim_end_matches('.').chars().count() == 1 || t.ends_with('.'));
         if initials {
             "has initials"
-        } else if n.chars().any(|c| !c.is_ascii()) {
+        } else if !n.is_ascii() {
             "non-ASCII"
         } else if n.contains('-') {
             "hyphenated"
@@ -211,9 +214,7 @@ fn load_categories(explicit: Option<String>) -> Result<Vec<String>> {
 }
 
 /// Resolve `--origin`, or `NEARFIELD_ORIGIN` without it, to a point and a label.
-async fn resolve_origin(
-    arg: Option<String>,
-) -> Result<(nearfield_core::Point, String)> {
+async fn resolve_origin(arg: Option<String>) -> Result<(nearfield_core::Point, String)> {
     let Some(q) = arg
         .or_else(|| std::env::var("NEARFIELD_ORIGIN").ok())
         .map(|q| q.trim().to_string())
@@ -234,8 +235,11 @@ async fn resolve_origin(
         return Ok((p, format!("{:.4}, {:.4}", p.lat, p.lon)));
     }
     let http = nearfield_core::http::Http::new(&contact())?;
-    http.set_rate("nominatim.openstreetmap.org", std::time::Duration::from_secs(1))
-        .await;
+    http.set_rate(
+        "nominatim.openstreetmap.org",
+        std::time::Duration::from_secs(1),
+    )
+    .await;
     let hits = nearfield_core::geocode::search(&http, &q, 1).await?;
     let hit = hits
         .into_iter()
@@ -250,7 +254,9 @@ fn contact() -> String {
 }
 
 fn api_key() -> Option<String> {
-    std::env::var("OPENALEX_API_KEY").ok().filter(|k| !k.trim().is_empty())
+    std::env::var("OPENALEX_API_KEY")
+        .ok()
+        .filter(|k| !k.trim().is_empty())
 }
 
 /// Print the day's parsing failures, worst first.
@@ -306,8 +312,7 @@ fn print_report(digest: &nearfield_core::Digest, samples: bool) {
 async fn main() -> Result<()> {
     tracing_subscriber::fmt()
         .with_env_filter(
-            tracing_subscriber::EnvFilter::try_from_default_env()
-                .unwrap_or_else(|_| "info".into()),
+            tracing_subscriber::EnvFilter::try_from_default_env().unwrap_or_else(|_| "info".into()),
         )
         .with_target(false)
         .init();
@@ -329,8 +334,7 @@ async fn main() -> Result<()> {
             cache_dir,
             snapshot,
         } => {
-            let date = date
-                .unwrap_or_else(|| chrono::Utc::now().format("%Y-%m-%d").to_string());
+            let date = date.unwrap_or_else(|| chrono::Utc::now().format("%Y-%m-%d").to_string());
             let categories = load_categories(categories)?;
             let (origin, origin_label) = resolve_origin(origin).await?;
             tracing::info!(
@@ -409,20 +413,30 @@ Parsing: {}",
 
         Command::Where { query } => {
             let http = nearfield_core::http::Http::new(&contact())?;
-            http.set_rate("nominatim.openstreetmap.org", std::time::Duration::from_secs(1))
-                .await;
+            http.set_rate(
+                "nominatim.openstreetmap.org",
+                std::time::Duration::from_secs(1),
+            )
+            .await;
             let hits = nearfield_core::geocode::search(&http, &query, 5).await?;
             if hits.is_empty() {
                 anyhow::bail!("no place matched {query:?}");
             }
             for h in hits {
-                println!("{:9.4},{:9.4}  {}  [{}]", h.lat, h.lon, h.short_label(), h.kind);
+                println!(
+                    "{:9.4},{:9.4}  {}  [{}]",
+                    h.lat,
+                    h.lon,
+                    h.short_label(),
+                    h.kind
+                );
             }
         }
 
         Command::Fetch { id } => {
             let http = nearfield_core::http::Http::new(&contact())?;
-            http.set_rate("arxiv.org", std::time::Duration::from_secs(3)).await;
+            http.set_rate("arxiv.org", std::time::Duration::from_secs(3))
+                .await;
             let mut p = Paper {
                 id: id.clone(),
                 title: String::new(),
@@ -444,7 +458,11 @@ Parsing: {}",
             println!("{}", serde_json::to_string_pretty(&p)?);
         }
 
-        Command::Report { date, samples, out_dir } => {
+        Command::Report {
+            date,
+            samples,
+            out_dir,
+        } => {
             let date = match date {
                 Some(d) => d,
                 None => {
@@ -480,7 +498,8 @@ Parsing: {}",
             std::fs::create_dir_all(&dir)?;
             if !skip_fetch {
                 let http = nearfield_core::http::Http::new(&contact())?;
-                http.set_rate(snapshot_fetch::BUCKET_HOST, snapshot_fetch::REQUEST_GAP).await;
+                http.set_rate(snapshot_fetch::BUCKET_HOST, snapshot_fetch::REQUEST_GAP)
+                    .await;
                 let (a, i) = snapshot_fetch::probe(&http).await?;
                 tracing::info!(
                     authors_release = %a.date,
@@ -504,8 +523,10 @@ Parsing: {}",
                 );
             }
             if !skip_build {
-                let policy =
-                    snapshot::BuildPolicy { min_works, alternatives: !no_alternatives };
+                let policy = snapshot::BuildPolicy {
+                    min_works,
+                    alternatives: !no_alternatives,
+                };
                 let started = std::time::Instant::now();
                 let build_dir = dir.clone();
                 let r = tokio::task::spawn_blocking(move || snapshot::build(&build_dir, &policy))
@@ -530,7 +551,10 @@ Parsing: {}",
 
         Command::Lookup { name, index } => {
             let idx = nearfield_core::snapshot::AuthorIndex::load(&index)?;
-            println!("keys tried: {:?}", nearfield_core::names::lookup_keys(&name));
+            println!(
+                "keys tried: {:?}",
+                nearfield_core::names::lookup_keys(&name)
+            );
             match idx.lookup(&name) {
                 None => println!("not in the index (release {})", idx.release()),
                 Some(ids) => {

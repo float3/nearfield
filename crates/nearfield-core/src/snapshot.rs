@@ -82,7 +82,10 @@ pub struct BuildPolicy {
 
 impl Default for BuildPolicy {
     fn default() -> Self {
-        Self { min_works: 2, alternatives: true }
+        Self {
+            min_works: 2,
+            alternatives: true,
+        }
     }
 }
 
@@ -140,9 +143,15 @@ impl ExtractWriter {
             std::fs::create_dir_all(parent)?;
         }
         let tmp = path.with_extension("tmp");
-        let f = std::fs::File::create(&tmp).with_context(|| format!("creating {}", tmp.display()))?;
+        let f =
+            std::fs::File::create(&tmp).with_context(|| format!("creating {}", tmp.display()))?;
         let enc = flate2::write::GzEncoder::new(f, flate2::Compression::fast());
-        Ok(Self { tmp, path: path.to_path_buf(), out: BufWriter::new(enc), rows: 0 })
+        Ok(Self {
+            tmp,
+            path: path.to_path_buf(),
+            out: BufWriter::new(enc),
+            rows: 0,
+        })
     }
 
     pub fn write<T: Serialize>(&mut self, row: &T) -> Result<()> {
@@ -153,7 +162,10 @@ impl ExtractWriter {
     }
 
     pub fn finish(self) -> Result<()> {
-        let enc = self.out.into_inner().map_err(|e| anyhow::anyhow!("flushing: {e}"))?;
+        let enc = self
+            .out
+            .into_inner()
+            .map_err(|e| anyhow::anyhow!("flushing: {e}"))?;
         enc.finish()?.sync_all()?;
         std::fs::rename(&self.tmp, &self.path)
             .with_context(|| format!("replacing {}", self.path.display()))?;
@@ -200,7 +212,10 @@ fn release_of(dir: &Path) -> String {
 /// once. That is a few gigabytes for the full snapshot, which is fine for the
 /// machine that builds it and irrelevant to the machine that reads it.
 pub fn build(dir: &Path, policy: &BuildPolicy) -> Result<BuildReport> {
-    let mut report = BuildReport { release: release_of(dir), ..Default::default() };
+    let mut report = BuildReport {
+        release: release_of(dir),
+        ..Default::default()
+    };
 
     // Institutions first: entries reference them by position.
     let mut institutions: Vec<InstitutionExtract> = Vec::new();
@@ -211,13 +226,16 @@ pub fn build(dir: &Path, policy: &BuildPolicy) -> Result<BuildReport> {
         if line.trim().is_empty() {
             continue;
         }
-        let inst: InstitutionExtract =
-            serde_json::from_str(&line).with_context(|| format!("parsing {}", inst_path.display()))?;
+        let inst: InstitutionExtract = serde_json::from_str(&line)
+            .with_context(|| format!("parsing {}", inst_path.display()))?;
         inst_index.insert(inst.id, institutions.len() as u32);
         institutions.push(inst);
     }
     if institutions.is_empty() {
-        bail!("no institutions in {}; fetch the snapshot first", inst_path.display());
+        bail!(
+            "no institutions in {}; fetch the snapshot first",
+            inst_path.display()
+        );
     }
     report.institutions = institutions.len() as u64;
 
@@ -229,7 +247,10 @@ pub fn build(dir: &Path, policy: &BuildPolicy) -> Result<BuildReport> {
 
     let files = author_extracts(dir)?;
     if files.is_empty() {
-        bail!("no author extracts under {}; fetch the snapshot first", dir.display());
+        bail!(
+            "no author extracts under {}; fetch the snapshot first",
+            dir.display()
+        );
     }
     for (n, path) in files.iter().enumerate() {
         for line in open_gz(path)?.lines() {
@@ -237,8 +258,8 @@ pub fn build(dir: &Path, policy: &BuildPolicy) -> Result<BuildReport> {
             if line.trim().is_empty() {
                 continue;
             }
-            let a: AuthorExtract =
-                serde_json::from_str(&line).with_context(|| format!("parsing {}", path.display()))?;
+            let a: AuthorExtract = serde_json::from_str(&line)
+                .with_context(|| format!("parsing {}", path.display()))?;
             report.authors_seen += 1;
             if a.works < policy.min_works {
                 continue;
@@ -293,7 +314,10 @@ pub fn build(dir: &Path, policy: &BuildPolicy) -> Result<BuildReport> {
     report.keys = entries.len() as u64;
     report.sets = sets.len() as u64;
 
-    let tail = serde_json::to_vec(&Tail { release: report.release.clone(), institutions })?;
+    let tail = serde_json::to_vec(&Tail {
+        release: report.release.clone(),
+        institutions,
+    })?;
     let path = dir.join(INDEX_FILE);
     let tmp = path.with_extension("idx.tmp");
     {
@@ -346,7 +370,8 @@ pub struct AuthorIndex {
 
 impl AuthorIndex {
     pub fn load(path: &Path) -> Result<Self> {
-        let mut f = std::fs::File::open(path).with_context(|| format!("opening {}", path.display()))?;
+        let mut f =
+            std::fs::File::open(path).with_context(|| format!("opening {}", path.display()))?;
         let mut data = Vec::with_capacity(f.metadata()?.len() as usize);
         f.read_to_end(&mut data)?;
         if data.len() < HEADER || &data[..4] != MAGIC {
@@ -354,14 +379,21 @@ impl AuthorIndex {
         }
         let version = u32::from_le_bytes(data[4..8].try_into().unwrap());
         if version != VERSION {
-            bail!("{} is index version {version}; this build reads {VERSION}", path.display());
+            bail!(
+                "{} is index version {version}; this build reads {VERSION}",
+                path.display()
+            );
         }
         let n_keys = u64::from_le_bytes(data[8..16].try_into().unwrap()) as usize;
         let n_sets = u64::from_le_bytes(data[16..24].try_into().unwrap()) as usize;
         let tail_len = u64::from_le_bytes(data[24..32].try_into().unwrap()) as usize;
         let expect = HEADER + n_keys * 12 + n_sets * SET_WIDTH * 4 + tail_len;
         if data.len() != expect {
-            bail!("{} is truncated: {} bytes, expected {expect}", path.display(), data.len());
+            bail!(
+                "{} is truncated: {} bytes, expected {expect}",
+                path.display(),
+                data.len()
+            );
         }
         let tail: Tail = serde_json::from_slice(&data[expect - tail_len..])
             .context("reading institution table")?;
@@ -466,7 +498,9 @@ impl AuthorIndex {
     /// Resolve an institution id (either form) without the network.
     pub fn institution(&self, id: &str) -> Option<&InstitutionRecord> {
         let n = numeric_id(id)?;
-        self.by_id.get(&n).map(|&ix| &self.institutions[ix as usize].record)
+        self.by_id
+            .get(&n)
+            .map(|&ix| &self.institutions[ix as usize].record)
     }
 
     /// Resolve an affiliation string to an institution, without the network.
@@ -540,11 +574,25 @@ mod tests {
         ));
         std::fs::create_dir_all(dir.join(AUTHORS_DIR).join("updated_date=2026-01-01")).unwrap();
         let mut w = ExtractWriter::create(&dir.join(INSTITUTIONS_EXTRACT)).unwrap();
-        w.write(&inst(162_018_573, "Technical University of Munich", 48.149, 11.568)).unwrap();
-        w.write(&inst(63_966_007, "Massachusetts Institute of Technology", 42.36, -71.09)).unwrap();
+        w.write(&inst(
+            162_018_573,
+            "Technical University of Munich",
+            48.149,
+            11.568,
+        ))
+        .unwrap();
+        w.write(&inst(
+            63_966_007,
+            "Massachusetts Institute of Technology",
+            42.36,
+            -71.09,
+        ))
+        .unwrap();
         w.finish().unwrap();
         let mut w = ExtractWriter::create(
-            &dir.join(AUTHORS_DIR).join("updated_date=2026-01-01").join("part_0000.jsonl.gz"),
+            &dir.join(AUTHORS_DIR)
+                .join("updated_date=2026-01-01")
+                .join("part_0000.jsonl.gz"),
         )
         .unwrap();
         for a in authors {
@@ -568,7 +616,9 @@ mod tests {
         assert_eq!(got.display_name, "Technical University of Munich");
 
         // The whole string matches too when it happens to be the bare name.
-        assert!(idx.institution_by_name("Technical University of Munich").is_some());
+        assert!(idx
+            .institution_by_name("Technical University of Munich")
+            .is_some());
         assert!(idx.institution_by_name("Somewhere Entirely Else").is_none());
         // Short fragments must not match noise.
         assert!(idx.institution_by_name("DE, 80333, Germany").is_none());
@@ -577,7 +627,10 @@ mod tests {
 
     #[test]
     fn numeric_ids_parse_both_forms() {
-        assert_eq!(numeric_id("https://openalex.org/I162018573"), Some(162_018_573));
+        assert_eq!(
+            numeric_id("https://openalex.org/I162018573"),
+            Some(162_018_573)
+        );
         assert_eq!(numeric_id("A5023888391"), Some(5_023_888_391));
         assert_eq!(numeric_id("nope"), None);
     }
@@ -592,15 +645,31 @@ mod tests {
 
     #[test]
     fn builds_loads_and_resolves_the_thuerey_case() {
-        let dir = fixture(&[author(1, "Nils Thürey", &["N. Thürey"], 200, &[162_018_573])]);
+        let dir = fixture(&[author(
+            1,
+            "Nils Thürey",
+            &["N. Thürey"],
+            200,
+            &[162_018_573],
+        )]);
         let report = build(&dir, &BuildPolicy::default()).unwrap();
         assert_eq!(report.authors_kept, 1);
         assert_eq!(report.institutions, 2);
 
         let idx = AuthorIndex::load(&dir.join(INDEX_FILE)).unwrap();
-        for q in ["Nils Thuerey", "Nils Thürey", "Nils Thurey", "N. Thuerey", "nils thuerey"] {
+        for q in [
+            "Nils Thuerey",
+            "Nils Thürey",
+            "Nils Thurey",
+            "N. Thuerey",
+            "nils thuerey",
+        ] {
             let ids = idx.lookup(q).unwrap_or_else(|| panic!("{q} not found"));
-            assert_eq!(ids, vec!["https://openalex.org/I162018573".to_string()], "{q}");
+            assert_eq!(
+                ids,
+                vec!["https://openalex.org/I162018573".to_string()],
+                "{q}"
+            );
         }
         assert!(idx.lookup("Someone Else").is_none());
         let tum = idx.institution("https://openalex.org/I162018573").unwrap();
@@ -619,7 +688,10 @@ mod tests {
         build(&dir, &BuildPolicy::default()).unwrap();
         let idx = AuthorIndex::load(&dir.join(INDEX_FILE)).unwrap();
         assert_eq!(idx.len(), 1, "one key for one name");
-        assert_eq!(idx.lookup("Wei Wang").unwrap(), vec!["https://openalex.org/I162018573".to_string()]);
+        assert_eq!(
+            idx.lookup("Wei Wang").unwrap(),
+            vec!["https://openalex.org/I162018573".to_string()]
+        );
         std::fs::remove_dir_all(&dir).ok();
     }
 
@@ -630,20 +702,39 @@ mod tests {
             author(2, "Nowhere Known", &[], 50, &[424_242]),
             author(3, "Kept Author", &["K. Author"], 3, &[424_242, 63_966_007]),
         ]);
-        let report = build(&dir, &BuildPolicy { min_works: 2, alternatives: false }).unwrap();
+        let report = build(
+            &dir,
+            &BuildPolicy {
+                min_works: 2,
+                alternatives: false,
+            },
+        )
+        .unwrap();
         assert_eq!(report.authors_seen, 3);
         assert_eq!(report.authors_kept, 1);
         let idx = AuthorIndex::load(&dir.join(INDEX_FILE)).unwrap();
         assert!(idx.lookup("One Hit").is_none());
         assert!(idx.lookup("Nowhere Known").is_none());
-        assert_eq!(idx.lookup("Kept Author").unwrap(), vec!["https://openalex.org/I63966007".to_string()]);
-        assert!(idx.lookup("K. Author").is_none(), "alternatives were switched off");
+        assert_eq!(
+            idx.lookup("Kept Author").unwrap(),
+            vec!["https://openalex.org/I63966007".to_string()]
+        );
+        assert!(
+            idx.lookup("K. Author").is_none(),
+            "alternatives were switched off"
+        );
         std::fs::remove_dir_all(&dir).ok();
     }
 
     #[test]
     fn alternatives_catch_the_initials_form() {
-        let dir = fixture(&[author(1, "Rahul Gaur", &["R. Gaur", "R Gaur"], 30, &[63_966_007])]);
+        let dir = fixture(&[author(
+            1,
+            "Rahul Gaur",
+            &["R. Gaur", "R Gaur"],
+            30,
+            &[63_966_007],
+        )]);
         build(&dir, &BuildPolicy::default()).unwrap();
         let idx = AuthorIndex::load(&dir.join(INDEX_FILE)).unwrap();
         assert!(idx.lookup("R. Gaur").is_some());
