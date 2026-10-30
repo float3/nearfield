@@ -1,0 +1,104 @@
+name: ci
+
+# Checks every commit pushed to any branch, and every pull request, so a
+# dependency bump or a change that breaks the build shows up before it ships
+# in a nightly. The digest and release commits the other workflows push with
+# GITHUB_TOKEN do not start workflows, so they are not checked.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  # The pipeline: nearfield-core and the CLI, the root workspace.
+  rust:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Rust with rustfmt and clippy
+        run: rustup component add rustfmt clippy
+
+      - uses: actions/cache@v6
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ci-rust-${{ hashFiles('Cargo.lock', 'Cargo.toml', 'crates/**/Cargo.toml') }}
+          restore-keys: ci-rust-
+
+      - name: Formatting
+        run: cargo fmt --all --check
+
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+
+      - name: Tests
+        run: cargo test --workspace --locked
+
+  # The Android app: the TypeScript frontend and the Tauri crate around it.
+  app:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Install the frontend's dependencies
+        working-directory: app
+        run: npm ci
+
+      # `build` is `tsc --noEmit && vite build`, so this type-checks too. The
+      # Tauri crate's build script also needs the built frontend to exist.
+      - name: Type-check and build the frontend
+        working-directory: app
+        run: npm run build
+
+      - name: Rust with the Android target, rustfmt and clippy
+        run: |
+          rustup component add rustfmt clippy
+          rustup target add aarch64-linux-android
+
+      - uses: actions/cache@v6
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            app/src-tauri/target
+          key: ci-app-${{ hashFiles('app/src-tauri/Cargo.lock', 'app/src-tauri/Cargo.toml', 'Cargo.toml', 'crates/nearfield-core/Cargo.toml') }}
+          restore-keys: ci-app-
+
+      - name: Formatting
+        working-directory: app/src-tauri
+        run: cargo fmt --check
+
+      # Checked for Android, not the runner's own platform: the installer in
+      # install.rs only exists on Android, and it is the part most likely to
+      # break when jni or Tauri change. The runner ships an NDK, whose clang
+      # the crates with C code (ring) need.
+      - name: Clippy for Android
+        working-directory: app/src-tauri
+        run: |
+          NDK="${ANDROID_NDK_LATEST_HOME:-$ANDROID_NDK_HOME}"
+          BIN="$NDK/toolchains/llvm/prebuilt/linux-x86_64/bin"
+          export CC_aarch64_linux_android="$BIN/aarch64-linux-android24-clang"
+          export AR_aarch64_linux_android="$BIN/llvm-ar"
+          export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="$CC_aarch64_linux_android"
+          cargo clippy --target aarch64-linux-android --all-targets --locked -- -D warnings
