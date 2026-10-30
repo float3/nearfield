@@ -35,7 +35,7 @@ The signing key in `signing/` is not in git. Back it up: an APK signed with anot
 ## CI
 
 - `digest` builds each evening's arXiv list the next morning, from about 08:00 in Munich: it checks every half hour until the feeds carry a list with no digest yet, then commits `data/<date>.json` and the caches, and deploys GitHub Pages. A digest is named after the evening arXiv sent its list out. It measures from the `NEARFIELD_ORIGIN` repository variable.
-- `ci` runs on every pushed commit and pull request: `cargo fmt`, `clippy -D warnings` and the tests for the pipeline, and the TypeScript type-check, frontend build, `cargo fmt` and Android `clippy` for the app.
+- `ci` runs on each push to `main` and on every pull request: `cargo fmt`, `clippy -D warnings` and the tests for the pipeline, and the TypeScript type-check, frontend build, `cargo fmt` and Android `clippy` for the app.
 - `apk` builds the nightly channel on every commit to `main` that changes what goes into the APK, and the stable channel on a `v*` tag. The app checks `updates/<channel>.json`, downloads a newer build and opens Android's installer.
 
 Secrets: `OPENALEX_API_KEY`, `NEARFIELD_CONTACT`, `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, and optionally `NTFY_TOPIC` for a notification when a digest is published.
