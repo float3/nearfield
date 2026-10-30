@@ -11,9 +11,16 @@ name: digest
 # scripts/new-announcement.sh, in seconds, whether the feeds hold a list that
 # has no digest yet, and stops there if not; only the first try that finds one
 # builds it. A manual run always builds.
+#
+# Once a week, early on Sunday when no new list is due, every published day is
+# rerun offline: no arXiv fetches and no OpenAlex calls, only the author cache
+# that each daily run grows and the offline index, so older days pick up
+# authors that later runs have placed, for free.
 on:
   schedule:
     - cron: "7,37 6-10 * * *"
+    # Keep in step with WEEKLY below.
+    - cron: "17 3 * * 0"
   workflow_dispatch:
     inputs:
       date:
@@ -44,9 +51,12 @@ concurrency:
   group: digest
   cancel-in-progress: false
 
+env:
+  WEEKLY: ${{ github.event.schedule == '17 3 * * 0' }}
+
 jobs:
   check:
-    if: ${{ github.event_name == 'schedule' }}
+    if: ${{ github.event_name == 'schedule' && github.event.schedule != '17 3 * * 0' }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
@@ -64,8 +74,9 @@ jobs:
 
   build:
     needs: check
-    # `always()` lets a manual run, where check is skipped, through.
-    if: ${{ always() && (github.event_name != 'schedule' || needs.check.outputs.new == 'true') }}
+    # `always()` lets a manual run or the weekly rerun, where check is
+    # skipped, through.
+    if: ${{ always() && (github.event_name != 'schedule' || github.event.schedule == '17 3 * * 0' || needs.check.outputs.new == 'true') }}
     runs-on: ubuntu-latest
     timeout-minutes: 110
     env:
@@ -122,7 +133,28 @@ jobs:
           find cache/snapshot -name '*.jsonl*' -delete || true
           ls -la cache/snapshot/authors.idx
 
+      - name: Rerun every published day offline
+        if: ${{ env.WEEKLY == 'true' }}
+        env:
+          NEARFIELD_CONTACT: ${{ secrets.NEARFIELD_CONTACT }}
+          NEARFIELD_ORIGIN: ${{ vars.NEARFIELD_ORIGIN }}
+        run: |
+          mkdir -p work
+          for f in data/20??-??-??.json; do
+            day=$(basename "$f" .json)
+            echo "::group::$day"
+            # No budget, no lookups and no reading: the cache and the index
+            # answer for free. A failed day is reported and the rest go on.
+            ./target/release/nearfield run --date "$day" --reuse-harvest \
+              --snapshot cache/snapshot/authors.idx \
+              --budget 0 --affiliation-budget 0 --max-lookups 0 \
+              --prefetch 0 --prefetch-unplaced 0 \
+              || echo "::warning::rerun of $day failed"
+            echo "::endgroup::"
+          done
+
       - name: Harvest, geolocate and rank
+        if: ${{ env.WEEKLY != 'true' }}
         env:
           # Free key, own $1/day budget. Without it OpenAlex throttles the
           # whole runner IP to a shared $0.10/day and most papers stay unplaced.
@@ -164,7 +196,11 @@ jobs:
           if git diff --cached --quiet; then
             echo "nothing changed"
           else
-            git commit -m "digest: $(date -u +%F)"
+            if [[ "$WEEKLY" == "true" ]]; then
+              git commit -m "digest: offline rerun of every day, $(date -u +%F)"
+            else
+              git commit -m "digest: $(date -u +%F)"
+            fi
             push_with_retry "${{ github.event.repository.default_branch }}"
           fi
 
@@ -182,7 +218,7 @@ jobs:
           path: site
 
       - name: Notify the phone
-        if: ${{ env.NTFY_TOPIC != '' }}
+        if: ${{ env.NTFY_TOPIC != '' && env.WEEKLY != 'true' }}
         run: |
           curl -fsS \
             -H "Title: Nearfield" \
