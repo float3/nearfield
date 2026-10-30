@@ -96,8 +96,10 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     // allows ten per second but we stay well under it.
     http.set_rate("rss.arxiv.org", Duration::from_secs(3)).await;
     http.set_rate("arxiv.org", Duration::from_secs(3)).await;
-    http.set_rate("api.openalex.org", Duration::from_millis(120)).await;
-    http.set_rate("nominatim.openstreetmap.org", Duration::from_secs(1)).await;
+    http.set_rate("api.openalex.org", Duration::from_millis(120))
+        .await;
+    http.set_rate("nominatim.openstreetmap.org", Duration::from_secs(1))
+        .await;
 
     std::fs::create_dir_all(&cfg.out_dir).ok();
     std::fs::create_dir_all(&cfg.cache_dir).ok();
@@ -146,8 +148,12 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     };
 
     // 2. Place authors from publication history, within budget.
-    let mut oa =
-        OpenAlex::new(http.clone(), cfg.api_key.clone(), &cfg.cache_dir, cfg.origin)?;
+    let mut oa = OpenAlex::new(
+        http.clone(),
+        cfg.api_key.clone(),
+        &cfg.cache_dir,
+        cfg.origin,
+    )?;
     oa.budget_usd = cfg.budget_usd;
     oa.max_lookups = cfg.max_lookups;
     match cfg.snapshot.as_deref().filter(|p| p.exists()) {
@@ -308,7 +314,11 @@ pub async fn run(cfg: Config) -> Result<Digest> {
         }
     }
     if attempted > 0 {
-        tracing::info!(attempted, rescued, "placed from the paper's own affiliations");
+        tracing::info!(
+            attempted,
+            rescued,
+            "placed from the paper's own affiliations"
+        );
     }
     diag.rescued_from_paper = rescued;
 
@@ -357,18 +367,23 @@ pub async fn run(cfg: Config) -> Result<Digest> {
 /// this run lacks is copied over before writing.
 fn carry_forward(papers: &mut [Paper], previous: &Digest, origin: &Point) -> usize {
     use std::collections::HashMap;
-    let old: HashMap<&str, &Paper> =
-        previous.papers.iter().map(|p| (p.id.as_str(), p)).collect();
+    let old: HashMap<&str, &Paper> = previous.papers.iter().map(|p| (p.id.as_str(), p)).collect();
     let mut recovered = 0usize;
 
     for p in papers.iter_mut() {
-        let Some(prev) = old.get(p.id.as_str()) else { continue };
+        let Some(prev) = old.get(p.id.as_str()) else {
+            continue;
+        };
 
         for a in p.authors.iter_mut() {
             if a.located() {
                 continue;
             }
-            if let Some(was) = prev.authors.iter().find(|q| q.name == a.name && q.located()) {
+            if let Some(was) = prev
+                .authors
+                .iter()
+                .find(|q| q.name == a.name && q.located())
+            {
                 a.lat = was.lat;
                 a.lon = was.lon;
                 a.institution = was.institution.clone();
@@ -458,7 +473,10 @@ fn nothing_new(out_dir: &Path, announced: &str, papers: &[Paper]) -> Option<Noth
     let earlier = earlier?;
     let known: std::collections::HashSet<&str> =
         earlier.papers.iter().map(|p| p.id.as_str()).collect();
-    let repeated = papers.iter().filter(|p| known.contains(p.id.as_str())).count();
+    let repeated = papers
+        .iter()
+        .filter(|p| known.contains(p.id.as_str()))
+        .count();
     (repeated * 2 >= papers.len()).then(|| NothingNew {
         harvested: papers.len(),
         repeated,
@@ -501,11 +519,17 @@ pub fn update_index(out_dir: &Path) -> Result<Vec<IndexEntry>> {
     let mut entries: Vec<IndexEntry> = Vec::new();
     for e in std::fs::read_dir(out_dir)? {
         let p = e?.path();
-        let name = p.file_name().and_then(|s| s.to_str()).unwrap_or_default().to_string();
+        let name = p
+            .file_name()
+            .and_then(|s| s.to_str())
+            .unwrap_or_default()
+            .to_string();
         if !name.ends_with(".json") || name == "index.json" || name == "categories.json" {
             continue;
         }
-        let Ok(s) = std::fs::read_to_string(&p) else { continue };
+        let Ok(s) = std::fs::read_to_string(&p) else {
+            continue;
+        };
         let Ok(d) = serde_json::from_str::<Digest>(&s) else {
             tracing::warn!(file = %name, "skipping unreadable digest");
             continue;
@@ -581,7 +605,11 @@ mod tests {
             affiliations: vec![],
             contact_emails: vec![],
             distance_km: d,
-            geo_source: if d.is_some() { GeoSource::AuthorPrior } else { GeoSource::None },
+            geo_source: if d.is_some() {
+                GeoSource::AuthorPrior
+            } else {
+                GeoSource::None
+            },
             intro: None,
             enriched: false,
         };
@@ -629,7 +657,10 @@ mod tests {
         pa.resolve_distance();
 
         assert_eq!(pa.distance_km, Some(670.7));
-        assert_eq!(nearest_place(&pa).as_deref(), Some("Delft University of Technology"));
+        assert_eq!(
+            nearest_place(&pa).as_deref(),
+            Some("Delft University of Technology")
+        );
     }
 
     #[test]
@@ -651,7 +682,11 @@ mod tests {
         let previous = Digest {
             date: "2026-10-27".into(),
             generated_at: "then".into(),
-            home: Home { lat: MUNICH.lat, lon: MUNICH.lon, label: MUNICH_LABEL.into() },
+            home: Home {
+                lat: MUNICH.lat,
+                lon: MUNICH.lon,
+                label: MUNICH_LABEL.into(),
+            },
             stats: stats_for(std::slice::from_ref(&stored)),
             diagnostics: Diagnostics::default(),
             papers: vec![stored],
@@ -661,7 +696,10 @@ mod tests {
         let recovered = carry_forward(&mut papers, &previous, &MUNICH);
 
         assert_eq!(recovered, 1);
-        assert!(papers[0].distance_km.unwrap() < 2.0, "the placement came back");
+        assert!(
+            papers[0].distance_km.unwrap() < 2.0,
+            "the placement came back"
+        );
         assert_eq!(
             papers[0].authors[0].institution.as_deref(),
             Some("Technical University of Munich")
@@ -689,7 +727,11 @@ mod tests {
         let previous = Digest {
             date: "2026-10-27".into(),
             generated_at: "then".into(),
-            home: Home { lat: MUNICH.lat, lon: MUNICH.lon, label: MUNICH_LABEL.into() },
+            home: Home {
+                lat: MUNICH.lat,
+                lon: MUNICH.lon,
+                label: MUNICH_LABEL.into(),
+            },
             stats: stats_for(std::slice::from_ref(&stored)),
             diagnostics: Diagnostics::default(),
             papers: vec![stored],
@@ -709,7 +751,11 @@ mod tests {
         let d = Digest {
             date: "2026-10-27".into(),
             generated_at: "now".into(),
-            home: Home { lat: MUNICH.lat, lon: MUNICH.lon, label: MUNICH_LABEL.into() },
+            home: Home {
+                lat: MUNICH.lat,
+                lon: MUNICH.lon,
+                label: MUNICH_LABEL.into(),
+            },
             stats: stats_for(&[p("a", None)]),
             diagnostics: Diagnostics::default(),
             papers: vec![p("a", None)],
@@ -721,7 +767,11 @@ mod tests {
         Digest {
             date: date.into(),
             generated_at: "then".into(),
-            home: Home { lat: MUNICH.lat, lon: MUNICH.lon, label: MUNICH_LABEL.into() },
+            home: Home {
+                lat: MUNICH.lat,
+                lon: MUNICH.lon,
+                label: MUNICH_LABEL.into(),
+            },
             stats: stats_for(&papers),
             diagnostics: Diagnostics::default(),
             papers,
@@ -733,15 +783,28 @@ mod tests {
         let dir = std::env::temp_dir().join(format!("nf-repeat-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();
         write_digest(&dir, &digest_on("2026-10-27", vec![p("old", None)])).unwrap();
-        write_digest(&dir, &digest_on("2026-10-28", vec![p("a", None), p("b", None)])).unwrap();
+        write_digest(
+            &dir,
+            &digest_on("2026-10-28", vec![p("a", None), p("b", None)]),
+        )
+        .unwrap();
 
-        let repeat = nothing_new(&dir, "2026-10-29", &[p("a", None), p("b", None), p("c", None)])
-            .expect("two of three papers are the day before's");
+        let repeat = nothing_new(
+            &dir,
+            "2026-10-29",
+            &[p("a", None), p("b", None), p("c", None)],
+        )
+        .expect("two of three papers are the day before's");
         assert_eq!((repeat.harvested, repeat.repeated), (3, 2));
         assert_eq!(repeat.earlier.as_deref(), Some("2026-10-28"));
 
         assert!(nothing_new(&dir, "2026-10-29", &[]).is_some());
-        assert!(nothing_new(&dir, "2026-10-29", &[p("c", None), p("d", None), p("a", None)]).is_none());
+        assert!(nothing_new(
+            &dir,
+            "2026-10-29",
+            &[p("c", None), p("d", None), p("a", None)]
+        )
+        .is_none());
         assert!(nothing_new(&dir, "2026-10-28", &[p("a", None)]).is_none());
 
         std::fs::remove_dir_all(&dir).ok();

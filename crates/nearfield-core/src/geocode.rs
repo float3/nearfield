@@ -25,7 +25,10 @@ pub struct Place {
 
 impl Place {
     pub fn point(&self) -> Point {
-        Point { lat: self.lat, lon: self.lon }
+        Point {
+            lat: self.lat,
+            lon: self.lon,
+        }
     }
 
     /// A short name for the UI: Nominatim's display names are long.
@@ -86,7 +89,7 @@ pub async fn search(http: &Http, query: &str, limit: usize) -> Result<Vec<Place>
             let lat: f64 = h.lat.parse().ok()?;
             let lon: f64 = h.lon.parse().ok()?;
             let p = Point { lat, lon };
-            p.is_valid().then(|| Place {
+            p.is_valid().then_some(Place {
                 label: h.display_name,
                 lat,
                 lon,
@@ -101,7 +104,12 @@ mod tests {
     use super::*;
 
     fn place(label: &str) -> Place {
-        Place { label: label.into(), lat: 0.0, lon: 0.0, kind: String::new() }
+        Place {
+            label: label.into(),
+            lat: 0.0,
+            lon: 0.0,
+            kind: String::new(),
+        }
     }
 
     #[test]

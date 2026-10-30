@@ -56,7 +56,10 @@ pub fn key(name: &str) -> String {
 /// second lookup for the overwhelming majority of names.
 pub fn umlaut_to_digraph(name: &str) -> Option<String> {
     let nfc: String = name.nfc().collect();
-    if !nfc.chars().any(|c| matches!(c, 'ä' | 'ö' | 'ü' | 'Ä' | 'Ö' | 'Ü')) {
+    if !nfc
+        .chars()
+        .any(|c| matches!(c, 'ä' | 'ö' | 'ü' | 'Ä' | 'Ö' | 'Ü'))
+    {
         return None;
     }
     let mut out = String::with_capacity(nfc.len() + 4);
@@ -200,7 +203,10 @@ mod tests {
     #[test]
     fn collapse_leaves_romance_names_alone() {
         assert_eq!(collapse_digraphs("enriquemiguel"), None);
-        assert_eq!(collapse_digraphs("joergguenther").as_deref(), Some("jorgguenther"));
+        assert_eq!(
+            collapse_digraphs("joergguenther").as_deref(),
+            Some("jorgguenther")
+        );
     }
 
     #[test]

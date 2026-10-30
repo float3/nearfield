@@ -16,7 +16,7 @@ pub mod snapshot;
 pub mod snapshot_fetch;
 pub mod version;
 
+pub use diagnostics::Diagnostics;
 pub use geo::Point;
 pub use geocode::Place;
-pub use diagnostics::Diagnostics;
 pub use model::{Affiliation, Author, Digest, GeoSource, Home, Paper, Stats};

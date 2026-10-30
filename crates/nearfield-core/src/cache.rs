@@ -30,7 +30,11 @@ impl<V: Serialize + DeserializeOwned + Clone> JsonCache<V> {
         } else {
             HashMap::new()
         };
-        Ok(Self { path, map, dirty: false })
+        Ok(Self {
+            path,
+            map,
+            dirty: false,
+        })
     }
 
     pub fn get(&self, k: &str) -> Option<&V> {
@@ -95,8 +99,7 @@ mod tests {
 
     #[test]
     fn missing_file_is_an_empty_cache() {
-        let c: JsonCache<String> =
-            JsonCache::load("definitely/not/here/nope.json").unwrap();
+        let c: JsonCache<String> = JsonCache::load("definitely/not/here/nope.json").unwrap();
         assert!(c.is_empty());
     }
 }

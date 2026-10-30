@@ -15,11 +15,11 @@
 //! starts the authors over, because the files are re-partitioned each time.
 
 use crate::http::Http;
+use crate::openalex::InstitutionRecord;
 use crate::snapshot::{
     numeric_id, AuthorExtract, ExtractWriter, InstitutionExtract, AUTHORS_DIR,
     INSTITUTIONS_EXTRACT, MANIFEST_FILE,
 };
-use crate::openalex::InstitutionRecord;
 use anyhow::{bail, Context, Result};
 use arrow_array::cast::AsArray;
 use arrow_array::types::{Float64Type, Int32Type};
@@ -99,7 +99,10 @@ impl ManifestFile {
     /// unique within an entity.
     pub fn stem(&self) -> String {
         let mut parts = self.url.rsplit('/');
-        let file = parts.next().unwrap_or_default().trim_end_matches(".parquet");
+        let file = parts
+            .next()
+            .unwrap_or_default()
+            .trim_end_matches(".parquet");
         let partition = parts.next().unwrap_or_default();
         format!("{partition}/{file}")
     }
@@ -173,9 +176,10 @@ async fn open(
         size: file.meta.content_length,
         fetched,
     };
-    let builder = ParquetRecordBatchStreamBuilder::new_with_options(reader, ArrowReaderOptions::new())
-        .await
-        .with_context(|| format!("reading parquet footer of {}", file.https()))?;
+    let builder =
+        ParquetRecordBatchStreamBuilder::new_with_options(reader, ArrowReaderOptions::new())
+            .await
+            .with_context(|| format!("reading parquet footer of {}", file.https()))?;
     let schema = builder.parquet_schema();
     let mut indices = Vec::with_capacity(leaves.len());
     for want in leaves {
@@ -185,7 +189,10 @@ async fn open(
         indices.push(ix);
     }
     let mask = ProjectionMask::leaves(schema, indices);
-    Ok(builder.with_projection(mask).with_batch_size(16 * 1024).build()?)
+    Ok(builder
+        .with_projection(mask)
+        .with_batch_size(16 * 1024)
+        .build()?)
 }
 
 fn str_col<'a>(batch: &'a RecordBatch, name: &str) -> Result<&'a arrow_array::StringArray> {
@@ -225,7 +232,10 @@ fn author_rows(batch: &RecordBatch, out: &mut ExtractWriter) -> Result<u64> {
         if insts.is_null(row) || names.is_null(row) || ids.is_null(row) {
             continue;
         }
-        let (s, e) = (insts.value_offsets()[row] as usize, insts.value_offsets()[row + 1] as usize);
+        let (s, e) = (
+            insts.value_offsets()[row] as usize,
+            insts.value_offsets()[row + 1] as usize,
+        );
         let institutions: Vec<u64> = (s..e)
             .filter(|&j| !inst_ids.is_null(j))
             .filter_map(|j| numeric_id(inst_ids.value(j)))
@@ -233,7 +243,9 @@ fn author_rows(batch: &RecordBatch, out: &mut ExtractWriter) -> Result<u64> {
         if institutions.is_empty() {
             continue;
         }
-        let Some(id) = numeric_id(ids.value(row)) else { continue };
+        let Some(id) = numeric_id(ids.value(row)) else {
+            continue;
+        };
         let name = names.value(row).trim();
         if name.is_empty() {
             continue;
@@ -241,7 +253,10 @@ fn author_rows(batch: &RecordBatch, out: &mut ExtractWriter) -> Result<u64> {
         let alternatives = if alts.is_null(row) {
             Vec::new()
         } else {
-            let (s, e) = (alts.value_offsets()[row] as usize, alts.value_offsets()[row + 1] as usize);
+            let (s, e) = (
+                alts.value_offsets()[row] as usize,
+                alts.value_offsets()[row + 1] as usize,
+            );
             (s..e)
                 .filter(|&j| !alt_vals.is_null(j))
                 .map(|j| alt_vals.value(j).trim())
@@ -253,7 +268,11 @@ fn author_rows(batch: &RecordBatch, out: &mut ExtractWriter) -> Result<u64> {
             id,
             name: name.to_string(),
             alternatives,
-            works: if works.is_null(row) { 0 } else { works.value(row).max(0) as u32 },
+            works: if works.is_null(row) {
+                0
+            } else {
+                works.value(row).max(0) as u32
+            },
             institutions,
         })?;
         kept += 1;
@@ -266,7 +285,10 @@ fn institution_rows(batch: &RecordBatch, out: &mut ExtractWriter) -> Result<u64>
     let names = str_col(batch, "display_name")?;
     let rors = str_col(batch, "ror")?;
     let geo = batch.column_by_name("geo").context("no geo")?.as_struct();
-    let city = geo.column_by_name("city").context("no geo.city")?.as_string::<i32>();
+    let city = geo
+        .column_by_name("city")
+        .context("no geo.city")?
+        .as_string::<i32>();
     let country = geo
         .column_by_name("country_code")
         .context("no geo.country_code")?
@@ -288,7 +310,9 @@ fn institution_rows(batch: &RecordBatch, out: &mut ExtractWriter) -> Result<u64>
         if ids.is_null(row) || names.is_null(row) {
             continue;
         }
-        let Some(id) = numeric_id(ids.value(row)) else { continue };
+        let Some(id) = numeric_id(ids.value(row)) else {
+            continue;
+        };
         let has_geo = !geo.is_null(row);
         out.write(&InstitutionExtract {
             id,
@@ -344,7 +368,8 @@ pub async fn fetch_institutions(http: &Http, dir: &Path) -> Result<FetchReport> 
 }
 
 fn extract_path(dir: &Path, file: &ManifestFile) -> PathBuf {
-    dir.join(AUTHORS_DIR).join(format!("{}.jsonl.gz", file.stem()))
+    dir.join(AUTHORS_DIR)
+        .join(format!("{}.jsonl.gz", file.stem()))
 }
 
 /// Fetch the author columns, `concurrency` files at a time, skipping any
@@ -376,16 +401,22 @@ pub async fn fetch_authors(http: &Http, dir: &Path, concurrency: usize) -> Resul
             std::fs::create_dir_all(&root)?;
         }
     }
-    std::fs::write(&manifest_path, serde_json::to_string_pretty(&serde_json::json!({
-        "date": m.date,
-        "entity": m.entity,
-        "record_count": m.record_count,
-        "content_length": m.content_length,
-        "files": m.files.len(),
-    }))?)?;
+    std::fs::write(
+        &manifest_path,
+        serde_json::to_string_pretty(&serde_json::json!({
+            "date": m.date,
+            "entity": m.entity,
+            "record_count": m.record_count,
+            "content_length": m.content_length,
+            "files": m.files.len(),
+        }))?,
+    )?;
 
-    let todo: Vec<&ManifestFile> =
-        m.files.iter().filter(|f| !extract_path(dir, f).exists()).collect();
+    let todo: Vec<&ManifestFile> = m
+        .files
+        .iter()
+        .filter(|f| !extract_path(dir, f).exists())
+        .collect();
     let mut report = FetchReport {
         release: m.date.clone(),
         files_total: m.files.len(),
@@ -463,8 +494,12 @@ mod tests {
     #[test]
     fn manifest_urls_become_https_and_stems() {
         let f = ManifestFile {
-            url: "s3://openalex/data/parquet/authors/updated_date=2026-10-13/part_0018.parquet".into(),
-            meta: FileMeta { content_length: 1, record_count: 1 },
+            url: "s3://openalex/data/parquet/authors/updated_date=2026-10-13/part_0018.parquet"
+                .into(),
+            meta: FileMeta {
+                content_length: 1,
+                record_count: 1,
+            },
         };
         assert_eq!(
             f.https(),

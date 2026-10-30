@@ -76,9 +76,18 @@ fn extract_abstract(description: &str) -> String {
 fn decode_tex(s: &str) -> String {
     // Keyed without the leading backslash; the caller has already consumed it.
     const LIGATURES: [(&str, &str); 12] = [
-        ("ss", "ß"), ("ae", "æ"), ("AE", "Æ"), ("dh", "ð"),
-        ("dj", "đ"), ("aa", "å"), ("AA", "Å"), ("l", "ł"),
-        ("L", "Ł"), ("o", "ø"), ("O", "Ø"), ("i", "i"),
+        ("ss", "ß"),
+        ("ae", "æ"),
+        ("AE", "Æ"),
+        ("dh", "ð"),
+        ("dj", "đ"),
+        ("aa", "å"),
+        ("AA", "Å"),
+        ("l", "ł"),
+        ("L", "Ł"),
+        ("o", "ø"),
+        ("O", "Ø"),
+        ("i", "i"),
     ];
     let mut out = String::with_capacity(s.len());
     let mut chars = s.chars().peekable();
@@ -139,9 +148,25 @@ fn decode_tex(s: &str) -> String {
 /// the digest inventing people and stops them counting as unresolved.
 fn looks_like_a_place(s: &str) -> bool {
     const MARKERS: [&str; 20] = [
-        "univ", "institut", "college", "school", "laborator", " lab", "labs",
-        "academy", "hospital", "center", "centre", "department", "dept",
-        "faculty", "cnrs", "observator", "agency", "society", "division",
+        "univ",
+        "institut",
+        "college",
+        "school",
+        "laborator",
+        " lab",
+        "labs",
+        "academy",
+        "hospital",
+        "center",
+        "centre",
+        "department",
+        "dept",
+        "faculty",
+        "cnrs",
+        "observator",
+        "agency",
+        "society",
+        "division",
         "corporation",
     ];
     let l = s.to_lowercase();
@@ -188,7 +213,10 @@ fn split_authors(creators: &str) -> Vec<Author> {
             None => &piece[..],
         };
         let name = decode_tex(name);
-        let name = name.trim().trim_matches(|c: char| c == '-' || c == ';').trim();
+        let name = name
+            .trim()
+            .trim_matches(|c: char| c == '-' || c == ';')
+            .trim();
         if name.is_empty() {
             continue;
         }
@@ -445,7 +473,10 @@ Abstract: Nope.</description>
             "Yun Wang (Caltech/IPAC), Massimo Robberto (STScI),              Gregory D. Wirth (BAE Systems -- Space & Defense, Boulder)",
         );
         let names: Vec<_> = a.iter().map(|x| x.name.as_str()).collect();
-        assert_eq!(names, vec!["Yun Wang", "Massimo Robberto", "Gregory D. Wirth"]);
+        assert_eq!(
+            names,
+            vec!["Yun Wang", "Massimo Robberto", "Gregory D. Wirth"]
+        );
     }
 
     #[test]
@@ -463,10 +494,11 @@ Abstract: Nope.</description>
             .map(|a| a.name.clone())
             .collect();
         assert_eq!(names, vec!["Haishen Peng"]);
-        assert!(split_authors("Lanzhou 730000").is_empty(), "a postcode is not a person");
         assert!(
-            split_authors("Perimeter Institute for Theoretical Physics").is_empty()
+            split_authors("Lanzhou 730000").is_empty(),
+            "a postcode is not a person"
         );
+        assert!(split_authors("Perimeter Institute for Theoretical Physics").is_empty());
     }
 
     #[test]
@@ -499,7 +531,10 @@ Abstract: Nope.</description>
     fn author_suffixes_do_not_become_separate_people() {
         let a = split_authors("Ada Lovelace, John Smith, Jr., Grace Hopper");
         let names: Vec<_> = a.iter().map(|x| x.name.as_str()).collect();
-        assert_eq!(names, vec!["Ada Lovelace", "John Smith, Jr.", "Grace Hopper"]);
+        assert_eq!(
+            names,
+            vec!["Ada Lovelace", "John Smith, Jr.", "Grace Hopper"]
+        );
     }
 
     #[test]
@@ -509,6 +544,10 @@ Abstract: Nope.</description>
 
     #[test]
     fn garbage_xml_does_not_panic() {
-        let _ = parse_feed("<rss><channel><item><title>x", "d", &mut Diagnostics::default());
+        let _ = parse_feed(
+            "<rss><channel><item><title>x",
+            "d",
+            &mut Diagnostics::default(),
+        );
     }
 }
