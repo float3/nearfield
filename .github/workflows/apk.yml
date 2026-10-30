@@ -252,7 +252,7 @@ jobs:
           cache: npm
           cache-dependency-path: app/package-lock.json
       - run: bash scripts/assemble-site.sh
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
       - uses: actions/deploy-pages@v4
