@@ -1,16 +1,22 @@
 name: ci
 
-# Checks every commit pushed to any branch, and every pull request, so a
-# dependency bump or a change that breaks the build shows up before it ships
-# in a nightly. The digest and release commits the other workflows push with
-# GITHUB_TOKEN do not start workflows, so they are not checked.
+# Checks each push to main and every pull request, so a dependency bump or a
+# change that breaks the build shows up before it ships in a nightly. Pushes
+# to other branches are left to their pull request: checking both ran every
+# job twice on the same commit. The digest and release commits the other
+# workflows push with GITHUB_TOKEN do not start workflows, so they are not
+# checked.
 on:
   push:
+    branches: [main]
+  # Every pull request, whatever it targets. GitHub makes no run for a PR it
+  # cannot merge, so a conflict has to be resolved before its checks come back.
   pull_request:
   workflow_dispatch:
 
+# A run is replaced by the next push to its branch.
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
