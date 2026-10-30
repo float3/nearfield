@@ -11,6 +11,7 @@ use crate::diagnostics::Diagnostics;
 use crate::http::Http;
 use crate::model::{Author, GeoSource, Paper};
 use anyhow::Result;
+use quick_xml::escape::resolve_predefined_entity;
 use quick_xml::events::Event;
 use quick_xml::Reader;
 use std::collections::BTreeMap;
@@ -252,20 +253,34 @@ fn parse_feed(xml: &str, fallback: &str, diag: &mut Diagnostics) -> Vec<Paper> {
     loop {
         match reader.read_event() {
             Ok(Event::Start(e)) => {
-                let name = String::from_utf8_lossy(e.name().as_ref()).to_string();
+                let name = e.name().as_ref().to_string();
                 if name == "item" {
                     item = Some(Item::default());
                 }
                 buf_text.clear();
             }
             Ok(Event::Text(t)) => {
-                buf_text.push_str(&t.unescape().unwrap_or_default());
+                buf_text.push_str(&t.xml10_content());
             }
+            // quick-xml hands each `&amp;` or `&#233;` over as its own event
+            // rather than inside the text around it, so a title like
+            // "Q&amp;A" arrives as Text, GeneralRef, Text.
+            Ok(Event::GeneralRef(r)) => match r.resolve_char_ref() {
+                Ok(Some(c)) => buf_text.push(c),
+                _ => match resolve_predefined_entity(r.as_ref()) {
+                    Some(s) => buf_text.push_str(s),
+                    None => {
+                        buf_text.push('&');
+                        buf_text.push_str(r.as_ref());
+                        buf_text.push(';');
+                    }
+                },
+            },
             Ok(Event::CData(t)) => {
-                buf_text.push_str(&String::from_utf8_lossy(&t));
+                buf_text.push_str(&t);
             }
             Ok(Event::End(e)) => {
-                let name = String::from_utf8_lossy(e.name().as_ref()).to_string();
+                let name = e.name().as_ref().to_string();
                 let text = buf_text.trim().to_string();
                 if let Some(it) = item.as_mut() {
                     match name.as_str() {
@@ -460,6 +475,19 @@ Abstract: Nope.</description>
             announced_on("Sun, 01 Nov 2026 00:00:00 -0500").as_deref(),
             Some("2026-10-31")
         );
+    }
+
+    #[test]
+    fn entities_in_the_feed_are_decoded() {
+        // quick-xml 0.37+ reports entities as separate events; dropping them
+        // would turn "Q&amp;A" into "QA" without any error.
+        let feed = FEED.replace(
+            "<title>Collaborative In-Context Learning</title>",
+            "<title>Q&amp;A on &lt;b&gt; caf&#233; &#x2014; done</title>",
+        );
+        assert_ne!(feed, FEED);
+        let ps = parse_feed(&feed, "2026-10-27", &mut Diagnostics::default());
+        assert_eq!(ps[0].title, "Q&A on <b> caf\u{e9} \u{2014} done");
     }
 
     #[test]
