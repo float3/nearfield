@@ -365,7 +365,9 @@ fn email_matches_author(email: &str, author_name: &str) -> bool {
     }
     if let Some(first) = parts.first() {
         if parts.len() > 1 {
-            let initial = &first[..1];
+            // The first character, not the first byte: slicing "øystein" at
+            // byte 1 panicked and took the whole run down with it.
+            let initial: String = first.chars().take(1).collect();
             if local == format!("{initial}{surname}") || local == format!("{initial}.{surname}") {
                 return true;
             }
@@ -514,6 +516,15 @@ Technical University of Munich, Garching
         assert!(email_matches_author("y.peng@unf.edu", "Yuanzhe Peng"));
         assert!(email_matches_author("peng@unf.edu", "Yuanzhe Peng"));
         assert!(!email_matches_author("y.peng@unf.edu", "Jie Xu"));
+    }
+
+    #[test]
+    fn a_first_name_that_starts_outside_ascii_is_not_cut_mid_letter() {
+        // Regression: rerunning 27 October panicked on a first name starting
+        // with "ø", sliced at byte 1.
+        assert!(email_matches_author("ø.hansen@uio.no", "Øystein Hansen"));
+        assert!(email_matches_author("ølund@uio.no", "Øystein Lund"));
+        assert!(!email_matches_author("o.berg@uio.no", "Ågot Hansen"));
     }
 
     #[test]
