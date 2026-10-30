@@ -22,8 +22,9 @@ enum Command {
         /// Announcement date (YYYY-MM-DD). Defaults to today, UTC.
         #[arg(long)]
         date: Option<String>,
-        /// How many of the nearest papers get intro + emails fetched.
-        #[arg(long, default_value_t = 50)]
+        /// How many of the nearest papers get intro + emails fetched. Papers
+        /// an earlier run of the day already read count without a fetch.
+        #[arg(long, default_value_t = 200)]
         prefetch: usize,
         /// How many unplaced papers to read for their affiliations. The
         /// nearest papers are already located, so this is the only prefetch

@@ -17,12 +17,16 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: "Date to build (YYYY-MM-DD). Blank = today."
+        description: "Date to build (YYYY-MM-DD). Blank = today. With rerun, the published day to improve."
         required: false
+      rerun:
+        description: "Rerun a published day: keep its papers, place more authors and read more papers. Needs a date."
+        type: boolean
+        default: false
       prefetch:
-        description: "How many of the nearest papers to read fully."
+        description: "How many of the nearest papers to read fully, for affiliations and emails."
         required: false
-        default: "50"
+        default: "200"
       origin:
         description: "Measure from here: a place name, lat,lon or Label@lat,lon. Blank = the NEARFIELD_ORIGIN variable."
         required: false
@@ -129,7 +133,8 @@ jobs:
           mkdir -p work
           ./target/release/nearfield run \
             ${{ inputs.date && format('--date {0}', inputs.date) || '' }} \
-            --prefetch "${{ inputs.prefetch || '50' }}" \
+            ${{ inputs.rerun && '--reuse-harvest' || '' }} \
+            --prefetch "${{ inputs.prefetch || '200' }}" \
             ${{ inputs.origin && format('--origin "{0}"', inputs.origin) || '' }} \
             --snapshot cache/snapshot/authors.idx \
             --prefetch-unplaced "${{ inputs.prefetch_unplaced || '250' }}" \
