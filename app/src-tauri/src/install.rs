@@ -17,8 +17,10 @@
 //! Two things about the thread this runs on. It is one Rust attached to the
 //! JVM, and on such a thread `FindClass` searches only the system's classes,
 //! so the app's own `FileProvider` has to be loaded through the activity's
-//! class loader. And a Java exception left pending when the thread goes back
-//! kills the app, so each one is cleared and returned as an error instead.
+//! class loader. And a Java exception must not be left pending: it once
+//! killed the app. jni clears any it finds when the attachment closure
+//! returns, but it would also replace our error, which names the step that
+//! failed, so each one is cleared and described here first.
 //!
 //! Android still shows its own install prompt. That is not avoidable for a
 //! sideloaded app and is not worth trying to avoid: the confirmation is the
@@ -31,68 +33,88 @@ pub fn install_apk(path: &Path) -> Result<(), String> {
     use jni::objects::JObject;
 
     let ctx = ndk_context::android_context();
-    let vm =
-        unsafe { jni::JavaVM::from_raw(ctx.vm().cast()) }.map_err(|e| format!("no JVM: {e}"))?;
-    let activity = unsafe { JObject::from_raw(ctx.context().cast()) };
-    let mut env = vm
-        .attach_current_thread()
-        .map_err(|e| format!("could not attach to the JVM: {e}"))?;
+    let vm = unsafe { jni::JavaVM::from_raw(ctx.vm().cast()) };
 
-    let result = start_installer(&mut env, &activity, path);
-    if env.exception_check().unwrap_or(false) {
-        let thrown = env.exception_occurred().ok();
-        let _ = env.exception_clear();
-        let described = thrown.and_then(|t| describe(&mut env, &t));
-        if let (Err(step), Some(java)) = (&result, described) {
-            return Err(format!("{step}: {java}"));
+    // The outer Result is jni's own (attaching, or an exception jni had to
+    // catch); the inner one is ours, naming the step that failed.
+    let attached = vm.attach_current_thread(|env| -> jni::errors::Result<Result<(), String>> {
+        // ndk_context holds the activity for the app's lifetime; this only
+        // borrows that reference, and JObject never deletes it.
+        let activity = unsafe { JObject::from_raw(env, ctx.context().cast()) };
+        let result = start_installer(env, &activity, path);
+        if env.exception_check() {
+            let thrown = env.exception_occurred();
+            env.exception_clear();
+            let described = thrown.and_then(|t| describe(env, &t));
+            if let (Err(step), Some(java)) = (&result, described) {
+                return Ok(Err(format!("{step}: {java}")));
+            }
         }
-    }
-    result
+        Ok(result)
+    });
+    attached.unwrap_or_else(|e| Err(format!("JNI: {e}")))
 }
 
 #[cfg(target_os = "android")]
-fn describe(env: &mut jni::JNIEnv, thrown: &jni::objects::JThrowable) -> Option<String> {
-    let text = env
-        .call_method(thrown, "toString", "()Ljava/lang/String;", &[])
-        .and_then(|v| v.l())
-        .ok()?;
-    let _ = env.exception_clear();
-    env.get_string((&text).into()).ok().map(Into::into)
+fn describe(env: &mut jni::Env, thrown: &jni::objects::JThrowable) -> Option<String> {
+    use jni::{jni_sig, jni_str, objects::JString};
+
+    let text = env.call_method(
+        thrown,
+        jni_str!("toString"),
+        jni_sig!("()Ljava/lang/String;"),
+        &[],
+    );
+    // toString can throw too; never leave that pending either.
+    env.exception_clear();
+    let text = env.cast_local::<JString>(text.ok()?.l().ok()?).ok()?;
+    text.try_to_string(env).ok()
 }
 
 #[cfg(target_os = "android")]
 fn start_installer(
-    env: &mut jni::JNIEnv,
+    env: &mut jni::Env,
     activity: &jni::objects::JObject,
     path: &Path,
 ) -> Result<(), String> {
-    use jni::objects::{JClass, JValue};
+    use jni::{
+        jni_sig, jni_str,
+        objects::{JClass, JString, JValue},
+    };
 
     let path_str = path.to_string_lossy().to_string();
 
     let jpath = env.new_string(&path_str).map_err(|e| e.to_string())?;
     let file = env
         .new_object(
-            "java/io/File",
-            "(Ljava/lang/String;)V",
-            &[JValue::Object(&jpath.into())],
+            jni_str!("java/io/File"),
+            jni_sig!("(Ljava/lang/String;)V"),
+            &[JValue::Object(&jpath)],
         )
         .map_err(|e| format!("File: {e}"))?;
 
     let package = env
-        .call_method(activity, "getPackageName", "()Ljava/lang/String;", &[])
+        .call_method(
+            activity,
+            jni_str!("getPackageName"),
+            jni_sig!("()Ljava/lang/String;"),
+            &[],
+        )
         .and_then(|v| v.l())
+        .and_then(|o| env.cast_local::<JString>(o))
+        .and_then(|s| s.try_to_string(env))
         .map_err(|e| format!("getPackageName: {e}"))?;
-    let package: String = env
-        .get_string((&package).into())
-        .map_err(|e| e.to_string())?
-        .into();
     let authority = env
         .new_string(format!("{package}.fileprovider"))
         .map_err(|e| e.to_string())?;
 
     let loader = env
-        .call_method(activity, "getClassLoader", "()Ljava/lang/ClassLoader;", &[])
+        .call_method(
+            activity,
+            jni_str!("getClassLoader"),
+            jni_sig!("()Ljava/lang/ClassLoader;"),
+            &[],
+        )
         .and_then(|v| v.l())
         .map_err(|e| format!("getClassLoader: {e}"))?;
     let class_name = env
@@ -101,22 +123,24 @@ fn start_installer(
     let provider = env
         .call_method(
             &loader,
-            "loadClass",
-            "(Ljava/lang/String;)Ljava/lang/Class;",
-            &[JValue::Object(&class_name.into())],
+            jni_str!("loadClass"),
+            jni_sig!("(Ljava/lang/String;)Ljava/lang/Class;"),
+            &[JValue::Object(&class_name)],
         )
         .and_then(|v| v.l())
+        .and_then(|o| env.cast_local::<JClass>(o))
         .map_err(|e| format!("loading FileProvider: {e}"))?;
-    let provider = JClass::from(provider);
 
     let uri = env
         .call_static_method(
             &provider,
-            "getUriForFile",
-            "(Landroid/content/Context;Ljava/lang/String;Ljava/io/File;)Landroid/net/Uri;",
+            jni_str!("getUriForFile"),
+            jni_sig!(
+                "(Landroid/content/Context;Ljava/lang/String;Ljava/io/File;)Landroid/net/Uri;"
+            ),
             &[
                 JValue::Object(activity),
-                JValue::Object(&authority.into()),
+                JValue::Object(&authority),
                 JValue::Object(&file),
             ],
         )
@@ -128,9 +152,9 @@ fn start_installer(
         .map_err(|e| e.to_string())?;
     let intent = env
         .new_object(
-            "android/content/Intent",
-            "(Ljava/lang/String;)V",
-            &[JValue::Object(&action.into())],
+            jni_str!("android/content/Intent"),
+            jni_sig!("(Ljava/lang/String;)V"),
+            &[JValue::Object(&action)],
         )
         .map_err(|e| format!("Intent: {e}"))?;
 
@@ -139,9 +163,9 @@ fn start_installer(
         .map_err(|e| e.to_string())?;
     env.call_method(
         &intent,
-        "setDataAndType",
-        "(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/Intent;",
-        &[JValue::Object(&uri), JValue::Object(&mime.into())],
+        jni_str!("setDataAndType"),
+        jni_sig!("(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/Intent;"),
+        &[JValue::Object(&uri), JValue::Object(&mime)],
     )
     .map_err(|e| format!("setDataAndType: {e}"))?;
 
@@ -149,8 +173,8 @@ fn start_installer(
     const FLAG_ACTIVITY_NEW_TASK: i32 = 0x1000_0000;
     env.call_method(
         &intent,
-        "addFlags",
-        "(I)Landroid/content/Intent;",
+        jni_str!("addFlags"),
+        jni_sig!("(I)Landroid/content/Intent;"),
         &[JValue::Int(
             FLAG_GRANT_READ_URI_PERMISSION | FLAG_ACTIVITY_NEW_TASK,
         )],
@@ -159,8 +183,8 @@ fn start_installer(
 
     env.call_method(
         activity,
-        "startActivity",
-        "(Landroid/content/Intent;)V",
+        jni_str!("startActivity"),
+        jni_sig!("(Landroid/content/Intent;)V"),
         &[JValue::Object(&intent)],
     )
     .map_err(|e| format!("startActivity: {e}"))?;
