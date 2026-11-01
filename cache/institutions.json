@@ -335,6 +335,14 @@
     "lat": 48.85341,
     "lon": 2.3488
   },
+  "aff:astrophysics research centre, school of mathematics and physics, queen’s university belfast, belfast bt7 1nn, uk": {
+    "display_name": "Queen's University Belfast",
+    "ror": "https://ror.org/00hswnk62",
+    "country": "GB",
+    "city": "Belfast",
+    "lat": 54.59682,
+    "lon": -5.92541
+  },
   "aff:astrophysics research centre, school of mathematics and physics, queen’s university belfast, belfast, bt7 1nn, uk": {
     "display_name": "Queen's University Belfast",
     "ror": "https://ror.org/00hswnk62",
@@ -2687,6 +2695,14 @@
     "lat": 43.70643,
     "lon": -79.39864
   },
+  "aff:department of physics, american university, 4400 massachusetts avenue, nw, washington, dc 20016, usa": {
+    "display_name": "American University",
+    "ror": "https://ror.org/052w4zt36",
+    "country": "US",
+    "city": "Washington",
+    "lat": 38.89511,
+    "lon": -77.03637
+  },
   "aff:department of physics, anhui normal university, wuhu, 241002, china": {
     "display_name": "Anhui Normal University",
     "ror": "https://ror.org/05fsfvw79",
@@ -2750,6 +2766,14 @@
     "city": "Burnaby",
     "lat": 49.266361236572266,
     "lon": -122.95262908935548
+  },
+  "aff:department of physics, catholic university of america, washington, dc 20064, usa": {
+    "display_name": "Catholic University of America",
+    "ror": "https://ror.org/047yk3s18",
+    "country": "US",
+    "city": "Washington",
+    "lat": 38.89511,
+    "lon": -77.03637
   },
   "aff:department of physics, college of science, kyung hee university, seoul 02447, republic of korea": {
     "display_name": "Kyung Hee University",
@@ -3567,6 +3591,14 @@
     "lat": 47.36667,
     "lon": 8.55
   },
+  "aff:esa neo coordination centre, planetary defence office, european space agency, largo galileo galilei, 1, 00044 frascati (rm), italy": {
+    "display_name": "European Space Agency",
+    "ror": "https://ror.org/03wd9za21",
+    "country": "FR",
+    "city": "Paris",
+    "lat": 48.85341,
+    "lon": 2.3488
+  },
   "aff:eth zürich, department of mathematics, rämistrasse 101, 8092, zürich, switzerland": {
     "display_name": "ETH Zurich",
     "ror": "https://ror.org/05a28rw58",
@@ -3622,6 +3654,14 @@
     "city": "Seattle",
     "lat": 47.60621,
     "lon": -122.33207
+  },
+  "aff:experimental physics of nanostructured materials, q-mat, department of physics, université de liège, allée du 6 août 19, sart tilman b-4000, belgium": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:experimentalphysik ii, institute of physics, university of augsburg, augsburg, germany": {
     "display_name": "Institute of Physics",
@@ -4271,6 +4311,14 @@
     "lat": 28.4601,
     "lon": 77.02635
   },
+  "aff:huygens-kamerlingh onnes laboratory": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:ice-1, institute of climate and energy systems, forschungszentrum jülich, jülich, germany": {
     "display_name": "Forschungszentrum Jülich",
     "ror": "https://ror.org/02nv7yv05",
@@ -4470,6 +4518,14 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:institute for astronomy, university of edinburgh, royal observatory, edinburgh eh9 3hj, uk": {
+    "display_name": "University of Edinburgh",
+    "ror": "https://ror.org/01nrxwf90",
+    "country": "GB",
+    "city": "Edinburgh",
+    "lat": 55.95206,
+    "lon": -3.19648
   },
   "aff:institute for atmospheric and earth systems research, university of helsinki, helsinki, finland": {
     "display_name": "University of Helsinki",
@@ -5879,6 +5935,14 @@
     "lat": 52.158329010009766,
     "lon": 4.493060111999512
   },
+  "aff:leiden university, 2300 ra leiden, the netherlands": {
+    "display_name": "Leiden University",
+    "ror": "https://ror.org/027bh9e22",
+    "country": "NL",
+    "city": "Leiden",
+    "lat": 52.15833,
+    "lon": 4.49306
+  },
   "aff:leipzig university": {
     "display_name": "Leipzig University",
     "ror": "https://ror.org/03s7gtk40",
@@ -6735,6 +6799,14 @@
     "lat": 62.03114,
     "lon": 129.72288
   },
+  "aff:northern arizona university, department of astronomy and planetary science": {
+    "display_name": "Northern Arizona University",
+    "ror": "https://ror.org/0272j5188",
+    "country": "US",
+    "city": "Flagstaff",
+    "lat": 35.19807052612305,
+    "lon": -111.6512680053711
+  },
   "aff:northern illinois university": {
     "display_name": "Northern Illinois University",
     "ror": "https://ror.org/012wxa772",
@@ -6903,6 +6975,14 @@
     "lat": 35.28275,
     "lon": -120.65962
   },
+  "aff:physics department, edmund c. leach science center, auburn university, auburn, al 36849, usa": {
+    "display_name": "Auburn University",
+    "ror": "https://ror.org/02v80fc35",
+    "country": "US",
+    "city": "Auburn",
+    "lat": 32.60986,
+    "lon": -85.48078
+  },
   "aff:physics department, faculty of science, fayoum university, fayoum 63514, egypt": {
     "display_name": "Fayoum University",
     "ror": "https://ror.org/023gzwx10",
@@ -6975,6 +7055,14 @@
     "lat": 52.39886,
     "lon": 13.06566
   },
+  "aff:princeton university and korea institute for advanced study": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:puls, institute for theoretical physics, friedrich-alexander-universität erlangen-nürnberg, erlangen": {
     "display_name": "Institute for Theoretical Physics",
     "ror": "https://ror.org/025en1p25",
@@ -7014,6 +7102,14 @@
     "city": "Boston",
     "lat": 42.35843,
     "lon": -71.05977
+  },
+  "aff:quantum solid-state physics, department of physics and astronomy, ku leuven, celestijnenlaan 200d, leuven, b-3001, belgium": {
+    "display_name": "KU Leuven",
+    "ror": "https://ror.org/05f950310",
+    "country": "BE",
+    "city": "Leuven",
+    "lat": 50.87959,
+    "lon": 4.70093
   },
   "aff:racah institute of physics, the hebrew university, jerusalem 91904, israel": {
     "display_name": "",
@@ -7855,6 +7951,14 @@
     "lat": 34.83000183105469,
     "lon": 138.2969512939453
   },
+  "aff:solar system science and exploration division, southwest research institute, boulder, co 80302, usa": {
+    "display_name": "Southwest Research Institute",
+    "ror": "https://ror.org/03tghng59",
+    "country": "US",
+    "city": "San Antonio",
+    "lat": 29.42411994934082,
+    "lon": -98.4936294555664
+  },
   "aff:song li is also with the department of biomedical engineering, city university of hong kong, hong kong (e-mail: lsong22-c@my.cityu.edu.hk)": {
     "display_name": "City University of Hong Kong",
     "ror": "https://ror.org/03q8dnn23",
@@ -8462,6 +8566,14 @@
     "city": "Munich",
     "lat": 48.13743,
     "lon": 11.57549
+  },
+  "aff:tsinghua university": {
+    "display_name": "Tsinghua University",
+    "ror": "https://ror.org/03cve4549",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
   },
   "aff:tsinghua university, beijing, 100084, china": {
     "display_name": "Tsinghua University",
@@ -9222,6 +9334,14 @@
     "city": "Coventry",
     "lat": 52.40656,
     "lon": -1.51217
+  },
+  "aff:university of wisconsin-madison": {
+    "display_name": "University of Wisconsin–Madison",
+    "ror": "https://ror.org/01y2jtd41",
+    "country": "US",
+    "city": "Madison",
+    "lat": 43.07305,
+    "lon": -89.40123
   },
   "aff:university of zurich": {
     "display_name": "University of Zurich",
@@ -16127,6 +16247,22 @@
     "lat": 35.6895,
     "lon": 139.69171
   },
+  "https://openalex.org/I4405286023": {
+    "display_name": "Osaka Central Advanced Mathematical Institute",
+    "ror": "https://ror.org/00z0nde86",
+    "country": "JP",
+    "city": "Osaka",
+    "lat": 34.69379,
+    "lon": 135.50107
+  },
+  "https://openalex.org/I4405286694": {
+    "display_name": "University of Medicine and Dentistry of New Jersey",
+    "ror": "https://ror.org/02tvvmk84",
+    "country": "US",
+    "city": "Newark",
+    "lat": 40.73566,
+    "lon": -74.17237
+  },
   "https://openalex.org/I4405286731": {
     "display_name": "Research Institute on Human and Societal Augmentation",
     "ror": "https://ror.org/02y439j31",
@@ -16134,6 +16270,14 @@
     "city": "Kashiwa",
     "lat": 35.86224,
     "lon": 139.97732
+  },
+  "https://openalex.org/I4405287075": {
+    "display_name": "AUMOVIO (Germany)",
+    "ror": "https://ror.org/041vevk40",
+    "country": "DE",
+    "city": "Frankfurt am Main",
+    "lat": 50.11552,
+    "lon": 8.68417
   },
   "https://openalex.org/I4405287468": {
     "display_name": "AIST Kashiwa",
