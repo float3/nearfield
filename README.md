@@ -7,6 +7,7 @@ A daily list of new arXiv preprints, sorted by how far each paper's nearest auth
 ```sh
 cargo run -p nearfield-cli -- run                       # build today's digest into data/
 cargo run -p nearfield-cli -- run --origin "Kyoto"      # measure from somewhere else
+cargo run -p nearfield-cli -- run --date 2026-10-22 --backfill   # rebuild a past day's list
 cargo run -p nearfield-cli -- fetch 2610.31702          # fetch one paper's introduction and emails
 cargo run -p nearfield-cli -- report --samples          # what the parser failed on today
 ```
@@ -34,7 +35,7 @@ The signing key in `signing/` is not in git. Back it up: an APK signed with anot
 
 ## CI
 
-- `digest` builds each evening's arXiv list the next morning, from about 08:00 in Munich: it checks every half hour until the feeds carry a list with no digest yet, then commits `data/<date>.json` and the caches, and deploys GitHub Pages. A digest is named after the evening arXiv sent its list out. It measures from the `NEARFIELD_ORIGIN` repository variable. Every Sunday it reruns all published days offline, from the author cache and the offline index only, so older days gain authors that later runs placed. Every day at 11:47 UTC a last run builds the day's list if the earlier tries haven't, then asks OpenAlex what is left of the day's $1 and spends all of it on published days, newest first, looking up authors and reading more papers. On Saturday and Sunday, when arXiv has sent no list, that is the whole day's budget. A manual run with `rerun` and a `date` improves one day with lookups and reading too.
+- `digest` builds each evening's arXiv list the next morning, from about 08:00 in Munich: it checks every half hour until the feeds carry a list with no digest yet, then commits `data/<date>.json` and the caches, and deploys GitHub Pages. A digest is named after the evening arXiv sent its list out. It measures from the `NEARFIELD_ORIGIN` repository variable. Every Sunday it reruns all published days offline, from the author cache and the offline index only, so older days gain authors that later runs placed. Every day at 11:47 UTC a last run builds the day's list if the earlier tries haven't, then asks OpenAlex what is left of the day's $1 and spends all of it on published days, newest first, looking up authors and reading more papers. Whatever is still left goes further back in time: it rebuilds the list before the oldest digest from arXiv's search API, by submission time between arXiv's 14:00 US Eastern cutoffs, which matches the real lists closely but not exactly. On Saturday and Sunday, when arXiv has sent no list, that is the whole day's budget. A manual run with `rerun` and a `date` improves one day with lookups and reading too.
 - `ci` runs on each push to `main` and on every pull request: `cargo fmt`, `clippy -D warnings` and the tests for the pipeline, and the TypeScript type-check, frontend build, `cargo fmt` and Android `clippy` for the app.
 - `apk` builds the nightly channel on every commit to `main` that changes what goes into the APK, and the stable channel on a `v*` tag. The app checks `updates/<channel>.json`, downloads a newer build and opens Android's installer.
 

@@ -56,6 +56,9 @@ pub struct Config {
     pub api_key: Option<String>,
     /// Skip the harvest and re-process an existing digest instead.
     pub reuse_harvest: bool,
+    /// Rebuild a past day's list from arXiv's search API instead of reading
+    /// today's from the feeds. See `arxiv_past`.
+    pub backfill: bool,
     /// The offline author index (`nearfield index-authors`). Missing is
     /// fine: the run then pays for every new name as it always did.
     pub snapshot: Option<PathBuf>,
@@ -96,6 +99,8 @@ pub async fn run(cfg: Config) -> Result<Digest> {
     // allows ten per second but we stay well under it.
     http.set_rate("rss.arxiv.org", Duration::from_secs(3)).await;
     http.set_rate("arxiv.org", Duration::from_secs(3)).await;
+    http.set_rate("export.arxiv.org", Duration::from_secs(3))
+        .await;
     http.set_rate("api.openalex.org", Duration::from_millis(120))
         .await;
     http.set_rate("nominatim.openstreetmap.org", Duration::from_secs(1))
@@ -129,7 +134,11 @@ pub async fn run(cfg: Config) -> Result<Digest> {
         }
         papers
     } else {
-        let h = arxiv::harvest(&http, &cfg.categories, &cfg.date, &mut diag).await?;
+        let h = if cfg.backfill {
+            crate::arxiv_past::harvest(&http, &cfg.categories, &cfg.date, &mut diag).await?
+        } else {
+            arxiv::harvest(&http, &cfg.categories, &cfg.date, &mut diag).await?
+        };
         if let Some(d) = h.announced.clone() {
             if d != cfg.date {
                 tracing::info!(

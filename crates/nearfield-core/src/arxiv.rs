@@ -187,7 +187,7 @@ fn looks_like_a_place(s: &str) -> bool {
 /// Robberto (STScI)" is two authors, and splitting blindly produced
 /// fragments like "Gregory D. Wirth (BAE Systems -- Space &". So the split
 /// tracks parenthesis depth, then strips the affiliation each name carries.
-fn split_authors(creators: &str) -> Vec<Author> {
+pub(crate) fn split_authors(creators: &str) -> Vec<Author> {
     const SUFFIXES: [&str; 8] = ["Jr.", "Jr", "Sr.", "Sr", "II", "III", "IV", "PhD"];
 
     let mut pieces: Vec<String> = Vec::new();
