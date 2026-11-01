@@ -1,6 +1,7 @@
 //! Nearfield: rank each day's preprints by how far their authors are from home.
 
 pub mod arxiv;
+pub mod arxiv_past;
 pub mod cache;
 pub mod diagnostics;
 pub mod geo;

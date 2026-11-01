@@ -188,7 +188,7 @@ jobs:
             --prefetch-unplaced "${{ inputs.prefetch_unplaced || '250' }}" \
             --max-lookups 4000
 
-      - name: Spend the rest of the day's allowance on published days
+      - name: Spend the rest of the day's allowance on published and past days
         if: ${{ env.SPEND == 'true' }}
         env:
           OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
@@ -207,23 +207,45 @@ jobs:
               || true
           }
           start=$SECONDS
-          for f in $(ls -r data/20??-??-??.json); do
-            day=$(basename "$f" .json)
+          # Run one day on all that is left. Fails, to stop the caller, under
+          # a cent (a search costs a tenth of one), when the header is
+          # missing, or after 80 minutes, inside the job's timeout.
+          spend_on() {
+            local day=$1; shift
             usd=$(left)
             echo "OpenAlex: \$${usd:-?} left today"
-            # Stop under a cent (a search costs a tenth of one), when the
-            # header is missing, or after 80 minutes, inside the job's timeout.
-            if ! awk -v l="${usd:-0}" 'BEGIN { exit !(l >= 0.01) }'; then break; fi
-            if (( SECONDS - start > 80 * 60 )); then break; fi
-            echo "::group::$day"
+            awk -v l="${usd:-0}" 'BEGIN { exit !(l >= 0.01) }' || return 1
+            (( SECONDS - start <= 80 * 60 )) || return 1
+            echo "::group::$day $*"
             # All of it, a twentieth held for affiliations read off papers.
-            ./target/release/nearfield run --date "$day" --reuse-harvest \
+            ./target/release/nearfield run --date "$day" "$@" \
               --snapshot cache/snapshot/authors.idx \
               --budget "$(awk -v l="$usd" 'BEGIN { printf "%.3f", l * 0.95 }')" \
               --affiliation-budget "$(awk -v l="$usd" 'BEGIN { printf "%.3f", l * 0.05 }')" \
               --prefetch 200 --prefetch-unplaced 250 --max-lookups 4000 \
-              || echo "::warning::rerun of $day failed"
+              || echo "::warning::run of $day $* failed"
             echo "::endgroup::"
+          }
+
+          # Published days first, newest first.
+          for f in $(ls -r data/20??-??-??.json); do
+            spend_on "$(basename "$f" .json)" --reuse-harvest || exit 0
+          done
+
+          # Then further back: rebuild the list before the oldest digest from
+          # arXiv's search API. Friday and Saturday have no list to rebuild.
+          while true; do
+            oldest=$(ls data/20??-??-??.json | head -1 | xargs basename -s .json)
+            day=$(date -u -d "$oldest -1 day" +%F)
+            while [[ $(date -u -d "$day" +%u) == 5 || $(date -u -d "$day" +%u) == 6 ]]; do
+              day=$(date -u -d "$day -1 day" +%F)
+            done
+            spend_on "$day" --backfill || exit 0
+            # A day that wrote nothing would be tried again forever.
+            if [[ ! -f "data/$day.json" ]]; then
+              echo "::warning::rebuilding $day wrote no digest; stopping"
+              break
+            fi
           done
 
       - name: Commit the day's digest and the warmed caches

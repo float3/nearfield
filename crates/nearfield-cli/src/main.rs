@@ -50,6 +50,10 @@ enum Command {
         /// Re-rank an existing digest instead of re-harvesting.
         #[arg(long)]
         reuse_harvest: bool,
+        /// Rebuild the list arXiv sent on the evening of --date from its
+        /// search API, for a day the feeds no longer carry.
+        #[arg(long, requires = "date", conflicts_with = "reuse_harvest")]
+        backfill: bool,
         /// Where to measure from: a place name to look up, "lat,lon", or
         /// "Label@lat,lon" to name a point without a lookup. Defaults to
         /// NEARFIELD_ORIGIN. Use this to prepare for a trip — the nearest
@@ -330,6 +334,7 @@ async fn main() -> Result<()> {
             max_authors_per_paper,
             categories,
             reuse_harvest,
+            backfill,
             origin,
             out_dir,
             cache_dir,
@@ -364,6 +369,7 @@ async fn main() -> Result<()> {
                 contact: contact(),
                 api_key: api_key(),
                 reuse_harvest,
+                backfill,
                 snapshot: Some(snapshot),
             })
             .await;
