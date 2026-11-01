@@ -51,6 +51,10 @@ on:
         description: "Unplaced papers to read for their affiliations."
         required: false
         default: "250"
+      spend:
+        description: "Only spend what is left of today's OpenAlex allowance on published days, as the 11:47 run does."
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -63,7 +67,7 @@ concurrency:
 
 env:
   WEEKLY: ${{ github.event.schedule == '17 3 * * 0' }}
-  SPEND: ${{ github.event.schedule == '47 11 * * *' }}
+  SPEND: ${{ github.event.schedule == '47 11 * * *' || inputs.spend == true }}
 
 jobs:
   check:
