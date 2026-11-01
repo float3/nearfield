@@ -19,6 +19,10 @@ UA="nearfield (+https://github.com/float3/nearfield)"
 latest=""
 for f in "${FEEDS[@]}"; do
   body=$(curl -fsS --max-time 30 -A "$UA" "https://rss.arxiv.org/rss/$f" || true)
+  # On days with no list (arXiv sends none on Friday or Saturday evening) the
+  # feed has no items but its channel still carries today's pubDate, which
+  # read as a new list and set off a full, empty build.
+  grep -q '<item>' <<<"$body" || continue
   stamp=$(grep -m1 -oE '<pubDate>[^<]+' <<<"$body" | sed 's/<pubDate>//' || true)
   [[ -z "$stamp" ]] && continue
   # "Fri, 30 Oct 2026 00:00:00 -0400": the calendar date as arXiv wrote it.
