@@ -16,11 +16,19 @@ name: digest
 # rerun offline: no arXiv fetches and no OpenAlex calls, only the author cache
 # that each daily run grows and the offline index, so older days pick up
 # authors that later runs have placed, for free.
+#
+# arXiv sends no list on Friday or Saturday evening, so on Saturday and Sunday
+# no daily build spends the OpenAlex allowance. A run late on those mornings
+# spends it on published days instead, newest first: it looks up the authors
+# the daily runs had no budget left for, and reads more papers. It only runs
+# if the morning built nothing, so a list that did come out keeps its budget.
 on:
   schedule:
     - cron: "7,37 6-10 * * *"
     # Keep in step with WEEKLY below.
     - cron: "17 3 * * 0"
+    # Keep in step with SPEND below. After the daily window, on weekends.
+    - cron: "47 11 * * 6,0"
   workflow_dispatch:
     inputs:
       date:
@@ -53,6 +61,7 @@ concurrency:
 
 env:
   WEEKLY: ${{ github.event.schedule == '17 3 * * 0' }}
+  SPEND: ${{ github.event.schedule == '47 11 * * 6,0' }}
 
 jobs:
   check:
@@ -60,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
-      new: ${{ steps.feeds.outputs.new }}
+      new: ${{ steps.feeds.outputs.new || steps.spend.outputs.new }}
       date: ${{ steps.feeds.outputs.date }}
     steps:
       - uses: actions/checkout@v7
@@ -70,12 +79,25 @@ jobs:
             scripts
       - name: Is there a list without a digest?
         id: feeds
+        if: ${{ github.event.schedule != '47 11 * * 6,0' }}
         run: bash scripts/new-announcement.sh | tee -a "$GITHUB_OUTPUT"
+
+      # A morning that built a list has spent the allowance on it. Its digest
+      # is named after the evening before.
+      - name: Is the day's allowance unspent?
+        id: spend
+        if: ${{ github.event.schedule == '47 11 * * 6,0' }}
+        run: |
+          if [[ -f "data/$(date -u -d yesterday +%F).json" ]]; then
+            echo "new=false" | tee -a "$GITHUB_OUTPUT"
+          else
+            echo "new=true" | tee -a "$GITHUB_OUTPUT"
+          fi
 
   build:
     needs: check
     # `always()` lets a manual run or the weekly rerun, where check is
-    # skipped, through.
+    # skipped, through. The weekend run goes through check like a daily one.
     if: ${{ always() && (github.event_name != 'schedule' || github.event.schedule == '17 3 * * 0' || needs.check.outputs.new == 'true') }}
     runs-on: ubuntu-latest
     timeout-minutes: 110
@@ -153,8 +175,37 @@ jobs:
             echo "::endgroup::"
           done
 
+      - name: Spend the day's allowance on published days
+        if: ${{ env.SPEND == 'true' }}
+        env:
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+          NEARFIELD_CONTACT: ${{ secrets.NEARFIELD_CONTACT }}
+          NEARFIELD_ORIGIN: ${{ vars.NEARFIELD_ORIGIN }}
+        run: |
+          mkdir -p work
+          # Each run gets what the ones before it left of $0.90. Stop when
+          # that is gone, or after 80 minutes, inside the job's timeout.
+          left=0.90
+          start=$SECONDS
+          for f in $(ls -r data/20??-??-??.json); do
+            day=$(basename "$f" .json)
+            if awk -v l="$left" 'BEGIN { exit !(l < 0.01) }'; then break; fi
+            if (( SECONDS - start > 80 * 60 )); then break; fi
+            echo "::group::$day (\$$left left)"
+            out=$(./target/release/nearfield run --date "$day" --reuse-harvest \
+              --snapshot cache/snapshot/authors.idx \
+              --budget "$left" --prefetch 200 --prefetch-unplaced 250 \
+              --max-lookups 4000 | tee /dev/stderr) \
+              || echo "::warning::rerun of $day failed"
+            spent=$(grep -oE 'API calls, \$[0-9.]+' <<<"$out" | grep -oE '[0-9.]+$' || echo 0)
+            left=$(awk -v l="$left" -v s="$spent" 'BEGIN { printf "%.3f", l - s }')
+            # A refusal means OpenAlex counts the day as spent, whatever is left here.
+            if grep -q 'OpenAlex throttled' <<<"$out"; then left=0; fi
+            echo "::endgroup::"
+          done
+
       - name: Harvest, geolocate and rank
-        if: ${{ env.WEEKLY != 'true' }}
+        if: ${{ env.WEEKLY != 'true' && env.SPEND != 'true' }}
         env:
           # Free key, own $1/day budget. Without it OpenAlex throttles the
           # whole runner IP to a shared $0.10/day and most papers stay unplaced.
@@ -198,6 +249,8 @@ jobs:
           else
             if [[ "$WEEKLY" == "true" ]]; then
               git commit -m "digest: offline rerun of every day, $(date -u +%F)"
+            elif [[ "$SPEND" == "true" ]]; then
+              git commit -m "digest: weekend lookups for published days, $(date -u +%F)"
             else
               git commit -m "digest: $(date -u +%F)"
             fi
@@ -218,7 +271,7 @@ jobs:
           path: site
 
       - name: Notify the phone
-        if: ${{ env.NTFY_TOPIC != '' && env.WEEKLY != 'true' }}
+        if: ${{ env.NTFY_TOPIC != '' && env.WEEKLY != 'true' && env.SPEND != 'true' }}
         run: |
           curl -fsS \
             -H "Title: Nearfield" \
