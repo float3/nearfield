@@ -105,6 +105,7 @@ GEN="$ROOT/app/src-tauri/gen/android"
 cp "$KEYPROPS" "$GEN/keystore.properties"
 python "$ROOT/scripts/inject-signing.py" "$GEN/app/build.gradle.kts"
 python "$ROOT/scripts/inject-manifest.py" "$GEN/app/src/main/AndroidManifest.xml"
+cp "$ROOT/scripts/inject-keep.pro" "$GEN/app/proguard-nearfield.pro"
 
 # 4. Build, stamping the version. `tauri android build` rewrites
 #    gen/android/app/tauri.properties from the config on every run, so writing

@@ -19,7 +19,7 @@ on:
       - "crates/nearfield-core/**"
       - "Cargo.toml"
       - "scripts/build-apk.sh"
-      - "scripts/inject-*.py"
+      - "scripts/inject-*"
       - "!**/*.md"
     tags: ["v*"]
   schedule:
@@ -81,7 +81,7 @@ jobs:
           # The same paths as the push filter above, as pathspecs.
           APK_INPUTS: >-
             app crates/nearfield-core Cargo.toml scripts/build-apk.sh
-            scripts/inject-*.py :!*.md
+            scripts/inject-* :!*.md
         run: |
           # Only the scheduled run needs this: a push passed the path filter.
           # "Any commit in 24h" is not enough, because this workflow's own
