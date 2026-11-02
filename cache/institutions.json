@@ -71,6 +71,22 @@
     "lat": 62.60118,
     "lon": 29.76316
   },
+  "aff:a. lapidoth and b. ni are with the department of information technology and electrical engineering, eth zurich, zurich, switzerland. {lapidoth, baohni}@isi.ee.ethz.ch": {
+    "display_name": "ETH Zurich",
+    "ror": "https://ror.org/05a28rw58",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
+  },
+  "aff:a. shahraki is with the department of informatics, university of oslo, 0373 oslo, norway": {
+    "display_name": "University of Oslo",
+    "ror": "https://ror.org/01xtthb56",
+    "country": "NO",
+    "city": "Oslo",
+    "lat": 59.91273,
+    "lon": 10.74609
+  },
   "aff:aalborg university, denmark — thta@cs.aau.dk": {
     "display_name": "Aalborg University",
     "ror": "https://ror.org/04m5j1k67",
@@ -119,6 +135,14 @@
     "lat": 39.9075,
     "lon": 116.39723
   },
+  "aff:affiliation: carl von ossietzky universität oldenburg, institute of physics, 26129 oldenburg, germany": {
+    "display_name": "Institute of Physics",
+    "ror": "https://ror.org/03c59nw07",
+    "country": "HR",
+    "city": "Zagreb",
+    "lat": 45.81444,
+    "lon": 15.97798
+  },
   "aff:affiliation: delft university of technology": {
     "display_name": "",
     "ror": null,
@@ -142,6 +166,14 @@
     "city": "Kyoto",
     "lat": 35.02107,
     "lon": 135.75385
+  },
+  "aff:affiliation: institute of molecular physical science, eth zürich, 8093 zürich, switzerland": {
+    "display_name": "ETH Zurich",
+    "ror": "https://ror.org/05a28rw58",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
   },
   "aff:affiliation: technological school electronic systems (tues)": {
     "display_name": "",
@@ -175,6 +207,14 @@
     "lat": 43.29695,
     "lon": 5.38107
   },
+  "aff:aix marseille université, cnrs, cnes, lam, marseille, france": {
+    "display_name": "Aix-Marseille Université",
+    "ror": "https://ror.org/035xkbk20",
+    "country": "FR",
+    "city": "Marseille",
+    "lat": 43.29695,
+    "lon": 5.38107
+  },
   "aff:akita international university": {
     "display_name": "Akita International University",
     "ror": "https://ror.org/05qz4zw08",
@@ -190,6 +230,14 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:all authors are with the institute for dynamic systems and control, eth zurich, zurich, switzerland": {
+    "display_name": "ETH Zurich",
+    "ror": "https://ror.org/05a28rw58",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
   },
   "aff:and institute of digital materials science, karlsruhe university of applied sciences": {
     "display_name": "",
@@ -207,6 +255,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:andrew j. reader is with the school of biomedical engineering and imaging sciences, king’s college london, uk": {
+    "display_name": "King's College London",
+    "ror": "https://ror.org/0220mzb33",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50853,
+    "lon": -0.12574
+  },
   "aff:anton pannekoek institute for astronomy, university of amsterdam, 1090 ge amsterdam, the netherlands": {
     "display_name": "University of Amsterdam",
     "ror": "https://ror.org/04dkp9463",
@@ -216,6 +272,14 @@
     "lon": 4.88969
   },
   "aff:anton pannekoek institute for astronomy, university of amsterdam, science park 904, 1098 xh, amsterdam, the netherlands": {
+    "display_name": "University of Amsterdam",
+    "ror": "https://ror.org/04dkp9463",
+    "country": "NL",
+    "city": "Amsterdam",
+    "lat": 52.37403,
+    "lon": 4.88969
+  },
+  "aff:anton pannekoek institute for astronomy, university of amsterdam, science park 904, 1098xh amsterdam, the netherlands": {
     "display_name": "University of Amsterdam",
     "ror": "https://ror.org/04dkp9463",
     "country": "NL",
@@ -263,6 +327,14 @@
     "lat": 54.35,
     "lon": -6.66667
   },
+  "aff:artificial intelligence research institute (iiia-csic), barcelona, spain": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:artificial intelligence research institute airi@utcn": {
     "display_name": "",
     "ror": null,
@@ -295,6 +367,14 @@
     "lat": 52.48141860961914,
     "lon": -1.899829983711243
   },
+  "aff:astronomical institute of the czech republic, czech academy of sciences": {
+    "display_name": "Czech Academy of Sciences",
+    "ror": "https://ror.org/053avzc18",
+    "country": "CZ",
+    "city": "Prague",
+    "lat": 50.08804,
+    "lon": 14.42076
+  },
   "aff:astronomical institute, czech academy of sciences": {
     "display_name": "Czech Academy of Sciences",
     "ror": "https://ror.org/053avzc18",
@@ -318,6 +398,14 @@
     "city": "Belgrade",
     "lat": 44.80401,
     "lon": 20.46513
+  },
+  "aff:astronomisches rechen-institut, zah, universität heidelberg, mönchhofstr 12-14, d-69120 heidelberg, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:astronomy department, university of washington, box 351580, seattle, wa, 98195-1580, usa": {
     "display_name": "University of Washington",
@@ -407,6 +495,14 @@
     "lat": 39.29038,
     "lon": -76.61219
   },
+  "aff:automatic control laboratory, eth zürich": {
+    "display_name": "Automatic Control Laboratory",
+    "ror": "https://ror.org/03hjcs512",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
+  },
   "aff:b school of mathematics, southeast university": {
     "display_name": "Southeast University",
     "ror": "https://ror.org/00cf0ab87",
@@ -455,6 +551,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:beijing national laboratory for condensed matter physics and institute of physics": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:beijing university of posts and telecommunications, beijing, china": {
     "display_name": "Beijing University of Posts and Telecommunications",
     "ror": "https://ror.org/04w9fbh59",
@@ -462,6 +566,22 @@
     "city": "Beijing",
     "lat": 39.9075,
     "lon": 116.39723
+  },
+  "aff:berkeley center for cosmological physics, university of california, berkeley, ca 94720, usa": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:berlin institute for the foundations of learning and data (bifold), berlin, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:berlin school of library and information science, humboldt-universität zu berlin": {
     "display_name": "Humboldt-Universität zu Berlin",
@@ -495,6 +615,14 @@
     "lat": 48.16667,
     "lon": 14.03333
   },
+  "aff:black hole initiative at harvard university, 20 garden street, cambridge, ma 02138, usa": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:bocconi university, milan, italy": {
     "display_name": "Bocconi University",
     "ror": "https://ror.org/05crjpb27",
@@ -518,6 +646,14 @@
     "city": "Vienna",
     "lat": 48.20849,
     "lon": 16.37208
+  },
+  "aff:boston college": {
+    "display_name": "Boston College",
+    "ror": "https://ror.org/02n2fzt79",
+    "country": "US",
+    "city": "Boston",
+    "lat": 42.35843,
+    "lon": -71.05977
   },
   "aff:business decisions and data science, university of passau, germany": {
     "display_name": "University of Passau",
@@ -607,7 +743,23 @@
     "lat": 40.44062,
     "lon": -79.99589
   },
+  "aff:causal and explainable artificial intelligence in life sciencesfaculty of mathematics and natural sciences, rwth aachen university, germany": {
+    "display_name": "RWTH Aachen University",
+    "ror": "https://ror.org/04xfq0f34",
+    "country": "DE",
+    "city": "Aachen",
+    "lat": 50.77664,
+    "lon": 6.08342
+  },
   "aff:cavendish laboratory, university of cambridge, 19 jj thomson avenue, cambridge cb3 0he, uk": {
+    "display_name": "University of Cambridge",
+    "ror": "https://ror.org/013meh722",
+    "country": "GB",
+    "city": "Cambridge",
+    "lat": 52.2,
+    "lon": 0.11667
+  },
+  "aff:cavendish laboratory, university of cambridge, 19 jj thomson avenue, cambridge, cb3 0he, uk": {
     "display_name": "University of Cambridge",
     "ror": "https://ror.org/013meh722",
     "country": "GB",
@@ -622,6 +774,14 @@
     "city": "Cambridge",
     "lat": 52.2,
     "lon": 0.11667
+  },
+  "aff:cea, cnrs, spec, université paris-saclay, gif-sur-yvette": {
+    "display_name": "Université Paris-Saclay",
+    "ror": "https://ror.org/03xjwb503",
+    "country": "FR",
+    "city": "Gif-sur-Yvette",
+    "lat": 48.68333,
+    "lon": 2.13333
   },
   "aff:center for ai research, vinuniversity": {
     "display_name": "VinUniversity",
@@ -663,7 +823,31 @@
     "lat": 42.375099182128906,
     "lon": -71.1056137084961
   },
+  "aff:center for astrophysics || harvard & smithsonian, 60 garden st, cambridge, ma 02138, usa": {
+    "display_name": "Center for Astrophysics Harvard & Smithsonian",
+    "ror": "https://ror.org/03c3r2d17",
+    "country": "US",
+    "city": "Cambridge",
+    "lat": 42.375099182128906,
+    "lon": -71.1056137084961
+  },
+  "aff:center for astrophysics || harvard & smithsonian, 60 garden st., cambridge ma 02138, usa": {
+    "display_name": "Center for Astrophysics Harvard & Smithsonian",
+    "ror": "https://ror.org/03c3r2d17",
+    "country": "US",
+    "city": "Cambridge",
+    "lat": 42.375099182128906,
+    "lon": -71.1056137084961
+  },
   "aff:center for astrophysics || harvard & smithsonian, 60 garden st., cambridge, ma 02138, usa": {
+    "display_name": "Center for Astrophysics Harvard & Smithsonian",
+    "ror": "https://ror.org/03c3r2d17",
+    "country": "US",
+    "city": "Cambridge",
+    "lat": 42.375099182128906,
+    "lon": -71.1056137084961
+  },
+  "aff:center for astrophysics || harvard & smithsonian, 60 garden street, cambridge, ma 02138, usa": {
     "display_name": "Center for Astrophysics Harvard & Smithsonian",
     "ror": "https://ror.org/03c3r2d17",
     "country": "US",
@@ -735,6 +919,14 @@
     "lat": 40.71427,
     "lon": -74.00597
   },
+  "aff:center for computational life sciences, rwth aachen university, germany*corresponding author: marvin.van.aalst@rwth-aachen.de‡equal contribution": {
+    "display_name": "RWTH Aachen University",
+    "ror": "https://ror.org/04xfq0f34",
+    "country": "DE",
+    "city": "Aachen",
+    "lat": 50.77664,
+    "lon": 6.08342
+  },
   "aff:center for computational simulation, universidad politécnica de madrid": {
     "display_name": "Universidad Politécnica de Madrid",
     "ror": "https://ror.org/03n6nwv02",
@@ -742,6 +934,14 @@
     "city": "Madrid",
     "lat": 40.4165,
     "lon": -3.70256
+  },
+  "aff:center for cosmology and astroparticle physics, the ohio state university, 191 west woodruff avenue, columbus, oh 43210, usa": {
+    "display_name": "The Ohio State University",
+    "ror": "https://ror.org/00rs6vg23",
+    "country": "US",
+    "city": "Columbus",
+    "lat": 39.96118,
+    "lon": -82.99879
   },
   "aff:center for cosmology and computational astrophysics, institute for advanced study in physics, zhejiang university, hangzhou 310027, china": {
     "display_name": "Zhejiang University",
@@ -815,6 +1015,14 @@
     "lat": 43.714019775390625,
     "lon": 10.410042762756348
   },
+  "aff:center for photon science, paul scherrer institut, villigen psi, switzerland": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:center for processes, renewable energy and energy systems (persee), mines paris psl": {
     "display_name": "",
     "ror": null,
@@ -830,6 +1038,22 @@
     "city": "Coburg",
     "lat": 50.259368896484375,
     "lon": 10.963839530944824
+  },
+  "aff:center for scientific computing, theory and data, paul scherrer institute, switzerland": {
+    "display_name": "Paul Scherrer Institute",
+    "ror": "https://ror.org/03eh3y714",
+    "country": "CH",
+    "city": "Villigen",
+    "lat": 47.52682,
+    "lon": 8.21486
+  },
+  "aff:center for theoretical astrophysics, los alamos national laboratory, los alamos, nm 87545, usa": {
+    "display_name": "Los Alamos National Laboratory",
+    "ror": "https://ror.org/01e41cf67",
+    "country": "US",
+    "city": "Los Alamos",
+    "lat": 35.88808,
+    "lon": -106.30697
   },
   "aff:centre de recherche sur la biodiversité et l’environnement (crbe), université de toulouse, cnrs, ird, toulouse inp, université toulouse 3 - paul sabatier (ut3), toulouse, france": {
     "display_name": "Université de Toulouse",
@@ -880,6 +1104,14 @@
     "lon": 144.96332
   },
   "aff:centre for astrophysics and supercomputing, swinburne university of technology, melbourne, vic 3122, australia": {
+    "display_name": "Swinburne University of Technology",
+    "ror": "https://ror.org/031rekg67",
+    "country": "AU",
+    "city": "Melbourne",
+    "lat": -37.814,
+    "lon": 144.96332
+  },
+  "aff:centre for astrophysics and supercomputing, swinburne university of technology, p.o. box 218, hawthorn, victoria 3122, australia": {
     "display_name": "Swinburne University of Technology",
     "ror": "https://ror.org/031rekg67",
     "country": "AU",
@@ -959,6 +1191,30 @@
     "lat": -33.30421829223633,
     "lon": 26.532760620117188
   },
+  "aff:centre national d’études spatiales, centre spatial de toulouse,toulouse cedex 9, france": {
+    "display_name": "Centre National d'Études Spatiales",
+    "ror": "https://ror.org/04h1h0y33",
+    "country": "FR",
+    "city": "Paris",
+    "lat": 48.85341,
+    "lon": 2.3488
+  },
+  "aff:centro de investigación en computación, instituto politécnico nacional, méxico city, méxico": {
+    "display_name": "Instituto Politécnico Nacional",
+    "ror": "https://ror.org/059sp8j34",
+    "country": "MX",
+    "city": "Mexico City",
+    "lat": 19.42847,
+    "lon": -99.12766
+  },
+  "aff:ceremade, cnrs, université paris-dauphine, université psl, 75016 paris, france": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:chair for computer aided medical procedures, technical university of munich, munich, germany": {
     "display_name": "Technical University of Munich",
     "ror": "https://ror.org/02kkvpp62",
@@ -974,6 +1230,14 @@
     "city": "Munich",
     "lat": 48.13743,
     "lon": 11.57549
+  },
+  "aff:chair of energy systems analysis, institute of energy and process engineering, eth zürich, switzerland": {
+    "display_name": "Institute of Energy and Process Engineering",
+    "ror": "https://ror.org/04fev5t41",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
   },
   "aff:chair of multiscale and stochastic dynamics, department of mathematics": {
     "display_name": "",
@@ -1031,6 +1295,38 @@
     "lat": 50.08804,
     "lon": 14.42076
   },
+  "aff:china guangxi key laboratory for relativistic astrophysics, school of physical science and technology, guangxi university, nanning 530004, china": {
+    "display_name": "Guangxi University",
+    "ror": "https://ror.org/02c9qn167",
+    "country": "CN",
+    "city": "Nanning",
+    "lat": 22.816669464111328,
+    "lon": 108.3166732788086
+  },
+  "aff:chinese academy of sciences, beijing 100190, china": {
+    "display_name": "Chinese Academy of Sciences",
+    "ror": "https://ror.org/034t30j35",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
+  },
+  "aff:chongqing police college, chongqing 401331, china": {
+    "display_name": "Chongqing Police College",
+    "ror": "https://ror.org/005tgwm49",
+    "country": "CN",
+    "city": "Chongqing",
+    "lat": 29.56026,
+    "lon": 106.55771
+  },
+  "aff:christian doppler laboratory for optimized model-based operation of interconnected systems, institute of automation and control, graz university of technology, graz, austria noah.hofmann@tugraz.at": {
+    "display_name": "Graz University of Technology",
+    "ror": "https://ror.org/00d7xrm67",
+    "country": "AT",
+    "city": "Graz",
+    "lat": 47.06733,
+    "lon": 15.44197
+  },
   "aff:christoph a. keller, department of mathematics, university of arizona, tucson, az 85721-0089, usa": {
     "display_name": "University of Arizona",
     "ror": "https://ror.org/03m2x1q45",
@@ -1039,6 +1335,14 @@
     "lat": 32.22174,
     "lon": -110.92648
   },
+  "aff:cispa helmholtz center for information security": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:city university of hong kong": {
     "display_name": "City University of Hong Kong",
     "ror": "https://ror.org/03q8dnn23",
@@ -1046,6 +1350,22 @@
     "city": "Hong Kong",
     "lat": 22.27832,
     "lon": 114.17469
+  },
+  "aff:clemson university university of ottawa paypal actava ai": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:cluster of excellence “centre for tactile internet with human-in-the-loop” (ceti) at technische universität dresden": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:cluster of excellence: machine learning - new perspectives for science, university of tübingen, germany": {
     "display_name": "",
@@ -1095,6 +1415,30 @@
     "lat": 40.71427,
     "lon": -74.00597
   },
+  "aff:columbia university": {
+    "display_name": "Columbia University",
+    "ror": "https://ror.org/00hj8s172",
+    "country": "US",
+    "city": "New York",
+    "lat": 40.71427,
+    "lon": -74.00597
+  },
+  "aff:columbia university, new york, united states of america": {
+    "display_name": "Columbia University",
+    "ror": "https://ror.org/00hj8s172",
+    "country": "US",
+    "city": "New York",
+    "lat": 40.71427,
+    "lon": -74.00597
+  },
+  "aff:como lake center for astrophysics, disat, università degli studi dell’insubria, via valleggio 11, i-22100, como, italy": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:como lake centre for astrophysics (clap), disat, università dell’insubria, via valleggio 11, 22100 como, italy": {
     "display_name": "",
     "ror": null,
@@ -1111,6 +1455,14 @@
     "lat": 54.68916,
     "lon": 25.2798
   },
+  "aff:computational and artificial intelligence division, los alamos national laboratory, los alamos, nm 87545, usa": {
+    "display_name": "Los Alamos National Laboratory",
+    "ror": "https://ror.org/01e41cf67",
+    "country": "US",
+    "city": "Los Alamos",
+    "lat": 35.88808,
+    "lon": -106.30697
+  },
   "aff:computational imaging group for mri therapy & diagnostics, university medical center utrecht, utrecht, the netherlands": {
     "display_name": "University Medical Center Utrecht",
     "ror": "https://ror.org/0575yy874",
@@ -1118,6 +1470,14 @@
     "city": "Utrecht",
     "lat": 52.09083,
     "lon": 5.12222
+  },
+  "aff:computer network information center, chinese academy of sciences": {
+    "display_name": "Computer Network Information Center",
+    "ror": "https://ror.org/01s0wyf50",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
   },
   "aff:computer science and applications laboratory": {
     "display_name": "Laboratoire Lorrain de Recherche en Informatique et ses Applications",
@@ -1167,6 +1527,14 @@
     "lat": 47.36667,
     "lon": 8.55
   },
+  "aff:cosmic dawn center (dawn), copenhagen, denmark": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:cosmic dawn center (dawn), niels bohr institute, university of copenhagen, jagtvej 128, københavn n, dk-2200, denmark": {
     "display_name": "University of Copenhagen",
     "ror": "https://ror.org/035b05819",
@@ -1176,6 +1544,14 @@
     "lon": 12.56553
   },
   "aff:cosmic frontier center, the university of texas at austin, austin, tx 78712": {
+    "display_name": "The University of Texas at Austin",
+    "ror": "https://ror.org/00hj54h04",
+    "country": "US",
+    "city": "Austin",
+    "lat": 30.26715,
+    "lon": -97.74306
+  },
+  "aff:cosmic frontier center, the university of texas at austin, austin, tx 78712, usa": {
     "display_name": "The University of Texas at Austin",
     "ror": "https://ror.org/00hj54h04",
     "country": "US",
@@ -1207,6 +1583,14 @@
     "lat": 50.08804,
     "lon": 14.42076
   },
+  "aff:czech technical university": {
+    "display_name": "Czech Technical University in Prague",
+    "ror": "https://ror.org/03kqpb082",
+    "country": "CZ",
+    "city": "Prague",
+    "lat": 50.08804,
+    "lon": 14.42076
+  },
   "aff:czech technical university in prague": {
     "display_name": "Czech Technical University in Prague",
     "ror": "https://ror.org/03kqpb082",
@@ -1232,6 +1616,14 @@
     "lon": 14.42076
   },
   "aff:dark, niels bohr institute, university of copenhagen, jagtvej 155a, 2200 copenhagen, denmark": {
+    "display_name": "University of Copenhagen",
+    "ror": "https://ror.org/035b05819",
+    "country": "DK",
+    "city": "Copenhagen",
+    "lat": 55.67594,
+    "lon": 12.56553
+  },
+  "aff:dark, niels bohr institute, university of copenhagen, jagtvej 155a, dk-2200 copenhagen, denmark": {
     "display_name": "University of Copenhagen",
     "ror": "https://ror.org/035b05819",
     "country": "DK",
@@ -1303,6 +1695,22 @@
     "lat": 52.00667,
     "lon": 4.35556
   },
+  "aff:departament de física, eebe, universitat politècnica de catalunya, c/eduard maristany 10, 08930 barcelona, spain": {
+    "display_name": "Universitat Politècnica de Catalunya",
+    "ror": "https://ror.org/03mb6wj31",
+    "country": "ES",
+    "city": "Barcelona",
+    "lat": 41.38879,
+    "lon": 2.15899
+  },
+  "aff:departament de física, serra húnter, universitat autònoma de barcelona, 08193 bellaterra (barcelona), spain": {
+    "display_name": "Universitat Autònoma de Barcelona",
+    "ror": "https://ror.org/052g8jq94",
+    "country": "ES",
+    "city": "Cerdanyola del Vallès",
+    "lat": 41.49109,
+    "lon": 2.14079
+  },
   "aff:departament d’astronomia i astrofisica, universitat de valencia, c. dr. moliner 50, e-46100 burjassot, valencia, spain": {
     "display_name": "Universitat de València",
     "ror": "https://ror.org/043nxc105",
@@ -1334,6 +1742,14 @@
     "city": "Barcelona",
     "lat": 41.38879,
     "lon": 2.15899
+  },
+  "aff:department computational social science": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:department for artificial intelligence and human interfaces, hellbrunnerstrasse 34, university of salzburg, 5020 salzburg, austria": {
     "display_name": "University of Salzburg",
@@ -1439,6 +1855,22 @@
     "lat": 35.27651,
     "lon": 139.57733
   },
+  "aff:department of astronomy & astrophysics, the pennsylvania state university, university park, pa 16802, usa": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:department of astronomy & astrophysics, university of california san diego, 9500 gilman dr, la jolla, 92093, usa": {
+    "display_name": "University of California San Diego",
+    "ror": "https://ror.org/0168r3w48",
+    "country": "US",
+    "city": "San Diego",
+    "lat": 32.71571,
+    "lon": -117.16472
+  },
   "aff:department of astronomy & the dirac institute, university of washington, physics-astronomy building, box 351580, seattle, wa 98195-1700, usa": {
     "display_name": "University of Washington",
     "ror": "https://ror.org/00cvxb145",
@@ -1447,7 +1879,31 @@
     "lat": 47.60621,
     "lon": -122.33207
   },
+  "aff:department of astronomy and astrophysics, university of california, santa cruz, 1156 high street, santa cruz, ca 95064, usa": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:department of astronomy, california institute of technology, 1200 e. california blvd., pasadena, 91125, usa": {
+    "display_name": "California Institute of Technology",
+    "ror": "https://ror.org/05dxps055",
+    "country": "US",
+    "city": "Pasadena",
+    "lat": 34.14778,
+    "lon": -118.14452
+  },
   "aff:department of astronomy, california institute of technology, 1200 east california boulevard, pasadena, ca 91125, usa": {
+    "display_name": "California Institute of Technology",
+    "ror": "https://ror.org/05dxps055",
+    "country": "US",
+    "city": "Pasadena",
+    "lat": 34.14778,
+    "lon": -118.14452
+  },
+  "aff:department of astronomy, california institute of technology, 1216 e california blvd, pasadena, ca 91125, usa": {
     "display_name": "California Institute of Technology",
     "ror": "https://ror.org/05dxps055",
     "country": "US",
@@ -1463,6 +1919,22 @@
     "lat": 39.16533,
     "lon": -86.52639
   },
+  "aff:department of astronomy, school of physics and astronomy, shanghai jiao tong university, 800 dongchuan road, shanghai 200240, china": {
+    "display_name": "Shanghai Jiao Tong University",
+    "ror": "https://ror.org/0220qvk04",
+    "country": "CN",
+    "city": "Shanghai",
+    "lat": 31.22222,
+    "lon": 121.45806
+  },
+  "aff:department of astronomy, the ohio state university, 4055 mcpherson laboratory, 140 w 18th avenue, columbus, oh 43210, usa": {
+    "display_name": "The Ohio State University",
+    "ror": "https://ror.org/00rs6vg23",
+    "country": "US",
+    "city": "Columbus",
+    "lat": 39.96118,
+    "lon": -82.99879
+  },
   "aff:department of astronomy, the university of texas at austin, 2515 speedway, stop c1400, austin, tx 78712, usa": {
     "display_name": "The University of Texas at Austin",
     "ror": "https://ror.org/00hj54h04",
@@ -1472,6 +1944,14 @@
     "lon": -97.74306
   },
   "aff:department of astronomy, the university of texas at austin, austin, tx 78712": {
+    "display_name": "The University of Texas at Austin",
+    "ror": "https://ror.org/00hj54h04",
+    "country": "US",
+    "city": "Austin",
+    "lat": 30.26715,
+    "lon": -97.74306
+  },
+  "aff:department of astronomy, the university of texas at austin, austin, tx 78712, usa": {
     "display_name": "The University of Texas at Austin",
     "ror": "https://ror.org/00hj54h04",
     "country": "US",
@@ -1494,6 +1974,14 @@
     "city": "Beijing",
     "lat": 39.9075,
     "lon": 116.39723
+  },
+  "aff:department of astronomy, university of california berkeley, 501 campbell hall, berkeley, 94720, usa": {
+    "display_name": "University of California, Berkeley",
+    "ror": "https://ror.org/01an7q238",
+    "country": "US",
+    "city": "Berkeley",
+    "lat": 37.87159,
+    "lon": -122.27275
   },
   "aff:department of astronomy, university of cape town, private bag x3, rondebosch 7701, south africa": {
     "display_name": "University of Cape Town",
@@ -1543,6 +2031,14 @@
     "lat": 31.86389,
     "lon": 117.28083
   },
+  "aff:department of astronomy, university of texas at austin, 2515 speedway, tx 78712, usa": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:department of astronomy, university of virginia, p.o. box 400325, charlottesville, va 22904, usa": {
     "display_name": "University of Virginia",
     "ror": "https://ror.org/0153tk833",
@@ -1567,7 +2063,23 @@
     "lat": 43.07305,
     "lon": -89.40123
   },
+  "aff:department of astronomy, xiamen university, xiamen, fujian 361005, china": {
+    "display_name": "Xiamen University",
+    "ror": "https://ror.org/00mcjh785",
+    "country": "CN",
+    "city": "Xiamen",
+    "lat": 24.47979,
+    "lon": 118.08187
+  },
   "aff:department of astronomy, yale university, 219 prospect street, new haven, ct 06511, usa": {
+    "display_name": "Yale University",
+    "ror": "https://ror.org/03v76x132",
+    "country": "US",
+    "city": "New Haven",
+    "lat": 41.30815,
+    "lon": -72.92816
+  },
+  "aff:department of astronomy, yale university, kline tower, 266 whitney avenue, new haven, ct 06511, usa": {
     "display_name": "Yale University",
     "ror": "https://ror.org/03v76x132",
     "country": "US",
@@ -1679,6 +2191,14 @@
     "lat": 46.06787109375,
     "lon": 11.12108039855957
   },
+  "aff:department of chemical engineering and materials science, michigan state university, east lansing, michigan 48824, usa": {
+    "display_name": "Michigan State University",
+    "ror": "https://ror.org/05hs6h993",
+    "country": "US",
+    "city": "East Lansing",
+    "lat": 42.73698,
+    "lon": -84.48387
+  },
   "aff:department of chemical engineering, massachusetts institute of technology": {
     "display_name": "Massachusetts Institute of Technology",
     "ror": "https://ror.org/042nb2s44",
@@ -1718,6 +2238,30 @@
     "city": "Houston",
     "lat": 29.76328,
     "lon": -95.36327
+  },
+  "aff:department of communication systems, jožef stefan institute, slovenia": {
+    "display_name": "Jožef Stefan Institute",
+    "ror": "https://ror.org/05060sz93",
+    "country": "SI",
+    "city": "Ljubljana",
+    "lat": 46.05107879638672,
+    "lon": 14.50512981414795
+  },
+  "aff:department of computer and data sciences": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:department of computer science": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:department of computer science and technology, institute for ai, tsinghua university": {
     "display_name": "Tsinghua University",
@@ -1886,6 +2430,14 @@
     "city": "Munich",
     "lat": 48.13743,
     "lon": 11.57549
+  },
+  "aff:department of electrical and microelectronic engineering, rochester institute of technology, 1 lomb memorial drive, rochester, 14623, ny, united states": {
+    "display_name": "Rochester Institute of Technology",
+    "ror": "https://ror.org/00v4yb702",
+    "country": "US",
+    "city": "Rochester",
+    "lat": 43.15478,
+    "lon": -77.61556
   },
   "aff:department of electrical engineering and department of mechanical engineering and metallurgy, school of engineering, faculty of engineering, pontificia universidad católica de chile, santiago, chile": {
     "display_name": "Pontificia Universidad Católica de Chile",
@@ -2071,6 +2623,14 @@
     "lat": 48.49143981933594,
     "lon": 9.204270362854004
   },
+  "aff:department of informatics, university of zurich, zurich, switzerland": {
+    "display_name": "University of Zurich",
+    "ror": "https://ror.org/02crff812",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
+  },
   "aff:department of information, university of texas at austin": {
     "display_name": "",
     "ror": null,
@@ -2094,6 +2654,22 @@
     "city": "State College",
     "lat": 40.79339,
     "lon": -77.86
+  },
+  "aff:department of materials science and engineering, saarland university": {
+    "display_name": "Saarland University",
+    "ror": "https://ror.org/01jdpyv68",
+    "country": "DE",
+    "city": "Saarbrücken",
+    "lat": 49.23262,
+    "lon": 7.00982
+  },
+  "aff:department of materials science and engineering, university of washington, seattle, wa 98195, usa": {
+    "display_name": "University of Washington",
+    "ror": "https://ror.org/00cvxb145",
+    "country": "US",
+    "city": "Seattle",
+    "lat": 47.60621,
+    "lon": -122.33207
   },
   "aff:department of materials science and nanoengineering, rice university, 77005, houston, texas, usa": {
     "display_name": "Rice University",
@@ -2159,6 +2735,14 @@
     "lat": 53.550140380859375,
     "lon": -113.46871185302734
   },
+  "aff:department of mathematics and statistics, university of helsinki, helsinki, 00014 finland": {
+    "display_name": "University of Helsinki",
+    "ror": "https://ror.org/040af2s02",
+    "country": "FI",
+    "city": "Helsinki",
+    "lat": 60.16952,
+    "lon": 24.93545
+  },
   "aff:department of mathematics, california institute of technology, 1200 e. california blvd., pasadena, ca 91125, usa": {
     "display_name": "California Institute of Technology",
     "ror": "https://ror.org/05dxps055",
@@ -2182,6 +2766,14 @@
     "city": "Ithaca",
     "lat": 42.44063,
     "lon": -76.49661
+  },
+  "aff:department of mathematics, eth zurich, rämistrasse 101, 8092 zurich, switzerland": {
+    "display_name": "ETH Zurich",
+    "ror": "https://ror.org/05a28rw58",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
   },
   "aff:department of mathematics, eth zürich, rämistrasse 101, 8092 zürich, switzerland and hong kong institute for advanced study, city university of hong kong, kowloon tong, hong kong special administrative region. habib.ammari@math.ethz.ch": {
     "display_name": "ETH Zurich",
@@ -2222,6 +2814,14 @@
     "city": "Ames",
     "lat": 42.03471,
     "lon": -93.61994
+  },
+  "aff:department of mathematics, king’s college london, strand, london wc2r 2ls, u.k": {
+    "display_name": "King's College London",
+    "ror": "https://ror.org/0220mzb33",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50853,
+    "lon": -0.12574
   },
   "aff:department of mathematics, macewan university, edmonton, alberta, t5j 4s2, canada": {
     "display_name": "MacEwan University",
@@ -2327,6 +2927,14 @@
     "lat": 48.52266,
     "lon": 9.05222
   },
+  "aff:department of mechanical engineering, indian institute of technology madras, 600036, india": {
+    "display_name": "Indian Institute of Technology Madras",
+    "ror": "https://ror.org/03v0r5n49",
+    "country": "IN",
+    "city": "Chennai",
+    "lat": 13.08784,
+    "lon": 80.27847
+  },
   "aff:department of mechanics and aerospace engineering, and centre for complex flow and soft matter, southern university of science and technology, shenzhen 518055, china": {
     "display_name": "Southern University of Science and Technology",
     "ror": "https://ror.org/049tv2d57",
@@ -2375,6 +2983,22 @@
     "lat": 51.89797,
     "lon": -8.47061
   },
+  "aff:department of physics & astronomy and center for interdisciplinary exploration and research in astrophysics(ciera), northwestern university, 1800 sherman ave, evanston, il 60201, usa": {
+    "display_name": "Northwestern University",
+    "ror": "https://ror.org/00m6w7z96",
+    "country": "PH",
+    "city": "Laoag",
+    "lat": 18.1978,
+    "lon": 120.5957
+  },
+  "aff:department of physics & astronomy and pittsburgh particle physics, astrophysics, and cosmology center (pitt pacc), university of pittsburgh, 3941 o’hara street, pittsburgh, pa 15260, usa": {
+    "display_name": "University of Pittsburgh",
+    "ror": "https://ror.org/01an3r305",
+    "country": "US",
+    "city": "Pittsburgh",
+    "lat": 40.44062,
+    "lon": -79.99589
+  },
   "aff:department of physics & astronomy, louisiana state university, baton rouge, la 70803, usa": {
     "display_name": "Louisiana State University",
     "ror": "https://ror.org/05ect4e57",
@@ -2399,6 +3023,14 @@
     "lat": 42.41843,
     "lon": -71.10616
   },
+  "aff:department of physics & astronomy, university college london, gower street, london, wc1e 6bt, uk": {
+    "display_name": "University College London",
+    "ror": "https://ror.org/02jx3x895",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50853,
+    "lon": -0.12574
+  },
   "aff:department of physics & astronomy, university of alabama, tuscaloosa, al 35487-0324, usa": {
     "display_name": "University of Alabama",
     "ror": "https://ror.org/03xrrjk67",
@@ -2407,6 +3039,22 @@
     "lat": 33.20984,
     "lon": -87.56917
   },
+  "aff:department of physics & astronomy, university of wyoming, 1000 e. university, dept. 3905, laramie, wy 82071, usa": {
+    "display_name": "University of Wyoming",
+    "ror": "https://ror.org/01485tq96",
+    "country": "US",
+    "city": "Laramie",
+    "lat": 41.31137,
+    "lon": -105.5911
+  },
+  "aff:department of physics & creol, university of central": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:department of physics & engineering physics, santa clara university, santa clara, ca 95053, usa": {
     "display_name": "Santa Clara University",
     "ror": "https://ror.org/03ypqe447",
@@ -2414,6 +3062,14 @@
     "city": "Santa Clara",
     "lat": 37.35411071777344,
     "lon": -121.95523834228516
+  },
+  "aff:department of physics and arnold sommerfeld center for theoretical": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:department of physics and astronomy \"augusto righi\", university of bologna, via gobetti 93/2, 40129, bologna, italy": {
     "display_name": "University of Bologna",
@@ -2430,6 +3086,14 @@
     "city": "Pittsburgh",
     "lat": 40.44062,
     "lon": -79.99589
+  },
+  "aff:department of physics and astronomy and the bartol research institute, university of delaware, 104 the green, newark, 19716, usa": {
+    "display_name": "University of Delaware",
+    "ror": "https://ror.org/01sbq1a82",
+    "country": "US",
+    "city": "Newark",
+    "lat": 39.68372,
+    "lon": -75.74966
   },
   "aff:department of physics and astronomy and the bartol research institute, university of delaware, newark, de 19716, usa": {
     "display_name": "University of Delaware",
@@ -2535,6 +3199,14 @@
     "lat": 43.25011,
     "lon": -79.84963
   },
+  "aff:department of physics and astronomy, michigan state university, east lansing, mi, usa": {
+    "display_name": "Michigan State University",
+    "ror": "https://ror.org/05hs6h993",
+    "country": "US",
+    "city": "East Lansing",
+    "lat": 42.73698,
+    "lon": -84.48387
+  },
   "aff:department of physics and astronomy, north carolina state university, 2401 stinson drive, raleigh, nc 27695, usa": {
     "display_name": "North Carolina State University",
     "ror": "https://ror.org/04tj63d06",
@@ -2551,6 +3223,14 @@
     "lat": 29.76328,
     "lon": -95.36327
   },
+  "aff:department of physics and astronomy, sejong university, 209 neungdong-ro, gwangjin-gu, seoul 05006, republic of korea": {
+    "display_name": "Sejong University",
+    "ror": "https://ror.org/00aft1q37",
+    "country": "KR",
+    "city": "Seoul",
+    "lat": 37.566,
+    "lon": 126.9784
+  },
   "aff:department of physics and astronomy, seoul national university": {
     "display_name": "Seoul National University",
     "ror": "https://ror.org/04h9pn542",
@@ -2566,6 +3246,14 @@
     "city": "Seoul",
     "lat": 37.566,
     "lon": 126.9784
+  },
+  "aff:department of physics and astronomy, siena university, 515 loudon road, loudonville, ny 12211, usa": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:department of physics and astronomy, texas a&m university, 4242 tamu, college station, tx 77843-4242, usa": {
     "display_name": "Texas A&M University",
@@ -2623,6 +3311,30 @@
     "lat": 38.54491,
     "lon": -121.74052
   },
+  "aff:department of physics and astronomy, university of delaware, newark, de, usa": {
+    "display_name": "University of Delaware",
+    "ror": "https://ror.org/01sbq1a82",
+    "country": "US",
+    "city": "Newark",
+    "lat": 39.68372,
+    "lon": -75.74966
+  },
+  "aff:department of physics and astronomy, university of delaware, newark, delaware, usa": {
+    "display_name": "University of Delaware",
+    "ror": "https://ror.org/01sbq1a82",
+    "country": "US",
+    "city": "Newark",
+    "lat": 39.68372,
+    "lon": -75.74966
+  },
+  "aff:department of physics and astronomy, university of notre dame, notre dame, in, 46656, usa": {
+    "display_name": "University of Notre Dame",
+    "ror": "https://ror.org/00mkhxb43",
+    "country": "US",
+    "city": "Notre Dame",
+    "lat": 41.70019,
+    "lon": -86.23793
+  },
   "aff:department of physics and astronomy, university of texas rio grande valley, texas 78539, usa": {
     "display_name": "",
     "ror": null,
@@ -2639,6 +3351,14 @@
     "lat": 40.76078,
     "lon": -111.89105
   },
+  "aff:department of physics and astronomy, university of utah, salt lake city, ut, usa": {
+    "display_name": "University of Utah",
+    "ror": "https://ror.org/03r0ha626",
+    "country": "US",
+    "city": "Salt Lake City",
+    "lat": 40.76078,
+    "lon": -111.89105
+  },
   "aff:department of physics and astronomy, university of utah, salt lake city, utah 84112, usa": {
     "display_name": "University of Utah",
     "ror": "https://ror.org/03r0ha626",
@@ -2646,6 +3366,14 @@
     "city": "Salt Lake City",
     "lat": 40.76078,
     "lon": -111.89105
+  },
+  "aff:department of physics and astronomy, university of waterloo, 200 university ave w, waterloo, on n2l 3g1, canada": {
+    "display_name": "University of Waterloo",
+    "ror": "https://ror.org/01aff2v68",
+    "country": "CA",
+    "city": "Waterloo",
+    "lat": 43.4668,
+    "lon": -80.51639
   },
   "aff:department of physics and astronomy, university of waterloo, waterloo, on n2l 3g1, canada": {
     "display_name": "University of Waterloo",
@@ -2679,6 +3407,14 @@
     "lat": 40.86807,
     "lon": -97.592
   },
+  "aff:department of physics and institute of theoretical physics, university of science and technology beijing, beijing 100083, china": {
+    "display_name": "University of Science and Technology Beijing",
+    "ror": "https://ror.org/02egmk993",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
+  },
   "aff:department of physics and materials science, university of memphis, 3720 alumni avenue, memphis, tn 38152, usa": {
     "display_name": "University of Memphis",
     "ror": "https://ror.org/01cq23130",
@@ -2686,6 +3422,14 @@
     "city": "Memphis",
     "lat": 35.14952850341797,
     "lon": -90.04898071289062
+  },
+  "aff:department of physics “a. pontremoli”, university of milan, via celoria 16, 20133 milan, italy": {
+    "display_name": "University of Milan",
+    "ror": "https://ror.org/00wjc7c48",
+    "country": "IT",
+    "city": "Milan",
+    "lat": 45.46427,
+    "lon": 9.18951
   },
   "aff:department of physics, 196 auditorium road, unit 3046, university of connecticut, storrs, ct 06269, usa": {
     "display_name": "University of Connecticut",
@@ -2727,6 +3471,14 @@
     "lat": 31.35259056091309,
     "lon": 118.4294662475586
   },
+  "aff:department of physics, arizona state university, tempe, arizona 85281, usa": {
+    "display_name": "Arizona State University",
+    "ror": "https://ror.org/03efmqc40",
+    "country": "US",
+    "city": "Tempe",
+    "lat": 33.41477,
+    "lon": -111.90931
+  },
   "aff:department of physics, astronomy, and geosciences, towson university, towson, md 21252, usa": {
     "display_name": "Towson University",
     "ror": "https://ror.org/044w7a341",
@@ -2759,7 +3511,23 @@
     "lat": 31.25181,
     "lon": 34.7913
   },
+  "aff:department of physics, boston college, chestnut hill, ma 02467, usa": {
+    "display_name": "Boston College",
+    "ror": "https://ror.org/02n2fzt79",
+    "country": "US",
+    "city": "Boston",
+    "lat": 42.35843,
+    "lon": -71.05977
+  },
   "aff:department of physics, boston university, 590 commonwealth avenue, boston, 02215, massachusetts, usa": {
+    "display_name": "Boston University",
+    "ror": "https://ror.org/05qwgg493",
+    "country": "US",
+    "city": "Boston",
+    "lat": 42.35843,
+    "lon": -71.05977
+  },
+  "aff:department of physics, boston university, 590 commonwealth avenue, boston, ma 02215 usa": {
     "display_name": "Boston University",
     "ror": "https://ror.org/05qwgg493",
     "country": "US",
@@ -2823,6 +3591,14 @@
     "lat": 47.36667,
     "lon": 8.55
   },
+  "aff:department of physics, faculty of mathematics and physics, university of ljubljana, jadranska 19, si-1000 ljubljana, slovenia": {
+    "display_name": "University of Ljubljana",
+    "ror": "https://ror.org/05njb9z20",
+    "country": "SI",
+    "city": "Ljubljana",
+    "lat": 46.05108,
+    "lon": 14.50513
+  },
   "aff:department of physics, faculty of science, tohoku university, sendai, miyagi, 980-8578, japan": {
     "display_name": "Tohoku University",
     "ror": "https://ror.org/01dq60k83",
@@ -2830,6 +3606,14 @@
     "city": "Sendai",
     "lat": 38.26667,
     "lon": 140.86667
+  },
+  "aff:department of physics, friedrich-alexander-universität erlangen-nürnberg, staudtstraße 7, 91058 erlangen, germany": {
+    "display_name": "Friedrich-Alexander-Universität Erlangen-Nürnberg",
+    "ror": "https://ror.org/00f7hpc57",
+    "country": "DE",
+    "city": "Erlangen",
+    "lat": 49.59099,
+    "lon": 11.00783
   },
   "aff:department of physics, gifu university, gifu, gifu 501-1193, japan": {
     "display_name": "Gifu University",
@@ -2862,6 +3646,14 @@
     "city": "Shantou",
     "lat": 23.354890823364254,
     "lon": 116.6787567138672
+  },
+  "aff:department of physics, harvard university, 17 oxford st, cambridge, 02138, usa": {
+    "display_name": "Harvard University",
+    "ror": "https://ror.org/03vek6s52",
+    "country": "US",
+    "city": "Cambridge",
+    "lat": 42.3751,
+    "lon": -71.10561
   },
   "aff:department of physics, harvard university, cambridge, ma 02138, usa": {
     "display_name": "Harvard University",
@@ -2999,6 +3791,22 @@
     "lat": 45.50884,
     "lon": -73.58781
   },
+  "aff:department of physics, michigan technological university, houghton, mi, usa": {
+    "display_name": "Michigan Technological University",
+    "ror": "https://ror.org/0036rpn28",
+    "country": "US",
+    "city": "Houghton",
+    "lat": 47.12186813354492,
+    "lon": -88.56900787353516
+  },
+  "aff:department of physics, missouri university of science and technology, rolla, mo, us": {
+    "display_name": "Missouri University of Science and Technology",
+    "ror": "https://ror.org/00scwqd12",
+    "country": "US",
+    "city": "Rolla",
+    "lat": 37.95143,
+    "lon": -91.77127
+  },
   "aff:department of physics, miyagi university of education, sendai, miyagi 980-0845, japan": {
     "display_name": "Miyagi University of Education",
     "ror": "https://ror.org/01s7jxc19",
@@ -3006,6 +3814,22 @@
     "city": "Sendai",
     "lat": 38.258888244628906,
     "lon": 140.83082580566406
+  },
+  "aff:department of physics, national tsing hua university, hsinchu 30013, taiwan": {
+    "display_name": "National Tsing Hua University",
+    "ror": "https://ror.org/00zdnkx70",
+    "country": "TW",
+    "city": "Hsinchu",
+    "lat": 24.793611526489254,
+    "lon": 120.9927749633789
+  },
+  "aff:department of physics, northeastern university, boston, ma, 02115, usa": {
+    "display_name": "Northeastern University",
+    "ror": "https://ror.org/04t5xt781",
+    "country": "US",
+    "city": "Boston",
+    "lat": 42.35843,
+    "lon": -71.05977
   },
   "aff:department of physics, northeastern university, boston, massachusetts 02115, usa": {
     "display_name": "Northeastern University",
@@ -3031,6 +3855,14 @@
     "lat": 36.11561,
     "lon": -97.05837
   },
+  "aff:department of physics, pennsylvania state university, university park, pa, usa": {
+    "display_name": "Pennsylvania State University",
+    "ror": "https://ror.org/04p491231",
+    "country": "US",
+    "city": "State College",
+    "lat": 40.79339,
+    "lon": -77.86
+  },
   "aff:department of physics, princeton university, princeton, nj 08540, usa": {
     "display_name": "Princeton University",
     "ror": "https://ror.org/00hx57361",
@@ -3047,6 +3879,14 @@
     "lat": 40.34872,
     "lon": -74.65905
   },
+  "aff:department of physics, sapienza university of rome, rome, 00185, italy": {
+    "display_name": "Sapienza University of Rome",
+    "ror": "https://ror.org/02be6w209",
+    "country": "IT",
+    "city": "Rome",
+    "lat": 41.89193,
+    "lon": 12.51133
+  },
   "aff:department of physics, school of advanced science and engineering, faculty of science and engineering, waseda university, 3-4-1 okubo, shinjuku, tokyo 169-8555, japan": {
     "display_name": "Waseda University",
     "ror": "https://ror.org/00ntfnx83",
@@ -3055,6 +3895,22 @@
     "lat": 35.68949890136719,
     "lon": 139.69171142578125
   },
+  "aff:department of physics, southern methodist university, 3215 daniel avenue, dallas, tx 75275, usa": {
+    "display_name": "Southern Methodist University",
+    "ror": "https://ror.org/042tdr378",
+    "country": "US",
+    "city": "Dallas",
+    "lat": 32.783058166503906,
+    "lon": -96.80667114257812
+  },
+  "aff:department of physics, stanford university: stanford, ca 94305–4060, usa": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:department of physics, stony brook university, 100 nicolls road, stony brook, ny 11790, usa": {
     "display_name": "Stony Brook University",
     "ror": "https://ror.org/05qghxh33",
@@ -3062,6 +3918,14 @@
     "city": "Stony Brook",
     "lat": 40.92565,
     "lon": -73.14094
+  },
+  "aff:department of physics, sungkyunkwan university, suwon 16419, south korea": {
+    "display_name": "Sungkyunkwan University",
+    "ror": "https://ror.org/04q78tk20",
+    "country": "KR",
+    "city": "Suwon",
+    "lat": 37.29111,
+    "lon": 127.00889
   },
   "aff:department of physics, sungkyunkwan university, suwon 440-746, korea": {
     "display_name": "Sungkyunkwan University",
@@ -3143,6 +4007,22 @@
     "lat": 53.41058,
     "lon": -2.97794
   },
+  "aff:department of physics, university of maryland, college park, md, usa": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:department of physics, university of michigan, ann arbor, michigan 48109, usa": {
+    "display_name": "University of Michigan",
+    "ror": "https://ror.org/00jmfr291",
+    "country": "US",
+    "city": "Ann Arbor",
+    "lat": 42.27756,
+    "lon": -83.74088
+  },
   "aff:department of physics, university of oxford, denys wilkinson": {
     "display_name": "University of Oxford",
     "ror": "https://ror.org/052gg0110",
@@ -3152,6 +4032,14 @@
     "lon": -1.25596
   },
   "aff:department of physics, university of oxford, denys wilkinson building, keble road, oxford ox1 3rh, uk": {
+    "display_name": "University of Oxford",
+    "ror": "https://ror.org/052gg0110",
+    "country": "GB",
+    "city": "Oxford",
+    "lat": 51.75222,
+    "lon": -1.25596
+  },
+  "aff:department of physics, university of oxford, denys wilkinson building, keble road, oxford ox13rh, u.k": {
     "display_name": "University of Oxford",
     "ror": "https://ror.org/052gg0110",
     "country": "GB",
@@ -3207,6 +4095,14 @@
     "lat": 52.40656,
     "lon": -1.51217
   },
+  "aff:department of physics, university of washington, seattle, wa 98195, usa": {
+    "display_name": "University of Washington",
+    "ror": "https://ror.org/00cvxb145",
+    "country": "US",
+    "city": "Seattle",
+    "lat": 47.60621,
+    "lon": -122.33207
+  },
   "aff:department of physics, university of wisconsin-madison,madison, wisconsin 53706, usa": {
     "display_name": "University of Wisconsin–Madison",
     "ror": "https://ror.org/01y2jtd41",
@@ -3222,6 +4118,14 @@
     "city": "St Louis",
     "lat": 38.62727,
     "lon": -90.19789
+  },
+  "aff:department of physics, yale university, p.o. box 208121, new haven, ct 06520, usa": {
+    "display_name": "Yale University",
+    "ror": "https://ror.org/03v76x132",
+    "country": "US",
+    "city": "New Haven",
+    "lat": 41.30815,
+    "lon": -72.92816
   },
   "aff:department of physics, yokohama national university, yokohama, kanagawa, 240-8501, japan": {
     "display_name": "Yokohama National University",
@@ -3279,6 +4183,30 @@
     "lat": 40.4165,
     "lon": -3.70256
   },
+  "aff:department of sociology, computer science, political science, and public policy, duke university, durham, nc, usa": {
+    "display_name": "Duke University",
+    "ror": "https://ror.org/00py81415",
+    "country": "US",
+    "city": "Durham",
+    "lat": 35.99403,
+    "lon": -78.89862
+  },
+  "aff:department of sociology, new york university, new york, ny, usa": {
+    "display_name": "New York University",
+    "ror": "https://ror.org/0190ak572",
+    "country": "US",
+    "city": "New York",
+    "lat": 40.71427,
+    "lon": -74.00597
+  },
+  "aff:department of sociology, university of oxford, oxford, uk": {
+    "display_name": "University of Oxford",
+    "ror": "https://ror.org/052gg0110",
+    "country": "GB",
+    "city": "Oxford",
+    "lat": 51.75222,
+    "lon": -1.25596
+  },
   "aff:department of sociology, university of washington": {
     "display_name": "University of Washington",
     "ror": "https://ror.org/00cvxb145",
@@ -3303,6 +4231,14 @@
     "lat": 12.97194,
     "lon": 77.59369
   },
+  "aff:department of statistics": {
+    "display_name": "Department of Statistics Malaysia",
+    "ror": "https://ror.org/03ztw9d82",
+    "country": "MY",
+    "city": "Putrajaya",
+    "lat": 2.9361941814422607,
+    "lon": 101.69916534423828
+  },
   "aff:department of statistics, oregon state university": {
     "display_name": "Oregon State University",
     "ror": "https://ror.org/00ysfqy60",
@@ -3310,6 +4246,14 @@
     "city": "Corvallis",
     "lat": 44.56457,
     "lon": -123.26204
+  },
+  "aff:department of statistics, university of warwick": {
+    "display_name": "University of Warwick",
+    "ror": "https://ror.org/01a77tt86",
+    "country": "GB",
+    "city": "Coventry",
+    "lat": 52.40656,
+    "lon": -1.51217
   },
   "aff:department of statistics, university of washington": {
     "display_name": "University of Washington",
@@ -3359,6 +4303,14 @@
     "lat": 48.13743,
     "lon": 11.57549
   },
+  "aff:department of visceral, thoracic and vascular surgery, faculty of medicine and university hospital carl gustav carus, tud, dresden, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:departments of physics & astronomy, le conte hall, university of california, berkeley, ca 94720, usa": {
     "display_name": "",
     "ror": null,
@@ -3366,6 +4318,14 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:dept of physics and astronomy, university of new mexico, albuquerque, nm, usa": {
+    "display_name": "University of New Mexico",
+    "ror": "https://ror.org/05fs6jp91",
+    "country": "US",
+    "city": "Albuquerque",
+    "lat": 35.08449,
+    "lon": -106.65114
   },
   "aff:dept physics and astronomy, university of louisville, louisville ky 40292 usa": {
     "display_name": "University of Louisville",
@@ -3383,6 +4343,14 @@
     "lat": 42.35843,
     "lon": -71.05977
   },
+  "aff:dept. of information eng. and computer science, university of trento, trento, italy": {
+    "display_name": "University of Trento",
+    "ror": "https://ror.org/05trd4x28",
+    "country": "IT",
+    "city": "Trento",
+    "lat": 46.06787109375,
+    "lon": 11.12108039855957
+  },
   "aff:dept. of mathematics, university of bayreuth, 95440 bayreuth, germany": {
     "display_name": "University of Bayreuth",
     "ror": "https://ror.org/0234wmv40",
@@ -3390,6 +4358,22 @@
     "city": "Bayreuth",
     "lat": 49.94782,
     "lon": 11.57893
+  },
+  "aff:dept. of physics and wisconsin icecube particle astrophysics center, university of wisconsin—madison, madison, wi, usa": {
+    "display_name": "University of Wisconsin–Madison",
+    "ror": "https://ror.org/01y2jtd41",
+    "country": "US",
+    "city": "Madison",
+    "lat": 43.07305,
+    "lon": -89.40123
+  },
+  "aff:dept. of physics, drexel university, 3141 chestnut street, philadelphia, pa 19104, usa": {
+    "display_name": "Drexel University",
+    "ror": "https://ror.org/04bdffz58",
+    "country": "US",
+    "city": "Philadelphia",
+    "lat": 39.95238,
+    "lon": -75.16362
   },
   "aff:dept. of physics, university of rome tor vergata, via della ricerca scientifica 1, 00133, rome, italy": {
     "display_name": "University of Rome Tor Vergata",
@@ -3431,6 +4415,14 @@
     "lat": 52.39886,
     "lon": 13.06566
   },
+  "aff:digital environment research institute": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:digital environment research institute, queen mary university of london, london, e1 1hh, united kingdom": {
     "display_name": "Queen Mary University of London",
     "ror": "https://ror.org/026zzn846",
@@ -3438,6 +4430,86 @@
     "city": "London",
     "lat": 51.50853,
     "lon": -0.12574
+  },
+  "aff:dipartamento di física e astronomia, university of florence, italy": {
+    "display_name": "University of Florence",
+    "ror": "https://ror.org/04jr1s763",
+    "country": "IT",
+    "city": "Florence",
+    "lat": 43.77925,
+    "lon": 11.24626
+  },
+  "aff:dipartimento di fisica e astronomia, università degli studi di firenze": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:dipartimento di fisica e astronomia, università di padova, vicolo dell’osservatorio, 3, 35122 padova, italy": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:dipartimento di fisica “aldo pontremoli”, università degli studi di milano, via celoria 16, i-20133 milano, italy": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:dipartimento di fisica, \"sapienza\" università di roma, piazzale aldo moro 2, 00185 roma, italy": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:dipartimento di fisica, università di roma tor vergata, via della ricerca scientifica, 1, roma 00133, italy": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:dipartimento di fisica, “sapienza” università di roma, piazzale aldo moro 5, i-00185 roma, italy": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:dipartimento di ingegneria, università del sannio, i-82100 benevento, italy": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:dipartimento di matematica, università di trento and infn-tifpa and indam, via sommarive 14, i-38123 povo, italy": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:dipartimento interateneo di fisica, university of bari \"aldo moro\", bari, italy": {
+    "display_name": "University of Bari Aldo Moro",
+    "ror": "https://ror.org/027ynra39",
+    "country": "IT",
+    "city": "Bari",
+    "lat": 41.12066,
+    "lon": 16.86982
   },
   "aff:diten, university of genoa, genoa, italy": {
     "display_name": "University of Genoa",
@@ -3503,6 +4575,14 @@
     "lat": 49.59099,
     "lon": 11.00783
   },
+  "aff:dresden high magnetic field laboratory (hld-emfl) and würzburg-dresden cluster of excellence ctd.qmat": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:dunlap institute for astronomy & astrophysics, university of toronto, 50 st. george street, toronto, on m5s 3h4, canada": {
     "display_name": "University of Toronto",
     "ror": "https://ror.org/03dbr7087",
@@ -3527,6 +4607,22 @@
     "lat": 45.40008,
     "lon": -71.89908
   },
+  "aff:e de computadores, instituto superior técnico": {
+    "display_name": "Instituto Superior Técnico",
+    "ror": "https://ror.org/03db2by73",
+    "country": "PT",
+    "city": "Lisbon",
+    "lat": 38.71667,
+    "lon": -9.13333
+  },
+  "aff:e. grant is with university college london (ucl), london, united kingdom ( )": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:ecole polytechnique, in2p3-cnrs, laboratoire leprince-ringuet, f-91120 palaiseau, france": {
     "display_name": "École Polytechnique",
     "ror": "https://ror.org/05hy3tk52",
@@ -3534,6 +4630,14 @@
     "city": "Palaiseau",
     "lat": 48.71828,
     "lon": 2.2498
+  },
+  "aff:eindhoven university of technology, p.o. box 513, 5600 mb eindhoven": {
+    "display_name": "Eindhoven University of Technology",
+    "ror": "https://ror.org/02c2kyt77",
+    "country": "NL",
+    "city": "Eindhoven",
+    "lat": 51.44083,
+    "lon": 5.47778
   },
   "aff:eindhoven university of technology, the netherlands": {
     "display_name": "Eindhoven University of Technology",
@@ -3663,6 +4767,14 @@
     "lat": 50.85045,
     "lon": 4.34878
   },
+  "aff:european molecular biology laboratory": {
+    "display_name": "European Molecular Biology Laboratory",
+    "ror": "https://ror.org/050589e39",
+    "country": "DE",
+    "city": "Hamburg",
+    "lat": 53.55073,
+    "lon": 9.99302
+  },
   "aff:evans school of public policy, university of washington": {
     "display_name": "University of Washington",
     "ror": "https://ror.org/00cvxb145",
@@ -3670,6 +4782,14 @@
     "city": "Seattle",
     "lat": 47.60621,
     "lon": -122.33207
+  },
+  "aff:exoplanets and planetary formation group, school of earth and planetary sciences, national institute of science education and research, jatni - 752050, odisha, india": {
+    "display_name": "National Institute of Science Education and Research",
+    "ror": "https://ror.org/02r2k1c68",
+    "country": "IN",
+    "city": "Bhubaneswar",
+    "lat": 20.27241,
+    "lon": 85.83385
   },
   "aff:experimental physics of nanostructured materials, q-mat, department of physics, université de liège, allée du 6 août 19, sart tilman b-4000, belgium": {
     "display_name": "",
@@ -3703,6 +4823,14 @@
     "lat": 49.87167,
     "lon": 8.65027
   },
+  "aff:f. song, y. chen and c. n. jones are with the automatic control laboratory, epfl, switzerland. {fenglong.song, yuwen.chen, colin.jones}@epfl.ch": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:faculty of applied physics and mathematics, gdańsk university of technology, 80-233 gdańsk, poland": {
     "display_name": "Gdańsk University of Technology",
     "ror": "https://ror.org/006x4sc24",
@@ -3734,6 +4862,14 @@
     "city": "Passau",
     "lat": 48.5665,
     "lon": 13.43122
+  },
+  "aff:faculty of computer science, university of duisburg-essen, germany*equal contribution. correspondence to: yunpu ma <cognitive.yunpu@gmail.com>": {
+    "display_name": "University of Duisburg-Essen",
+    "ror": "https://ror.org/04mz5ra38",
+    "country": "DE",
+    "city": "Essen",
+    "lat": 51.45657,
+    "lon": 7.01228
   },
   "aff:faculty of electrical and computer engineering, university of iceland, reykjavik, iceland": {
     "display_name": "University of Iceland",
@@ -3791,6 +4927,30 @@
     "lat": null,
     "lon": null
   },
+  "aff:faculty of mathematical sciences": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:faculty of mathematics and information sciences, warsaw university of technology, ul.koszykowa 75, 00-662 warsaw, poland": {
+    "display_name": "Warsaw University of Technology",
+    "ror": "https://ror.org/00y0xnp53",
+    "country": "PL",
+    "city": "Warsaw",
+    "lat": 52.22977,
+    "lon": 21.01178
+  },
+  "aff:faculty of mathematics, university of belgrade, belgrade, serbia": {
+    "display_name": "University of Belgrade",
+    "ror": "https://ror.org/02qsmb048",
+    "country": "RS",
+    "city": "Belgrade",
+    "lat": 44.80401,
+    "lon": 20.46513
+  },
   "aff:faculty of physics and center for nanoscience, ludwig-maximilians-universität münchen, 80752 munich, germany": {
     "display_name": "Ludwig-Maximilians-Universität München",
     "ror": "https://ror.org/05591te55",
@@ -3798,6 +4958,30 @@
     "city": "Munich",
     "lat": 48.13743,
     "lon": 11.57549
+  },
+  "aff:faculty of physics, ludwig-maximilians-universität münchen": {
+    "display_name": "Ludwig-Maximilians-Universität München",
+    "ror": "https://ror.org/05591te55",
+    "country": "DE",
+    "city": "Munich",
+    "lat": 48.13743,
+    "lon": 11.57549
+  },
+  "aff:faculty of physics, university of vienna, 1090 vienna, austria": {
+    "display_name": "University of Vienna",
+    "ror": "https://ror.org/03prydq77",
+    "country": "AT",
+    "city": "Vienna",
+    "lat": 48.20849,
+    "lon": 16.37208
+  },
+  "aff:faculty of physics, university of vienna, boltzmanngasse 5, 1090 vienna, austria": {
+    "display_name": "University of Vienna",
+    "ror": "https://ror.org/03prydq77",
+    "country": "AT",
+    "city": "Vienna",
+    "lat": 48.20849,
+    "lon": 16.37208
   },
   "aff:faculty of physics, university of warsaw": {
     "display_name": "University of Warsaw",
@@ -3855,6 +5039,22 @@
     "lat": null,
     "lon": null
   },
+  "aff:famnit, university of primorska, galgoljaška 8, si-6000 koper, slovenia": {
+    "display_name": "University of Primorska",
+    "ror": "https://ror.org/05xefg082",
+    "country": "SI",
+    "city": "Koper",
+    "lat": 45.5482,
+    "lon": 13.72963
+  },
+  "aff:fermi national accelerator laboratory, po box 500, batavia, il 60510, usa": {
+    "display_name": "Fermi National Accelerator Laboratory",
+    "ror": "https://ror.org/020hgte69",
+    "country": "US",
+    "city": "Batavia",
+    "lat": 41.85003,
+    "lon": -88.31257
+  },
   "aff:fert beijing institute, miit key laboratory of spintronics, school of integrated circuit science and engineering, beihang university, beijing 100191, china": {
     "display_name": "Beihang University",
     "ror": "https://ror.org/00wk2mp56",
@@ -3871,7 +5071,23 @@
     "lat": 60.45148,
     "lon": 22.26869
   },
+  "aff:fondazione bruno kessler, department of information engineering and computer science, university of trento, trento, italy": {
+    "display_name": "Fondazione Bruno Kessler",
+    "ror": "https://ror.org/01j33xk10",
+    "country": "IT",
+    "city": "Trento",
+    "lat": 46.06787,
+    "lon": 11.12108
+  },
   "aff:foresteyes research group, department of forest sciences, federal university of paraná, 80210-170, curitiba, brazil": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:foundational questions institute (fqxi), 235 ponce de leon pl., suite m, #217, decatur, ga 30030, usa": {
     "display_name": "",
     "ror": null,
     "country": null,
@@ -3911,6 +5127,14 @@
     "lat": 47.21725,
     "lon": -1.55336
   },
+  "aff:fraunhofer institute for computer graphics research igd, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:fraunhofer institute for integrated circuits": {
     "display_name": "Fraunhofer Institute for Integrated Circuits",
     "ror": "https://ror.org/024ape423",
@@ -3918,6 +5142,14 @@
     "city": "Erlangen",
     "lat": 49.59099,
     "lon": 11.00783
+  },
+  "aff:fraunhofer institute for systems and innovation research isi, breslauer straße 48, 76139 karlsruhe, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:free university of bozen-bolzano": {
     "display_name": "Free University of Bozen-Bolzano",
@@ -4071,6 +5303,30 @@
     "lat": 30.62798,
     "lon": -96.33441
   },
+  "aff:georgios i. angelis is with the school of biomedical engineering and sydney imaging, the university of sydney, australia": {
+    "display_name": "The University of Sydney",
+    "ror": "https://ror.org/0384j8v12",
+    "country": "AU",
+    "city": "Sydney",
+    "lat": -33.86785,
+    "lon": 151.20732
+  },
+  "aff:german jordanian university, amman, jordan": {
+    "display_name": "German Jordanian University",
+    "ror": "https://ror.org/02jgpyd84",
+    "country": "JO",
+    "city": "Amman",
+    "lat": 31.95522,
+    "lon": 35.94503
+  },
+  "aff:german research center for artificial intelligence (dfki)": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:german research center for artificial intelligence, germany": {
     "display_name": "",
     "ror": null,
@@ -4078,6 +5334,14 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:gesis – leibniz institute for the social sciences": {
+    "display_name": "GESIS - Leibniz Institute for the Social Sciences",
+    "ror": "https://ror.org/018afyw53",
+    "country": "DE",
+    "city": "Mannheim",
+    "lat": 49.4891,
+    "lon": 8.46694
   },
   "aff:gfz helmholtz centre for geosciences": {
     "display_name": "GFZ Helmholtz Centre for Geosciences",
@@ -4158,6 +5422,14 @@
     "city": "Liège",
     "lat": 50.633731842041016,
     "lon": 5.567490100860596
+  },
+  "aff:gravitation and astroparticle physics amsterdam (grappa), university of amsterdam, 1098xh amsterdam, the netherlands": {
+    "display_name": "University of Amsterdam",
+    "ror": "https://ror.org/04dkp9463",
+    "country": "NL",
+    "city": "Amsterdam",
+    "lat": 52.37403,
+    "lon": 4.88969
   },
   "aff:graz university of technology": {
     "display_name": "Graz University of Technology",
@@ -4255,6 +5527,14 @@
     "lat": 42.3751,
     "lon": -71.10561
   },
+  "aff:heidelberg graduate school for physics": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:heidelberg university": {
     "display_name": "Heidelberg University",
     "ror": "https://ror.org/038t36y30",
@@ -4295,6 +5575,14 @@
     "lat": 35.22257,
     "lon": -97.43948
   },
+  "aff:homi bhabha national institute, training school complex, anushaktinagar, mumbai 400094, india": {
+    "display_name": "Homi Bhabha National Institute",
+    "ror": "https://ror.org/02bv3zr67",
+    "country": "IN",
+    "city": "Mumbai",
+    "lat": 19.07283,
+    "lon": 72.88261
+  },
   "aff:hong kong university of science and technology": {
     "display_name": "Hong Kong University of Science and Technology",
     "ror": "https://ror.org/00q4vv597",
@@ -4303,7 +5591,31 @@
     "lat": 22.27832,
     "lon": 114.17469
   },
+  "aff:hse university": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:huawei foundation model department": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:huazhong university of science and technology": {
+    "display_name": "Huazhong University of Science and Technology",
+    "ror": "https://ror.org/00p991c53",
+    "country": "CN",
+    "city": "Wuhan",
+    "lat": 30.58333,
+    "lon": 114.26667
+  },
+  "aff:huazhong university of science and technology university of liverpool": {
     "display_name": "",
     "ror": null,
     "country": null,
@@ -4335,6 +5647,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:iam, university of primorska, muzejski trg 2, si-6000 koper, slovenia": {
+    "display_name": "University of Primorska",
+    "ror": "https://ror.org/05xefg082",
+    "country": "SI",
+    "city": "Koper",
+    "lat": 45.5482,
+    "lon": 13.72963
+  },
   "aff:ice-1, institute of climate and energy systems, forschungszentrum jülich, jülich, germany": {
     "display_name": "Forschungszentrum Jülich",
     "ror": "https://ror.org/02nv7yv05",
@@ -4343,7 +5663,23 @@
     "lat": 50.92149,
     "lon": 6.36267
   },
+  "aff:iiis, tsinghua university": {
+    "display_name": "Tsinghua University",
+    "ror": "https://ror.org/03cve4549",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
+  },
   "aff:imperial college london": {
+    "display_name": "Imperial College London",
+    "ror": "https://ror.org/041kmwe10",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50853,
+    "lon": -0.12574
+  },
+  "aff:imperial college london, london, uk": {
     "display_name": "Imperial College London",
     "ror": "https://ror.org/041kmwe10",
     "country": "GB",
@@ -4375,6 +5711,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:independent researcher, college station, texas, usa": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:indian institute of astrophysics, koramangala ii block, bangalore 560034, india": {
     "display_name": "Indian Institute of Astrophysics",
     "ror": "https://ror.org/01msc1703",
@@ -4399,6 +5743,14 @@
     "lat": 22.33971,
     "lon": 87.32501
   },
+  "aff:infn, sezione roma1, dipartimento di fisica, “sapienza” università di roma, piazzale aldo moro 2, 00185, roma, italy": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:informatics institute, university of amsterdam, the netherlands": {
     "display_name": "University of Amsterdam",
     "ror": "https://ror.org/04dkp9463",
@@ -4415,6 +5767,22 @@
     "lat": 43.06667,
     "lon": 141.35
   },
+  "aff:information technology center, the university of tokyo, 6-2-3 kashiwanoha, kashiwa, chiba 277-0882, japan": {
+    "display_name": "The University of Tokyo",
+    "ror": "https://ror.org/057zh3y96",
+    "country": "JP",
+    "city": "Tokyo",
+    "lat": 35.6895,
+    "lon": 139.69171
+  },
+  "aff:infrared processing and analysis center, caltech, 1200 e. california blvd., pasadena, ca 91125, usa": {
+    "display_name": "Infrared Processing and Analysis Center",
+    "ror": "https://ror.org/05q79g396",
+    "country": "US",
+    "city": "Pasadena",
+    "lat": 34.14778137207031,
+    "lon": -118.14452362060548
+  },
   "aff:institut charles sadron, cnrs, université de strasbourg, f-67034 strasbourg, france": {
     "display_name": "Institut Charles Sadron",
     "ror": "https://ror.org/05whrjc31",
@@ -4422,6 +5790,14 @@
     "city": "Strasbourg",
     "lat": 48.58392,
     "lon": 7.74553
+  },
+  "aff:institut de física d’altes energies (ifae), the barcelona institute of science and technology, edifici cn, campus uab, 08193, bellaterra (barcelona), spain": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:institut de physique de nice, université côte d’azur cnrs - umr 7010, 17 rue julien lauprêtre, 06200 nice, france": {
     "display_name": "Institut de Physique de Nice",
@@ -4455,6 +5831,30 @@
     "lat": 41.38879,
     "lon": 2.15899
   },
+  "aff:institut d’astrophysique de paris. 98 bis boulevard arago. 75014 paris, france": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:institut d’estudis espacials de catalunya (ieec), c/ esteve terradas 1, edifici rdit, campus pmt-upc, 08860 castelldefels, spain": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:institut für astronomie und astrophysik, universität tübingen, sand 1, d-72076 tübingen, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:institut für festkörper- und materialphysik and würzburg-dresden cluster of excellence ctd.qmat, technische universität dresden, 01062 dresden, germany": {
     "display_name": "Technische Universität Dresden",
     "ror": "https://ror.org/042aqky30",
@@ -4487,6 +5887,22 @@
     "lat": 47.36667,
     "lon": 8.55
   },
+  "aff:institut für theoretische astrophysik, zah, universität heidelberg, albert-ueberle-straße 2, d-69120, heidelberg, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:institut für theoretische physik, ruprecht-karls-universität heidelberg, philosophenweg 16, d-69120 heidelberg, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:institut polytechnique de paris": {
     "display_name": "Institut Polytechnique de Paris",
     "ror": "https://ror.org/042tfbd02",
@@ -4494,6 +5910,14 @@
     "city": "Palaiseau",
     "lat": 48.71828,
     "lon": 2.2498
+  },
+  "aff:institut universitaire de france": {
+    "display_name": "Institut Universitaire de France",
+    "ror": "https://ror.org/055khg266",
+    "country": "FR",
+    "city": "Paris",
+    "lat": 48.847469329833984,
+    "lon": 2.348695993423462
   },
   "aff:institut universitaire de france, rue descartes, paris, 75231, france": {
     "display_name": "Institut Universitaire de France",
@@ -4535,6 +5959,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:institute for astronomy, university of edinburgh, royal observatory, blackford hill, edinburgh eh9 3hj, uk": {
+    "display_name": "University of Edinburgh",
+    "ror": "https://ror.org/01nrxwf90",
+    "country": "GB",
+    "city": "Edinburgh",
+    "lat": 55.95206,
+    "lon": -3.19648
+  },
   "aff:institute for astronomy, university of edinburgh, royal observatory, edinburgh eh9 3hj, uk": {
     "display_name": "University of Edinburgh",
     "ror": "https://ror.org/01nrxwf90",
@@ -4550,6 +5982,14 @@
     "city": "Helsinki",
     "lat": 60.16952,
     "lon": 24.93545
+  },
+  "aff:institute for computational and mathematical engineering, stanford university, stanford, ca 94305 usa": {
+    "display_name": "Stanford University",
+    "ror": "https://ror.org/00f54p054",
+    "country": "US",
+    "city": "Stanford",
+    "lat": 37.42411,
+    "lon": -122.16608
   },
   "aff:institute for computational cosmology & centre for extragalactic astronomy, department of physics, durham university, south road, durham, dh1 3le, uk": {
     "display_name": "Durham University",
@@ -4583,6 +6023,14 @@
     "lat": 47.36667,
     "lon": 8.55
   },
+  "aff:institute for dynamic systems and control, eth zurich": {
+    "display_name": "Institute for Dynamic Systems and Control",
+    "ror": "https://ror.org/03pzc2n68",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
+  },
   "aff:institute for earth observation, eurac research, bolzano, italy": {
     "display_name": "Eurac Research",
     "ror": "https://ror.org/01xt1w755",
@@ -4590,6 +6038,22 @@
     "city": "Bolzano",
     "lat": 46.49067,
     "lon": 11.33982
+  },
+  "aff:institute for experimental physics, university of innsbruck, 6020 innsbruck, austria": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:institute for fluid mechanics and aerodynamics, technical university of darmstadt, 64287, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:institute for forest and wildlife management, campus evenstad, university of inland norway, 2480 koppang, norway": {
     "display_name": "University of Inland Norway",
@@ -4631,6 +6095,22 @@
     "lat": null,
     "lon": null
   },
+  "aff:institute for interface physics and engineering, hamburg university of technology": {
+    "display_name": "Hamburg University of Technology",
+    "ror": "https://ror.org/04bs1pb34",
+    "country": "DE",
+    "city": "Hamburg",
+    "lat": 53.55073,
+    "lon": 9.99302
+  },
+  "aff:institute for logic, language and computation (illc), university of amsterdam, amsterdam, the netherlands": {
+    "display_name": "University of Amsterdam",
+    "ror": "https://ror.org/04dkp9463",
+    "country": "NL",
+    "city": "Amsterdam",
+    "lat": 52.37403,
+    "lon": 4.88969
+  },
   "aff:institute for mathematics and interdisciplinary center for scientific computing (iwr), heidelberg university, 69120, heidelberg, germany (martinek@math.uni-heidelberg.de, r.scheichl@uni-heidelberg.de)": {
     "display_name": "Heidelberg University",
     "ror": "https://ror.org/038t36y30",
@@ -4655,6 +6135,14 @@
     "lat": 47.06733,
     "lon": 15.44197
   },
+  "aff:institute for medical informatics, statistics and documentation, medical university of graz, graz, austria": {
+    "display_name": "Medical University of Graz",
+    "ror": "https://ror.org/02n0bts35",
+    "country": "AT",
+    "city": "Graz",
+    "lat": 47.06733,
+    "lon": 15.44197
+  },
   "aff:institute for quantum materials and technologies, karlsruhe institute of technology, kaiserstr. 12, 76131 karlsruhe, germany": {
     "display_name": "Karlsruhe Institute of Technology",
     "ror": "https://ror.org/04t3en479",
@@ -4662,6 +6150,22 @@
     "city": "Karlsruhe",
     "lat": 49.00937,
     "lon": 8.40444
+  },
+  "aff:institute for quantum materials and technologies, karlsruhe institute of technology, kaiserstraße 12, 76131 karlsruhe, germany": {
+    "display_name": "Karlsruhe Institute of Technology",
+    "ror": "https://ror.org/04t3en479",
+    "country": "DE",
+    "city": "Karlsruhe",
+    "lat": 49.00937,
+    "lon": 8.40444
+  },
+  "aff:institute for quantum optics and quantum information of the austrian academy of sciences, 6020 innsbruck, austria": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:institute for solar physics, department of astronomy, stockholm university, albanova university centre, 10691 stockholm, sweden": {
     "display_name": "Stockholm University",
@@ -4718,6 +6222,22 @@
     "city": "Gwangju",
     "lat": 35.15472,
     "lon": 126.91556
+  },
+  "aff:institute of analysis, johannes kepler university linz, altenberger strasse 69, a-4040 linz, austria": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:institute of applied physics, johannes kepler university linz, 4040 linz, austria": {
+    "display_name": "Institute of Applied Physics",
+    "ror": "https://ror.org/05nnv1197",
+    "country": "RU",
+    "city": "Nizhny Novgorod",
+    "lat": 56.32867,
+    "lon": 44.00205
   },
   "aff:institute of applied quantum technologies, friedrich-alexander-universität erlangen-nürnberg, erlangen, germany": {
     "display_name": "Friedrich-Alexander-Universität Erlangen-Nürnberg",
@@ -4847,6 +6367,14 @@
     "lat": 35.3278694152832,
     "lon": 25.143409729003903
   },
+  "aff:institute of automation, chinese academy of sciences": {
+    "display_name": "Institute of Automation",
+    "ror": "https://ror.org/056qj1t15",
+    "country": "DE",
+    "city": "Dresden",
+    "lat": 51.05089,
+    "lon": 13.73832
+  },
   "aff:institute of computer science": {
     "display_name": "Institute of Computer Science",
     "ror": "https://ror.org/003fvp964",
@@ -4871,6 +6399,14 @@
     "lat": 50.79898834228515,
     "lon": -1.091249942779541
   },
+  "aff:institute of cosmology and gravitation, university of portsmouth, dennis sciama building, portsmouth, po1 3fx, uk": {
+    "display_name": "University of Portsmouth",
+    "ror": "https://ror.org/03ykbk197",
+    "country": "GB",
+    "city": "Portsmouth",
+    "lat": 50.79898834228515,
+    "lon": -1.091249942779541
+  },
   "aff:institute of earth systems, university of malta, msida, msd 2080, malta": {
     "display_name": "University of Malta",
     "ror": "https://ror.org/03a62bv60",
@@ -4878,6 +6414,14 @@
     "city": "Msida",
     "lat": 35.8925,
     "lon": 14.48278
+  },
+  "aff:institute of electromobility, university of kaiserslautern-landau": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:institute of geophysics, eth zurich": {
     "display_name": "Institute of Geophysics",
@@ -4911,6 +6455,14 @@
     "lat": 39.9075,
     "lon": 116.39723
   },
+  "aff:institute of information sciences (izum), maribor, slovenia": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:institute of iron and steel technology, tu bergakademie freiberg": {
     "display_name": "TU Bergakademie Freiberg",
     "ror": "https://ror.org/031vc2293",
@@ -4935,6 +6487,14 @@
     "lat": 45.25167,
     "lon": 19.83694
   },
+  "aff:institute of material systems modeling, helmholtz-zentrum hereon": {
+    "display_name": "Helmholtz-Zentrum Hereon",
+    "ror": "https://ror.org/03qjp1d79",
+    "country": "DE",
+    "city": "Geesthacht",
+    "lat": 53.4366,
+    "lon": 10.37339
+  },
   "aff:institute of mathematics and computer science": {
     "display_name": "Institute of Mathematics and Computer Science",
     "ror": "https://ror.org/00fy4at53",
@@ -4952,6 +6512,30 @@
     "lon": 77.02635
   },
   "aff:institute of mathematics, czech academy of sciences, žitná 25, 11567 praha 1, czech republic": {
+    "display_name": "Institute of Mathematics",
+    "ror": "https://ror.org/05qshcp02",
+    "country": "IN",
+    "city": "Gurugram",
+    "lat": 28.4601,
+    "lon": 77.02635
+  },
+  "aff:institute of mathematics, elte eötvös loránd": {
+    "display_name": "Institute of Mathematics",
+    "ror": "https://ror.org/05qshcp02",
+    "country": "IN",
+    "city": "Gurugram",
+    "lat": 28.4601,
+    "lon": 77.02635
+  },
+  "aff:institute of mathematics, epfl, switzerland": {
+    "display_name": "Institute of Mathematics",
+    "ror": "https://ror.org/05qshcp02",
+    "country": "IN",
+    "city": "Gurugram",
+    "lat": 28.4601,
+    "lon": 77.02635
+  },
+  "aff:institute of mathematics, jagiellonian university, s. łojasiewicza 6, 30-348 kraków, poland": {
     "display_name": "Institute of Mathematics",
     "ror": "https://ror.org/05qshcp02",
     "country": "IN",
@@ -4983,6 +6567,14 @@
     "lat": 28.4601,
     "lon": 77.02635
   },
+  "aff:institute of metallic biomaterials, helmholtz-zentrum hereon, max-planck-straße": {
+    "display_name": "Helmholtz-Zentrum Hereon",
+    "ror": "https://ror.org/03qjp1d79",
+    "country": "DE",
+    "city": "Geesthacht",
+    "lat": 53.4366,
+    "lon": 10.37339
+  },
   "aff:institute of nanotechnology (int), karlsruhe institute of technology (kit)": {
     "display_name": "",
     "ror": null,
@@ -4991,6 +6583,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:institute of neuroinformatics": {
+    "display_name": "Institute of Neuroinformatics",
+    "ror": "https://ror.org/04a7xee56",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
+  },
   "aff:institute of neuroinformatics, university of zurich and eth zurich": {
     "display_name": "Institute of Neuroinformatics",
     "ror": "https://ror.org/04a7xee56",
@@ -4998,6 +6598,22 @@
     "city": "Zurich",
     "lat": 47.36667,
     "lon": 8.55
+  },
+  "aff:institute of neuroinformatics, university of zurich and eth zurich, zurich, switzerland": {
+    "display_name": "Institute of Neuroinformatics",
+    "ror": "https://ror.org/04a7xee56",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
+  },
+  "aff:institute of nuclear physics polish academy of sciences, pl-31342 ifj-pan, krakow, poland": {
+    "display_name": "Institute of Nuclear Physics, Polish Academy of Sciences",
+    "ror": "https://ror.org/01n78t774",
+    "country": "PL",
+    "city": "Krakow",
+    "lat": 50.061431884765625,
+    "lon": 19.936580657958984
   },
   "aff:institute of particle physics and astrophysics, eth zürich, 8093 zürich, switzerland": {
     "display_name": "ETH Zurich",
@@ -5047,6 +6663,14 @@
     "lat": 45.81444,
     "lon": 15.97798
   },
+  "aff:institute of physics, laboratory for galaxy evolution and spectral modelling, epfl, observatory of sauverny, chemin pegasi 51, 1290 versoix, switzerland": {
+    "display_name": "Institute of Physics",
+    "ror": "https://ror.org/03c59nw07",
+    "country": "HR",
+    "city": "Zagreb",
+    "lat": 45.81444,
+    "lon": 15.97798
+  },
   "aff:institute of physics, laboratory for galaxy evolution and spectral modelling, école polytechnique fédérale de lausanneobservatoire de sauverny, chemin pegasi 51, ch-1290 versoix, switzerland": {
     "display_name": "Institute of Physics",
     "ror": "https://ror.org/03c59nw07",
@@ -5087,6 +6711,14 @@
     "lat": 45.81444,
     "lon": 15.97798
   },
+  "aff:institute of plasma physics, hefei institutes of physical science (hfips), chinese academy of sciences, hefei 230026, anhui, china": {
+    "display_name": "Institute of Plasma Physics",
+    "ror": "https://ror.org/033cbzv42",
+    "country": "CN",
+    "city": "Hefei",
+    "lat": 31.86389,
+    "lon": 117.28083
+  },
   "aff:institute of quantum electronics, eth zürich, zürich 8093, switzerland": {
     "display_name": "ETH Zurich",
     "ror": "https://ror.org/05a28rw58",
@@ -5102,6 +6734,14 @@
     "city": "Shenzhen",
     "lat": 22.54554,
     "lon": 114.0683
+  },
+  "aff:institute of science and technology austria (ista), am campus 1, 3400 klosterneuburg, austria": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:institute of science and technology austria, am campus 1, 3400, klosterneuburg, austria": {
     "display_name": "Institute of Science and Technology Austria",
@@ -5143,6 +6783,14 @@
     "lat": 44.349998474121094,
     "lon": 26.0333309173584
   },
+  "aff:institute of space sciences, ice-csic, campus uab, carrer de can magrans s/n, 08913 bellaterra, barcelona, spain": {
+    "display_name": "Institute of Space Sciences",
+    "ror": "https://ror.org/01vbgty78",
+    "country": "ES",
+    "city": "Cerdanyola del Vallès",
+    "lat": 41.4910888671875,
+    "lon": 2.1407899856567383
+  },
   "aff:institute of space weather, school of atmospheric physics, nanjing university of information science and technology, nanjing 210044, china": {
     "display_name": "Nanjing University of Information Science and Technology",
     "ror": "https://ror.org/02y0rxk19",
@@ -5150,6 +6798,22 @@
     "city": "Nanjing",
     "lat": 32.06167,
     "lon": 118.77778
+  },
+  "aff:institute of surface science, helmholtz-zentrum hereon, max-planck-straße": {
+    "display_name": "Helmholtz-Zentrum Hereon",
+    "ror": "https://ror.org/03qjp1d79",
+    "country": "DE",
+    "city": "Geesthacht",
+    "lat": 53.4366,
+    "lon": 10.37339
+  },
+  "aff:institute of technical informatics, graz university of technology, graz, austria": {
+    "display_name": "Graz University of Technology",
+    "ror": "https://ror.org/00d7xrm67",
+    "country": "AT",
+    "city": "Graz",
+    "lat": 47.06733,
+    "lon": 15.44197
   },
   "aff:institute of telecommunications, university of stuttgart, germany": {
     "display_name": "University of Stuttgart",
@@ -5223,6 +6887,30 @@
     "lat": 39.9075,
     "lon": 116.39723
   },
+  "aff:institute of visual computing, graz university of technology, graz, austria": {
+    "display_name": "Graz University of Technology",
+    "ror": "https://ror.org/00d7xrm67",
+    "country": "AT",
+    "city": "Graz",
+    "lat": 47.06733,
+    "lon": 15.44197
+  },
+  "aff:institute of zoology, chinese academy of sciences": {
+    "display_name": "Institute of Zoology",
+    "ror": "https://ror.org/05skxkv18",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
+  },
+  "aff:instituto de astrofísica de andalucía (csic), glorieta de la astronomía, s/n, e-18008 granada, spain": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:instituto de astrofísica de andalucía, csic, glorieta de la astronomía s/n, 18008 granada, spain": {
     "display_name": "Instituto de Astrofísica de Andalucía",
     "ror": "https://ror.org/04ka0vh05",
@@ -5230,6 +6918,14 @@
     "city": "Granada",
     "lat": 37.18817,
     "lon": -3.60667
+  },
+  "aff:instituto de astrofísica de canarias, c/ vía láctea, s/n, e-38205 la laguna, tenerife, spain": {
+    "display_name": "Instituto de Astrofísica de Canarias",
+    "ror": "https://ror.org/03cmntr54",
+    "country": "ES",
+    "city": "Tenerife",
+    "lat": 28.46824,
+    "lon": -16.25462
   },
   "aff:instituto de astrofísica de canarias, e-38205 la laguna, tenerife, spain": {
     "display_name": "Instituto de Astrofísica de Canarias",
@@ -5295,7 +6991,31 @@
     "lat": 19.42847,
     "lon": -99.12766
   },
+  "aff:instituto de astronomía, universidad nacional autónoma de méxico, ciudad de méxico, méxico": {
+    "display_name": "Universidad Nacional Autónoma de México",
+    "ror": "https://ror.org/01tmp8f25",
+    "country": "MX",
+    "city": "Mexico City",
+    "lat": 19.42847,
+    "lon": -99.12766
+  },
+  "aff:instituto de ciencias aplicadas y tecnología, universidad nacional autónoma de méxico, circuito exterior s/n, ciudad universitaria, 04510, mexico city": {
+    "display_name": "Universidad Nacional Autónoma de México",
+    "ror": "https://ror.org/01tmp8f25",
+    "country": "MX",
+    "city": "Mexico City",
+    "lat": 19.42847,
+    "lon": -99.12766
+  },
   "aff:instituto de ciencias físicas, universidad nacional autónoma de méxico, av. universidad s/n, 62210 cuernavaca, morelos, méxico": {
+    "display_name": "Universidad Nacional Autónoma de México",
+    "ror": "https://ror.org/01tmp8f25",
+    "country": "MX",
+    "city": "Mexico City",
+    "lat": 19.42847,
+    "lon": -99.12766
+  },
+  "aff:instituto de ciencias nucleares, universidad nacional autónoma de mexico, ciudad de mexico, mexico": {
     "display_name": "Universidad Nacional Autónoma de México",
     "ror": "https://ror.org/01tmp8f25",
     "country": "MX",
@@ -5327,6 +7047,38 @@
     "lat": 40.4165,
     "lon": -3.70256
   },
+  "aff:instituto de física, universidad nacional autónoma de méxico, circuito de la investigación científica, ciudad universitaria, cd. de méxico c. p. 04510, méxico": {
+    "display_name": "Universidad Nacional Autónoma de México",
+    "ror": "https://ror.org/01tmp8f25",
+    "country": "MX",
+    "city": "Mexico City",
+    "lat": 19.42847,
+    "lon": -99.12766
+  },
+  "aff:instituto de física, universidad nacional autónoma de méxico, ciudad de mexico, mexico": {
+    "display_name": "Universidad Nacional Autónoma de México",
+    "ror": "https://ror.org/01tmp8f25",
+    "country": "MX",
+    "city": "Mexico City",
+    "lat": 19.42847,
+    "lon": -99.12766
+  },
+  "aff:instituto de geofísica, universidad nacional autónoma de méxico, ciudad de mexico, mexico": {
+    "display_name": "Instituto de Geofísica",
+    "ror": "https://ror.org/04q88r129",
+    "country": "MX",
+    "city": "Ciudad Universitaria",
+    "lat": 19.32312,
+    "lon": -99.18495
+  },
+  "aff:instituto nacional de astrofísica, óptica y electrónica, puebla, mexico": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:instituto superior de ciências da educação da huíla, isced-huíla, rua sarmento rodrigues, lubango, angola, p.b. 230": {
     "display_name": "Instituto Superior de Ciências da Educação da Huíla",
     "ror": "https://ror.org/00e1bj270",
@@ -5342,6 +7094,14 @@
     "city": "Vancouver",
     "lat": 49.24966,
     "lon": -123.11934
+  },
+  "aff:integrated systems laboratory (iis), eth zurich, zurich, 8092, switzerland": {
+    "display_name": "ETH Zurich",
+    "ror": "https://ror.org/05a28rw58",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
   },
   "aff:integrated systems laboratory, eth zurich, switzerland": {
     "display_name": "Integrated Systems Laboratory",
@@ -5382,6 +7142,14 @@
     "city": "Fukuoka",
     "lat": 33.6,
     "lon": 130.41667
+  },
+  "aff:interdisziplinäres zentrum für wissenschaftliches rechnen, universität heidelberg, heidelberg, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:international centre for radio astronomy research, university of western australia, 7 fairway, crawley, wa 6009, australia": {
     "display_name": "International Centre for Radio Astronomy Research",
@@ -5430,6 +7198,46 @@
     "city": "Pasadena",
     "lat": 34.14778,
     "lon": -118.14452
+  },
+  "aff:irfu, cea, université paris-saclay, f-91191 gif-sur-yvette, france": {
+    "display_name": "Université Paris-Saclay",
+    "ror": "https://ror.org/03xjwb503",
+    "country": "FR",
+    "city": "Gif-sur-Yvette",
+    "lat": 48.68333,
+    "lon": 2.13333
+  },
+  "aff:istanbul university observatory research and application center, istanbul university 34119, i̇stanbul, türkiye": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:istanbul university, science faculty, department of astronomy and space sciences, beyazıt, 34119, i̇stanbul, türkiye": {
+    "display_name": "Istanbul University",
+    "ror": "https://ror.org/03a5qrr21",
+    "country": "TR",
+    "city": "Istanbul",
+    "lat": 41.01384,
+    "lon": 28.94966
+  },
+  "aff:istinye university": {
+    "display_name": "Istinye University",
+    "ror": "https://ror.org/03081nz23",
+    "country": "TR",
+    "city": "Istanbul",
+    "lat": 41.01383972167969,
+    "lon": 28.94965934753418
+  },
+  "aff:it university of copenhagen": {
+    "display_name": "IT University of Copenhagen",
+    "ror": "https://ror.org/02309jg23",
+    "country": "DK",
+    "city": "Copenhagen",
+    "lat": 55.67594146728515,
+    "lon": 12.565529823303224
   },
   "aff:itp, heidelberg university": {
     "display_name": "Heidelberg University",
@@ -5518,6 +7326,14 @@
     "city": "Brussels",
     "lat": 50.85045,
     "lon": 4.34878
+  },
+  "aff:junling wangeth zurich, eth ai center": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:jülich supercomputing centre": {
     "display_name": "Jülich Supercomputing Centre",
@@ -5631,6 +7447,14 @@
     "lat": 49.00937,
     "lon": 8.40444
   },
+  "aff:karlsruhe nano micro facility, karlsruhe institute of technology, kaiserstraße 12, 76131 karlsruhe, germany": {
+    "display_name": "Karlsruhe Institute of Technology",
+    "ror": "https://ror.org/04t3en479",
+    "country": "DE",
+    "city": "Karlsruhe",
+    "lat": 49.00937,
+    "lon": 8.40444
+  },
   "aff:kavli institute for astronomy and astrophysics, peking university, beijing, china": {
     "display_name": "Peking University",
     "ror": "https://ror.org/02v51f717",
@@ -5664,6 +7488,14 @@
     "lon": 0.11667
   },
   "aff:kavli institute for cosmology, university of cambridge, madingley road, cambridge cb3 0ha, uk": {
+    "display_name": "University of Cambridge",
+    "ror": "https://ror.org/013meh722",
+    "country": "GB",
+    "city": "Cambridge",
+    "lat": 52.2,
+    "lon": 0.11667
+  },
+  "aff:kavli institute for cosmology, university of cambridge, madingley road, cambridge, cb3 0ha, uk": {
     "display_name": "University of Cambridge",
     "ror": "https://ror.org/013meh722",
     "country": "GB",
@@ -5735,6 +7567,14 @@
     "lat": 32.06167,
     "lon": 118.77778
   },
+  "aff:key laboratory of particle astrophysics, institute of high energy physics, chinese academy of sciences, beijing100049, china": {
+    "display_name": "Institute of High Energy Physics",
+    "ror": "https://ror.org/03v8tnc06",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
+  },
   "aff:key laboratory of quantum theory and applications of moe": {
     "display_name": "",
     "ror": null,
@@ -5799,6 +7639,14 @@
     "lat": 36.34913,
     "lon": 127.38493
   },
+  "aff:korea university": {
+    "display_name": "Korea University",
+    "ror": "https://ror.org/05m1gnk07",
+    "country": "JP",
+    "city": "Tokyo",
+    "lat": 35.6895,
+    "lon": 139.69171
+  },
   "aff:krisztián szuppinger & steffen schneider†helmholtz munich & munich center for machine learning (mcml)": {
     "display_name": "",
     "ror": null,
@@ -5806,6 +7654,14 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:kth royal institute of technology, teknikringen 31, se-11428 stockholm, sweden": {
+    "display_name": "KTH Royal Institute of Technology",
+    "ror": "https://ror.org/026vcq606",
+    "country": "SE",
+    "city": "Stockholm",
+    "lat": 59.32938,
+    "lon": 18.06871
   },
   "aff:kyoto university": {
     "display_name": "Kyoto University",
@@ -5855,6 +7711,14 @@
     "lat": 48.95833,
     "lon": 2.34167
   },
+  "aff:laboratoire de physique des plasmas, cnrs, ecole": {
+    "display_name": "Laboratoire de Physique des Plasmas",
+    "ror": "https://ror.org/05c95bg36",
+    "country": "FR",
+    "city": "Palaiseau",
+    "lat": 48.71828,
+    "lon": 2.2498
+  },
   "aff:laboratoire d’astrophysique de bordeaux, univ. bordeaux, cnrs, b18n, allée geoffroy saint-hilaire, 33615 pessac, france": {
     "display_name": "Laboratoire d'Astrophysique de Bordeaux",
     "ror": "https://ror.org/00yee3n23",
@@ -5862,6 +7726,14 @@
     "city": "Bordeaux",
     "lat": 44.84124,
     "lon": -0.58046
+  },
+  "aff:laboratoire leprince-ringuet, cnrs/in2p3, école polytechnique, institut polytechnique de paris, palaiseau, 91120, france": {
+    "display_name": "Laboratoire Leprince-Ringuet",
+    "ror": "https://ror.org/058t6p923",
+    "country": "FR",
+    "city": "Palaiseau",
+    "lat": 48.71828,
+    "lon": 2.2498
   },
   "aff:laboratoire temps espace (lne-op), observatoire de paris, université psl, sorbonne université, université de lille, lne, cnrs, 61 avenue de l’observatoire, 75014 paris, france": {
     "display_name": "Observatoire de Paris",
@@ -5871,6 +7743,22 @@
     "lat": 48.85341,
     "lon": 2.3488
   },
+  "aff:laboratoire univers et particules de montpellier, université montpellier, cnrs/in2p3, f-34095 montpellier, france": {
+    "display_name": "Laboratoire Univers et Particules de Montpellier",
+    "ror": "https://ror.org/00nrbzg90",
+    "country": "FR",
+    "city": "Montpellier",
+    "lat": 43.61093,
+    "lon": 3.87635
+  },
+  "aff:laboratory for atmospheric and space physics, boulder, colorado 80303, usa": {
+    "display_name": "Laboratory for Atmospheric and Space Physics",
+    "ror": "https://ror.org/01fcjzv38",
+    "country": "US",
+    "city": "Boulder",
+    "lat": 40.01499,
+    "lon": -105.27055
+  },
   "aff:laboratory for computational physiology, massachusetts institute of technology, usa": {
     "display_name": "Massachusetts Institute of Technology",
     "ror": "https://ror.org/042nb2s44",
@@ -5879,6 +7767,14 @@
     "lat": 42.3751,
     "lon": -71.10561
   },
+  "aff:laboratory for energy systems analysis, paul scherrer institute, villigen, switzerland": {
+    "display_name": "Paul Scherrer Institute",
+    "ror": "https://ror.org/03eh3y714",
+    "country": "CH",
+    "city": "Villigen",
+    "lat": 47.52682,
+    "lon": 8.21486
+  },
   "aff:laboratory for multiwavelength astrophysics, school of physics and astronomy, rochester institute of technology, 84 lomb memorial drive, rochester, ny 14623, usa": {
     "display_name": "Rochester Institute of Technology",
     "ror": "https://ror.org/00v4yb702",
@@ -5886,6 +7782,14 @@
     "city": "Rochester",
     "lat": 43.15478,
     "lon": -77.61556
+  },
+  "aff:laboratory for solid state physics, eth zürich, 8093 zürich, switzerland": {
+    "display_name": "Laboratory for Solid State Physics",
+    "ror": "https://ror.org/00hwfrn96",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
   },
   "aff:laboratory of physics, college of science and technology, nihon university, funabashi, chiba 274-8501, japan": {
     "display_name": "College of Science and Technology",
@@ -5910,6 +7814,14 @@
     "city": "Lanzhou",
     "lat": 36.057010650634766,
     "lon": 103.8398666381836
+  },
+  "aff:lawrence berkeley national laboratory, 1 cyclotron road, berkeley, ca 94720, usa": {
+    "display_name": "Lawrence Berkeley National Laboratory",
+    "ror": "https://ror.org/02jbv0t02",
+    "country": "US",
+    "city": "Berkeley",
+    "lat": 37.87158966064453,
+    "lon": -122.2727508544922
   },
   "aff:lawrence berkeley national laboratory, berkeley, ca, usa": {
     "display_name": "Lawrence Berkeley National Laboratory",
@@ -5999,6 +7911,14 @@
     "lat": 51.75222,
     "lon": -1.25596
   },
+  "aff:linköping university": {
+    "display_name": "Linköping University",
+    "ror": "https://ror.org/05ynxx418",
+    "country": "SE",
+    "city": "Linköping",
+    "lat": 58.41086,
+    "lon": 15.62157
+  },
   "aff:lira, observatoire de paris, université psl, cnrs, sorbonne université, université de paris, 5 place jules janssen, 92195 meudon, france": {
     "display_name": "Observatoire de Paris",
     "ror": "https://ror.org/029nkcm90",
@@ -6023,7 +7943,31 @@
     "lat": 35.88808,
     "lon": -106.30697
   },
+  "aff:los alamos national laboratory, los alamos, nm, usa": {
+    "display_name": "Los Alamos National Laboratory",
+    "ror": "https://ror.org/01e41cf67",
+    "country": "US",
+    "city": "Los Alamos",
+    "lat": 35.88808,
+    "lon": -106.30697
+  },
+  "aff:low temperature physics laboratory, school of physics & center of quantum": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:ludwig-maximilians-university munich, department of mathematics, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:ludwig-maximilians-universität münchen (lmu munich), germany": {
     "display_name": "",
     "ror": null,
     "country": null,
@@ -6062,6 +8006,30 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:lux, observatoire de paris, universit´e psl, cnrs, sorbonne universit´e, meudon, 92190, france": {
+    "display_name": "Observatoire de Paris",
+    "ror": "https://ror.org/029nkcm90",
+    "country": "FR",
+    "city": "Paris",
+    "lat": 48.85341,
+    "lon": 2.3488
+  },
+  "aff:m. tambe is with harvard university, cambridge, ma, usa ( )": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:machine learning group, technische universität berlin, berlin, germany": {
+    "display_name": "Technische Universität Berlin",
+    "ror": "https://ror.org/03v4gjf40",
+    "country": "DE",
+    "city": "Berlin",
+    "lat": 52.52437,
+    "lon": 13.41053
   },
   "aff:macquarie university": {
     "display_name": "Macquarie University",
@@ -6102,6 +8070,14 @@
     "city": "Cambridge",
     "lat": 42.3751,
     "lon": -71.10561
+  },
+  "aff:materials and devices, chongqing university, chongqing 401331, china": {
+    "display_name": "Chongqing University",
+    "ror": "https://ror.org/023rhb549",
+    "country": "CN",
+    "city": "Chongqing",
+    "lat": 29.56026,
+    "lon": 106.55771
   },
   "aff:materials department, university of california santa barbara, santa barbara, california 93106, usa": {
     "display_name": "University of California, Santa Barbara",
@@ -6207,6 +8183,14 @@
     "lat": 48.24896,
     "lon": 11.65101
   },
+  "aff:max planck institute for biogeochemistry": {
+    "display_name": "Max Planck Institute for Biogeochemistry",
+    "ror": "https://ror.org/051yxp643",
+    "country": "DE",
+    "city": "Jena",
+    "lat": 50.92878,
+    "lon": 11.5899
+  },
   "aff:max planck institute for biogeochemistry, jena, germany": {
     "display_name": "Max Planck Institute for Biogeochemistry",
     "ror": "https://ror.org/051yxp643",
@@ -6224,6 +8208,14 @@
     "lon": 11.671667098999023
   },
   "aff:max planck institute for extraterrestrial physics, giessenbachstraße 1, 85748 garching, germany": {
+    "display_name": "Max Planck Institute for Extraterrestrial Physics",
+    "ror": "https://ror.org/00e4bwe12",
+    "country": "DE",
+    "city": "Garching bei München",
+    "lat": 48.26166534423828,
+    "lon": 11.671667098999023
+  },
+  "aff:max planck institute for extraterrestrial physics, gießenbachstraße 1, 85748 garching, germany": {
     "display_name": "Max Planck Institute for Extraterrestrial Physics",
     "ror": "https://ror.org/00e4bwe12",
     "country": "DE",
@@ -6256,6 +8248,14 @@
     "lon": 7.04555606842041
   },
   "aff:max planck institute for intelligent systems": {
+    "display_name": "Max Planck Institute for Intelligent Systems",
+    "ror": "https://ror.org/04fq9j139",
+    "country": "DE",
+    "city": "Stuttgart",
+    "lat": 48.782318115234375,
+    "lon": 9.177020072937012
+  },
+  "aff:max planck institute for intelligent systems, tübingen": {
     "display_name": "Max Planck Institute for Intelligent Systems",
     "ror": "https://ror.org/04fq9j139",
     "country": "DE",
@@ -6351,6 +8351,22 @@
     "lat": 48.24895858764648,
     "lon": 11.651009559631348
   },
+  "aff:max planck–ias–ntu center for particle physics, cosmology and geometry": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:max-planck-institut für astronomie, königstuhl 17, 69117 heidelberg, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:max-planck-institut für astrophysik, karl-schwarzschild-straße 1, 85748 garching, germany": {
     "display_name": "",
     "ror": null,
@@ -6358,6 +8374,30 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:max-planck-institut für extraterrestrische physik (mpe), gießenbachstraße 1, 85748 garching, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:max-planck-institut für kernphysik, saupfercheckweg 1, 69117 heidelberg, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:max-planck-institut für physik (werner-heisenberg-institut)": {
+    "display_name": "Max Planck Institute for Physics",
+    "ror": "https://ror.org/0079jjr10",
+    "country": "DE",
+    "city": "Munich",
+    "lat": 48.137428283691406,
+    "lon": 11.57548999786377
   },
   "aff:max-planck-institute for astrophysics": {
     "display_name": "Max Planck Institute for Astrophysics",
@@ -6391,6 +8431,14 @@
     "lat": 45.50884,
     "lon": -73.58781
   },
+  "aff:mcwilliams center for cosmology and astrophysics, department of physics, carnegie mellon university, pittsburgh, pa 15213, usa": {
+    "display_name": "Carnegie Mellon University",
+    "ror": "https://ror.org/05x2bcf33",
+    "country": "US",
+    "city": "Pittsburgh",
+    "lat": 40.44062,
+    "lon": -79.99589
+  },
   "aff:media communication center, osaka electro-communication university, neyagawa, osaka, 572-8530, japan": {
     "display_name": "Osaka Electro-Communication University",
     "ror": "https://ror.org/056bksm23",
@@ -6423,6 +8471,14 @@
     "lat": 60.2052001953125,
     "lon": 24.65220069885254
   },
+  "aff:michigan institute for data and ai in society, university of michigan, ann arbor, mi, 48109, usa": {
+    "display_name": "University of Michigan",
+    "ror": "https://ror.org/00jmfr291",
+    "country": "US",
+    "city": "Ann Arbor",
+    "lat": 42.27756,
+    "lon": -83.74088
+  },
   "aff:mila – quebec ai institute 5polytechnique montréal 6emory university": {
     "display_name": "",
     "ror": null,
@@ -6431,7 +8487,23 @@
     "lat": null,
     "lon": null
   },
+  "aff:ming-hsieh department of electrical and computer engineering, university of southern california": {
+    "display_name": "University of Southern California",
+    "ror": "https://ror.org/03taz7m60",
+    "country": "US",
+    "city": "Los Angeles",
+    "lat": 34.05223,
+    "lon": -118.24368
+  },
   "aff:minnesota institute for astrophysics, university of minnesota, 116 church street se, minneapolis, mn 55455, usa": {
+    "display_name": "University of Minnesota",
+    "ror": "https://ror.org/017zqws13",
+    "country": "US",
+    "city": "Minneapolis",
+    "lat": 44.97997,
+    "lon": -93.26384
+  },
+  "aff:minnesota institute for astrophysics, university of minnesota, twin cities, 116 church st se, minneapolis, mn 55455, usa": {
     "display_name": "University of Minnesota",
     "ror": "https://ror.org/017zqws13",
     "country": "US",
@@ -6456,6 +8528,22 @@
     "lon": -71.10561
   },
   "aff:mitsubishi electric innovation center": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:mmlab, the chinese university of hong kong novaxbot": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:mohamed bin zayed university of artificial intelligence the chinese university of hong kong": {
     "display_name": "",
     "ror": null,
     "country": null,
@@ -6496,6 +8584,14 @@
     "lon": null
   },
   "aff:munich center for quantum science and technology (mcqst)": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:munich center for quantum science and technology (mcqst), 80799": {
     "display_name": "",
     "ror": null,
     "country": null,
@@ -6607,6 +8703,22 @@
     "lat": 39.9075,
     "lon": 116.39723
   },
+  "aff:national astronomical observatories, chinese academy of sciences, a20 datun road, chaoyang district, beijing, 100101, p. r. china": {
+    "display_name": "National Astronomical Observatories",
+    "ror": "https://ror.org/058pyyv44",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
+  },
+  "aff:national astronomical observatories, chinese academy of sciences, beijing 100012": {
+    "display_name": "National Astronomical Observatories",
+    "ror": "https://ror.org/058pyyv44",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
+  },
   "aff:national astronomical observatories, chinese academy of sciences, beijing 100101, china": {
     "display_name": "National Astronomical Observatories",
     "ror": "https://ror.org/058pyyv44",
@@ -6687,6 +8799,14 @@
     "lat": 35.349998474121094,
     "lon": 137.18333435058594
   },
+  "aff:national institute for materials science": {
+    "display_name": "National Institute for Materials Science",
+    "ror": "https://ror.org/026v1ze26",
+    "country": "JP",
+    "city": "Tsukuba",
+    "lat": 36.08333,
+    "lon": 140.11667
+  },
   "aff:national institute of technology, niihama college, niihama, ehime 792-8580, japan": {
     "display_name": "National Institute of Technology",
     "ror": "https://ror.org/01y6yqt17",
@@ -6734,6 +8854,22 @@
     "city": "Lubbock",
     "lat": 33.57786,
     "lon": -101.85517
+  },
+  "aff:network science institute, department of physics, northeastern university, boston, ma, usa": {
+    "display_name": "Northeastern University",
+    "ror": "https://ror.org/04t5xt781",
+    "country": "US",
+    "city": "Boston",
+    "lat": 42.35843,
+    "lon": -71.05977
+  },
+  "aff:network science institute, khoury college of computer sciences, northeastern university, boston, ma, usa": {
+    "display_name": "Northeastern University",
+    "ror": "https://ror.org/04t5xt781",
+    "country": "US",
+    "city": "Boston",
+    "lat": 42.35843,
+    "lon": -71.05977
   },
   "aff:neutron scattering division, oak ridge national laboratory, oak ridge, tennessee 37831, usa": {
     "display_name": "Oak Ridge National Laboratory",
@@ -6784,6 +8920,14 @@
     "lon": 21.01178
   },
   "aff:niels bohr institute, university of copenhagen, jagtvej 128, dk-2200 copenhagen n, denmark": {
+    "display_name": "University of Copenhagen",
+    "ror": "https://ror.org/035b05819",
+    "country": "DK",
+    "city": "Copenhagen",
+    "lat": 55.67594,
+    "lon": 12.56553
+  },
+  "aff:niels bohr institute, university of copenhagen, jagtvej 128, dk-2200 copenhagen, denmark": {
     "display_name": "University of Copenhagen",
     "ror": "https://ror.org/035b05819",
     "country": "DK",
@@ -6935,6 +9079,14 @@
     "lat": 51.75222,
     "lon": -1.25596
   },
+  "aff:paderborn university, germany": {
+    "display_name": "Paderborn University",
+    "ror": "https://ror.org/058kzsd48",
+    "country": "DE",
+    "city": "Paderborn",
+    "lat": 51.71905,
+    "lon": 8.75439
+  },
   "aff:pattern recognition lab, department of computer science, friedrich-alexander-universität erlangen-nürnberg, erlangen": {
     "display_name": "Friedrich-Alexander-Universität Erlangen-Nürnberg",
     "ror": "https://ror.org/00f7hpc57",
@@ -6950,6 +9102,22 @@
     "city": "Beijing",
     "lat": 39.9075,
     "lon": 116.39723
+  },
+  "aff:perimeter institute for theoretical physics, 31 caroline st. north, waterloo, on n2l 2y5, canada": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:peter grünberg institute": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:photonics center, boston university, 8 saint mary’s st., boston, 02215, massachusetts, usa": {
     "display_name": "Boston University",
@@ -6974,6 +9142,22 @@
     "city": "Los Angeles",
     "lat": 34.05223,
     "lon": -118.24368
+  },
+  "aff:physics (asc), ludwig maximilian university of munich, 80333 munich, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:physics and astronomy department galileo galilei, university of padova, vicolo dell’osservatorio 3, i-35122, padova, italy": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:physics and astronomy department, johns hopkins university, baltimore, md 21218, usa": {
     "display_name": "Johns Hopkins University",
@@ -7047,6 +9231,14 @@
     "lat": 21.024499893188477,
     "lon": 105.84117126464844
   },
+  "aff:physikalisches institut, center for quantum science (cq) and lisa+, universität tübingen, 72076 tübingen, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:plants and ecosystems (pleco), department of biology, university of antwerp, 2610 wilrijk, belgium": {
     "display_name": "University of Antwerp",
     "ror": "https://ror.org/008x57b05",
@@ -7062,6 +9254,14 @@
     "city": "Warsaw",
     "lat": 52.22977,
     "lon": 21.01178
+  },
+  "aff:polytechnique, sorbonne université, université paris-saclay": {
+    "display_name": "Sorbonne Université",
+    "ror": "https://ror.org/02en5vm52",
+    "country": "FR",
+    "city": "Paris",
+    "lat": 48.85341,
+    "lon": 2.3488
   },
   "aff:pondicherry university, r.v. nagar, kalapet, 605014, puducherry, india": {
     "display_name": "Pondicherry University",
@@ -7087,6 +9287,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:pritzker school of molecular engineering, university of chicago, chicago, il 60637, usa": {
+    "display_name": "University of Chicago",
+    "ror": "https://ror.org/024mw5h28",
+    "country": "US",
+    "city": "Chicago",
+    "lat": 41.85003,
+    "lon": -87.65005
+  },
   "aff:puls, institute for theoretical physics, friedrich-alexander-universität erlangen-nürnberg, erlangen": {
     "display_name": "Institute for Theoretical Physics",
     "ror": "https://ror.org/025en1p25",
@@ -7094,6 +9302,22 @@
     "city": "Zurich",
     "lat": 47.36667,
     "lon": 8.55
+  },
+  "aff:purdue university": {
+    "display_name": "Purdue University West Lafayette",
+    "ror": "https://ror.org/02dqehb95",
+    "country": "US",
+    "city": "West Lafayette",
+    "lat": 40.42587,
+    "lon": -86.90807
+  },
+  "aff:qinlin gu is with the school of mathematics and statistics and the brain and mind centre, the university of sydney, australia": {
+    "display_name": "The University of Sydney",
+    "ror": "https://ror.org/0384j8v12",
+    "country": "AU",
+    "city": "Sydney",
+    "lat": -33.86785,
+    "lon": 151.20732
   },
   "aff:quantum center of excellence for diamond and emergent materials, school of interdisciplinary sciences and department of physics, indian institute of technology madras, chennai, india": {
     "display_name": "Indian Institute of Technology Madras",
@@ -7134,6 +9358,30 @@
     "city": "Leuven",
     "lat": 50.87959,
     "lon": 4.70093
+  },
+  "aff:queen mary university of london": {
+    "display_name": "Queen Mary University of London",
+    "ror": "https://ror.org/026zzn846",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50853,
+    "lon": -0.12574
+  },
+  "aff:queensland university of technology, school of chemistry & physics, george st, brisbane 4001, australia": {
+    "display_name": "Queensland University of Technology",
+    "ror": "https://ror.org/03pnv4752",
+    "country": "AU",
+    "city": "Brisbane",
+    "lat": -27.46794,
+    "lon": 153.02809
+  },
+  "aff:r. schwan is with the accessible and accelerated robotics lab, dartmouth college, usa. roland.schwan@dartmouth.edu": {
+    "display_name": "Dartmouth College",
+    "ror": "https://ror.org/049s0rh22",
+    "country": "US",
+    "city": "Hanover",
+    "lat": 43.70229,
+    "lon": -72.28954
   },
   "aff:racah institute of physics, the hebrew university, jerusalem 91904, israel": {
     "display_name": "",
@@ -7271,6 +9519,14 @@
     "lat": 41.66394,
     "lon": -83.55521
   },
+  "aff:robotic systems lab, swiss federal institute of technology": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:rosseland centre for solar physics, university of oslo, p.o. box 1029 blindern, n-0315 oslo, norway": {
     "display_name": "University of Oslo",
     "ror": "https://ror.org/01xtthb56",
@@ -7303,6 +9559,14 @@
     "lat": 48.13743,
     "lon": 11.57549
   },
+  "aff:rutgers university": {
+    "display_name": "Rutgers, The State University of New Jersey",
+    "ror": "https://ror.org/05vt9qd57",
+    "country": "US",
+    "city": "New Brunswick",
+    "lat": 40.48622,
+    "lon": -74.45182
+  },
   "aff:rutherford appleton laboratory, harwell, oxford, ox11 0qx, uk": {
     "display_name": "Rutherford Appleton Laboratory",
     "ror": "https://ror.org/03gq8fr08",
@@ -7326,6 +9590,30 @@
     "city": "Busan",
     "lat": 35.10168,
     "lon": 129.03004
+  },
+  "aff:sapienza school for advanced studies, viale regina elena 291, 00161 roma, italy": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:sapienza school for advanced studies, viale regina elena 291, i-00161 roma, italy": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:sapienza university of rome": {
+    "display_name": "Sapienza University of Rome",
+    "ror": "https://ror.org/02be6w209",
+    "country": "IT",
+    "city": "Rome",
+    "lat": 41.89193,
+    "lon": 12.51133
   },
   "aff:school for intelligent systems (imprs-is) for supporting": {
     "display_name": "",
@@ -7455,6 +9743,14 @@
     "lat": 30.58333,
     "lon": 114.26667
   },
+  "aff:school of computing, illinois institute of technology, 10 w 32nd str, building rec, room 125b, chicago, il 60616, usa": {
+    "display_name": "Illinois Institute of Technology",
+    "ror": "https://ror.org/037t3ry66",
+    "country": "US",
+    "city": "Chicago",
+    "lat": 41.85003,
+    "lon": -87.65005
+  },
   "aff:school of earth & space exploration, arizona state university, tempe, az 85287-6004, usa": {
     "display_name": "Arizona State University",
     "ror": "https://ror.org/03efmqc40",
@@ -7486,6 +9782,22 @@
     "city": "Newcastle upon Tyne",
     "lat": 54.97328,
     "lon": -1.61396
+  },
+  "aff:school of engineering, physics, and mathematics, northumbria university, united kingdom": {
+    "display_name": "Northumbria University",
+    "ror": "https://ror.org/049e6bc10",
+    "country": "GB",
+    "city": "Newcastle upon Tyne",
+    "lat": 54.97328186035156,
+    "lon": -1.613960027694702
+  },
+  "aff:school of future science and engineering, soochow university": {
+    "display_name": "Soochow University",
+    "ror": "https://ror.org/05kvm7n82",
+    "country": "TW",
+    "city": "Taipei",
+    "lat": 25.05306,
+    "lon": 121.52639
   },
   "aff:school of geography and environmental science, university of southampton, southampton, uk": {
     "display_name": "University of Southampton",
@@ -7542,6 +9854,14 @@
     "city": "Sydney",
     "lat": -33.86785,
     "lon": 151.20732
+  },
+  "aff:school of mathematical sciences, queen mary university of london, london e1 4ns, united kingdom": {
+    "display_name": "Queen Mary University of London",
+    "ror": "https://ror.org/026zzn846",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50853,
+    "lon": -0.12574
   },
   "aff:school of mathematics & physics, the university of queensland, brisbane, qld, australia": {
     "display_name": "The University of Queensland",
@@ -7703,6 +10023,14 @@
     "lat": 50.90395,
     "lon": -1.40428
   },
+  "aff:school of physics and astronomy, university of st andrews, st andrews, fife ky16 8az": {
+    "display_name": "University of St Andrews",
+    "ror": "https://ror.org/02wn5qz54",
+    "country": "GB",
+    "city": "St Andrews",
+    "lat": 56.33871,
+    "lon": -2.79902
+  },
   "aff:school of physics astronomy, university of minnesota, 115 union st. se, minneapolis, 55455, minnesota, usa": {
     "display_name": "University of Minnesota",
     "ror": "https://ror.org/017zqws13",
@@ -7727,6 +10055,14 @@
     "lat": -34.92866,
     "lon": 138.59863
   },
+  "aff:school of physics, georgia institute of technology, 837 state st nw, atlanta, ga 30332, usa": {
+    "display_name": "Georgia Institute of Technology",
+    "ror": "https://ror.org/01zkghx44",
+    "country": "US",
+    "city": "Atlanta",
+    "lat": 33.749,
+    "lon": -84.38798
+  },
   "aff:school of physics, georgia institute of technology, atlanta, ga, usa": {
     "display_name": "Georgia Institute of Technology",
     "ror": "https://ror.org/01zkghx44",
@@ -7742,6 +10078,14 @@
     "city": "Atlanta",
     "lat": 33.749,
     "lon": -84.38798
+  },
+  "aff:school of physics, korea institute for advanced study, 85 hoegiro, dongdaemun-gu, seoul 02455, republic of korea": {
+    "display_name": "Korea Institute for Advanced Study",
+    "ror": "https://ror.org/041hz9568",
+    "country": "KR",
+    "city": "Seoul",
+    "lat": 37.566,
+    "lon": 126.9784
   },
   "aff:school of physics, the university of melbourne, melbourne, vic 3010, australia": {
     "display_name": "The University of Melbourne",
@@ -7759,6 +10103,14 @@
     "lat": 53.33306,
     "lon": -6.24889
   },
+  "aff:school of science & engineering, university of missouri–kansas city, kansas city, mo, usa": {
+    "display_name": "University of Missouri–Kansas City",
+    "ror": "https://ror.org/01w0d5g70",
+    "country": "US",
+    "city": "Kansas City",
+    "lat": 39.09973,
+    "lon": -94.57857
+  },
   "aff:school of science, shanghai maritime university, shanghai 201306, china": {
     "display_name": "Shanghai Maritime University",
     "ror": "https://ror.org/04z7qrj66",
@@ -7774,6 +10126,14 @@
     "city": "Nicosia",
     "lat": 35.17284,
     "lon": 33.35397
+  },
+  "aff:school of social sciences, university of mannheim": {
+    "display_name": "University of Mannheim",
+    "ror": "https://ror.org/031bsb921",
+    "country": "DE",
+    "city": "Mannheim",
+    "lat": 49.4891,
+    "lon": 8.46694
   },
   "aff:school of space research, kyung hee university, yongin, gyeonggi 17104, republic of korea": {
     "display_name": "Kyung Hee University",
@@ -7806,6 +10166,14 @@
     "city": "Seoul",
     "lat": 37.566,
     "lon": 126.9784
+  },
+  "aff:shahid beheshti university": {
+    "display_name": "Shahid Beheshti University",
+    "ror": "https://ror.org/0091vmj44",
+    "country": "IR",
+    "city": "Tehran",
+    "lat": 35.69439,
+    "lon": 51.42151
   },
   "aff:shanghai ai laboratory": {
     "display_name": "Shanghai Artificial Intelligence Laboratory",
@@ -7871,6 +10239,14 @@
     "lat": 31.22222,
     "lon": 121.45806
   },
+  "aff:shanghai research institute for intelligent autonomous systems, tongji university": {
+    "display_name": "Tongji University",
+    "ror": "https://ror.org/03rc6as71",
+    "country": "CN",
+    "city": "Shanghai",
+    "lat": 31.22221946716309,
+    "lon": 121.45806121826172
+  },
   "aff:shanghai theatre academy, shanghai, china": {
     "display_name": "Shanghai Theatre Academy",
     "ror": "https://ror.org/02vtjfj13",
@@ -7878,6 +10254,14 @@
     "city": "Shanghai",
     "lat": 31.22221946716309,
     "lon": 121.45806121826172
+  },
+  "aff:shenyang institute of technology, shenyang, china": {
+    "display_name": "Shenyang Institute of Technology",
+    "ror": "https://ror.org/00nmpm360",
+    "country": "CN",
+    "city": "Fushun",
+    "lat": 41.88669,
+    "lon": 123.94363
   },
   "aff:shenzhen institutes of advanced technology": {
     "display_name": "Shenzhen Institutes of Advanced Technology",
@@ -8023,6 +10407,22 @@
     "lat": 48.85341,
     "lon": 2.3488
   },
+  "aff:sorbonne université, cnrs, umr 7095, institut d’astrophysique de paris, 98 bis bd arago, 75014, paris, france": {
+    "display_name": "Sorbonne Université",
+    "ror": "https://ror.org/02en5vm52",
+    "country": "FR",
+    "city": "Paris",
+    "lat": 48.85341,
+    "lon": 2.3488
+  },
+  "aff:sorbonne université, cnrs/in2p3, laboratoire de physique nucléaire et de hautes energies (lpnhe), fr-75005 paris, france": {
+    "display_name": "Sorbonne Université",
+    "ror": "https://ror.org/02en5vm52",
+    "country": "FR",
+    "city": "Paris",
+    "lat": 48.85341,
+    "lon": 2.3488
+  },
   "aff:sorbonne université, lip6, paris, france": {
     "display_name": "Sorbonne Université",
     "ror": "https://ror.org/02en5vm52",
@@ -8038,6 +10438,30 @@
     "city": "Paris",
     "lat": 48.85341,
     "lon": 2.3488
+  },
+  "aff:south china normal university": {
+    "display_name": "South China Normal University",
+    "ror": "https://ror.org/01kq0pv72",
+    "country": "CN",
+    "city": "Guangzhou",
+    "lat": 23.116670608520508,
+    "lon": 113.25
+  },
+  "aff:south-western institute for astronomy research, yunnan university, kunming 650504, china; yunnan key laboratory of survey science, kunming 650500, china": {
+    "display_name": "Yunnan University",
+    "ror": "https://ror.org/0040axw97",
+    "country": "CN",
+    "city": "Kunming",
+    "lat": 25.038890838623047,
+    "lon": 102.71833038330078
+  },
+  "aff:space research institute, 84/32 profsoyuznaya, 117997, moscow, russia": {
+    "display_name": "Space Research Institute",
+    "ror": "https://ror.org/04ryvdf08",
+    "country": "RU",
+    "city": "Moscow",
+    "lat": 55.75204,
+    "lon": 37.61781
   },
   "aff:space science center and department of physics and astronomy, university of new hampshire, durham, nh 03824, usa": {
     "display_name": "University of New Hampshire",
@@ -8064,6 +10488,14 @@
     "lon": 1.44367
   },
   "aff:space telescope science institute, 3700 san martin drive, baltimore, md 21218, usa": {
+    "display_name": "Space Telescope Science Institute",
+    "ror": "https://ror.org/036f5mx38",
+    "country": "US",
+    "city": "Baltimore",
+    "lat": 39.29038,
+    "lon": -76.61219
+  },
+  "aff:space telescope science institute, 3700 san martin drive, baltimore, md, 21218 usa": {
     "display_name": "Space Telescope Science Institute",
     "ror": "https://ror.org/036f5mx38",
     "country": "US",
@@ -8111,6 +10543,22 @@
     "lat": null,
     "lon": null
   },
+  "aff:stellenbosch university": {
+    "display_name": "Stellenbosch University",
+    "ror": "https://ror.org/05bk57929",
+    "country": "ZA",
+    "city": "Stellenbosch",
+    "lat": -33.93462,
+    "lon": 18.86676
+  },
+  "aff:sternberg astronomical institute, 13 universitetskij pr., 119234 moscow, russia": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:sternberg astronomical institute, lomonosov moscow state university": {
     "display_name": "Lomonosov Moscow State University",
     "ror": "https://ror.org/010pmpe69",
@@ -8127,6 +10575,14 @@
     "lat": 38.53575,
     "lon": 68.77905
   },
+  "aff:steven r. meikle is with the school of health sciences, sydney imaging and the brain and mind centre, the university of sydney, australia": {
+    "display_name": "The University of Sydney",
+    "ror": "https://ror.org/0384j8v12",
+    "country": "AU",
+    "city": "Sydney",
+    "lat": -33.86785,
+    "lon": 151.20732
+  },
   "aff:steward observatory, university of arizona, 933 n cherry ave, tucson, az 85721, usa": {
     "display_name": "University of Arizona",
     "ror": "https://ror.org/03m2x1q45",
@@ -8135,7 +10591,23 @@
     "lat": 32.22174,
     "lon": -110.92648
   },
+  "aff:steward observatory, university of arizona, 933 n. cherry avenue, tucson, az 85721, usa": {
+    "display_name": "University of Arizona",
+    "ror": "https://ror.org/03m2x1q45",
+    "country": "US",
+    "city": "Tucson",
+    "lat": 32.22174,
+    "lon": -110.92648
+  },
   "aff:steward observatory, university of arizona, 933 north cherry avenue, tucson, az 85721, usa": {
+    "display_name": "University of Arizona",
+    "ror": "https://ror.org/03m2x1q45",
+    "country": "US",
+    "city": "Tucson",
+    "lat": 32.22174,
+    "lon": -110.92648
+  },
+  "aff:steward observatory/department of astronomy, university of arizona, 933 north cherry avenue, tucson, az 85721, usa": {
     "display_name": "University of Arizona",
     "ror": "https://ror.org/03m2x1q45",
     "country": "US",
@@ -8223,6 +10695,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:tandon school of engineering, new york university, new york, ny, usa": {
+    "display_name": "New York University",
+    "ror": "https://ror.org/0190ak572",
+    "country": "US",
+    "city": "New York",
+    "lat": 40.71427,
+    "lon": -74.00597
+  },
   "aff:tapir, mailcode 350-17, california institute of technology, pasadena, ca 91125, usa": {
     "display_name": "California Institute of Technology",
     "ror": "https://ror.org/05dxps055",
@@ -8238,6 +10718,22 @@
     "city": "Tartu",
     "lat": 58.38062,
     "lon": 26.72509
+  },
+  "aff:technical university dresden, 01069 dresden, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:technical university of darmstadt, darmstadt, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:technical university of denmark, denmark": {
     "display_name": "Technical University of Denmark",
@@ -8327,6 +10823,14 @@
     "lat": 48.13743,
     "lon": 11.57549
   },
+  "aff:technical university of munich, school of medicine and health, tum university hospital,klinikum rechts der isar, department of diagnostic and interventional radiology, munich, germany": {
+    "display_name": "Technical University of Munich",
+    "ror": "https://ror.org/02kkvpp62",
+    "country": "DE",
+    "city": "Munich",
+    "lat": 48.13743,
+    "lon": 11.57549
+  },
   "aff:technical university of munich, tum school of natural sciences, physics department, 85748 garching, germany": {
     "display_name": "Technical University of Munich",
     "ror": "https://ror.org/02kkvpp62",
@@ -8359,6 +10863,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:technion – israel institute of technology, haifa, israel": {
+    "display_name": "Technion – Israel Institute of Technology",
+    "ror": "https://ror.org/03qryx823",
+    "country": "IL",
+    "city": "Haifa",
+    "lat": 32.81303,
+    "lon": 34.99928
+  },
   "aff:technion–israel institute of technology, haifa 32000, israel": {
     "display_name": "Technion – Israel Institute of Technology",
     "ror": "https://ror.org/03qryx823",
@@ -8366,6 +10878,22 @@
     "city": "Haifa",
     "lat": 32.81303,
     "lon": 34.99928
+  },
+  "aff:technische universität berlin": {
+    "display_name": "Technische Universität Berlin",
+    "ror": "https://ror.org/03v4gjf40",
+    "country": "DE",
+    "city": "Berlin",
+    "lat": 52.52437,
+    "lon": 13.41053
+  },
+  "aff:technische universität braunschweig, institute for communications technology, brunswick, germany": {
+    "display_name": "Technische Universität Braunschweig",
+    "ror": "https://ror.org/010nsgg66",
+    "country": "DE",
+    "city": "Braunschweig",
+    "lat": 52.26594,
+    "lon": 10.52673
   },
   "aff:technische universität darmstadt": {
     "display_name": "Technische Universität Darmstadt",
@@ -8375,6 +10903,22 @@
     "lat": 49.87167,
     "lon": 8.65027
   },
+  "aff:technische universität darmstadt, department of physics, 64289 darmstadt, germany": {
+    "display_name": "Technische Universität Darmstadt",
+    "ror": "https://ror.org/05n911h24",
+    "country": "DE",
+    "city": "Darmstadt",
+    "lat": 49.87167,
+    "lon": 8.65027
+  },
+  "aff:technische universität dresden, chair of information theory and machine learning, dresden, germany": {
+    "display_name": "Technische Universität Dresden",
+    "ror": "https://ror.org/042aqky30",
+    "country": "DE",
+    "city": "Dresden",
+    "lat": 51.05089,
+    "lon": 13.73832
+  },
   "aff:technische universität dresden, germany": {
     "display_name": "Technische Universität Dresden",
     "ror": "https://ror.org/042aqky30",
@@ -8382,6 +10926,30 @@
     "city": "Dresden",
     "lat": 51.05089,
     "lon": 13.73832
+  },
+  "aff:technische universität munich, chair of theoretical information technology, munich, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:technische universität münchen, germany{xujun.xie, dominik.roessle, adithya.mohan, torsten.schoen}@thi.de, cremers@tum.de": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:technische universität wien, institute of photonics, gußhausstraße 27, 1040 vienna, austria": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:technological school electronic systems (tues)": {
     "display_name": "",
@@ -8399,6 +10967,14 @@
     "lat": 32.08088,
     "lon": 34.78057
   },
+  "aff:temple university, department of physics, 1925 n. 12th street, philadelphia, pa 19122, usa": {
+    "display_name": "Temple University",
+    "ror": "https://ror.org/00kx1jb78",
+    "country": "US",
+    "city": "Philadelphia",
+    "lat": 39.95238,
+    "lon": -75.16362
+  },
   "aff:texas a&m university": {
     "display_name": "Texas A&M University",
     "ror": "https://ror.org/01f5ytq51",
@@ -8415,7 +10991,31 @@
     "lat": 36.34913,
     "lon": 127.38493
   },
+  "aff:the authors are with the dynamics and control (d&c) section at the department of mechanical engineering, eindhoven university of technology, the netherlands": {
+    "display_name": "Eindhoven University of Technology",
+    "ror": "https://ror.org/02c2kyt77",
+    "country": "NL",
+    "city": "Eindhoven",
+    "lat": 51.44083,
+    "lon": 5.47778
+  },
   "aff:the authors thank the international max planck research": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:the center for astrophysics and space science (cass), nyuad research institute, new york university abu dhabi, po box 129188, abu dhabi, uae": {
+    "display_name": "New York University Abu Dhabi",
+    "ror": "https://ror.org/00e5k0821",
+    "country": "AE",
+    "city": "Abu Dhabi",
+    "lat": 24.45118,
+    "lon": 54.39696
+  },
+  "aff:the center for tactile internet with human-in-the-loop (ceti), tud, dresden, germany": {
     "display_name": "",
     "ror": null,
     "country": null,
@@ -8462,6 +11062,14 @@
     "city": "Guangzhou",
     "lat": 23.11667,
     "lon": 113.25
+  },
+  "aff:the ohio state university, columbus, 43210 oh, usa": {
+    "display_name": "The Ohio State University",
+    "ror": "https://ror.org/00rs6vg23",
+    "country": "US",
+    "city": "Columbus",
+    "lat": 39.96118,
+    "lon": -82.99879
   },
   "aff:the ohio state university, columbus, oh, usa": {
     "display_name": "The Ohio State University",
@@ -8551,6 +11159,14 @@
     "lat": 34.69379,
     "lon": 135.50107
   },
+  "aff:theoretical division, los alamos national laboratory, los alamos, nm 87545, usa": {
+    "display_name": "Los Alamos National Laboratory",
+    "ror": "https://ror.org/01e41cf67",
+    "country": "US",
+    "city": "Los Alamos",
+    "lat": 35.88808,
+    "lon": -106.30697
+  },
   "aff:theoretical physics division, petersburg nuclear physics institute": {
     "display_name": "Petersburg Nuclear Physics Institute",
     "ror": "https://ror.org/037styt87",
@@ -8558,6 +11174,14 @@
     "city": "Gatchina",
     "lat": 59.57638931274414,
     "lon": 30.12833023071289
+  },
+  "aff:thomas lord department of computer science, university of southern california": {
+    "display_name": "University of Southern California",
+    "ror": "https://ror.org/03taz7m60",
+    "country": "US",
+    "city": "Los Angeles",
+    "lat": 34.05223,
+    "lon": -118.24368
   },
   "aff:tomonaga center for the history of the universe (tchou), faculty of pure and applied sciences, university of tsukuba, tsukuba, ibaraki 305-8571, japan": {
     "display_name": "University of Tsukuba",
@@ -8614,6 +11238,22 @@
     "city": "Beijing",
     "lat": 39.9075,
     "lon": 116.39723
+  },
+  "aff:tsung-dao lee institute & school of physics and astronomy, shanghai jiao tong university, 800 dongchuan rd, shanghai, sh 200240, china": {
+    "display_name": "Shanghai Jiao Tong University",
+    "ror": "https://ror.org/0220qvk04",
+    "country": "CN",
+    "city": "Shanghai",
+    "lat": 31.22222,
+    "lon": 121.45806
+  },
+  "aff:tsung-dao lee institute, shanghai jiao tong university, 1 lisuo road, shanghai 201210, china": {
+    "display_name": "Shanghai Jiao Tong University",
+    "ror": "https://ror.org/0220qvk04",
+    "country": "CN",
+    "city": "Shanghai",
+    "lat": 31.22222,
+    "lon": 121.45806
   },
   "aff:tum remote sensing applications, school of engineering and design, technical university of munich": {
     "display_name": "Technical University of Munich",
@@ -8767,6 +11407,14 @@
     "lat": 52.37403,
     "lon": 4.88969
   },
+  "aff:university of amsterdam, amsterdam, the netherlands": {
+    "display_name": "University of Amsterdam",
+    "ror": "https://ror.org/04dkp9463",
+    "country": "NL",
+    "city": "Amsterdam",
+    "lat": 52.37403,
+    "lon": 4.88969
+  },
   "aff:university of applied sciences mainz, i3mainz - institute for spatial information and surveying technology, lucy-hillebrand-straße 2, 55128 mainz, germany": {
     "display_name": "University of Applied Sciences Mainz",
     "ror": "https://ror.org/02re32a17",
@@ -8790,6 +11438,14 @@
     "city": "Augsburg",
     "lat": 48.37154,
     "lon": 10.89851
+  },
+  "aff:university of basel": {
+    "display_name": "University of Basel",
+    "ror": "https://ror.org/02s6k3f65",
+    "country": "CH",
+    "city": "Basel",
+    "lat": 47.55839,
+    "lon": 7.57327
   },
   "aff:university of bremen, bremen, germany": {
     "display_name": "University of Bremen",
@@ -8823,6 +11479,14 @@
     "lat": 37.87159,
     "lon": -122.27275
   },
+  "aff:university of california, los angeles, ca, usa": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:university of cambridge": {
     "display_name": "University of Cambridge",
     "ror": "https://ror.org/013meh722",
@@ -8846,6 +11510,22 @@
     "city": "Chicago",
     "lat": 41.85003,
     "lon": -87.65005
+  },
+  "aff:university of chinese academy of sciences": {
+    "display_name": "University of Chinese Academy of Sciences",
+    "ror": "https://ror.org/05qbk4x57",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
+  },
+  "aff:university of chinese academy of sciences, beijing 100049, china": {
+    "display_name": "University of Chinese Academy of Sciences",
+    "ror": "https://ror.org/05qbk4x57",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
   },
   "aff:university of craiova, str. a. i. cuza nr. 13, 200585 craiova, romania": {
     "display_name": "University of Craiova",
@@ -8888,6 +11568,14 @@
     "lon": 7.85222
   },
   "aff:university of geneva": {
+    "display_name": "University of Geneva",
+    "ror": "https://ror.org/01swzsf04",
+    "country": "CH",
+    "city": "Geneva",
+    "lat": 46.20222,
+    "lon": 6.14569
+  },
+  "aff:university of geneva, switzerland (unige)": {
     "display_name": "University of Geneva",
     "ror": "https://ror.org/01swzsf04",
     "country": "CH",
@@ -8942,6 +11630,14 @@
     "city": "Göttingen",
     "lat": 51.53443,
     "lon": 9.93228
+  },
+  "aff:university of hamburg": {
+    "display_name": "Universität Hamburg",
+    "ror": "https://ror.org/00g30e956",
+    "country": "DE",
+    "city": "Hamburg",
+    "lat": 53.55073,
+    "lon": 9.99302
   },
   "aff:university of helsinki, helsinki, finland": {
     "display_name": "University of Helsinki",
@@ -9039,6 +11735,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:university of marburg": {
+    "display_name": "Philipps University of Marburg",
+    "ror": "https://ror.org/01rdrb571",
+    "country": "DE",
+    "city": "Marburg",
+    "lat": 50.80904,
+    "lon": 8.77069
+  },
   "aff:university of maryland, college park": {
     "display_name": "University of Maryland, College Park",
     "ror": "https://ror.org/047s2c258",
@@ -9054,6 +11758,14 @@
     "city": "Amherst Center",
     "lat": 42.37537,
     "lon": -72.51925
+  },
+  "aff:university of michigan, 500 s. state street, ann arbor, mi 48109, usa": {
+    "display_name": "University of Michigan",
+    "ror": "https://ror.org/00jmfr291",
+    "country": "US",
+    "city": "Ann Arbor",
+    "lat": 42.27756,
+    "lon": -83.74088
   },
   "aff:university of minnesota": {
     "display_name": "University of Minnesota",
@@ -9072,6 +11784,14 @@
     "lon": -66.66558
   },
   "aff:university of nova gorica, centre for astrophysics and cosmology": {
+    "display_name": "University of Nova Gorica",
+    "ror": "https://ror.org/00mw0tw28",
+    "country": "SI",
+    "city": "Nova Gorica",
+    "lat": 45.95603942871094,
+    "lon": 13.648369789123535
+  },
+  "aff:university of nova gorica, nova gorica, slovenia": {
     "display_name": "University of Nova Gorica",
     "ror": "https://ror.org/00mw0tw28",
     "country": "SI",
@@ -9127,6 +11847,14 @@
     "lat": 43.70853,
     "lon": 10.4036
   },
+  "aff:university of primorska": {
+    "display_name": "University of Primorska",
+    "ror": "https://ror.org/05xefg082",
+    "country": "SI",
+    "city": "Koper",
+    "lat": 45.5482,
+    "lon": 13.72963
+  },
   "aff:university of regensburg, 93053 regensburg, germany": {
     "display_name": "University of Regensburg",
     "ror": "https://ror.org/01eezs655",
@@ -9167,6 +11895,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:university of science and technology of china, hefei 230026, anhui, china": {
+    "display_name": "University of Science and Technology of China",
+    "ror": "https://ror.org/04c4dkn09",
+    "country": "CN",
+    "city": "Hefei",
+    "lat": 31.86389,
+    "lon": 117.28083
+  },
   "aff:university of science and technology of china, hefei, china": {
     "display_name": "University of Science and Technology of China",
     "ror": "https://ror.org/04c4dkn09",
@@ -9174,6 +11910,14 @@
     "city": "Hefei",
     "lat": 31.86389,
     "lon": 117.28083
+  },
+  "aff:university of seoul, seoul, rep. of korea": {
+    "display_name": "University of Seoul",
+    "ror": "https://ror.org/05en5nh73",
+    "country": "KR",
+    "city": "Seoul",
+    "lat": 37.58332443237305,
+    "lon": 127.05838775634766
   },
   "aff:university of southampton, southampton, united kingdom": {
     "display_name": "University of Southampton",
@@ -9191,6 +11935,14 @@
     "lat": 47.42391,
     "lon": 9.37477
   },
+  "aff:university of st. gallen, st. gallen, switzerland": {
+    "display_name": "University of St.Gallen",
+    "ror": "https://ror.org/0561a3s31",
+    "country": "CH",
+    "city": "Saint Gallen",
+    "lat": 47.42391,
+    "lon": 9.37477
+  },
   "aff:university of st.gallen, st.gallen, switzerland": {
     "display_name": "University of St.Gallen",
     "ror": "https://ror.org/0561a3s31",
@@ -9198,6 +11950,14 @@
     "city": "Saint Gallen",
     "lat": 47.42391,
     "lon": 9.37477
+  },
+  "aff:university of strasbourg institute for advanced study, 5 allée du général rouvillois, f-67083 strasbourg, france": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:university of strasbourg, cnrs, inserm, icube, strasbourg, france": {
     "display_name": "Inserm",
@@ -9272,6 +12032,14 @@
     "lon": 139.69171
   },
   "aff:university of toronto 15meta (fair) 16purdue university 17lmu munich": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:university of toulouse, cnes, cnrs, irap, toulouse, france": {
     "display_name": "",
     "ror": null,
     "country": null,
@@ -9359,6 +12127,22 @@
     "lat": 48.20849,
     "lon": 16.37208
   },
+  "aff:university of virginia": {
+    "display_name": "University of Virginia",
+    "ror": "https://ror.org/0153tk833",
+    "country": "US",
+    "city": "Charlottesville",
+    "lat": 38.02931,
+    "lon": -78.47668
+  },
+  "aff:university of virginia, department of astronomy, charlottesville, va 22904, usa": {
+    "display_name": "University of Virginia",
+    "ror": "https://ror.org/0153tk833",
+    "country": "US",
+    "city": "Charlottesville",
+    "lat": 38.02931,
+    "lon": -78.47668
+  },
   "aff:university of warwick, united kingdom": {
     "display_name": "University of Warwick",
     "ror": "https://ror.org/01a77tt86",
@@ -9375,6 +12159,14 @@
     "lat": 43.07305,
     "lon": -89.40123
   },
+  "aff:university of wuppertal": {
+    "display_name": "University of Wuppertal",
+    "ror": "https://ror.org/00613ak93",
+    "country": "DE",
+    "city": "Wuppertal",
+    "lat": 51.25627136230469,
+    "lon": 7.148159980773926
+  },
   "aff:university of zurich": {
     "display_name": "University of Zurich",
     "ror": "https://ror.org/02crff812",
@@ -9382,6 +12174,14 @@
     "city": "Zurich",
     "lat": 47.36667,
     "lon": 8.55
+  },
+  "aff:university of zurich and eth zurich": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:university of zurich, zurich, switzerland": {
     "display_name": "University of Zurich",
@@ -9407,6 +12207,22 @@
     "lat": null,
     "lon": null
   },
+  "aff:università della svizzera italiana, lugano, switzerland": {
+    "display_name": "Università della Svizzera italiana",
+    "ror": "https://ror.org/03c4atk17",
+    "country": "CH",
+    "city": "Lugano",
+    "lat": 46.01008,
+    "lon": 8.96004
+  },
+  "aff:università di bologna, via piero gobetti 93/2, i-40129 bologna": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:università di trento, via sommarive 14, i-38123 trento, italy": {
     "display_name": "",
     "ror": null,
@@ -9414,6 +12230,14 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:università roma tre": {
+    "display_name": "Roma Tre University",
+    "ror": "https://ror.org/05vf0dg29",
+    "country": "IT",
+    "city": "Rome",
+    "lat": 41.89193,
+    "lon": 12.51133
   },
   "aff:universität hamburg, fachbereich mathematik, bundesstraße 55, 20146 hamburg, germany": {
     "display_name": "Universität Hamburg",
@@ -9439,6 +12263,30 @@
     "lat": 47.26266,
     "lon": 11.39454
   },
+  "aff:universität zürich, zurich, switzerland": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:universitäts-sternwarte, fakultät für physik, ludwig-maximilians-universität münchen, scheinerstr. 1, d-81679 münchen, germany": {
+    "display_name": "Ludwig-Maximilians-Universität München",
+    "ror": "https://ror.org/05591te55",
+    "country": "DE",
+    "city": "Munich",
+    "lat": 48.13743,
+    "lon": 11.57549
+  },
+  "aff:université clermont-auvergne, cnrs, lpca, 63000 clermont-ferrand, france": {
+    "display_name": "Université Clermont Auvergne",
+    "ror": "https://ror.org/01a8ajp46",
+    "country": "FR",
+    "city": "Clermont-Ferrand",
+    "lat": 45.77969,
+    "lon": 3.08682
+  },
   "aff:université côte d’azur, observatoire de la côte d’azur, cnrs, laboratoire lagrange, 06000 nice, france": {
     "display_name": "Université Côte d'Azur",
     "ror": "https://ror.org/019tgvf94",
@@ -9463,6 +12311,14 @@
     "lat": 49.26526,
     "lon": 4.02853
   },
+  "aff:université de strasbourg": {
+    "display_name": "Université de Strasbourg",
+    "ror": "https://ror.org/00pg6eq24",
+    "country": "FR",
+    "city": "Strasbourg",
+    "lat": 48.58392,
+    "lon": 7.74553
+  },
   "aff:université de strasbourg, cnrs, institut charles sadron upr 22, f-67000 strasbourg, france": {
     "display_name": "Université de Strasbourg",
     "ror": "https://ror.org/00pg6eq24",
@@ -9471,7 +12327,23 @@
     "lat": 48.58392,
     "lon": 7.74553
   },
+  "aff:université de strasbourg, cnrs, irma umr 7501, f-67000 strasbourg, france": {
+    "display_name": "Université de Strasbourg",
+    "ror": "https://ror.org/00pg6eq24",
+    "country": "FR",
+    "city": "Strasbourg",
+    "lat": 48.58392,
+    "lon": 7.74553
+  },
   "aff:université de strasbourg, cnrs, irma, umr 7501, strasbourg, france": {
+    "display_name": "Université de Strasbourg",
+    "ror": "https://ror.org/00pg6eq24",
+    "country": "FR",
+    "city": "Strasbourg",
+    "lat": 48.58392,
+    "lon": 7.74553
+  },
+  "aff:université de strasbourg, cnrs, observatoire astronomique de strasbourg, umr 7550, 67000 strasbourg, france": {
     "display_name": "Université de Strasbourg",
     "ror": "https://ror.org/00pg6eq24",
     "country": "FR",
@@ -9510,6 +12382,22 @@
     "city": "Paris",
     "lat": 48.85341,
     "lon": 2.3488
+  },
+  "aff:université paris cité, institut de physique du globe de paris, cnrs, f-75005 paris, france": {
+    "display_name": "Université Paris Cité",
+    "ror": "https://ror.org/05f82e368",
+    "country": "FR",
+    "city": "Paris",
+    "lat": 48.85341,
+    "lon": 2.3488
+  },
+  "aff:université paris-saclay, cea, département d’électronique des détecteurs et d’informatique pour la physique, 91191, gif-sur-yvette, france": {
+    "display_name": "Université Paris-Saclay",
+    "ror": "https://ror.org/03xjwb503",
+    "country": "FR",
+    "city": "Gif-sur-Yvette",
+    "lat": 48.68333,
+    "lon": 2.13333
   },
   "aff:université paris-saclay, cnrs, institut d’astrophysique spatiale, orsay, france": {
     "display_name": "Université Paris-Saclay",
@@ -9551,6 +12439,14 @@
     "lat": 59.85882,
     "lon": 17.63889
   },
+  "aff:usevalad milasheuski is with dipartimento di elettronica, informazione e bioingegneria, politecnico di milano, 20133 milan, italy, and the consiglio nazionale delle ricerche, ieiit institute, 20133 milan, italy (": {
+    "display_name": "Politecnico di Milano",
+    "ror": "https://ror.org/01nffqt88",
+    "country": "IT",
+    "city": "Milan",
+    "lat": 45.46427,
+    "lon": 9.18951
+  },
   "aff:utrecht university": {
     "display_name": "Utrecht University",
     "ror": "https://ror.org/04pp8hn57",
@@ -9558,6 +12454,14 @@
     "city": "Utrecht",
     "lat": 52.09083,
     "lon": 5.12222
+  },
+  "aff:vienna doctoral school in physics, university of vienna, boltzmanngasse 5, 1090, vienna, austria": {
+    "display_name": "University of Vienna",
+    "ror": "https://ror.org/03prydq77",
+    "country": "AT",
+    "city": "Vienna",
+    "lat": 48.20849,
+    "lon": 16.37208
   },
   "aff:vienna university of economics and business, vienna 4the university of hong kong": {
     "display_name": "",
@@ -9591,6 +12495,14 @@
     "lat": 51.75222,
     "lon": -1.25596
   },
+  "aff:vrije universiteit amsterdam, amsterdam, the netherlands": {
+    "display_name": "Vrije Universiteit Amsterdam",
+    "ror": "https://ror.org/008xxew50",
+    "country": "NL",
+    "city": "Amsterdam",
+    "lat": 52.37403,
+    "lon": 4.88969
+  },
   "aff:w. weinanjing university, school of mathematics, nanjing 210093, p.r. china": {
     "display_name": "",
     "ror": null,
@@ -9622,6 +12534,30 @@
     "city": "Tokyo",
     "lat": 35.68949890136719,
     "lon": 139.69171142578125
+  },
+  "aff:waterloo centre for astrophysics, university of waterloo, 200 university ave w, waterloo, on n2l 3g1, canada": {
+    "display_name": "University of Waterloo",
+    "ror": "https://ror.org/01aff2v68",
+    "country": "CA",
+    "city": "Waterloo",
+    "lat": 43.4668,
+    "lon": -80.51639
+  },
+  "aff:wellcome sanger institute": {
+    "display_name": "Wellcome Sanger Institute",
+    "ror": "https://ror.org/05cy4wa09",
+    "country": "GB",
+    "city": "Cambridge",
+    "lat": 52.20000076293945,
+    "lon": 0.11666999757289886
+  },
+  "aff:westlake university": {
+    "display_name": "Westlake University",
+    "ror": "https://ror.org/05hfa4n20",
+    "country": "CN",
+    "city": "Hangzhou",
+    "lat": 30.29364967346191,
+    "lon": 120.1614227294922
   },
   "aff:william h. miller iii department of physics & astronomy, johns hopkins university, 3400 n charles st, baltimore, md 21218, usa": {
     "display_name": "Johns Hopkins University",
@@ -9687,6 +12623,14 @@
     "lat": 51.05089,
     "lon": 13.73832
   },
+  "aff:x theoretical design, los alamos national laboratory, los alamos, new mexico 87545, usa": {
+    "display_name": "Los Alamos National Laboratory",
+    "ror": "https://ror.org/01e41cf67",
+    "country": "US",
+    "city": "Los Alamos",
+    "lat": 35.88808,
+    "lon": -106.30697
+  },
   "aff:xiamen university": {
     "display_name": "Xiamen University",
     "ror": "https://ror.org/00mcjh785",
@@ -9711,6 +12655,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:y. jiang is with the institute for transport planning and systems, eth zürich, switzerland. yuning.jiang@ieee.org": {
+    "display_name": "ETH Zurich",
+    "ror": "https://ror.org/05a28rw58",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
+  },
   "aff:yale university": {
     "display_name": "Yale University",
     "ror": "https://ror.org/03v76x132",
@@ -9719,6 +12671,22 @@
     "lat": 41.30815,
     "lon": -72.92816
   },
+  "aff:yinya huangeth zurich, eth ai center": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:yonsei university uc merced eth zurich": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:yulin cai, hangzhou international innovation institute, beihang university, hangzhou 311115, china": {
     "display_name": "Beihang University",
     "ror": "https://ror.org/00wk2mp56",
@@ -9726,6 +12694,22 @@
     "city": "Beijing",
     "lat": 39.9075,
     "lon": 116.39723
+  },
+  "aff:yun zhao (yun.zhao@sydney.edu.au) and katya amadita are with the school of health sciences and the brain and mind centre, the university of sydney, australia": {
+    "display_name": "The University of Sydney",
+    "ror": "https://ror.org/0384j8v12",
+    "country": "AU",
+    "city": "Sydney",
+    "lat": -33.86785,
+    "lon": 151.20732
+  },
+  "aff:zhejiang normal university": {
+    "display_name": "Zhejiang Normal University",
+    "ror": "https://ror.org/01vevwk45",
+    "country": "CN",
+    "city": "Jinhua",
+    "lat": 29.106779098510746,
+    "lon": 119.64421081542967
   },
   "aff:zhejiang university": {
     "display_name": "Zhejiang University",
@@ -9758,6 +12742,30 @@
     "city": "Shanghai",
     "lat": 31.22222,
     "lon": 121.45806
+  },
+  "aff:zurich university of applied sciences (zhaw)": {
+    "display_name": "ZHAW Zurich University of Applied Sciences",
+    "ror": "https://ror.org/05pmsvm27",
+    "country": "CH",
+    "city": "Winterthur",
+    "lat": 47.50564,
+    "lon": 8.72413
+  },
+  "aff:zuse school eliza, darmstadt, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:⋆school of aerospace engineering, georgia institute of technology, atlanta, ga 30332 usa": {
+    "display_name": "Georgia Institute of Technology",
+    "ror": "https://ror.org/01zkghx44",
+    "country": "US",
+    "city": "Atlanta",
+    "lat": 33.749,
+    "lon": -84.38798
   },
   "https://openalex.org/I100066346": {
     "display_name": "University of Stuttgart",
