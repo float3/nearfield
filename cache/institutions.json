@@ -1631,6 +1631,14 @@
     "lat": 40.71427,
     "lon": -74.00597
   },
+  "aff:department of astrophysics, imapp, radboud university nijmegen, po box 9010, 6500 gl nijmegen, the netherlands": {
+    "display_name": "Radboud University Nijmegen",
+    "ror": "https://ror.org/016xsfp80",
+    "country": "NL",
+    "city": "Nijmegen",
+    "lat": 51.8425,
+    "lon": 5.85278
+  },
   "aff:department of astrophysics, university of vienna": {
     "display_name": "University of Vienna",
     "ror": "https://ror.org/03prydq77",
@@ -2478,6 +2486,14 @@
     "city": "Johnson City",
     "lat": 36.31344,
     "lon": -82.35347
+  },
+  "aff:department of physics and astronomy, faculty of physical sciences, university of nigeria, nsukka, nigeria": {
+    "display_name": "University of Nigeria",
+    "ror": "https://ror.org/01sn1yx84",
+    "country": "NG",
+    "city": "Nsukka",
+    "lat": 6.85783,
+    "lon": 7.39577
   },
   "aff:department of physics and astronomy, faculty of science and technology, tokyo university of science, noda, chiba 278-8510, japan": {
     "display_name": "Tokyo University of Science",
@@ -6759,6 +6775,14 @@
     "lat": 52.22977066040039,
     "lon": 21.01177978515625
   },
+  "aff:nicolaus copernicus astronomical centre, polish academy of sciences, bartycka 18, pl-00-716 warsaw, poland": {
+    "display_name": "Polish Academy of Sciences",
+    "ror": "https://ror.org/01dr6c206",
+    "country": "PL",
+    "city": "Warsaw",
+    "lat": 52.22977,
+    "lon": 21.01178
+  },
   "aff:niels bohr institute, university of copenhagen, jagtvej 128, dk-2200 copenhagen n, denmark": {
     "display_name": "University of Copenhagen",
     "ror": "https://ror.org/035b05819",
@@ -7574,6 +7598,14 @@
     "city": "Guangzhou",
     "lat": 23.116670608520508,
     "lon": 113.25
+  },
+  "aff:school of mathematics, statistics and physics, newcastle university, newcastle upon tyne, ne1 7ru, uk": {
+    "display_name": "Newcastle University",
+    "ror": "https://ror.org/01kj2bm70",
+    "country": "GB",
+    "city": "Newcastle upon Tyne",
+    "lat": 54.97328,
+    "lon": -1.61396
   },
   "aff:school of mathematics, trinity college, dublin 2, ireland": {
     "display_name": "Trinity College",
