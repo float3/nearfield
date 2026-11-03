@@ -2271,6 +2271,14 @@
     "lat": 47.36667,
     "lon": 8.55
   },
+  "aff:department of": {
+    "display_name": "United States Department of Agriculture",
+    "ror": "https://ror.org/01na82s61",
+    "country": "US",
+    "city": "Washington",
+    "lat": 38.895111083984375,
+    "lon": -77.03636932373047
+  },
   "aff:department of aeronautical and automotive engineering, loughborough university, loughborough, le11 3tu, uk": {
     "display_name": "Loughborough University",
     "ror": "https://ror.org/04vg4w365",
@@ -2598,6 +2606,14 @@
     "city": "Amherst Center",
     "lat": 42.37537,
     "lon": -72.51925
+  },
+  "aff:department of astronomy, university of massachusetts, amherst, ma 01003, usa": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:department of astronomy, university of michigan, 323 west hall, 1085 s. university avenue, ann arbor, mi 48109, usa": {
     "display_name": "University of Michigan",
@@ -4647,6 +4663,14 @@
     "lat": 41.85003,
     "lon": -87.65005
   },
+  "aff:department of physics, eth zurich, 8093 zurich, switzerland": {
+    "display_name": "ETH Zurich",
+    "ror": "https://ror.org/05a28rw58",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
+  },
   "aff:department of physics, eth zurich, ch-8093 zurich, switzerland": {
     "display_name": "ETH Zurich",
     "ror": "https://ror.org/05a28rw58",
@@ -5911,6 +5935,14 @@
     "lat": 44.40478,
     "lon": 8.94439
   },
+  "aff:division of biosciences, university college london, london, wc1e 6bt, united kingdom": {
+    "display_name": "University College London",
+    "ror": "https://ror.org/02jx3x895",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50853,
+    "lon": -0.12574
+  },
   "aff:division of materials science and engineering, boston university, 590 commonwealth avenue, boston, 02215, massachusetts, usa": {
     "display_name": "Division of Materials Science and Engineering",
     "ror": "https://ror.org/03rs0fg31",
@@ -6375,6 +6407,14 @@
     "lat": 46.49066925048828,
     "lon": 11.33981990814209
   },
+  "aff:faculty of engineering, free university of bozen-bolzano, 39100 bozen-bolzano, italy": {
+    "display_name": "Free University of Bozen-Bolzano",
+    "ror": "https://ror.org/012ajp527",
+    "country": "IT",
+    "city": "Bolzano",
+    "lat": 46.49066925048828,
+    "lon": 11.33981990814209
+  },
   "aff:faculty of engineering, university of toyama, 3190, gofuku, toyama 930-8555, japan": {
     "display_name": "University of Toyama",
     "ror": "https://ror.org/0445phv87",
@@ -6607,6 +6647,14 @@
     "lat": 60.45148,
     "lon": 22.26869
   },
+  "aff:fom university of applied sciences for economics and management, 60323 frankfurt a. m., germany": {
+    "display_name": "FOM University of Applied Sciences for Economics and Management",
+    "ror": "https://ror.org/05m3vpd98",
+    "country": "DE",
+    "city": "Essen",
+    "lat": 51.45656967163086,
+    "lon": 7.012279987335205
+  },
   "aff:fondazione bruno kessler, department of information engineering and computer science, university of trento, trento, italy": {
     "display_name": "Fondazione Bruno Kessler",
     "ror": "https://ror.org/01j33xk10",
@@ -6806,6 +6854,14 @@
     "city": "Beijing",
     "lat": 39.907501220703125,
     "lon": 116.39723205566406
+  },
+  "aff:gembloux agro-bio tech, université de liège, gembloux, 5030, belgium": {
+    "display_name": "Gembloux Agro-Bio Tech",
+    "ror": "https://ror.org/00bmzhb16",
+    "country": "BE",
+    "city": "Gembloux",
+    "lat": 50.563377380371094,
+    "lon": 4.698999881744385
   },
   "aff:geneva observatory, department of astronomy, university of geneva, chemin pegasi 51, ch-1290 versoix, switzerland": {
     "display_name": "University of Geneva",
@@ -7678,6 +7734,14 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:institute for artificial intelligence, school of integrated circuits and beijing advanced innovation center for integrated circuits, peking university, beijing 100871, china": {
+    "display_name": "Peking University",
+    "ror": "https://ror.org/02v51f717",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
   },
   "aff:institute for astronomy, university of edinburgh, royal observatory, blackford hill, edinburgh eh9 3hj, uk": {
     "display_name": "University of Edinburgh",
@@ -9175,6 +9239,14 @@
     "lat": 19.32312,
     "lon": -99.18495
   },
+  "aff:instituto nacional de astrofísica, óptica y electrónica, luis e. erro 1, c.p. 72840, tonantzintla, puebla, méxico": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:instituto nacional de astrofísica, óptica y electrónica, puebla, mexico": {
     "display_name": "",
     "ror": null,
@@ -9294,6 +9366,14 @@
     "city": "Hiroshima",
     "lat": 34.400001525878906,
     "lon": 132.4499969482422
+  },
+  "aff:international research center of complexity sciences, hangzhou international innovation institute, beihang university, 311115 hangzhou china": {
+    "display_name": "Beihang University",
+    "ror": "https://ror.org/00wk2mp56",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
   },
   "aff:iowa state university, usa": {
     "display_name": "Iowa State University",
@@ -9488,6 +9568,14 @@
     "lon": 6.36267
   },
   "aff:jülich supercomputing centre, forschungszentrum jülich (fzj)": {
+    "display_name": "Jülich Supercomputing Centre",
+    "ror": "https://ror.org/04g2j9721",
+    "country": "DE",
+    "city": "Jülich",
+    "lat": 50.92149,
+    "lon": 6.36267
+  },
+  "aff:jülich supercomputing centre, forschungszentrum jülich, 52425 jülich, germany": {
     "display_name": "Jülich Supercomputing Centre",
     "ror": "https://ror.org/04g2j9721",
     "country": "DE",
@@ -10223,6 +10311,14 @@
     "lat": 48.85341,
     "lon": 2.3488
   },
+  "aff:lix, cnrs, ecole polytechnique, institut polytechnique de paris, 91120 palaiseau, france": {
+    "display_name": "École Polytechnique",
+    "ror": "https://ror.org/05hy3tk52",
+    "country": "FR",
+    "city": "Palaiseau",
+    "lat": 48.71828,
+    "lon": 2.2498
+  },
   "aff:longwood university": {
     "display_name": "Longwood University",
     "ror": "https://ror.org/01awv9175",
@@ -10400,6 +10496,14 @@
     "lon": -71.10561
   },
   "aff:massachusetts institute of technology, cambridge, ma 02139, usa": {
+    "display_name": "Massachusetts Institute of Technology",
+    "ror": "https://ror.org/042nb2s44",
+    "country": "US",
+    "city": "Cambridge",
+    "lat": 42.3751,
+    "lon": -71.10561
+  },
+  "aff:massachusetts institute of technology, cambridge, massachusetts 02139, usa": {
     "display_name": "Massachusetts Institute of Technology",
     "ror": "https://ror.org/042nb2s44",
     "country": "US",
@@ -11647,6 +11751,14 @@
     "lat": 49.59099,
     "lon": 11.00783
   },
+  "aff:paul scherrer institute, 5232 villigen psi, switzerland": {
+    "display_name": "Paul Scherrer Institute",
+    "ror": "https://ror.org/03eh3y714",
+    "country": "CH",
+    "city": "Villigen",
+    "lat": 47.52682,
+    "lon": 8.21486
+  },
   "aff:peking university": {
     "display_name": "Peking University",
     "ror": "https://ror.org/02v51f717",
@@ -12502,6 +12614,14 @@
     "city": "Beijing",
     "lat": 39.9075,
     "lon": 116.39723
+  },
+  "aff:school of life science and technology, university of electronic science and technology of china, 611731 chengdu, china": {
+    "display_name": "University of Electronic Science and Technology of China",
+    "ror": "https://ror.org/04qr3zq92",
+    "country": "CN",
+    "city": "Chengdu",
+    "lat": 30.66667,
+    "lon": 104.06667
   },
   "aff:school of life sciences, ecole polytechnique fédérale de lausanne, lausanne, switzerland": {
     "display_name": "École Polytechnique Fédérale de Lausanne",
@@ -13546,6 +13666,14 @@
   "aff:swiss data science center, switzerland{wenwu.tang, dong.wang, saukh}@tugraz.at": {
     "display_name": "Swiss Data Science Center",
     "ror": "https://ror.org/02hdt9m26",
+    "country": "CH",
+    "city": "Zurich",
+    "lat": 47.36667,
+    "lon": 8.55
+  },
+  "aff:swiss national supercomputing centre (cscs), eth zurich, 6900 lugano, switzerland": {
+    "display_name": "ETH Zurich",
+    "ror": "https://ror.org/05a28rw58",
     "country": "CH",
     "city": "Zurich",
     "lat": 47.36667,
@@ -14663,6 +14791,14 @@
     "lat": 51.53443,
     "lon": 9.93228
   },
+  "aff:university of göttingen, institute for numerical and applied mathematics, 37073 göttingen, germany": {
+    "display_name": "University of Göttingen",
+    "ror": "https://ror.org/01y9bpm73",
+    "country": "DE",
+    "city": "Göttingen",
+    "lat": 51.53443,
+    "lon": 9.93228
+  },
   "aff:university of hamburg": {
     "display_name": "Universität Hamburg",
     "ror": "https://ror.org/00g30e956",
@@ -15583,6 +15719,14 @@
     "lat": 48.85341,
     "lon": 2.3488
   },
+  "aff:université paris-cité, cnrs, integrative neuroscience and cognition center, 75006, paris, france": {
+    "display_name": "Université Paris Cité",
+    "ror": "https://ror.org/05f82e368",
+    "country": "FR",
+    "city": "Paris",
+    "lat": 48.85341,
+    "lon": 2.3488
+  },
   "aff:université paris-saclay, cea, département d’électronique des détecteurs et d’informatique pour la physique, 91191, gif-sur-yvette, france": {
     "display_name": "Université Paris-Saclay",
     "ror": "https://ror.org/03xjwb503",
@@ -15616,6 +15760,14 @@
     "lon": 2.13333
   },
   "aff:université paris-saclay, cnrs, laboratoire aimé cotton, 91400 orsay, france": {
+    "display_name": "Université Paris-Saclay",
+    "ror": "https://ror.org/03xjwb503",
+    "country": "FR",
+    "city": "Gif-sur-Yvette",
+    "lat": 48.68333,
+    "lon": 2.13333
+  },
+  "aff:université paris-saclay, prose, inrae, antony, 92160, france": {
     "display_name": "Université Paris-Saclay",
     "ror": "https://ror.org/03xjwb503",
     "country": "FR",
