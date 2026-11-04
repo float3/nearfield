@@ -199,12 +199,21 @@ jobs:
           # What OpenAlex itself says is left of today's allowance, so every
           # spend counts: the morning's build, manual runs, affiliations. A
           # free lookup by id carries it in a header.
+          # One unanswered request once stopped a run with $0.52 unspent, so
+          # it is asked up to five times. Without -f, so that a refusal's
+          # headers, which say $0 left, still count as an answer.
           left() {
-            curl -fsS -D - -o /dev/null --max-time 30 \
-              "https://api.openalex.org/authors/A5023888391?api_key=$OPENALEX_API_KEY" \
-              | tr -d '\r' \
-              | awk -F': ' 'tolower($1) == "x-ratelimit-remaining-usd" { print $2 }' \
-              || true
+            local usd try
+            for try in 1 2 3 4 5; do
+              usd=$(curl -sS -D - -o /dev/null --max-time 30 \
+                "https://api.openalex.org/authors/A5023888391?api_key=$OPENALEX_API_KEY" \
+                | tr -d '\r' \
+                | awk -F': ' 'tolower($1) == "x-ratelimit-remaining-usd" { print $2 }' \
+                || true)
+              if [[ -n "$usd" ]]; then echo "$usd"; return; fi
+              echo "no budget in OpenAlex's answer (try $try of 5)" >&2
+              sleep $((try * 10))
+            done
           }
           start=$SECONDS
           # Run one day on all that is left. Fails, to stop the caller, under
