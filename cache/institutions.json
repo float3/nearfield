@@ -4703,6 +4703,14 @@
     "lat": 43.70643,
     "lon": -79.39864
   },
+  "aff:department of astronomy and physics, uppsala university, uppsala, uppsala län, 751 05, sweden": {
+    "display_name": "Uppsala University",
+    "ror": "https://ror.org/048a87296",
+    "country": "SE",
+    "city": "Uppsala",
+    "lat": 59.85882,
+    "lon": 17.63889
+  },
   "aff:department of astronomy and space science, university of science and technology, 217 gajeong-ro, yuseong-gu, daejeon 34113, republic of korea": {
     "display_name": "University of Science and Technology",
     "ror": "https://ror.org/05bj7sh33",
@@ -5150,6 +5158,14 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:department of astronomy, university of virginia, charlottesville, va, 22904, usa": {
+    "display_name": "University of Virginia",
+    "ror": "https://ror.org/0153tk833",
+    "country": "US",
+    "city": "Charlottesville",
+    "lat": 38.02931,
+    "lon": -78.47668
   },
   "aff:department of astronomy, university of virginia, charlottesville, va, usa": {
     "display_name": "University of Virginia",
@@ -20879,6 +20895,14 @@
     "lat": 36.84681,
     "lon": -76.28522
   },
+  "aff:oregon state university": {
+    "display_name": "Oregon State University",
+    "ror": "https://ror.org/00ysfqy60",
+    "country": "US",
+    "city": "Corvallis",
+    "lat": 44.56457,
+    "lon": -123.26204
+  },
   "aff:organization=argonne national laboratory": {
     "display_name": "",
     "ror": null,
@@ -21344,6 +21368,14 @@
     "lon": 11.12108039855957
   },
   "aff:planetary science institute, 1700 east fort lowell, suite 106, tucson, az 85719, usa": {
+    "display_name": "Planetary Science Institute",
+    "ror": "https://ror.org/05vvg9554",
+    "country": "US",
+    "city": "Tucson",
+    "lat": 32.22174,
+    "lon": -110.92648
+  },
+  "aff:planetary science institute, tucson, az, 85719, usa": {
     "display_name": "Planetary Science Institute",
     "ror": "https://ror.org/05vvg9554",
     "country": "US",
@@ -22518,6 +22550,14 @@
     "city": "Ottawa",
     "lat": 45.41117,
     "lon": -75.69812
+  },
+  "aff:school of engineering and applied science, university of virginia, charlottesville, va, 22904, usa": {
+    "display_name": "University of Virginia",
+    "ror": "https://ror.org/0153tk833",
+    "country": "US",
+    "city": "Charlottesville",
+    "lat": 38.02931,
+    "lon": -78.47668
   },
   "aff:school of engineering, newcastle university, newcastle-upon-tyne, ne1 7ru, uk": {
     "display_name": "Newcastle University",
