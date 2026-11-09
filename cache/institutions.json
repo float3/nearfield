@@ -9487,6 +9487,14 @@
     "lat": 37.42411,
     "lon": -122.16608
   },
+  "aff:department of materials science and engineering, university of florida": {
+    "display_name": "University of Florida",
+    "ror": "https://ror.org/02y3ad647",
+    "country": "US",
+    "city": "Gainesville",
+    "lat": 29.65163,
+    "lon": -82.32483
+  },
   "aff:department of materials science and engineering, university of washington, seattle, wa 98195, usa": {
     "display_name": "University of Washington",
     "ror": "https://ror.org/00cvxb145",
@@ -13510,6 +13518,14 @@
     "city": "Rethymno",
     "lat": 35.36555,
     "lon": 24.48232
+  },
+  "aff:department of physics, university of florida": {
+    "display_name": "University of Florida",
+    "ror": "https://ror.org/02y3ad647",
+    "country": "US",
+    "city": "Gainesville",
+    "lat": 29.65163,
+    "lon": -82.32483
   },
   "aff:department of physics, university of helsinki, finland": {
     "display_name": "University of Helsinki",
@@ -30622,6 +30638,14 @@
     "city": "Leuven",
     "lat": 50.87959,
     "lon": 4.70093
+  },
+  "aff:quantum theory project, university of florida": {
+    "display_name": "University of Florida",
+    "ror": "https://ror.org/02y3ad647",
+    "country": "US",
+    "city": "Gainesville",
+    "lat": 29.65163,
+    "lon": -82.32483
   },
   "aff:queen mary university of london": {
     "display_name": "Queen Mary University of London",
@@ -48078,6 +48102,14 @@
     "city": "Kashiwa",
     "lat": 35.86224,
     "lon": 139.97732
+  },
+  "https://openalex.org/I4405286848": {
+    "display_name": "International Center for Hadron Astrophysics, Chiba University",
+    "ror": "https://ror.org/03a1rrk46",
+    "country": "JP",
+    "city": "Chiba",
+    "lat": 35.6,
+    "lon": 140.11667
   },
   "https://openalex.org/I4405287075": {
     "display_name": "AUMOVIO (Germany)",
