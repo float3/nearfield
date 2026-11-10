@@ -4880,6 +4880,14 @@
     ],
     "works_count": 391
   },
+  "brett e. bouma": {
+    "institution_ids": [
+      "https://openalex.org/I136199984",
+      "https://openalex.org/I4210087915",
+      "https://openalex.org/I63966007"
+    ],
+    "works_count": 759
+  },
   "brett hatfield": {
     "institution_ids": [],
     "works_count": 0
@@ -6992,6 +7000,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "dasha trofimova": {
+    "institution_ids": [
+      "https://openalex.org/I17937529"
+    ],
+    "works_count": 7
+  },
   "dashiel karish": {
     "institution_ids": [],
     "works_count": 0
@@ -8163,6 +8177,15 @@
     ],
     "works_count": 37
   },
+  "e. rusta": {
+    "institution_ids": [
+      "https://openalex.org/I2799986158",
+      "https://openalex.org/I4210109743",
+      "https://openalex.org/I45084792",
+      "https://openalex.org/I875825670"
+    ],
+    "works_count": 11
+  },
   "e. tsapulina": {
     "institution_ids": [
       "https://openalex.org/I32699454"
@@ -8419,6 +8442,10 @@
       "https://openalex.org/I124227911"
     ],
     "works_count": 31
+  },
+  "elias glaßer": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "elie alhelou": {
     "institution_ids": [],
@@ -15605,6 +15632,13 @@
     ],
     "works_count": 5
   },
+  "jonas reimann": {
+    "institution_ids": [
+      "https://openalex.org/I4210143371",
+      "https://openalex.org/I4210149784"
+    ],
+    "works_count": 7
+  },
   "jonas waibel": {
     "institution_ids": [
       "https://openalex.org/I179225836"
@@ -17730,6 +17764,10 @@
     ],
     "works_count": 4
   },
+  "kyle emili": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "kyler mccormack": {
     "institution_ids": [],
     "works_count": 0
@@ -18142,6 +18180,10 @@
     "works_count": 0
   },
   "leo zhicheng liu": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "leon a. trochelmann": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -19151,6 +19193,15 @@
   "longhuan yan": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "lorena acuna-aguirre": {
+    "institution_ids": [
+      "https://openalex.org/I1294671590",
+      "https://openalex.org/I21491767",
+      "https://openalex.org/I4210109156",
+      "https://openalex.org/I56007636"
+    ],
+    "works_count": 114
   },
   "lorena araguete riesco": {
     "institution_ids": [
@@ -23349,6 +23400,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "natasza gadowska": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "nataša krčo": {
     "institution_ids": [
       "https://openalex.org/I47508984"
@@ -23384,6 +23439,10 @@
       "https://openalex.org/I97018004"
     ],
     "works_count": 8
+  },
+  "nathan ratkiewicz": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "nathan rodkey (empa": {
     "institution_ids": [],
@@ -24349,6 +24408,13 @@
     ],
     "works_count": 1
   },
+  "nour skaf": {
+    "institution_ids": [
+      "https://openalex.org/I117965899",
+      "https://openalex.org/I1331384533"
+    ],
+    "works_count": 74
+  },
   "noussayba el marrakchi": {
     "institution_ids": [
       "https://openalex.org/I4210142324"
@@ -24440,6 +24506,10 @@
     "works_count": 301
   },
   "o. e. giehl": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "o. nebrin": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -36959,6 +37029,10 @@
       "https://openalex.org/I241749"
     ],
     "works_count": 8
+  },
+  "yinglong ni": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "yinglun li": {
     "institution_ids": [

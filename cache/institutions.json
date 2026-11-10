@@ -32503,6 +32503,14 @@
     "lat": 40.34872,
     "lon": -74.65905
   },
+  "aff:prior labs": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:prior labs, 3 ellis institute tübingen": {
     "display_name": "",
     "ror": null,
