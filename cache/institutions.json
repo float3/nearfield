@@ -18783,6 +18783,14 @@
     "lat": 54.35226821899414,
     "lon": 18.649120330810547
   },
+  "aff:faculty of applied sciences, university of west bohemia in pilsen": {
+    "display_name": "University of West Bohemia in Pilsen",
+    "ror": "https://ror.org/040t43x18",
+    "country": "CZ",
+    "city": "Pilsen",
+    "lat": 49.74747,
+    "lon": 13.37759
+  },
   "aff:faculty of biology and medicine, university of lausanne, lausanne, switzerland": {
     "display_name": "University of Lausanne",
     "ror": "https://ror.org/019whta54",
@@ -21951,6 +21959,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:indian centre for space physics": {
+    "display_name": "Indian Centre for Space Physics",
+    "ror": "https://ror.org/05v9n8905",
+    "country": "IN",
+    "city": "Kolkata",
+    "lat": 22.56263,
+    "lon": 88.36304
+  },
   "aff:indian institute of astrophysics, 2nd block, koramangala, bangalore 560 034, india": {
     "display_name": "Indian Institute of Astrophysics",
     "ror": "https://ror.org/01msc1703",
@@ -24351,6 +24367,14 @@
     "lat": 55.75204,
     "lon": 37.61781
   },
+  "aff:institute of astronomy, national tsing hua university, hsinchu 30013, taiwan": {
+    "display_name": "Institute of Astronomy",
+    "ror": "https://ror.org/01whksa54",
+    "country": "RU",
+    "city": "Moscow",
+    "lat": 55.75204,
+    "lon": 37.61781
+  },
   "aff:institute of astronomy, national tsing hua university, hsinchu, taiwan": {
     "display_name": "Institute of Astronomy",
     "ror": "https://ror.org/01whksa54",
@@ -24606,6 +24630,14 @@
     "city": "Graz",
     "lat": 47.06733,
     "lon": 15.44197
+  },
+  "aff:institute of computational and modeling science, national tsing hua university, hsinchu 30013, taiwan": {
+    "display_name": "National Tsing Hua University",
+    "ror": "https://ror.org/00zdnkx70",
+    "country": "TW",
+    "city": "Hsinchu",
+    "lat": 24.793611526489254,
+    "lon": 120.9927749633789
   },
   "aff:institute of computational biology, german research center for environmental health, helmholtz zentrum münchen, neuherberg, germany": {
     "display_name": "Institute of Computational Biology",
@@ -24958,6 +24990,14 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:institute of information theory and automation, czech academy of sciences": {
+    "display_name": "Czech Academy of Sciences",
+    "ror": "https://ror.org/053avzc18",
+    "country": "CZ",
+    "city": "Prague",
+    "lat": 50.08804,
+    "lon": 14.42076
   },
   "aff:institute of intelligent transportation systems, zhejiang university,city=hangzhou,postcode=310058,country=china": {
     "display_name": "Zhejiang University",
@@ -26166,6 +26206,14 @@
     "city": "Beijing",
     "lat": 39.9075,
     "lon": 116.39723
+  },
+  "aff:institute of thermomechanics, czech academy of sciences": {
+    "display_name": "Czech Academy of Sciences",
+    "ror": "https://ror.org/053avzc18",
+    "country": "CZ",
+    "city": "Prague",
+    "lat": 50.08804,
+    "lon": 14.42076
   },
   "aff:institute of visual computing, graz university of technology, graz, austria": {
     "display_name": "Graz University of Technology",
@@ -33222,6 +33270,14 @@
     "city": "Mitaka-shi",
     "lat": 35.68351,
     "lon": 139.55963
+  },
+  "aff:national astronomical research institute of thailand, 260 moo 4, donkaew, mae rim, chiang mai, 50180, thailand": {
+    "display_name": "National Astronomical Research Institute of Thailand",
+    "ror": "https://ror.org/027rw9342",
+    "country": "TH",
+    "city": "Chiang Mai",
+    "lat": 18.79038,
+    "lon": 98.98468
   },
   "aff:national center for energy sciences and nuclear techniques, b.p.1382, r. p.10001 rabat, morocco": {
     "display_name": "",
