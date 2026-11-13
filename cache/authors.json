@@ -7905,6 +7905,12 @@
     ],
     "works_count": 568
   },
+  "d. innecco": {
+    "institution_ids": [
+      "https://openalex.org/I4210106570"
+    ],
+    "works_count": 2
+  },
   "d. j. lengyel": {
     "institution_ids": [],
     "works_count": 0
@@ -12804,6 +12810,12 @@
   "geon chio": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "georg schmalz": {
+    "institution_ids": [
+      "https://openalex.org/I137594350"
+    ],
+    "works_count": 2
   },
   "george de ath": {
     "institution_ids": [
@@ -19555,6 +19567,13 @@
       "https://openalex.org/I4210098902"
     ],
     "works_count": 258
+  },
+  "julia herbst": {
+    "institution_ids": [
+      "https://openalex.org/I3018134672",
+      "https://openalex.org/I62916508"
+    ],
+    "works_count": 13
   },
   "julia iacovell": {
     "institution_ids": [],
@@ -45061,6 +45080,10 @@
       "https://openalex.org/I192455969"
     ],
     "works_count": 9
+  },
+  "z. muraskin": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "z. p. vanderbosch": {
     "institution_ids": [

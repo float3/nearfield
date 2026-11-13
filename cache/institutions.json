@@ -32551,6 +32551,14 @@
     "lat": 51.50853,
     "lon": -0.12574
   },
+  "aff:king’s college london, uk": {
+    "display_name": "King's College London",
+    "ror": "https://ror.org/0220mzb33",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50853,
+    "lon": -0.12574
+  },
   "aff:king’s college london, united kingdom": {
     "display_name": "King's College London",
     "ror": "https://ror.org/0220mzb33",
@@ -33720,6 +33728,14 @@
     "lon": 4.49306
   },
   "aff:leiden university, leiden observatory, po box 9513, leiden, 2300 ra netherlands": {
+    "display_name": "Leiden University",
+    "ror": "https://ror.org/027bh9e22",
+    "country": "NL",
+    "city": "Leiden",
+    "lat": 52.15833,
+    "lon": 4.49306
+  },
+  "aff:leiden university, the netherlands": {
     "display_name": "Leiden University",
     "ror": "https://ror.org/027bh9e22",
     "country": "NL",
@@ -40343,6 +40359,14 @@
     "lat": 59.91273,
     "lon": 10.74609
   },
+  "aff:royal holloway, university of london, uk": {
+    "display_name": "University of London",
+    "ror": "https://ror.org/04cw6st05",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50853,
+    "lon": -0.12574
+  },
   "aff:royal netherlands meteorological institute (knmi), de bilt, netherlands": {
     "display_name": "",
     "ror": null,
@@ -41982,6 +42006,14 @@
     "city": "Huainan",
     "lat": 32.62638854980469,
     "lon": 116.99694061279295
+  },
+  "aff:school of music, english and theatre, goldsmiths, university of london, uk": {
+    "display_name": "University of London",
+    "ror": "https://ror.org/04cw6st05",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50853,
+    "lon": -0.12574
   },
   "aff:school of natural sciences, black hills state university, spearfish, sd 57799, usa": {
     "display_name": "Black Hills State University",
@@ -43638,6 +43670,14 @@
     "city": "Seoul",
     "lat": 37.566,
     "lon": 126.9784
+  },
+  "aff:soas university of london, uk": {
+    "display_name": "SOAS University of London",
+    "ror": "https://ror.org/04vrxay34",
+    "country": "GB",
+    "city": "London",
+    "lat": 51.50852966308594,
+    "lon": -0.12574000656604767
   },
   "aff:social welfare, shizuoka university of welfare, yaizu, shizuoka, 425-8611, japan": {
     "display_name": "Shizuoka University of Welfare",
@@ -45727,6 +45767,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:teesside university, uk": {
+    "display_name": "Teesside University",
+    "ror": "https://ror.org/03z28gk75",
+    "country": "GB",
+    "city": "Middlesbrough",
+    "lat": 54.576229095458984,
+    "lon": -1.234830021858215
+  },
   "aff:tel aviv university": {
     "display_name": "Tel Aviv University",
     "ror": "https://ror.org/04mhzgx49",
@@ -47766,6 +47814,14 @@
     "city": "Belgrade",
     "lat": 44.80401,
     "lon": 20.46513
+  },
+  "aff:university of bergen, norway": {
+    "display_name": "University of Bergen",
+    "ror": "https://ror.org/03zga2b32",
+    "country": "NO",
+    "city": "Bergen",
+    "lat": 60.39299,
+    "lon": 5.32415
   },
   "aff:university of bern": {
     "display_name": "University of Bern",
