@@ -8111,6 +8111,14 @@
     "lat": 34.14778,
     "lon": -118.14452
   },
+  "aff:computing systems lab, huawei zurich research center, thurgauerstrasse 80, 8050 zurich": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:concordia university": {
     "display_name": "Concordia University",
     "ror": "https://ror.org/01qxhf360",
@@ -14862,6 +14870,14 @@
     "city": "Genoa",
     "lat": 44.40478,
     "lon": 8.94439
+  },
+  "aff:department of mathematics, university of hawaii, honolulu, hi 96822, usa": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:department of mathematics, university of klagenfurt": {
     "display_name": "University of Klagenfurt",
@@ -23935,6 +23951,14 @@
     "lat": 45.81444,
     "lon": 15.97798
   },
+  "aff:faculty of electrical engineering and information technology": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:faculty of electrical engineering and information technology, oth regensburg, germany": {
     "display_name": "OTH Regensburg",
     "ror": "https://ror.org/04b9vrm74",
@@ -25215,6 +25239,14 @@
     "lat": 46.49066925048828,
     "lon": 11.33981990814209
   },
+  "aff:freie universität berlin, department of biology, chemistry, pharmacy, berlin, germany": {
+    "display_name": "Freie Universität Berlin",
+    "ror": "https://ror.org/046ak2485",
+    "country": "DE",
+    "city": "Berlin",
+    "lat": 52.52437,
+    "lon": 13.41053
+  },
   "aff:freie universität berlin, germany": {
     "display_name": "Freie Universität Berlin",
     "ror": "https://ror.org/046ak2485",
@@ -25278,6 +25310,14 @@
     "city": "Jena",
     "lat": 50.92878,
     "lon": 11.5899
+  },
+  "aff:friedrich schiller university of jena, institute of condensed matter theory and optics, jena, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:friedrich-alexander universität erlangen-nürnberg, 91058 erlangen, germany": {
     "display_name": "Friedrich-Alexander-Universität Erlangen-Nürnberg",
@@ -30326,6 +30366,14 @@
     "city": "Nagoya",
     "lat": 35.18147,
     "lon": 136.90641
+  },
+  "aff:institute for systems theory and automatic control": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:institute for the dynamics of complex systems, university of göttingen, göttingen, germany": {
     "display_name": "University of Göttingen",
@@ -46199,6 +46247,14 @@
     "lat": 51.48165,
     "lon": 7.21648
   },
+  "aff:ruhr-university bochum, bochum, germany": {
+    "display_name": "Ruhr University Bochum",
+    "ror": "https://ror.org/04tsk2644",
+    "country": "DE",
+    "city": "Bochum",
+    "lat": 51.48165,
+    "lon": 7.21648
+  },
   "aff:ruhr-universität bochum, fakultät für mathematik, 44780 bochum, germany": {
     "display_name": "",
     "ror": null,
@@ -52622,6 +52678,14 @@
     "city": "Guangzhou",
     "lat": 23.11667,
     "lon": 113.25
+  },
+  "aff:the humboldt university of berlin, department of chemistry, berlin, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:the institute for advanced study, kyushu university, nishi-ku, fukuoka 819-0395, japan": {
     "display_name": "Kyushu University",
