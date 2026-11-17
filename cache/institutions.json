@@ -21663,6 +21663,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:department of statistics, lmu munich": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:department of statistics, oregon state university": {
     "display_name": "Oregon State University",
     "ror": "https://ror.org/00ysfqy60",
@@ -31702,6 +31710,14 @@
     "city": "Bern",
     "lat": 46.94809,
     "lon": 7.44744
+  },
+  "aff:institute for pattern recognition, niederrhein university of applied sciences, reinarzstr. 49, krefeld, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:institute for photonic quantum systems (phoqs), paderborn university, warburger straße 100, 33098 paderborn, germany": {
     "display_name": "Paderborn University",

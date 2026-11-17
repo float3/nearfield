@@ -1557,6 +1557,12 @@
     ],
     "works_count": 1
   },
+  "aierpanjiang simayi": {
+    "institution_ids": [
+      "https://openalex.org/I24943067"
+    ],
+    "works_count": 2
+  },
   "aifen xiong": {
     "institution_ids": [],
     "works_count": 0
@@ -5988,6 +5994,10 @@
     ],
     "works_count": 638
   },
+  "b. d. purijjala": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "b. m. marosi": {
     "institution_ids": [],
     "works_count": 0
@@ -9967,6 +9977,12 @@
   "d. m. j. prathapa": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "d. m. rathnayake": {
+    "institution_ids": [
+      "https://openalex.org/I111199411"
+    ],
+    "works_count": 8
   },
   "d. puertas-centeno": {
     "institution_ids": [
@@ -14683,6 +14699,12 @@
       "https://openalex.org/I4210160608"
     ],
     "works_count": 179
+  },
+  "felix krueckel": {
+    "institution_ids": [
+      "https://openalex.org/I887968799"
+    ],
+    "works_count": 1
   },
   "felix leduc": {
     "institution_ids": [
@@ -23794,6 +23816,13 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "jonay i. gonzalez hernandez": {
+    "institution_ids": [
+      "https://openalex.org/I158438070",
+      "https://openalex.org/I4210130807"
+    ],
+    "works_count": 762
+  },
   "jonay isaí gonzalez-hernandez": {
     "institution_ids": [
       "https://openalex.org/I158438070",
@@ -25656,6 +25685,10 @@
       "https://openalex.org/I129774422"
     ],
     "works_count": 6
+  },
+  "karl eric swanson": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "karl friedrich siburg": {
     "institution_ids": [
@@ -31005,6 +31038,12 @@
     ],
     "works_count": 37
   },
+  "marc-olivier boldi": {
+    "institution_ids": [
+      "https://openalex.org/I97565354"
+    ],
+    "works_count": 34
+  },
   "marceau pintonato": {
     "institution_ids": [
       "https://openalex.org/I4210134832"
@@ -33550,6 +33589,14 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "michel dobrijevic": {
+    "institution_ids": [
+      "https://openalex.org/I1294671590",
+      "https://openalex.org/I15057530",
+      "https://openalex.org/I4210097863"
+    ],
+    "works_count": 487
+  },
   "michela petriconi": {
     "institution_ids": [
       "https://openalex.org/I35440088",
@@ -34277,6 +34324,10 @@
     "works_count": 3
   },
   "minle su": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "minnong zhang": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -41649,6 +41700,12 @@
     ],
     "works_count": 164
   },
+  "rene doyon": {
+    "institution_ids": [
+      "https://openalex.org/I70931966"
+    ],
+    "works_count": 832
+  },
   "renjiro shibuya": {
     "institution_ids": [],
     "works_count": 0
@@ -42754,6 +42811,10 @@
     "works_count": 0
   },
   "runduo ma": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "runhui ruan": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -52915,6 +52976,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "wolfgang m. pernice": {
+    "institution_ids": [
+      "https://openalex.org/I78577930"
+    ],
+    "works_count": 18
+  },
   "wong kai chung": {
     "institution_ids": [
       "https://openalex.org/I1297363086",
@@ -52996,6 +53063,14 @@
       "https://openalex.org/I899635006"
     ],
     "works_count": 779
+  },
+  "xavier delfosse": {
+    "institution_ids": [
+      "https://openalex.org/I1294671590",
+      "https://openalex.org/I4210109224",
+      "https://openalex.org/I899635006"
+    ],
+    "works_count": 743
   },
   "xavier fabr\\`eges": {
     "institution_ids": [],
