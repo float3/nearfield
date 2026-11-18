@@ -10039,6 +10039,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:departamento de astrofísica molecular, instituto de física fundamental, csic, calle serrano 123, 28006 madrid, spain": {
+    "display_name": "Instituto de Física Fundamental",
+    "ror": "https://ror.org/009wseg80",
+    "country": "ES",
+    "city": "Madrid",
+    "lat": 40.416500091552734,
+    "lon": -3.7025599479675297
+  },
   "aff:departamento de astronomia, instituto de astronomia, geofísica e ciências atmosféricas da universidade de são paulo, cidade universitária, 05508-900 são paulo, sp, brazil": {
     "display_name": "",
     "ror": null,
@@ -16894,6 +16902,14 @@
     "city": "Radolfzell",
     "lat": 47.768104553222656,
     "lon": 8.996386528015137
+  },
+  "aff:department of molecular biology and genetics, faculty of science and letters, istanbul technical university, istanbul 34469, turkey": {
+    "display_name": "Istanbul Technical University",
+    "ror": "https://ror.org/059636586",
+    "country": "TR",
+    "city": "Istanbul",
+    "lat": 41.01384,
+    "lon": 28.94966
   },
   "aff:department of multi-disciplinary sciences, graduate school of arts and sciences, the university of tokyo, 3-8-1 komaba, meguro, tokyo 153-8902, japan": {
     "display_name": "The University of Tokyo",
@@ -25423,6 +25439,14 @@
     "lat": 48.71828,
     "lon": 2.2498
   },
+  "aff:ecole polytechnique, mechanics department, institut polytechnique de paris, 91128 palaiseau, france": {
+    "display_name": "École Polytechnique",
+    "ror": "https://ror.org/05hy3tk52",
+    "country": "FR",
+    "city": "Palaiseau",
+    "lat": 48.71828,
+    "lon": 2.2498
+  },
   "aff:ecology and evolutionary biology, school of biological sciences, university of reading, reading, uk": {
     "display_name": "University of Reading",
     "ror": "https://ror.org/05v62cm79",
@@ -32312,6 +32336,14 @@
     "lon": null
   },
   "aff:institut universitaire de france, 1 rue descartes, paris, 75005 france": {
+    "display_name": "Institut Universitaire de France",
+    "ror": "https://ror.org/055khg266",
+    "country": "FR",
+    "city": "Paris",
+    "lat": 48.847469329833984,
+    "lon": 2.348695993423462
+  },
+  "aff:institut universitaire de france, 75005 paris, france": {
     "display_name": "Institut Universitaire de France",
     "ror": "https://ror.org/055khg266",
     "country": "FR",
@@ -59302,6 +59334,14 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:univ. bordeaux, cnrs, inserm, arna, umr 5320, u1212, bordeaux, france": {
+    "display_name": "Inserm",
+    "ror": "https://ror.org/02vjkv261",
+    "country": "FR",
+    "city": "Paris",
+    "lat": 48.85341,
+    "lon": 2.3488
   },
   "aff:univ. grenoble alpes, cnrs, grenoble inp, lpsc-in2p3, 38000 grenoble, france": {
     "display_name": "",
