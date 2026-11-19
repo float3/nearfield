@@ -66391,6 +66391,14 @@
     "lat": 43.15478,
     "lon": -77.61556
   },
+  "aff:university of rochester, rochester, ny, usa": {
+    "display_name": "University of Rochester",
+    "ror": "https://ror.org/022kthw22",
+    "country": "US",
+    "city": "Rochester",
+    "lat": 43.15478,
+    "lon": -77.61556
+  },
   "aff:university of rochester, usa": {
     "display_name": "University of Rochester",
     "ror": "https://ror.org/022kthw22",
