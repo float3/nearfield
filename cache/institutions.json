@@ -4543,6 +4543,14 @@
     "lat": 40.86954,
     "lon": -72.88677
   },
+  "aff:brookhaven national laboratory, upton, ny, usa": {
+    "display_name": "Brookhaven National Laboratory",
+    "ror": "https://ror.org/02ex6cf31",
+    "country": "US",
+    "city": "Upton",
+    "lat": 40.86954,
+    "lon": -72.88677
+  },
   "aff:brown university": {
     "display_name": "Brown University",
     "ror": "https://ror.org/05gq02987",
@@ -11550,6 +11558,14 @@
     "city": "Erlangen",
     "lat": 49.59099,
     "lon": 11.00783
+  },
+  "aff:department of artificial intelligence, gachon university, south korea": {
+    "display_name": "Gachon University",
+    "ror": "https://ror.org/03ryywt80",
+    "country": "KR",
+    "city": "Seongnam-si",
+    "lat": 37.43861,
+    "lon": 127.13778
   },
   "aff:department of artificial intelligence, korea university, anam-dong, seongbuk-gu, 02841 seoul, korea": {
     "display_name": "Korea University",
@@ -33599,6 +33615,14 @@
     "lat": 51.8425,
     "lon": 5.85278
   },
+  "aff:imelda hospital, belgium": {
+    "display_name": "Imelda Hospital",
+    "ror": "https://ror.org/037s71n47",
+    "country": "BE",
+    "city": "Bonheiden",
+    "lat": 51.01665115356445,
+    "lon": 4.559506893157959
+  },
   "aff:imos/ma4-5, technische universität berlin": {
     "display_name": "Technische Universität Berlin",
     "ror": "https://ror.org/03v4gjf40",
@@ -43151,6 +43175,14 @@
     "lat": 34.36650085449219,
     "lon": -89.51924896240234
   },
+  "aff:jessa hospital, belgium": {
+    "display_name": "Jessa Hospital",
+    "ror": "https://ror.org/00qkhxq50",
+    "country": "BE",
+    "city": "Hasselt",
+    "lat": 50.93106,
+    "lon": 5.33781
+  },
   "aff:jet propulsion laboratory": {
     "display_name": "Jet Propulsion Laboratory",
     "ror": "https://ror.org/027k65916",
@@ -45031,6 +45063,14 @@
     "lat": 42.35843,
     "lon": -71.05977
   },
+  "aff:king abdulaziz university hospital, jeddah, saudi arabia": {
+    "display_name": "King Abdul Aziz University Hospital",
+    "ror": "https://ror.org/01vv03303",
+    "country": "SA",
+    "city": "Jeddah",
+    "lat": 21.495792388916016,
+    "lon": 39.23462677001953
+  },
   "aff:king abdullah university of science and technology (kaust)": {
     "display_name": "",
     "ror": null,
@@ -45046,6 +45086,14 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:king fahad specialist hospital, buraydah, saudi arabia": {
+    "display_name": "King Fahad Specialist Hospital",
+    "ror": "https://ror.org/01m1gv240",
+    "country": "SA",
+    "city": "Dammam",
+    "lat": 26.412080764770508,
+    "lon": 50.10287857055664
   },
   "aff:king’s college london": {
     "display_name": "King's College London",
@@ -45262,6 +45310,14 @@
     "city": "Zurich",
     "lat": 47.36667,
     "lon": 8.55
+  },
+  "aff:korea advanced institute of science and technology, daejeon, south korea": {
+    "display_name": "Korea Advanced Institute of Science and Technology",
+    "ror": "https://ror.org/05apxxy63",
+    "country": "KR",
+    "city": "Daejeon",
+    "lat": 36.34913,
+    "lon": 127.38493
   },
   "aff:korea astronomy and space science institute": {
     "display_name": "Korea Astronomy and Space Science Institute",
@@ -49935,6 +49991,22 @@
     "lat": 49.40768,
     "lon": 8.69079
   },
+  "aff:medical faculty, heidelberg university, heidelberg, germany": {
+    "display_name": "Heidelberg University",
+    "ror": "https://ror.org/038t36y30",
+    "country": "DE",
+    "city": "Heidelberg",
+    "lat": 49.40768,
+    "lon": 8.69079
+  },
+  "aff:medical imaging department, king abdulaziz medical city, ministry of national guard health affairs, riyadh, saudi arabia": {
+    "display_name": "King Abdulaziz Medical City",
+    "ror": "https://ror.org/009djsq06",
+    "country": "SA",
+    "city": "Riyadh",
+    "lat": 24.752504348754883,
+    "lon": 46.860347747802734
+  },
   "aff:medical physics unit, department of oncology, mcgill university": {
     "display_name": "",
     "ror": null,
@@ -52022,6 +52094,14 @@
     "city": "Hsinchu",
     "lat": 24.80361,
     "lon": 120.96861
+  },
+  "aff:naval medical center portsmouth, portsmouth, va, usa": {
+    "display_name": "Naval Medical Center Portsmouth",
+    "ror": "https://ror.org/04vxq1969",
+    "country": "US",
+    "city": "Portsmouth",
+    "lat": 36.83543,
+    "lon": -76.29827
   },
   "aff:ncbc at ned university of engineering and technology, karachi, pakistan": {
     "display_name": "",
@@ -55055,6 +55135,14 @@
     "lat": 12.97194004058838,
     "lon": 77.59368896484375
   },
+  "aff:ras tanura general hospital, ministry of health, saudi arabia": {
+    "display_name": "Ministry of Health",
+    "ror": "https://ror.org/04p7qvm31",
+    "country": "ME",
+    "city": "Podgorica",
+    "lat": 42.48649597167969,
+    "lon": 19.176185607910156
+  },
   "aff:rectorate and eth ai center, eth zurich, 8092 zurich, switzerland": {
     "display_name": "ETH Zurich",
     "ror": "https://ror.org/05a28rw58",
@@ -56246,6 +56334,14 @@
     "city": "London",
     "lat": 51.50853,
     "lon": -0.12574
+  },
+  "aff:saint louis university, st. louis, mo, usa": {
+    "display_name": "Saint Louis University",
+    "ror": "https://ror.org/03fkbz285",
+    "country": "ES",
+    "city": "Madrid",
+    "lat": 40.416500091552734,
+    "lon": -3.7025599479675297
   },
   "aff:samir geiger, department of mathematics, humboldt-universität zu berlin, germany": {
     "display_name": "Humboldt-Universität zu Berlin",
@@ -57462,6 +57558,14 @@
     "city": "Lausanne",
     "lat": 46.516,
     "lon": 6.63282
+  },
+  "aff:school of marine and atmospheric sciences": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:school of mathematical & physical sciences, macquarie university, 12 wally’s walk, macquarie park, nsw 2113, australia": {
     "display_name": "Macquarie University",
@@ -59887,6 +59991,14 @@
     "lat": 31.22222,
     "lon": 121.45806
   },
+  "aff:shanghaitech university, shanghai, china": {
+    "display_name": "ShanghaiTech University",
+    "ror": "https://ror.org/030bhh786",
+    "country": "CN",
+    "city": "Shanghai",
+    "lat": 31.22222,
+    "lon": 121.45806
+  },
   "aff:sharif university of technology": {
     "display_name": "Sharif University of Technology",
     "ror": "https://ror.org/024c2fq17",
@@ -61912,6 +62024,14 @@
     "lon": -73.14094
   },
   "aff:stony brook university, stony brook, ny, 11794-3800, usa": {
+    "display_name": "Stony Brook University",
+    "ror": "https://ror.org/05qghxh33",
+    "country": "US",
+    "city": "Stony Brook",
+    "lat": 40.92565,
+    "lon": -73.14094
+  },
+  "aff:stony brook university, stony brook, ny, usa": {
     "display_name": "Stony Brook University",
     "ror": "https://ror.org/05qghxh33",
     "country": "US",
@@ -67310,6 +67430,14 @@
     "city": "Haifa",
     "lat": 32.81303,
     "lon": 34.99928
+  },
+  "aff:university of hail, hail, saudi arabia": {
+    "display_name": "University of Ha'il",
+    "ror": "https://ror.org/013w98a82",
+    "country": "SA",
+    "city": "Ha'il",
+    "lat": 27.521879196166992,
+    "lon": 41.690731048583984
   },
   "aff:university of hamburg": {
     "display_name": "Universität Hamburg",
@@ -73134,6 +73262,14 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:yonsei university, seoul, south korea": {
+    "display_name": "Yonsei University",
+    "ror": "https://ror.org/01wjejq96",
+    "country": "KR",
+    "city": "Seoul",
+    "lat": 37.566,
+    "lon": 126.9784
   },
   "aff:york university": {
     "display_name": "York University",
@@ -80230,6 +80366,14 @@
     "city": "Salvador",
     "lat": -12.97563,
     "lon": -38.49096
+  },
+  "https://openalex.org/I4405286609": {
+    "display_name": "Statistique, Analyse et Modélisation Multidisciplinaire",
+    "ror": "https://ror.org/02ktf0k43",
+    "country": "FR",
+    "city": "Paris",
+    "lat": 48.85341,
+    "lon": 2.3488
   },
   "https://openalex.org/I4405286694": {
     "display_name": "University of Medicine and Dentistry of New Jersey",
