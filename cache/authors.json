@@ -146,6 +146,16 @@
     ],
     "works_count": 35
   },
+  "a. g. gavriliuk": {
+    "institution_ids": [
+      "https://openalex.org/I1313323035",
+      "https://openalex.org/I149643846",
+      "https://openalex.org/I2800235667",
+      "https://openalex.org/I4210102177",
+      "https://openalex.org/I4210132917"
+    ],
+    "works_count": 155
+  },
   "a. greven": {
     "institution_ids": [
       "https://openalex.org/I130238516"
@@ -354,6 +364,10 @@
     ],
     "works_count": 41
   },
+  "a. sumiyoshiya": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "a. suárez mascareño": {
     "institution_ids": [
       "https://openalex.org/I158438070",
@@ -415,6 +429,10 @@
       "https://openalex.org/I66946132"
     ],
     "works_count": 121
+  },
+  "a. veselinova-marinova": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "a. vorburger": {
     "institution_ids": [
@@ -480,6 +498,10 @@
       "https://openalex.org/I25974101"
     ],
     "works_count": 4
+  },
+  "aamir gujral elhaissouni": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "aamod varma": {
     "institution_ids": [],
@@ -742,6 +764,16 @@
       "https://openalex.org/I146399215"
     ],
     "works_count": 24
+  },
+  "abdullah al jubaer gem": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "abdullah bin hasan": {
+    "institution_ids": [
+      "https://openalex.org/I930072361"
+    ],
+    "works_count": 128
   },
   "abdullah kavaklı": {
     "institution_ids": [
@@ -1032,6 +1064,12 @@
   "adam dajani": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "adam dillamore": {
+    "institution_ids": [
+      "https://openalex.org/I45129253"
+    ],
+    "works_count": 25
   },
   "adam g anderson": {
     "institution_ids": [
@@ -1514,6 +1552,10 @@
     ],
     "works_count": 1
   },
+  "agnes hunstad birkemo": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "agnieszka m. łupińska": {
     "institution_ids": [
       "https://openalex.org/I84218800"
@@ -1647,6 +1689,12 @@
     ],
     "works_count": 1
   },
+  "ahmet tugrul bayrak": {
+    "institution_ids": [
+      "https://openalex.org/I67581229"
+    ],
+    "works_count": 45
+  },
   "ahnaf tahmid manan": {
     "institution_ids": [],
     "works_count": 0
@@ -1725,6 +1773,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "aiden larson": {
+    "institution_ids": [
+      "https://openalex.org/I36258959"
+    ],
+    "works_count": 2
+  },
   "aiden xie": {
     "institution_ids": [
       "https://openalex.org/I130701444"
@@ -1801,6 +1855,12 @@
     ],
     "works_count": 1
   },
+  "aixi zhong": {
+    "institution_ids": [
+      "https://openalex.org/I204831749"
+    ],
+    "works_count": 3
+  },
   "aj shears": {
     "institution_ids": [],
     "works_count": 0
@@ -1822,6 +1882,12 @@
       "https://openalex.org/I1925986"
     ],
     "works_count": 18
+  },
+  "akaki mamageishvili": {
+    "institution_ids": [
+      "https://openalex.org/I35440088"
+    ],
+    "works_count": 72
   },
   "akari ishida": {
     "institution_ids": [
@@ -1969,6 +2035,12 @@
       "https://openalex.org/I243754102"
     ],
     "works_count": 9
+  },
+  "alan talmage": {
+    "institution_ids": [
+      "https://openalex.org/I161165907"
+    ],
+    "works_count": 8
   },
   "alan w. muriithi": {
     "institution_ids": [],
@@ -2248,6 +2320,12 @@
     ],
     "works_count": 4
   },
+  "aleksei kozhevnikov": {
+    "institution_ids": [
+      "https://openalex.org/I74756048"
+    ],
+    "works_count": 28
+  },
   "alen e. golpashin": {
     "institution_ids": [
       "https://openalex.org/I157725225"
@@ -2487,6 +2565,10 @@
       "https://openalex.org/I185103710"
     ],
     "works_count": 2
+  },
+  "alex wolitzky": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "alex yarotsky": {
     "institution_ids": [],
@@ -3256,6 +3338,13 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "aljoscha felix baumann": {
+    "institution_ids": [
+      "https://openalex.org/I161046081",
+      "https://openalex.org/I4210132651"
+    ],
+    "works_count": 3
+  },
   "alksandr yu petrov": {
     "institution_ids": [],
     "works_count": 0
@@ -3269,6 +3358,12 @@
       "https://openalex.org/I96673099"
     ],
     "works_count": 292
+  },
+  "allan aasbjerg nielsen": {
+    "institution_ids": [
+      "https://openalex.org/I96673099"
+    ],
+    "works_count": 293
   },
   "allan kevin t": {
     "institution_ids": [
@@ -3318,6 +3413,12 @@
     ],
     "works_count": 519
   },
+  "alma van der merwe": {
+    "institution_ids": [
+      "https://openalex.org/I69552723"
+    ],
+    "works_count": 6
+  },
   "almaz abebe": {
     "institution_ids": [
       "https://openalex.org/I4210098092"
@@ -3362,6 +3463,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "altilano c. barbosa": {
+    "institution_ids": [
+      "https://openalex.org/I161127581"
+    ],
+    "works_count": 6
+  },
   "alvaro castilla lamas": {
     "institution_ids": [],
     "works_count": 0
@@ -3400,6 +3507,12 @@
     ],
     "works_count": 18
   },
+  "amael delaunoy": {
+    "institution_ids": [
+      "https://openalex.org/I35440088"
+    ],
+    "works_count": 25
+  },
   "amal neji": {
     "institution_ids": [
       "https://openalex.org/I4210119561"
@@ -3414,6 +3527,10 @@
     "works_count": 2
   },
   "amanda elvarsdottir": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "amanda k. fritsch": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -3499,6 +3616,12 @@
     ],
     "works_count": 2
   },
+  "amelie royer": {
+    "institution_ids": [
+      "https://openalex.org/I96673099"
+    ],
+    "works_count": 19
+  },
   "ameya sunil mahabaleshwarkar": {
     "institution_ids": [
       "https://openalex.org/I4210127875"
@@ -3515,6 +3638,12 @@
       "https://openalex.org/I4396570619"
     ],
     "works_count": 85
+  },
+  "amin hocine": {
+    "institution_ids": [
+      "https://openalex.org/I4210142311"
+    ],
+    "works_count": 14
   },
   "amin mahmoudabadbozchelou": {
     "institution_ids": [],
@@ -3663,6 +3792,12 @@
     ],
     "works_count": 2
   },
+  "amit feldman": {
+    "institution_ids": [
+      "https://openalex.org/I16391192"
+    ],
+    "works_count": 3
+  },
   "amit kalitaa": {
     "institution_ids": [
       "https://openalex.org/I64128412"
@@ -3720,6 +3855,10 @@
       "https://openalex.org/I4405278301"
     ],
     "works_count": 104
+  },
+  "ammar m. seliaman": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "amon suzuki": {
     "institution_ids": [],
@@ -4229,6 +4368,12 @@
     ],
     "works_count": 49
   },
+  "andres hoyos-idrobo": {
+    "institution_ids": [
+      "https://openalex.org/I1301041018"
+    ],
+    "works_count": 15
+  },
   "andres murilo": {
     "institution_ids": [],
     "works_count": 0
@@ -4240,6 +4385,14 @@
       "https://openalex.org/I916541031"
     ],
     "works_count": 21
+  },
+  "andres r. moreno": {
+    "institution_ids": [
+      "https://openalex.org/I21067949",
+      "https://openalex.org/I4210148528",
+      "https://openalex.org/I69737025"
+    ],
+    "works_count": 171
   },
   "andrew a. cole": {
     "institution_ids": [
@@ -4338,6 +4491,10 @@
       "https://openalex.org/I20089843"
     ],
     "works_count": 47
+  },
+  "andrew r. nadlman": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "andrew repp": {
     "institution_ids": [
@@ -4524,6 +4681,13 @@
       "https://openalex.org/I106107269"
     ],
     "works_count": 2
+  },
+  "angelique kahle": {
+    "institution_ids": [
+      "https://openalex.org/I223822909",
+      "https://openalex.org/I4210109156"
+    ],
+    "works_count": 20
   },
   "angelo melino": {
     "institution_ids": [
@@ -4719,6 +4883,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "anish nediyanchath": {
+    "institution_ids": [
+      "https://openalex.org/I1311688040"
+    ],
+    "works_count": 10
+  },
   "anisha j. mathias": {
     "institution_ids": [
       "https://openalex.org/I48018076"
@@ -4792,6 +4962,12 @@
       "https://openalex.org/I4403386594"
     ],
     "works_count": 14
+  },
+  "anliang ge": {
+    "institution_ids": [
+      "https://openalex.org/I59028903"
+    ],
+    "works_count": 3
   },
   "anlin gong": {
     "institution_ids": [],
@@ -4871,9 +5047,22 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "anna marija sumrova": {
+    "institution_ids": [
+      "https://openalex.org/I241749"
+    ],
+    "works_count": 4
+  },
   "anna merotto": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "anna neopryatnaya": {
+    "institution_ids": [
+      "https://openalex.org/I125989756",
+      "https://openalex.org/I153845743"
+    ],
+    "works_count": 7
   },
   "anna pramod": {
     "institution_ids": [
@@ -5171,6 +5360,12 @@
       "https://openalex.org/I114457229"
     ],
     "works_count": 493
+  },
+  "antoine vialle": {
+    "institution_ids": [
+      "https://openalex.org/I4210145102"
+    ],
+    "works_count": 40
   },
   "anton chtepine": {
     "institution_ids": [
@@ -5496,6 +5691,14 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "aref einizade": {
+    "institution_ids": [
+      "https://openalex.org/I4210145102",
+      "https://openalex.org/I4387153010",
+      "https://openalex.org/I4405261500"
+    ],
+    "works_count": 27
+  },
   "aref namayandeh": {
     "institution_ids": [
       "https://openalex.org/I177725633"
@@ -5582,6 +5785,18 @@
   "arina a. luzgina": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "arina a. svinukhova": {
+    "institution_ids": [
+      "https://openalex.org/I30849647"
+    ],
+    "works_count": 14
+  },
+  "arina puchkova": {
+    "institution_ids": [
+      "https://openalex.org/I118501908"
+    ],
+    "works_count": 2
   },
   "arindam panja": {
     "institution_ids": [
@@ -5686,6 +5901,12 @@
       "https://openalex.org/I70640408"
     ],
     "works_count": 757
+  },
+  "armando gutierrez terradillos": {
+    "institution_ids": [
+      "https://openalex.org/I204337017"
+    ],
+    "works_count": 9
   },
   "armanzhan onggarbay": {
     "institution_ids": [],
@@ -5996,6 +6217,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "artur zelik": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "artyom aguichine": {
     "institution_ids": [
       "https://openalex.org/I185103710",
@@ -6271,6 +6496,10 @@
     ],
     "works_count": 2
   },
+  "aswath vaithinathan aravindan": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "aswathi krishnan kutty": {
     "institution_ids": [],
     "works_count": 0
@@ -6490,6 +6719,12 @@
     ],
     "works_count": 232
   },
+  "austin luo": {
+    "institution_ids": [
+      "https://openalex.org/I86519309"
+    ],
+    "works_count": 250
+  },
   "austin r. kaczmarek": {
     "institution_ids": [
       "https://openalex.org/I205783295"
@@ -6685,6 +6920,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "ayoub haida": {
+    "institution_ids": [
+      "https://openalex.org/I82509713"
+    ],
+    "works_count": 3
+  },
   "ayoube ighissou": {
     "institution_ids": [],
     "works_count": 0
@@ -6873,6 +7114,13 @@
     ],
     "works_count": 287
   },
+  "bablu mandal": {
+    "institution_ids": [
+      "https://openalex.org/I177877127",
+      "https://openalex.org/I923003605"
+    ],
+    "works_count": 17
+  },
   "bacha rehman": {
     "institution_ids": [
       "https://openalex.org/I156118397"
@@ -6962,6 +7210,10 @@
     "works_count": 0
   },
   "bandish parikh": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "banglong nong": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -7349,6 +7601,12 @@
     ],
     "works_count": 15
   },
+  "beidi luan": {
+    "institution_ids": [
+      "https://openalex.org/I4405270328"
+    ],
+    "works_count": 11
+  },
   "beiping duan": {
     "institution_ids": [
       "https://openalex.org/I4388482657"
@@ -7577,6 +7835,14 @@
   "benjamin houshmand": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "benjamin j. fulton": {
+    "institution_ids": [
+      "https://openalex.org/I122411786",
+      "https://openalex.org/I2800291525",
+      "https://openalex.org/I4210167273"
+    ],
+    "works_count": 646
   },
   "benjamin j. gibson": {
     "institution_ids": [
@@ -7987,6 +8253,10 @@
     ],
     "works_count": 260
   },
+  "bikramjit shoibam": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "bill k. s. ku": {
     "institution_ids": [
       "https://openalex.org/I40120149"
@@ -8186,6 +8456,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "boitumelo gaolape": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "bomseok park": {
     "institution_ids": [],
     "works_count": 0
@@ -8333,6 +8607,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "bradley emi": {
+    "institution_ids": [
+      "https://openalex.org/I66946132"
+    ],
+    "works_count": 10
+  },
   "bradyn klein": {
     "institution_ids": [
       "https://openalex.org/I161318765"
@@ -8454,6 +8734,12 @@
     ],
     "works_count": 391
   },
+  "bretislav hajek": {
+    "institution_ids": [
+      "https://openalex.org/I165932596"
+    ],
+    "works_count": 7
+  },
   "brett e. bouma": {
     "institution_ids": [
       "https://openalex.org/I136199984",
@@ -8465,6 +8751,13 @@
   "brett hatfield": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "brett nasserden": {
+    "institution_ids": [
+      "https://openalex.org/I16269868",
+      "https://openalex.org/I98251732"
+    ],
+    "works_count": 13
   },
   "brian a. giraud calderon": {
     "institution_ids": [],
@@ -8599,6 +8892,12 @@
       "https://openalex.org/I149919469"
     ],
     "works_count": 39
+  },
+  "bruce nguyen": {
+    "institution_ids": [
+      "https://openalex.org/I4210148682"
+    ],
+    "works_count": 6
   },
   "bruno arcanjo": {
     "institution_ids": [
@@ -8996,6 +9295,10 @@
     ],
     "works_count": 9
   },
+  "canberk demir": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "canchen jiang": {
     "institution_ids": [
       "https://openalex.org/I56590836"
@@ -9015,6 +9318,12 @@
   "cao le minh khoa": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "caoliwen wang": {
+    "institution_ids": [
+      "https://openalex.org/I141945490"
+    ],
+    "works_count": 14
   },
   "cara elisabeth bradsher": {
     "institution_ids": [
@@ -9221,6 +9530,12 @@
       "https://openalex.org/I201448701"
     ],
     "works_count": 17
+  },
+  "caroline dias ferreira": {
+    "institution_ids": [
+      "https://openalex.org/I122140584"
+    ],
+    "works_count": 25
   },
   "caroline lassueur": {
     "institution_ids": [
@@ -9502,6 +9817,12 @@
   "chaitanya chikkala": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "chaitanya dumbre": {
+    "institution_ids": [
+      "https://openalex.org/I4210088227"
+    ],
+    "works_count": 1
   },
   "chaithanya rayudu": {
     "institution_ids": [
@@ -9860,6 +10181,12 @@
     ],
     "works_count": 40
   },
+  "chendi ge": {
+    "institution_ids": [
+      "https://openalex.org/I99065089"
+    ],
+    "works_count": 4
+  },
   "cheng huang yean": {
     "institution_ids": [
       "https://openalex.org/I87354575"
@@ -9928,6 +10255,12 @@
     ],
     "works_count": 71
   },
+  "chengzhi martin hu": {
+    "institution_ids": [
+      "https://openalex.org/I8204097"
+    ],
+    "works_count": 8
+  },
   "chengzhuo gui": {
     "institution_ids": [],
     "works_count": 0
@@ -9993,6 +10326,12 @@
       "https://openalex.org/I138006243"
     ],
     "works_count": 376
+  },
+  "cheryl lam": {
+    "institution_ids": [
+      "https://openalex.org/I97018004"
+    ],
+    "works_count": 7
   },
   "chi gui": {
     "institution_ids": [
@@ -10238,6 +10577,13 @@
       "https://openalex.org/I84884186"
     ],
     "works_count": 24
+  },
+  "christian c. cyron": {
+    "institution_ids": [
+      "https://openalex.org/I4210139239",
+      "https://openalex.org/I884043246"
+    ],
+    "works_count": 179
   },
   "christian d. morales": {
     "institution_ids": [
@@ -10934,6 +11280,12 @@
     ],
     "works_count": 1
   },
+  "colin rowat": {
+    "institution_ids": [
+      "https://openalex.org/I79619799"
+    ],
+    "works_count": 85
+  },
   "colin snodgrass": {
     "institution_ids": [
       "https://openalex.org/I204136569"
@@ -10991,6 +11343,12 @@
     ],
     "works_count": 394
   },
+  "connor novak": {
+    "institution_ids": [
+      "https://openalex.org/I165733156"
+    ],
+    "works_count": 1
+  },
   "conny aerts": {
     "institution_ids": [
       "https://openalex.org/I145872427",
@@ -11029,6 +11387,12 @@
       "https://openalex.org/I157725225"
     ],
     "works_count": 25
+  },
+  "constant roux": {
+    "institution_ids": [
+      "https://openalex.org/I4210167233"
+    ],
+    "works_count": 7
   },
   "constantin schesch": {
     "institution_ids": [
@@ -11132,6 +11496,13 @@
       "https://openalex.org/I4400573269"
     ],
     "works_count": 43
+  },
+  "cristian vay": {
+    "institution_ids": [
+      "https://openalex.org/I151201029",
+      "https://openalex.org/I166401450"
+    ],
+    "works_count": 26
   },
   "cristian villalobos-concha": {
     "institution_ids": [
@@ -11346,6 +11717,10 @@
       "https://openalex.org/I111199411"
     ],
     "works_count": 8
+  },
+  "d. moorkanat": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "d. n'i chonchubhair": {
     "institution_ids": [],
@@ -11570,6 +11945,12 @@
     ],
     "works_count": 4
   },
+  "danai triantafyllidou": {
+    "institution_ids": [
+      "https://openalex.org/I2250955327"
+    ],
+    "works_count": 10
+  },
   "dance yang": {
     "institution_ids": [
       "https://openalex.org/I14243506",
@@ -11634,6 +12015,10 @@
     "works_count": 76
   },
   "daniel arechavaleta": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "daniel bendjema garcia": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -11848,6 +12233,13 @@
       "https://openalex.org/I4387152226"
     ],
     "works_count": 51
+  },
+  "daniel wiesmann": {
+    "institution_ids": [
+      "https://openalex.org/I4387152517",
+      "https://openalex.org/I4405264366"
+    ],
+    "works_count": 37
   },
   "daniel z. kaplan": {
     "institution_ids": [
@@ -12081,6 +12473,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "daria terentieva": {
+    "institution_ids": [
+      "https://openalex.org/I4210101453"
+    ],
+    "works_count": 9
+  },
   "dario deniz ergun": {
     "institution_ids": [],
     "works_count": 0
@@ -12237,6 +12635,12 @@
       "https://openalex.org/I4387152517"
     ],
     "works_count": 12
+  },
+  "david ceperley": {
+    "institution_ids": [
+      "https://openalex.org/I157725225"
+    ],
+    "works_count": 487
   },
   "david chen wang": {
     "institution_ids": [
@@ -12413,6 +12817,12 @@
     ],
     "works_count": 165
   },
+  "david niederkofler": {
+    "institution_ids": [
+      "https://openalex.org/I145847075"
+    ],
+    "works_count": 4
+  },
   "david p. shelton": {
     "institution_ids": [
       "https://openalex.org/I133999245"
@@ -12486,6 +12896,12 @@
       "https://openalex.org/I163753206"
     ],
     "works_count": 5
+  },
+  "davide baldelli": {
+    "institution_ids": [
+      "https://openalex.org/I4210164802"
+    ],
+    "works_count": 6
   },
   "davide collato": {
     "institution_ids": [
@@ -12600,6 +13016,12 @@
     ],
     "works_count": 543
   },
+  "deborshi goswami": {
+    "institution_ids": [
+      "https://openalex.org/I189109744"
+    ],
+    "works_count": 2
+  },
   "deekshith marla": {
     "institution_ids": [],
     "works_count": 0
@@ -12639,6 +13061,10 @@
     "works_count": 0
   },
   "deepanshu rohilla": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "deepesh parpani": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -12797,6 +13223,10 @@
     "works_count": 23
   },
   "dennis yuren menn": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "deokhyun ahn": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -13017,6 +13447,13 @@
       "https://openalex.org/I4405260822"
     ],
     "works_count": 59
+  },
+  "diana nicoleta popa": {
+    "institution_ids": [
+      "https://openalex.org/I4210104430",
+      "https://openalex.org/I899635006"
+    ],
+    "works_count": 16
   },
   "diane bouchacourt": {
     "institution_ids": [
@@ -13664,6 +14101,10 @@
     ],
     "works_count": 8
   },
+  "dongquan yi": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "dongrui wu": {
     "institution_ids": [
       "https://openalex.org/I47720641"
@@ -13791,6 +14232,10 @@
     ],
     "works_count": 3
   },
+  "dr amani soysa": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "dr gabriel borrageiro": {
     "institution_ids": [],
     "works_count": 0
@@ -13806,6 +14251,13 @@
   "drake benjamin brown": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "drake deming": {
+    "institution_ids": [
+      "https://openalex.org/I4210142152",
+      "https://openalex.org/I66946132"
+    ],
+    "works_count": 756
   },
   "drew hahn": {
     "institution_ids": [],
@@ -14148,6 +14600,10 @@
     ],
     "works_count": 62
   },
+  "eadaoin anderson": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "eaman eftekhary": {
     "institution_ids": [
       "https://openalex.org/I4210146419"
@@ -14157,6 +14613,15 @@
   "eashley martinez-vergara": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "eben blaisdell": {
+    "institution_ids": [
+      "https://openalex.org/I1313323035",
+      "https://openalex.org/I2801160905",
+      "https://openalex.org/I45129253",
+      "https://openalex.org/I79576946"
+    ],
+    "works_count": 7
   },
   "eda ersek uyanik": {
     "institution_ids": [
@@ -14196,6 +14661,13 @@
     ],
     "works_count": 5
   },
+  "edgar a. duenez-guzman": {
+    "institution_ids": [
+      "https://openalex.org/I4210090411",
+      "https://openalex.org/I4210113297"
+    ],
+    "works_count": 64
+  },
   "edgar cid lemos": {
     "institution_ids": [
       "https://openalex.org/I4210093936",
@@ -14215,6 +14687,10 @@
       "https://openalex.org/I121934306"
     ],
     "works_count": 12
+  },
+  "edgar said hernandez sanchez": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "edgard dabier": {
     "institution_ids": [
@@ -14396,6 +14872,14 @@
     ],
     "works_count": 3
   },
+  "edward vanderfeen": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "edwin aguilar anzures": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "edyn davies": {
     "institution_ids": [],
     "works_count": 0
@@ -14513,6 +14997,10 @@
     ],
     "works_count": 6
   },
+  "einarr broch johnsen": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "eirini leftaki": {
     "institution_ids": [],
     "works_count": 0
@@ -14610,6 +15098,12 @@
       "https://openalex.org/I47508984"
     ],
     "works_count": 1
+  },
+  "elena merlo": {
+    "institution_ids": [
+      "https://openalex.org/I169381384"
+    ],
+    "works_count": 11
   },
   "elena simoes": {
     "institution_ids": [
@@ -14752,6 +15246,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "elisabeth remm": {
+    "institution_ids": [
+      "https://openalex.org/I2800745255"
+    ],
+    "works_count": 100
+  },
   "elisabetta caffau": {
     "institution_ids": [
       "https://openalex.org/I1294671590",
@@ -14781,6 +15281,10 @@
       "https://openalex.org/I97018004"
     ],
     "works_count": 1
+  },
+  "eliza frankel": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "elizabeth g. o'brien": {
     "institution_ids": [
@@ -14932,6 +15436,10 @@
     ],
     "works_count": 10
   },
+  "elodie cote-gauthier": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "eloise p. misa": {
     "institution_ids": [
       "https://openalex.org/I87074743"
@@ -15081,6 +15589,10 @@
       "https://openalex.org/I16835326"
     ],
     "works_count": 8
+  },
+  "emilio tylson baixauli": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "emiljo m\\\"ehillaj": {
     "institution_ids": [],
@@ -15252,6 +15764,10 @@
       "https://openalex.org/I4210119487"
     ],
     "works_count": 1
+  },
+  "engineai": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "enhuai liu": {
     "institution_ids": [
@@ -15468,6 +15984,10 @@
     ],
     "works_count": 62
   },
+  "erico kayumba mutonkole": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "erik a. petigura": {
     "institution_ids": [
       "https://openalex.org/I161318765"
@@ -15485,6 +16005,12 @@
       "https://openalex.org/I106118109"
     ],
     "works_count": 1
+  },
+  "erik jahn": {
+    "institution_ids": [
+      "https://openalex.org/I122411786"
+    ],
+    "works_count": 5
   },
   "erik kaestner": {
     "institution_ids": [
@@ -15526,6 +16052,12 @@
   "ernie hobbs": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "erqiang tang": {
+    "institution_ids": [
+      "https://openalex.org/I200769079"
+    ],
+    "works_count": 7
   },
   "ertem esiner": {
     "institution_ids": [
@@ -15779,6 +16311,10 @@
     "works_count": 0
   },
   "evaldo alves de brito jr": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "evan bramblett": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -16162,6 +16698,12 @@
     ],
     "works_count": 185
   },
+  "fabrice rousselle": {
+    "institution_ids": [
+      "https://openalex.org/I4210127875"
+    ],
+    "works_count": 39
+  },
   "fabricio valencia": {
     "institution_ids": [
       "https://openalex.org/I17974374",
@@ -16222,7 +16764,17 @@
     ],
     "works_count": 1
   },
+  "faiek ahsan": {
+    "institution_ids": [
+      "https://openalex.org/I59270414"
+    ],
+    "works_count": 3
+  },
   "fairooz azim": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "faisal baber": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -16350,6 +16902,12 @@
     ],
     "works_count": 8
   },
+  "farhad rahbarnia": {
+    "institution_ids": [
+      "https://openalex.org/I4210133247"
+    ],
+    "works_count": 5
+  },
   "farhan ahmed siddique": {
     "institution_ids": [
       "https://openalex.org/I183697816",
@@ -16439,6 +16997,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "fatima atwi": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "fatima salcedo": {
     "institution_ids": [
       "https://openalex.org/I1311157440"
@@ -16450,6 +17012,10 @@
       "https://openalex.org/I24185976"
     ],
     "works_count": 1
+  },
+  "fatma elif yalcindag": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "fatme el zahraa hamad": {
     "institution_ids": [],
@@ -16476,6 +17042,10 @@
       "https://openalex.org/I157386601"
     ],
     "works_count": 1
+  },
+  "fazil najeeb": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "febryan putra kartika": {
     "institution_ids": [],
@@ -16546,6 +17116,14 @@
       "https://openalex.org/I4210128584"
     ],
     "works_count": 107
+  },
+  "federico pavone": {
+    "institution_ids": [
+      "https://openalex.org/I1294671590",
+      "https://openalex.org/I171048554",
+      "https://openalex.org/I56435720"
+    ],
+    "works_count": 8
   },
   "federico raue": {
     "institution_ids": [
@@ -16624,6 +17202,12 @@
       "https://openalex.org/I4405255887"
     ],
     "works_count": 256
+  },
+  "felipe de carvalho vommaro marincola": {
+    "institution_ids": [
+      "https://openalex.org/I52325"
+    ],
+    "works_count": 4
   },
   "felipe g. bogo": {
     "institution_ids": [],
@@ -16768,6 +17352,12 @@
     ],
     "works_count": 656
   },
+  "feng-jui kuo": {
+    "institution_ids": [
+      "https://openalex.org/I183570559"
+    ],
+    "works_count": 6
+  },
   "fengji jing": {
     "institution_ids": [],
     "works_count": 0
@@ -16827,11 +17417,23 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "fernando ballesta-yague": {
+    "institution_ids": [
+      "https://openalex.org/I121748325"
+    ],
+    "works_count": 4
+  },
   "fernando mendez estrada": {
     "institution_ids": [
       "https://openalex.org/I35961687"
     ],
     "works_count": 1
+  },
+  "fernando muro": {
+    "institution_ids": [
+      "https://openalex.org/I91080651"
+    ],
+    "works_count": 127
   },
   "fernando rafael ensslin schwengber": {
     "institution_ids": [],
@@ -16890,11 +17492,24 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "filippo galgani": {
+    "institution_ids": [
+      "https://openalex.org/I1291425158"
+    ],
+    "works_count": 18
+  },
   "filippo marri": {
     "institution_ids": [
       "https://openalex.org/I93860229"
     ],
     "works_count": 1
+  },
+  "filippo pura": {
+    "institution_ids": [
+      "https://openalex.org/I15196421",
+      "https://openalex.org/I2614128279"
+    ],
+    "works_count": 13
   },
   "filippo rinaldi": {
     "institution_ids": [
@@ -16922,6 +17537,12 @@
     "institution_ids": [
       "https://openalex.org/I4210166532",
       "https://openalex.org/I91045830"
+    ],
+    "works_count": 12
+  },
+  "firas al-hafez": {
+    "institution_ids": [
+      "https://openalex.org/I31512782"
     ],
     "works_count": 12
   },
@@ -17014,6 +17635,12 @@
       "https://openalex.org/I20121455"
     ],
     "works_count": 12
+  },
+  "florian holken": {
+    "institution_ids": [
+      "https://openalex.org/I167360494"
+    ],
+    "works_count": 3
   },
   "florian le guillou": {
     "institution_ids": [
@@ -17120,6 +17747,14 @@
   "fran\\c{c}ois nicoleau": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "francesca bisulli": {
+    "institution_ids": [
+      "https://openalex.org/I4210123211",
+      "https://openalex.org/I4210152184",
+      "https://openalex.org/I9360294"
+    ],
+    "works_count": 469
   },
   "francesca lunardini": {
     "institution_ids": [
@@ -17429,6 +18064,12 @@
       "https://openalex.org/I124055696"
     ],
     "works_count": 7
+  },
+  "frederike oetker": {
+    "institution_ids": [
+      "https://openalex.org/I887064364"
+    ],
+    "works_count": 5
   },
   "frederike stumpf": {
     "institution_ids": [
@@ -17981,6 +18622,17 @@
     ],
     "works_count": 62
   },
+  "ganesh jawahar": {
+    "institution_ids": [
+      "https://openalex.org/I141945490",
+      "https://openalex.org/I4210090411"
+    ],
+    "works_count": 30
+  },
+  "ganeshvar soenessardien": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "gang wang (brookhaven national laboratory": {
     "institution_ids": [],
     "works_count": 0
@@ -18519,6 +19171,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "gergely lorant kiss": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "gerhard pfister": {
     "institution_ids": [
       "https://openalex.org/I4387152675",
@@ -18596,6 +19252,53 @@
       "https://openalex.org/I92688161"
     ],
     "works_count": 11
+  },
+  "gia chi dang": {
+    "institution_ids": [
+      "https://openalex.org/I109689652",
+      "https://openalex.org/I121799043",
+      "https://openalex.org/I123565023",
+      "https://openalex.org/I1282105669",
+      "https://openalex.org/I130769515",
+      "https://openalex.org/I1311688040",
+      "https://openalex.org/I1315456113",
+      "https://openalex.org/I135822937",
+      "https://openalex.org/I138689650",
+      "https://openalex.org/I153904384",
+      "https://openalex.org/I157358134",
+      "https://openalex.org/I177233841",
+      "https://openalex.org/I181233156",
+      "https://openalex.org/I2802384191",
+      "https://openalex.org/I3129492623",
+      "https://openalex.org/I3130697706",
+      "https://openalex.org/I32699454",
+      "https://openalex.org/I4210093659",
+      "https://openalex.org/I4210098226",
+      "https://openalex.org/I4210109089",
+      "https://openalex.org/I4210119177",
+      "https://openalex.org/I4387155442",
+      "https://openalex.org/I4400600977",
+      "https://openalex.org/I4403386568",
+      "https://openalex.org/I4405266539",
+      "https://openalex.org/I4405269321",
+      "https://openalex.org/I4405272066",
+      "https://openalex.org/I4405276878",
+      "https://openalex.org/I4405277083",
+      "https://openalex.org/I4405277133",
+      "https://openalex.org/I4405277486",
+      "https://openalex.org/I4405277533",
+      "https://openalex.org/I4405277537",
+      "https://openalex.org/I4405277811",
+      "https://openalex.org/I4405278084",
+      "https://openalex.org/I4405278096",
+      "https://openalex.org/I45756140",
+      "https://openalex.org/I47265099",
+      "https://openalex.org/I70349855",
+      "https://openalex.org/I79072001",
+      "https://openalex.org/I84470341",
+      "https://openalex.org/I94518387"
+    ],
+    "works_count": 157
   },
   "gia thinh pham": {
     "institution_ids": [
@@ -18691,6 +19394,10 @@
     ],
     "works_count": 20
   },
+  "gianluca martinuz": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "gianluigi savarese": {
     "institution_ids": [
       "https://openalex.org/I1335113835",
@@ -18781,6 +19488,12 @@
     ],
     "works_count": 30
   },
+  "giorgia parente": {
+    "institution_ids": [
+      "https://openalex.org/I131729948"
+    ],
+    "works_count": 2
+  },
   "giorgia zagatti": {
     "institution_ids": [
       "https://openalex.org/I201324441",
@@ -18799,6 +19512,12 @@
       "https://openalex.org/I93860229"
     ],
     "works_count": 13
+  },
+  "giorgio patrini": {
+    "institution_ids": [
+      "https://openalex.org/I887064364"
+    ],
+    "works_count": 22
   },
   "giorgio saracco": {
     "institution_ids": [
@@ -18846,6 +19565,14 @@
   "giovanni g. r. milan": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "giovanni giarda": {
+    "institution_ids": [
+      "https://openalex.org/I35440088",
+      "https://openalex.org/I4405254069",
+      "https://openalex.org/I66752286"
+    ],
+    "works_count": 3
   },
   "giovanni mandel martignago": {
     "institution_ids": [
@@ -18898,6 +19625,10 @@
       "https://openalex.org/I124601658"
     ],
     "works_count": 7
+  },
+  "giulia tacconi": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "giulian buzatu": {
     "institution_ids": [],
@@ -19033,6 +19764,12 @@
     ],
     "works_count": 1
   },
+  "gozde n. gunesli": {
+    "institution_ids": [
+      "https://openalex.org/I39555362"
+    ],
+    "works_count": 14
+  },
   "grace e. v. blomfield": {
     "institution_ids": [],
     "works_count": 0
@@ -19141,6 +19878,12 @@
       "https://openalex.org/I39586589"
     ],
     "works_count": 45
+  },
+  "grishin": {
+    "institution_ids": [
+      "https://openalex.org/I2799828880"
+    ],
+    "works_count": 269
   },
   "grzegorz j. kwiatkowski": {
     "institution_ids": [
@@ -19364,6 +20107,10 @@
     "works_count": 0
   },
   "gulsah bicki": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "gunanidhi ramakrishnan": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -19612,6 +20359,12 @@
     ],
     "works_count": 395
   },
+  "h. hiten": {
+    "institution_ids": [
+      "https://openalex.org/I180670191"
+    ],
+    "works_count": 166
+  },
   "h. m. rønnow": {
     "institution_ids": [
       "https://openalex.org/I124055696",
@@ -19736,6 +20489,10 @@
       "https://openalex.org/I27837315"
     ],
     "works_count": 1
+  },
+  "haicong xu": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "haimanot bitew": {
     "institution_ids": [
@@ -20327,6 +21084,13 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "hamad yahia": {
+    "institution_ids": [
+      "https://openalex.org/I165143802",
+      "https://openalex.org/I92449659"
+    ],
+    "works_count": 27
+  },
   "hamed alhoori": {
     "institution_ids": [
       "https://openalex.org/I102502594"
@@ -20544,6 +21308,10 @@
       "https://openalex.org/I98600543"
     ],
     "works_count": 160
+  },
+  "hanseo lee": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "hansl von kwon": {
     "institution_ids": [],
@@ -20849,6 +21617,12 @@
     ],
     "works_count": 1
   },
+  "hari k. reddy": {
+    "institution_ids": [
+      "https://openalex.org/I4210132400"
+    ],
+    "works_count": 51
+  },
   "hari rajesh": {
     "institution_ids": [
       "https://openalex.org/I4403928371",
@@ -20904,6 +21678,13 @@
   "harper chen": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "harri valpola": {
+    "institution_ids": [
+      "https://openalex.org/I4405269092",
+      "https://openalex.org/I9927081"
+    ],
+    "works_count": 96
   },
   "harris sop nkuiate": {
     "institution_ids": [
@@ -21008,6 +21789,14 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "haruto okabe": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "haruya shirado": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "harvey l. devereux": {
     "institution_ids": [],
     "works_count": 0
@@ -21064,6 +21853,10 @@
     "works_count": 4
   },
   "hayden greer": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "hayden m. leatherwood": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -21359,6 +22152,12 @@
     ],
     "works_count": 7
   },
+  "henry schaub": {
+    "institution_ids": [
+      "https://openalex.org/I174004417"
+    ],
+    "works_count": 11
+  },
   "henry zaslow": {
     "institution_ids": [],
     "works_count": 0
@@ -21476,6 +22275,12 @@
       "https://openalex.org/I74801974"
     ],
     "works_count": 11
+  },
+  "hieu minh duong": {
+    "institution_ids": [
+      "https://openalex.org/I142740786"
+    ],
+    "works_count": 4
   },
   "hikaru morishita": {
     "institution_ids": [
@@ -21862,6 +22667,12 @@
     ],
     "works_count": 23
   },
+  "hrit roy": {
+    "institution_ids": [
+      "https://openalex.org/I98677209"
+    ],
+    "works_count": 4
+  },
   "hrithik mhatre": {
     "institution_ids": [],
     "works_count": 0
@@ -21871,6 +22682,64 @@
       "https://openalex.org/I55732556"
     ],
     "works_count": 2
+  },
+  "hsien-fu hung": {
+    "institution_ids": [
+      "https://openalex.org/I114832834",
+      "https://openalex.org/I134161618",
+      "https://openalex.org/I139024713",
+      "https://openalex.org/I148366613",
+      "https://openalex.org/I150229711",
+      "https://openalex.org/I154864474",
+      "https://openalex.org/I162838928",
+      "https://openalex.org/I165441096",
+      "https://openalex.org/I16733864",
+      "https://openalex.org/I173093425",
+      "https://openalex.org/I180670191",
+      "https://openalex.org/I183067930",
+      "https://openalex.org/I184693016",
+      "https://openalex.org/I22265921",
+      "https://openalex.org/I223822909",
+      "https://openalex.org/I25846049",
+      "https://openalex.org/I2802331550",
+      "https://openalex.org/I2803004286",
+      "https://openalex.org/I3020100970",
+      "https://openalex.org/I35926432",
+      "https://openalex.org/I4210090173",
+      "https://openalex.org/I4210091773",
+      "https://openalex.org/I4210093734",
+      "https://openalex.org/I4210093821",
+      "https://openalex.org/I4210098034",
+      "https://openalex.org/I4210098366",
+      "https://openalex.org/I4210113254",
+      "https://openalex.org/I4210114190",
+      "https://openalex.org/I4210116208",
+      "https://openalex.org/I4210120917",
+      "https://openalex.org/I4210121532",
+      "https://openalex.org/I4210126829",
+      "https://openalex.org/I4210131804",
+      "https://openalex.org/I4210135784",
+      "https://openalex.org/I4210136969",
+      "https://openalex.org/I4210137306",
+      "https://openalex.org/I4210142271",
+      "https://openalex.org/I4210158385",
+      "https://openalex.org/I4405256935",
+      "https://openalex.org/I4405280835",
+      "https://openalex.org/I47519274",
+      "https://openalex.org/I4880106",
+      "https://openalex.org/I74973139",
+      "https://openalex.org/I78577930",
+      "https://openalex.org/I79223203",
+      "https://openalex.org/I84653119",
+      "https://openalex.org/I87354575",
+      "https://openalex.org/I882009436",
+      "https://openalex.org/I91807558",
+      "https://openalex.org/I96852419",
+      "https://openalex.org/I97018004",
+      "https://openalex.org/I99613584",
+      "https://openalex.org/I99908691"
+    ],
+    "works_count": 247
   },
   "hsuan-chi liu": {
     "institution_ids": [
@@ -21929,6 +22798,12 @@
       "https://openalex.org/I4210116924"
     ],
     "works_count": 23
+  },
+  "huamin ma": {
+    "institution_ids": [
+      "https://openalex.org/I4210110609"
+    ],
+    "works_count": 6
   },
   "huanfei he": {
     "institution_ids": [
@@ -22492,6 +23367,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "ido nitzan hidekel": {
+    "institution_ids": [
+      "https://openalex.org/I16391192"
+    ],
+    "works_count": 2
+  },
   "idriss mazari (ceremade)": {
     "institution_ids": [],
     "works_count": 0
@@ -22526,6 +23407,10 @@
       "https://openalex.org/I192619145"
     ],
     "works_count": 84
+  },
+  "ignacio contreras-zuniga": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "ignacio pavez": {
     "institution_ids": [
@@ -22795,6 +23680,12 @@
     ],
     "works_count": 215
   },
+  "indranil sur": {
+    "institution_ids": [
+      "https://openalex.org/I1298353152"
+    ],
+    "works_count": 17
+  },
   "inessa garrey": {
     "institution_ids": [],
     "works_count": 0
@@ -22850,6 +23741,12 @@
       "https://openalex.org/I4405258752"
     ],
     "works_count": 281
+  },
+  "intaik park": {
+    "institution_ids": [
+      "https://openalex.org/I4210114444"
+    ],
+    "works_count": 17
   },
   "intisar chowdhury": {
     "institution_ids": [
@@ -23122,6 +24019,12 @@
     ],
     "works_count": 1
   },
+  "ishita asnani": {
+    "institution_ids": [
+      "https://openalex.org/I157725225"
+    ],
+    "works_count": 1
+  },
   "ishneet singh": {
     "institution_ids": [
       "https://openalex.org/I40120149"
@@ -23190,6 +24093,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "itsuki takarabe": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "iulia rusu": {
     "institution_ids": [
       "https://openalex.org/I1307098950",
@@ -23210,6 +24117,13 @@
       "https://openalex.org/I2801160905"
     ],
     "works_count": 146
+  },
+  "ivan jurin": {
+    "institution_ids": [
+      "https://openalex.org/I181343428",
+      "https://openalex.org/I4390039327"
+    ],
+    "works_count": 3
   },
   "ivan karpukhin": {
     "institution_ids": [
@@ -23313,6 +24227,13 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "ivor rendulic": {
+    "institution_ids": [
+      "https://openalex.org/I181343428",
+      "https://openalex.org/I4390039327"
+    ],
+    "works_count": 10
+  },
   "ivy njoki nyagwencha": {
     "institution_ids": [],
     "works_count": 0
@@ -23404,6 +24325,12 @@
       "https://openalex.org/I55732556"
     ],
     "works_count": 23
+  },
+  "j. borowicz": {
+    "institution_ids": [
+      "https://openalex.org/I298625061"
+    ],
+    "works_count": 8
   },
   "j. c. de carvalho jr.": {
     "institution_ids": [
@@ -23506,6 +24433,10 @@
       "https://openalex.org/I127817813"
     ],
     "works_count": 146
+  },
+  "j. q. matthew chia": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "j. scott clawson": {
     "institution_ids": [],
@@ -24055,6 +24986,13 @@
     ],
     "works_count": 4
   },
+  "james ben worrell": {
+    "institution_ids": [
+      "https://openalex.org/I40120149",
+      "https://openalex.org/I4210121786"
+    ],
+    "works_count": 286
+  },
   "james chua": {
     "institution_ids": [
       "https://openalex.org/I193531525",
@@ -24069,6 +25007,12 @@
   "james m. jennings iii": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "james myint": {
+    "institution_ids": [
+      "https://openalex.org/I119449181"
+    ],
+    "works_count": 13
   },
   "james p. cahill": {
     "institution_ids": [
@@ -24157,6 +25101,10 @@
       "https://openalex.org/I4210120403"
     ],
     "works_count": 66
+  },
+  "jan fopma": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "jan haskovec": {
     "institution_ids": [
@@ -24357,6 +25305,12 @@
     ],
     "works_count": 88
   },
+  "jared n. lakhani": {
+    "institution_ids": [
+      "https://openalex.org/I157614274"
+    ],
+    "works_count": 2
+  },
   "jarne j. h. van gemert": {
     "institution_ids": [
       "https://openalex.org/I83019370"
@@ -24413,6 +25367,10 @@
       "https://openalex.org/I165143802"
     ],
     "works_count": 2
+  },
+  "jasper shan": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "jasurbek imomov": {
     "institution_ids": [],
@@ -24847,6 +25805,12 @@
     ],
     "works_count": 4
   },
+  "jenna rajchgot": {
+    "institution_ids": [
+      "https://openalex.org/I98251732"
+    ],
+    "works_count": 25
+  },
   "jennifer p. ogilvie": {
     "institution_ids": [
       "https://openalex.org/I153718931"
@@ -24965,6 +25929,16 @@
   "jeroen sparla": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "jerome euzenat": {
+    "institution_ids": [
+      "https://openalex.org/I106785703",
+      "https://openalex.org/I1294671590",
+      "https://openalex.org/I1326498283",
+      "https://openalex.org/I4210104430",
+      "https://openalex.org/I899635006"
+    ],
+    "works_count": 554
   },
   "jerrold huang": {
     "institution_ids": [
@@ -25114,6 +26088,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "jiacong tang": {
+    "institution_ids": [
+      "https://openalex.org/I17145004"
+    ],
+    "works_count": 2
+  },
   "jiada li": {
     "institution_ids": [
       "https://openalex.org/I139660479"
@@ -25184,6 +26164,175 @@
       "https://openalex.org/I200769079"
     ],
     "works_count": 5
+  },
+  "jiale xuan": {
+    "institution_ids": [
+      "https://openalex.org/I105086349",
+      "https://openalex.org/I108688024",
+      "https://openalex.org/I109935558",
+      "https://openalex.org/I110440473",
+      "https://openalex.org/I111753288",
+      "https://openalex.org/I114395901",
+      "https://openalex.org/I114539943",
+      "https://openalex.org/I115592961",
+      "https://openalex.org/I116953780",
+      "https://openalex.org/I117532281",
+      "https://openalex.org/I119454577",
+      "https://openalex.org/I125839683",
+      "https://openalex.org/I126520041",
+      "https://openalex.org/I1285301757",
+      "https://openalex.org/I129708740",
+      "https://openalex.org/I13175533",
+      "https://openalex.org/I1327237609",
+      "https://openalex.org/I133868755",
+      "https://openalex.org/I1343551460",
+      "https://openalex.org/I134687103",
+      "https://openalex.org/I13985625",
+      "https://openalex.org/I140221134",
+      "https://openalex.org/I143868143",
+      "https://openalex.org/I149594827",
+      "https://openalex.org/I14992734",
+      "https://openalex.org/I150229711",
+      "https://openalex.org/I154099455",
+      "https://openalex.org/I156144747",
+      "https://openalex.org/I157773358",
+      "https://openalex.org/I162868743",
+      "https://openalex.org/I16609230",
+      "https://openalex.org/I172675005",
+      "https://openalex.org/I177388780",
+      "https://openalex.org/I177725633",
+      "https://openalex.org/I177933477",
+      "https://openalex.org/I180585399",
+      "https://openalex.org/I180670191",
+      "https://openalex.org/I180726961",
+      "https://openalex.org/I183067930",
+      "https://openalex.org/I185443292",
+      "https://openalex.org/I194450716",
+      "https://openalex.org/I197869895",
+      "https://openalex.org/I19820366",
+      "https://openalex.org/I199305430",
+      "https://openalex.org/I200296433",
+      "https://openalex.org/I20231570",
+      "https://openalex.org/I20942203",
+      "https://openalex.org/I21193070",
+      "https://openalex.org/I24185976",
+      "https://openalex.org/I24943067",
+      "https://openalex.org/I26080491",
+      "https://openalex.org/I27429435",
+      "https://openalex.org/I27781120",
+      "https://openalex.org/I2799435780",
+      "https://openalex.org/I2801228662",
+      "https://openalex.org/I2801556517",
+      "https://openalex.org/I2801769982",
+      "https://openalex.org/I2802148028",
+      "https://openalex.org/I2802624667",
+      "https://openalex.org/I3133055985",
+      "https://openalex.org/I32574673",
+      "https://openalex.org/I34949971",
+      "https://openalex.org/I37574244",
+      "https://openalex.org/I4210086096",
+      "https://openalex.org/I4210089761",
+      "https://openalex.org/I4210090317",
+      "https://openalex.org/I4210090868",
+      "https://openalex.org/I4210092091",
+      "https://openalex.org/I4210092582",
+      "https://openalex.org/I4210093194",
+      "https://openalex.org/I4210093964",
+      "https://openalex.org/I4210096899",
+      "https://openalex.org/I4210097783",
+      "https://openalex.org/I4210098361",
+      "https://openalex.org/I4210098832",
+      "https://openalex.org/I4210099512",
+      "https://openalex.org/I4210101660",
+      "https://openalex.org/I4210105982",
+      "https://openalex.org/I4210111628",
+      "https://openalex.org/I4210113039",
+      "https://openalex.org/I4210116048",
+      "https://openalex.org/I4210116869",
+      "https://openalex.org/I4210120169",
+      "https://openalex.org/I4210121761",
+      "https://openalex.org/I4210122818",
+      "https://openalex.org/I4210124501",
+      "https://openalex.org/I4210124809",
+      "https://openalex.org/I4210125878",
+      "https://openalex.org/I4210127074",
+      "https://openalex.org/I4210128175",
+      "https://openalex.org/I4210128418",
+      "https://openalex.org/I4210128921",
+      "https://openalex.org/I4210130930",
+      "https://openalex.org/I4210132741",
+      "https://openalex.org/I4210132813",
+      "https://openalex.org/I4210136596",
+      "https://openalex.org/I4210137355",
+      "https://openalex.org/I4210138501",
+      "https://openalex.org/I4210139110",
+      "https://openalex.org/I4210139732",
+      "https://openalex.org/I4210141458",
+      "https://openalex.org/I4210141719",
+      "https://openalex.org/I4210141735",
+      "https://openalex.org/I4210141942",
+      "https://openalex.org/I4210143187",
+      "https://openalex.org/I4210143568",
+      "https://openalex.org/I4210145693",
+      "https://openalex.org/I4210146235",
+      "https://openalex.org/I4210151294",
+      "https://openalex.org/I4210151615",
+      "https://openalex.org/I4210151987",
+      "https://openalex.org/I4210152908",
+      "https://openalex.org/I4210153921",
+      "https://openalex.org/I4210153930",
+      "https://openalex.org/I4210154057",
+      "https://openalex.org/I4210154954",
+      "https://openalex.org/I4210156971",
+      "https://openalex.org/I4210158071",
+      "https://openalex.org/I4210160344",
+      "https://openalex.org/I4210161528",
+      "https://openalex.org/I4210161896",
+      "https://openalex.org/I4210162420",
+      "https://openalex.org/I4210163874",
+      "https://openalex.org/I4210165038",
+      "https://openalex.org/I4210166576",
+      "https://openalex.org/I43313876",
+      "https://openalex.org/I4391767655",
+      "https://openalex.org/I4391767882",
+      "https://openalex.org/I4391767896",
+      "https://openalex.org/I4391767941",
+      "https://openalex.org/I4391767976",
+      "https://openalex.org/I4391768003",
+      "https://openalex.org/I4391768224",
+      "https://openalex.org/I4396570619",
+      "https://openalex.org/I4401726949",
+      "https://openalex.org/I4405257212",
+      "https://openalex.org/I4405271954",
+      "https://openalex.org/I4405272155",
+      "https://openalex.org/I4405273215",
+      "https://openalex.org/I4405273223",
+      "https://openalex.org/I4405278620",
+      "https://openalex.org/I4405281645",
+      "https://openalex.org/I46520130",
+      "https://openalex.org/I46529539",
+      "https://openalex.org/I47720641",
+      "https://openalex.org/I55712492",
+      "https://openalex.org/I56934997",
+      "https://openalex.org/I58200834",
+      "https://openalex.org/I63190737",
+      "https://openalex.org/I63371133",
+      "https://openalex.org/I74485261",
+      "https://openalex.org/I75900474",
+      "https://openalex.org/I76130692",
+      "https://openalex.org/I78978612",
+      "https://openalex.org/I78988378",
+      "https://openalex.org/I80143920",
+      "https://openalex.org/I83519826",
+      "https://openalex.org/I881766915",
+      "https://openalex.org/I889458895",
+      "https://openalex.org/I90610280",
+      "https://openalex.org/I91935597",
+      "https://openalex.org/I92039509",
+      "https://openalex.org/I9842412",
+      "https://openalex.org/I99065089"
+    ],
+    "works_count": 526
   },
   "jialiang wang": {
     "institution_ids": [
@@ -25646,6 +26795,10 @@
       "https://openalex.org/I9916479"
     ],
     "works_count": 130
+  },
+  "jiaxu chee": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "jiayang kang": {
     "institution_ids": [
@@ -26328,6 +27481,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "jindi lv": {
+    "institution_ids": [
+      "https://openalex.org/I24185976"
+    ],
+    "works_count": 17
+  },
   "jinen setpal": {
     "institution_ids": [
       "https://openalex.org/I219193219"
@@ -26509,6 +27668,14 @@
       "https://openalex.org/I48566637"
     ],
     "works_count": 2
+  },
+  "jintu kakati": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "jinzhao lian": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "jiong tuo": {
     "institution_ids": [],
@@ -26806,6 +27973,12 @@
     ],
     "works_count": 99
   },
+  "jochen laubrock": {
+    "institution_ids": [
+      "https://openalex.org/I176453806"
+    ],
+    "works_count": 100
+  },
   "jocubas dimsa": {
     "institution_ids": [],
     "works_count": 0
@@ -26855,6 +28028,10 @@
       "https://openalex.org/I1850255"
     ],
     "works_count": 77
+  },
+  "joel r. terschuur": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "joel taddey": {
     "institution_ids": [],
@@ -26926,6 +28103,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "johannes berge": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "johannes fabian hahn": {
     "institution_ids": [
       "https://openalex.org/I159176309"
@@ -26965,6 +28146,10 @@
       "https://openalex.org/I71030271"
     ],
     "works_count": 10
+  },
+  "johari dramiga": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "john a. quinn": {
     "institution_ids": [
@@ -27615,6 +28800,10 @@
     ],
     "works_count": 137
   },
+  "jose angel alejandro-soto": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "jose antonio lara benitez": {
     "institution_ids": [
       "https://openalex.org/I74775410"
@@ -27659,6 +28848,17 @@
     ],
     "works_count": 42
   },
+  "jose m. moreno-fernandez": {
+    "institution_ids": [
+      "https://openalex.org/I143302722",
+      "https://openalex.org/I169108374",
+      "https://openalex.org/I173304897",
+      "https://openalex.org/I2802895840",
+      "https://openalex.org/I4210090703",
+      "https://openalex.org/I4210113284"
+    ],
+    "works_count": 623
+  },
   "jose manuel moreno fernandez": {
     "institution_ids": [
       "https://openalex.org/I143302722",
@@ -27692,6 +28892,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "josef brozovich": {
+    "institution_ids": [
+      "https://openalex.org/I86519309"
+    ],
+    "works_count": 1
+  },
   "josef chen": {
     "institution_ids": [
       "https://openalex.org/I55952717"
@@ -27721,6 +28927,13 @@
       "https://openalex.org/I4210104735"
     ],
     "works_count": 88
+  },
+  "joseph ansel hoisington": {
+    "institution_ids": [
+      "https://openalex.org/I192578771",
+      "https://openalex.org/I4210119712"
+    ],
+    "works_count": 11
   },
   "joseph dzahini": {
     "institution_ids": [
@@ -27813,6 +29026,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "joshua d guttman": {
+    "institution_ids": [
+      "https://openalex.org/I44896327"
+    ],
+    "works_count": 165
+  },
   "joshua d. bucci": {
     "institution_ids": [],
     "works_count": 0
@@ -27824,6 +29043,13 @@
       "https://openalex.org/I197572798"
     ],
     "works_count": 195
+  },
+  "joshua einstein-curtis": {
+    "institution_ids": [
+      "https://openalex.org/I2801876189",
+      "https://openalex.org/I4210154456"
+    ],
+    "works_count": 51
   },
   "joshua iosevich": {
     "institution_ids": [
@@ -28109,6 +29335,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "jui-chia lee": {
+    "institution_ids": [
+      "https://openalex.org/I165441096"
+    ],
+    "works_count": 43
+  },
   "jui-chien tsou": {
     "institution_ids": [
       "https://openalex.org/I16733864"
@@ -28194,11 +29426,21 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "julia r. rice": {
+    "institution_ids": [
+      "https://openalex.org/I185261750"
+    ],
+    "works_count": 12
+  },
   "julia sophie gaßler": {
     "institution_ids": [],
     "works_count": 0
   },
   "julia van beurden": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "julian a. beisch": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -29792,6 +31034,10 @@
     ],
     "works_count": 11
   },
+  "keito tabuchi": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "kejun fang": {
     "institution_ids": [],
     "works_count": 0
@@ -29979,6 +31225,12 @@
     ],
     "works_count": 2
   },
+  "kevin j. anderton": {
+    "institution_ids": [
+      "https://openalex.org/I36258959"
+    ],
+    "works_count": 53
+  },
   "kevin j. chung": {
     "institution_ids": [
       "https://openalex.org/I136199984",
@@ -30127,6 +31379,13 @@
       "https://openalex.org/I125989756"
     ],
     "works_count": 1
+  },
+  "khashayar irani": {
+    "institution_ids": [
+      "https://openalex.org/I124357947",
+      "https://openalex.org/I98259816"
+    ],
+    "works_count": 10
   },
   "khoa hoang dang nguyen": {
     "institution_ids": [
@@ -30365,6 +31624,12 @@
     ],
     "works_count": 18
   },
+  "kirill gelvan": {
+    "institution_ids": [
+      "https://openalex.org/I62916508"
+    ],
+    "works_count": 1
+  },
   "kirill koloskov": {
     "institution_ids": [],
     "works_count": 0
@@ -30487,6 +31752,10 @@
     ],
     "works_count": 16
   },
+  "kodai sugizaki": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "koen scheres": {
     "institution_ids": [
       "https://openalex.org/I83019370",
@@ -30507,6 +31776,10 @@
     "works_count": 1
   },
   "kohtaro ihara": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "kokin cho": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -30737,6 +32010,16 @@
     ],
     "works_count": 35
   },
+  "krishna nandula": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "krishnan b. iyer": {
+    "institution_ids": [
+      "https://openalex.org/I71920554"
+    ],
+    "works_count": 4
+  },
   "krishnan harikumar": {
     "institution_ids": [
       "https://openalex.org/I185261750"
@@ -30748,6 +32031,12 @@
       "https://openalex.org/I347237974"
     ],
     "works_count": 4
+  },
+  "krishnendu bhowmick": {
+    "institution_ids": [
+      "https://openalex.org/I4210158379"
+    ],
+    "works_count": 9
   },
   "krispin c. v. broers": {
     "institution_ids": [
@@ -30775,6 +32064,10 @@
     "works_count": 126
   },
   "kristian uldal kristiansen": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "kristina kantima østvold": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -30828,6 +32121,10 @@
       "https://openalex.org/I4210116678"
     ],
     "works_count": 2
+  },
+  "kriyoshig prasai": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "kryštof pšenička": {
     "institution_ids": [
@@ -30994,6 +32291,10 @@
     "works_count": 5
   },
   "kunyi mark ma": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "kuritsina ekaterina": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -31183,6 +32484,10 @@
       "https://openalex.org/I121748325"
     ],
     "works_count": 13
+  },
+  "l. f. lopez rios": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "l. f. van duren watak": {
     "institution_ids": [],
@@ -31565,6 +32870,13 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "laura kreidberg": {
+    "institution_ids": [
+      "https://openalex.org/I4210109156",
+      "https://openalex.org/I4210142152"
+    ],
+    "works_count": 389
+  },
   "laura quinonez": {
     "institution_ids": [
       "https://openalex.org/I93173995"
@@ -31829,6 +33141,10 @@
       "https://openalex.org/I180923762"
     ],
     "works_count": 2
+  },
+  "lena pickartz": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "lena pless": {
     "institution_ids": [
@@ -32596,6 +33912,14 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "liesbeth j. boersma": {
+    "institution_ids": [
+      "https://openalex.org/I2800191616",
+      "https://openalex.org/I34352273",
+      "https://openalex.org/I4210161616"
+    ],
+    "works_count": 422
+  },
   "lifeng lin": {
     "institution_ids": [
       "https://openalex.org/I138006243",
@@ -32760,6 +34084,10 @@
     ],
     "works_count": 34
   },
+  "lingsante medguard team": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "lingxiang ji": {
     "institution_ids": [],
     "works_count": 0
@@ -32875,6 +34203,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "lisa kaltenegger": {
+    "institution_ids": [
+      "https://openalex.org/I205783295"
+    ],
+    "works_count": 398
+  },
   "lisen bi": {
     "institution_ids": [
       "https://openalex.org/I102335020"
@@ -32965,6 +34299,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "loan hajdari-manigault": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "loan le maguet": {
     "institution_ids": [],
     "works_count": 0
@@ -33014,6 +34352,12 @@
       "https://openalex.org/I70931966"
     ],
     "works_count": 255
+  },
+  "loic gassmann": {
+    "institution_ids": [
+      "https://openalex.org/I154338468"
+    ],
+    "works_count": 4
   },
   "loic schaeffer": {
     "institution_ids": [],
@@ -33260,11 +34604,19 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "longhan jiao": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "longhan shen": {
     "institution_ids": [],
     "works_count": 0
   },
   "longhuan yan": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "loongforge team": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -33544,6 +34896,10 @@
     ],
     "works_count": 2
   },
+  "luat gia khoi nguyen": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "luc mallet": {
     "institution_ids": [
       "https://openalex.org/I114457229",
@@ -33704,6 +35060,12 @@
   "lucca delboni": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "lucia coll saravia": {
+    "institution_ids": [
+      "https://openalex.org/I2801876189"
+    ],
+    "works_count": 278
   },
   "lucia malickova": {
     "institution_ids": [
@@ -34168,6 +35530,12 @@
     ],
     "works_count": 1
   },
+  "lwandile gwebushe": {
+    "institution_ids": [
+      "https://openalex.org/I869660684"
+    ],
+    "works_count": 1
+  },
   "lydia achour": {
     "institution_ids": [],
     "works_count": 0
@@ -34177,6 +35545,14 @@
       "https://openalex.org/I145311948"
     ],
     "works_count": 21
+  },
+  "lyndon duong": {
+    "institution_ids": [
+      "https://openalex.org/I4210153776",
+      "https://openalex.org/I4387153999",
+      "https://openalex.org/I57206974"
+    ],
+    "works_count": 30
   },
   "lynette zhong ling wang": {
     "institution_ids": [],
@@ -34598,11 +35974,19 @@
     ],
     "works_count": 5
   },
+  "madeleine nouri": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "madeleine werthebach": {
     "institution_ids": [],
     "works_count": 0
   },
   "madeline maldonado gutierrez": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "madeline salome": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -34812,9 +36196,19 @@
     ],
     "works_count": 12
   },
+  "mahika vats": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "mahima mahzabin sandria": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "mahir ahnaf": {
+    "institution_ids": [
+      "https://openalex.org/I1307585291"
+    ],
+    "works_count": 3
   },
   "mahler revsine": {
     "institution_ids": [
@@ -34858,6 +36252,10 @@
       "https://openalex.org/I142740786"
     ],
     "works_count": 11
+  },
+  "mahyar eslami": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "mahyar hasani": {
     "institution_ids": [],
@@ -34972,6 +36370,12 @@
       "https://openalex.org/I3124489027"
     ],
     "works_count": 14
+  },
+  "maksim firsau": {
+    "institution_ids": [
+      "https://openalex.org/I291386647"
+    ],
+    "works_count": 1
   },
   "maksim parfenov": {
     "institution_ids": [
@@ -35113,6 +36517,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "manasvi kapoor": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "mandana shabanzadeh nasrollah-abadi": {
     "institution_ids": [],
     "works_count": 0
@@ -35189,6 +36597,12 @@
     ],
     "works_count": 1
   },
+  "manousos maridakis": {
+    "institution_ids": [
+      "https://openalex.org/I102322142"
+    ],
+    "works_count": 9
+  },
   "manovah nadarajah": {
     "institution_ids": [],
     "works_count": 0
@@ -35228,6 +36642,12 @@
       "https://openalex.org/I9617848"
     ],
     "works_count": 41
+  },
+  "manuel prada-corral": {
+    "institution_ids": [
+      "https://openalex.org/I200284239"
+    ],
+    "works_count": 4
   },
   "manuel rey-escobar": {
     "institution_ids": [],
@@ -35559,6 +36979,16 @@
     ],
     "works_count": 5
   },
+  "marcos g. de oliveira": {
+    "institution_ids": [
+      "https://openalex.org/I155381812",
+      "https://openalex.org/I161321875",
+      "https://openalex.org/I182534213",
+      "https://openalex.org/I4210138594",
+      "https://openalex.org/I99682543"
+    ],
+    "works_count": 412
+  },
   "marcos hernanz": {
     "institution_ids": [
       "https://openalex.org/I63634437"
@@ -35629,6 +37059,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "maresca alessio": {
+    "institution_ids": [
+      "https://openalex.org/I45204951"
+    ],
+    "works_count": 1
+  },
   "margaret kuszmaul": {
     "institution_ids": [],
     "works_count": 0
@@ -35695,6 +37131,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "maria daniela sanchez": {
+    "institution_ids": [
+      "https://openalex.org/I241749"
+    ],
+    "works_count": 10
+  },
   "maria drozdovskaya": {
     "institution_ids": [
       "https://openalex.org/I118564535",
@@ -35708,6 +37150,12 @@
       "https://openalex.org/I80850581"
     ],
     "works_count": 66
+  },
+  "maria emma eyrea irazu": {
+    "institution_ids": [
+      "https://openalex.org/I874386039"
+    ],
+    "works_count": 15
   },
   "maria eulalia vares": {
     "institution_ids": [
@@ -35766,6 +37214,10 @@
       "https://openalex.org/I4210085935"
     ],
     "works_count": 134
+  },
+  "maria lazarut": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "maria louise schmitt": {
     "institution_ids": [],
@@ -36047,6 +37499,18 @@
     ],
     "works_count": 19
   },
+  "mark keavney": {
+    "institution_ids": [
+      "https://openalex.org/I88773910"
+    ],
+    "works_count": 8
+  },
+  "mark lovett": {
+    "institution_ids": [
+      "https://openalex.org/I180670191"
+    ],
+    "works_count": 3
+  },
   "mark lovett feng fu": {
     "institution_ids": [],
     "works_count": 0
@@ -36179,6 +37643,10 @@
       "https://openalex.org/I4210160608"
     ],
     "works_count": 2
+  },
+  "maroon ayoub": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "maroua ogab": {
     "institution_ids": [
@@ -36400,6 +37868,10 @@
     ],
     "works_count": 133
   },
+  "marton baltay": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "maru\\v{s}a brada\\v{c}": {
     "institution_ids": [],
     "works_count": 0
@@ -36559,6 +38031,12 @@
       "https://openalex.org/I904495901"
     ],
     "works_count": 12
+  },
+  "matan kichler": {
+    "institution_ids": [
+      "https://openalex.org/I53964585"
+    ],
+    "works_count": 2
   },
   "matan toledano": {
     "institution_ids": [
@@ -36825,6 +38303,12 @@
       "https://openalex.org/I158842170"
     ],
     "works_count": 25
+  },
+  "matt valentine": {
+    "institution_ids": [
+      "https://openalex.org/I153648349"
+    ],
+    "works_count": 3
   },
   "matt w. kury": {
     "institution_ids": [],
@@ -37164,6 +38648,10 @@
     ],
     "works_count": 1
   },
+  "mattias fabry": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "mattias kvist": {
     "institution_ids": [],
     "works_count": 0
@@ -37465,6 +38953,10 @@
     ],
     "works_count": 32
   },
+  "maximillian liao": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "maxwell khor": {
     "institution_ids": [],
     "works_count": 0
@@ -37561,6 +39053,13 @@
     ],
     "works_count": 5
   },
+  "md rashad al hasan rony": {
+    "institution_ids": [
+      "https://openalex.org/I1283382300",
+      "https://openalex.org/I4210156768"
+    ],
+    "works_count": 23
+  },
   "md rayhanul masud": {
     "institution_ids": [
       "https://openalex.org/I103635307"
@@ -37596,6 +39095,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "md. abdullah al zami": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "md. as-aid rahman": {
     "institution_ids": [],
     "works_count": 0
@@ -37609,6 +39112,12 @@
       "https://openalex.org/I157386601"
     ],
     "works_count": 10
+  },
+  "md. nazmuddoha ansary": {
+    "institution_ids": [
+      "https://openalex.org/I183697816"
+    ],
+    "works_count": 12
   },
   "md. shahed hossain": {
     "institution_ids": [
@@ -37740,6 +39249,10 @@
     ],
     "works_count": 15
   },
+  "mehrosh talat": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "mehta harsh jayeshkumar": {
     "institution_ids": [
       "https://openalex.org/I154851008"
@@ -37783,6 +39296,10 @@
     "works_count": 0
   },
   "meiyi bu": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "mekhala hithyshini sreenivasa": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -37837,6 +39354,10 @@
     ],
     "works_count": 239
   },
+  "melda akyazi-zavadski": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "melih akdag": {
     "institution_ids": [
       "https://openalex.org/I188703460"
@@ -37889,6 +39410,12 @@
   "menard soni": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "menevse eryuzlu paulovicks": {
+    "institution_ids": [
+      "https://openalex.org/I188538660"
+    ],
+    "works_count": 8
   },
   "meng ding": {
     "institution_ids": [
@@ -38193,6 +39720,12 @@
   "michail kyrkos": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "michal jacovi": {
+    "institution_ids": [
+      "https://openalex.org/I4210167297"
+    ],
+    "works_count": 62
   },
   "michal kobiela": {
     "institution_ids": [
@@ -38962,6 +40495,12 @@
     ],
     "works_count": 1
   },
+  "minh d. luu": {
+    "institution_ids": [
+      "https://openalex.org/I169381384"
+    ],
+    "works_count": 6
+  },
   "minh long bui": {
     "institution_ids": [
       "https://openalex.org/I72951846"
@@ -39353,6 +40892,12 @@
     ],
     "works_count": 4
   },
+  "mohamed-oumar ouerfelli": {
+    "institution_ids": [
+      "https://openalex.org/I79576946"
+    ],
+    "works_count": 7
+  },
   "mohamed-slim alouini": {
     "institution_ids": [
       "https://openalex.org/I71920554"
@@ -39705,6 +41250,10 @@
       "https://openalex.org/I188538660"
     ],
     "works_count": 20
+  },
+  "morgan colin-mourre": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "morgan fouesneau": {
     "institution_ids": [
@@ -40150,11 +41699,21 @@
     ],
     "works_count": 8
   },
+  "mustafa vedat yildirim": {
+    "institution_ids": [
+      "https://openalex.org/I124261462"
+    ],
+    "works_count": 1
+  },
   "mustazee rahman": {
     "institution_ids": [
       "https://openalex.org/I190082696"
     ],
     "works_count": 34
+  },
+  "mutsuha asada": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "muxin song": {
     "institution_ids": [],
@@ -40307,6 +41866,12 @@
   "n. kossi doulabe": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "n. kryazhevskikh": {
+    "institution_ids": [
+      "https://openalex.org/I1313323035"
+    ],
+    "works_count": 7
   },
   "n. m. kostogryz": {
     "institution_ids": [
@@ -40701,6 +42266,12 @@
     ],
     "works_count": 9
   },
+  "natasha e blycha": {
+    "institution_ids": [
+      "https://openalex.org/I56590836"
+    ],
+    "works_count": 6
+  },
   "natasza gadowska": {
     "institution_ids": [],
     "works_count": 0
@@ -40712,6 +42283,10 @@
     "works_count": 9
   },
   "nate morrill": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "nate somers": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -40824,6 +42399,12 @@
   "nathana\\\"el lemonnier": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "nathaniel burgdorfer": {
+    "institution_ids": [
+      "https://openalex.org/I108468826"
+    ],
+    "works_count": 8
   },
   "nathaniel foli": {
     "institution_ids": [
@@ -41014,6 +42595,13 @@
       "https://openalex.org/I102322142"
     ],
     "works_count": 1
+  },
+  "neil j. y. fan": {
+    "institution_ids": [
+      "https://openalex.org/I153718931",
+      "https://openalex.org/I24185976"
+    ],
+    "works_count": 35
   },
   "neil panse": {
     "institution_ids": [],
@@ -41290,6 +42878,10 @@
     ],
     "works_count": 165
   },
+  "nicanora ordono wallig": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "niccol\\`o parmiggiani": {
     "institution_ids": [],
     "works_count": 0
@@ -41444,6 +43036,10 @@
       "https://openalex.org/I4405256045"
     ],
     "works_count": 2
+  },
+  "nickolay chernev": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "niclas alkazaz": {
     "institution_ids": [],
@@ -41825,6 +43421,10 @@
     ],
     "works_count": 6
   },
+  "nikita v. gordeev": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "nikita v. konev": {
     "institution_ids": [],
     "works_count": 0
@@ -41967,6 +43567,10 @@
     ],
     "works_count": 1
   },
+  "nikolay spitsyn": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "nikoli dryden": {
     "institution_ids": [
       "https://openalex.org/I1282311441",
@@ -42018,6 +43622,10 @@
       "https://openalex.org/I4210098966"
     ],
     "works_count": 1
+  },
+  "nils brede mo": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "nils lamouche": {
     "institution_ids": [
@@ -42071,6 +43679,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "nina goncharova": {
+    "institution_ids": [
+      "https://openalex.org/I4210088915"
+    ],
+    "works_count": 4
+  },
   "nina weichmann": {
     "institution_ids": [],
     "works_count": 0
@@ -42088,6 +43702,14 @@
   "ning jiaqu": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "ningbo bu": {
+    "institution_ids": [
+      "https://openalex.org/I109935558",
+      "https://openalex.org/I19820366",
+      "https://openalex.org/I4210165339"
+    ],
+    "works_count": 13
   },
   "ningchu liu": {
     "institution_ids": [],
@@ -42250,6 +43872,10 @@
     ],
     "works_count": 8
   },
+  "noah sturgill": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "noah t. rossi": {
     "institution_ids": [],
     "works_count": 0
@@ -42322,6 +43948,10 @@
       "https://openalex.org/I4210113480"
     ],
     "works_count": 14
+  },
+  "nora-elen giesinger": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "norbert meyners": {
     "institution_ids": [
@@ -42650,6 +44280,13 @@
     ],
     "works_count": 13
   },
+  "oleg kaidanov": {
+    "institution_ids": [
+      "https://openalex.org/I31512782",
+      "https://openalex.org/I33256026"
+    ],
+    "works_count": 2
+  },
   "oleg lyubimtsev": {
     "institution_ids": [
       "https://openalex.org/I19880235"
@@ -42866,6 +44503,19 @@
     ],
     "works_count": 118
   },
+  "olivier stasse": {
+    "institution_ids": [
+      "https://openalex.org/I190497903"
+    ],
+    "works_count": 222
+  },
+  "olivier verscheure": {
+    "institution_ids": [
+      "https://openalex.org/I4210122261",
+      "https://openalex.org/I5124864"
+    ],
+    "works_count": 81
+  },
   "ollie thakar": {
     "institution_ids": [
       "https://openalex.org/I136199984",
@@ -42949,6 +44599,18 @@
   "omm swarup": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "omoruyi atekha": {
+    "institution_ids": [
+      "https://openalex.org/I97018004"
+    ],
+    "works_count": 3
+  },
+  "omri homburger": {
+    "institution_ids": [
+      "https://openalex.org/I138898306"
+    ],
+    "works_count": 3
   },
   "omri kosary": {
     "institution_ids": [],
@@ -43056,6 +44718,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "osama abuelsorour": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "osamudiamen edogun": {
     "institution_ids": [],
     "works_count": 0
@@ -43151,6 +44817,10 @@
       "https://openalex.org/I904495901"
     ],
     "works_count": 4
+  },
+  "owen j. weisenberger": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "owen l. martin": {
     "institution_ids": [
@@ -43477,6 +45147,10 @@
       "https://openalex.org/I4387152169"
     ],
     "works_count": 39
+  },
+  "paneendra g n": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "pankaj bhalla": {
     "institution_ids": [
@@ -43860,6 +45534,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "pau redon munoz": {
+    "institution_ids": [
+      "https://openalex.org/I9617848"
+    ],
+    "works_count": 2
+  },
   "pau torrente badia": {
     "institution_ids": [],
     "works_count": 0
@@ -43927,6 +45607,10 @@
       "https://openalex.org/I95457486"
     ],
     "works_count": 721
+  },
+  "paul jacques connetable": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "paul k. mandal": {
     "institution_ids": [
@@ -44412,6 +46096,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "peter rafat adel iskandar": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "peter rowley": {
     "institution_ids": [
       "https://openalex.org/I190082696"
@@ -44630,6 +46318,12 @@
       "https://openalex.org/I5124864"
     ],
     "works_count": 141
+  },
+  "phillip b. strobel": {
+    "institution_ids": [
+      "https://openalex.org/I202697423"
+    ],
+    "works_count": 56
   },
   "phillip badenhorst": {
     "institution_ids": [
@@ -44951,6 +46645,12 @@
     ],
     "works_count": 42
   },
+  "piotr kalita": {
+    "institution_ids": [
+      "https://openalex.org/I126596746"
+    ],
+    "works_count": 91
+  },
   "piotr luszczek": {
     "institution_ids": [
       "https://openalex.org/I4210122954"
@@ -44974,6 +46674,12 @@
       "https://openalex.org/I4210111960"
     ],
     "works_count": 40
+  },
+  "pironti francesco aurelio": {
+    "institution_ids": [
+      "https://openalex.org/I45204951"
+    ],
+    "works_count": 16
   },
   "piumi don simonge": {
     "institution_ids": [
@@ -45140,6 +46846,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "pramod anantharam": {
+    "institution_ids": [
+      "https://openalex.org/I4210120115"
+    ],
+    "works_count": 43
+  },
   "pramukto mandal": {
     "institution_ids": [],
     "works_count": 0
@@ -45248,6 +46960,10 @@
       "https://openalex.org/I6498739"
     ],
     "works_count": 92
+  },
+  "pratap alte": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "prathap ramachandra": {
     "institution_ids": [
@@ -45388,6 +47104,12 @@
   "progga biswas parama": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "promod yenigalla": {
+    "institution_ids": [
+      "https://openalex.org/I1311688040"
+    ],
+    "works_count": 33
   },
   "pronay dutta": {
     "institution_ids": [
@@ -45711,6 +47433,10 @@
     ],
     "works_count": 35
   },
+  "qingmao yao": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "qingpo cao": {
     "institution_ids": [],
     "works_count": 0
@@ -45784,6 +47510,12 @@
   "qinuo cao": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "qionglin ren": {
+    "institution_ids": [
+      "https://openalex.org/I24943067"
+    ],
+    "works_count": 2
   },
   "qiongqiong wang": {
     "institution_ids": [
@@ -46169,6 +47901,13 @@
     ],
     "works_count": 12
   },
+  "r. puccinelli": {
+    "institution_ids": [
+      "https://openalex.org/I180670191",
+      "https://openalex.org/I95457486"
+    ],
+    "works_count": 17
+  },
   "r. r. polekhina": {
     "institution_ids": [],
     "works_count": 0
@@ -46248,6 +47987,10 @@
     ],
     "works_count": 10
   },
+  "rachel migdal": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "rachel pauline": {
     "institution_ids": [
       "https://openalex.org/I13469542"
@@ -46313,6 +48056,12 @@
     ],
     "works_count": 6
   },
+  "rafael e. banchs": {
+    "institution_ids": [
+      "https://openalex.org/I172675005"
+    ],
+    "works_count": 213
+  },
   "rafael filipe": {
     "institution_ids": [
       "https://openalex.org/I4387153947",
@@ -46357,6 +48106,12 @@
     ],
     "works_count": 6
   },
+  "raghav mallampalli": {
+    "institution_ids": [
+      "https://openalex.org/I24676775"
+    ],
+    "works_count": 2
+  },
   "raghav mani": {
     "institution_ids": [
       "https://openalex.org/I4210127875"
@@ -46374,6 +48129,10 @@
       "https://openalex.org/I66946132"
     ],
     "works_count": 1
+  },
+  "raghavender surya upadhayula": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "raghubar singh": {
     "institution_ids": [
@@ -46432,6 +48191,10 @@
       "https://openalex.org/I27804330"
     ],
     "works_count": 182
+  },
+  "rahul bag": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "rahul chalamala": {
     "institution_ids": [
@@ -46553,12 +48316,20 @@
     ],
     "works_count": 39
   },
+  "rajkumar silwal": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "rajorshi bhattacharya": {
     "institution_ids": [
       "https://openalex.org/I169521973",
       "https://openalex.org/I2609998029"
     ],
     "works_count": 22
+  },
+  "rajpal. devesh": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "rajpreet thethy": {
     "institution_ids": [
@@ -46748,6 +48519,12 @@
     ],
     "works_count": 8
   },
+  "raphael ponge": {
+    "institution_ids": [
+      "https://openalex.org/I24185976"
+    ],
+    "works_count": 72
+  },
   "raphael s. steiner": {
     "institution_ids": [
       "https://openalex.org/I35440088"
@@ -46824,6 +48601,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "rasmus emil nyholm": {
+    "institution_ids": [
+      "https://openalex.org/I177969490"
+    ],
+    "works_count": 2
+  },
   "rasmus kold": {
     "institution_ids": [
       "https://openalex.org/I204337017"
@@ -46835,6 +48618,12 @@
       "https://openalex.org/I33552525"
     ],
     "works_count": 22
+  },
+  "ratha siv": {
+    "institution_ids": [
+      "https://openalex.org/I130929987"
+    ],
+    "works_count": 6
   },
   "raul boix-aldeguer": {
     "institution_ids": [],
@@ -46861,6 +48650,10 @@
       "https://openalex.org/I103635307"
     ],
     "works_count": 5
+  },
+  "ravikumar komandur narayanan": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "ravindran vasoor saravanan": {
     "institution_ids": [],
@@ -47411,6 +49204,10 @@
     ],
     "works_count": 67
   },
+  "riccardo giunti": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "riccardo zattra": {
     "institution_ids": [],
     "works_count": 0
@@ -47529,6 +49326,10 @@
     ],
     "works_count": 1
   },
+  "riki r z choi": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "rikiya okazaki": {
     "institution_ids": [
       "https://openalex.org/I200475212"
@@ -47579,6 +49380,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "rinto yagawa": {
+    "institution_ids": [
+      "https://openalex.org/I203951103"
+    ],
+    "works_count": 2
+  },
   "rio natanel wijaya": {
     "institution_ids": [],
     "works_count": 0
@@ -47586,6 +49393,12 @@
   "rishabh gala": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "rishabh ravi": {
+    "institution_ids": [
+      "https://openalex.org/I74973139"
+    ],
+    "works_count": 303
   },
   "rishal aggarwal": {
     "institution_ids": [
@@ -47738,6 +49551,10 @@
     ],
     "works_count": 131
   },
+  "robert heyck": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "robert j. fasano": {
     "institution_ids": [
       "https://openalex.org/I1321296531"
@@ -47794,6 +49611,10 @@
       "https://openalex.org/I74801974"
     ],
     "works_count": 2
+  },
+  "roberta vasallo": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "roberto nuca": {
     "institution_ids": [
@@ -47942,6 +49763,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "rohan kadkol": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "rohan sarkar": {
     "institution_ids": [
       "https://openalex.org/I179420787",
@@ -48016,6 +49841,10 @@
     ],
     "works_count": 737
   },
+  "rohith pasula": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "roi yozevitch": {
     "institution_ids": [
       "https://openalex.org/I52170813"
@@ -48078,6 +49907,10 @@
       "https://openalex.org/I172901346"
     ],
     "works_count": 14
+  },
+  "roman paviot": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "romeo passaro": {
     "institution_ids": [
@@ -48188,6 +50021,10 @@
     ],
     "works_count": 5
   },
+  "ronit jahilal": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "rony keppens": {
     "institution_ids": [
       "https://openalex.org/I99464096"
@@ -48228,6 +50065,10 @@
     ],
     "works_count": 381
   },
+  "rosalia d. o'brien": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "rose megirian": {
     "institution_ids": [
       "https://openalex.org/I205640436"
@@ -48243,6 +50084,10 @@
       "https://openalex.org/I97018004"
     ],
     "works_count": 1
+  },
+  "rosita ji": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "ross wightman": {
     "institution_ids": [
@@ -48296,6 +50141,12 @@
     ],
     "works_count": 1
   },
+  "ru zhen": {
+    "institution_ids": [
+      "https://openalex.org/I45928872"
+    ],
+    "works_count": 15
+  },
   "ruan yuhang": {
     "institution_ids": [
       "https://openalex.org/I111599522"
@@ -48333,6 +50184,13 @@
       "https://openalex.org/I114395901"
     ],
     "works_count": 1
+  },
+  "rudransh agnihotri": {
+    "institution_ids": [
+      "https://openalex.org/I162030827",
+      "https://openalex.org/I4401726839"
+    ],
+    "works_count": 4
   },
   "rudy lam": {
     "institution_ids": [
@@ -48448,6 +50306,13 @@
     ],
     "works_count": 2
   },
+  "ruixue lian": {
+    "institution_ids": [
+      "https://openalex.org/I1311688040",
+      "https://openalex.org/I135310074"
+    ],
+    "works_count": 25
+  },
   "ruize yin": {
     "institution_ids": [
       "https://openalex.org/I4210096899"
@@ -48461,6 +50326,12 @@
   "ruizhe xie": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "rujing dang": {
+    "institution_ids": [
+      "https://openalex.org/I45928872"
+    ],
+    "works_count": 4
   },
   "rukai cang": {
     "institution_ids": [
@@ -48495,6 +50366,10 @@
     "works_count": 4
   },
   "runlin liang": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "runmin lan": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -48534,6 +50409,15 @@
       "https://openalex.org/I55538621"
     ],
     "works_count": 148
+  },
+  "ruocheng yang": {
+    "institution_ids": [
+      "https://openalex.org/I184490438",
+      "https://openalex.org/I4210092839",
+      "https://openalex.org/I4210146685",
+      "https://openalex.org/I76130692"
+    ],
+    "works_count": 3
   },
   "ruochuan shi": {
     "institution_ids": [
@@ -48599,6 +50483,12 @@
       "https://openalex.org/I143379178"
     ],
     "works_count": 16
+  },
+  "ruslan savchenko": {
+    "institution_ids": [
+      "https://openalex.org/I58957048"
+    ],
+    "works_count": 8
   },
   "ruslan solikhov": {
     "institution_ids": [
@@ -48691,6 +50581,10 @@
       "https://openalex.org/I4210116746"
     ],
     "works_count": 13
+  },
+  "ryan hanrui wang": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "ryan heejoon byun": {
     "institution_ids": [
@@ -48802,6 +50696,13 @@
     ],
     "works_count": 3
   },
+  "ryou oomura": {
+    "institution_ids": [
+      "https://openalex.org/I4405287467",
+      "https://openalex.org/I98285908"
+    ],
+    "works_count": 1
+  },
   "ryoya yoshiyama": {
     "institution_ids": [
       "https://openalex.org/I98285908"
@@ -48831,6 +50732,10 @@
       "https://openalex.org/I201537933"
     ],
     "works_count": 7
+  },
+  "ryuto saeki": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "s. aigrain": {
     "institution_ids": [
@@ -48920,6 +50825,12 @@
       "https://openalex.org/I2800895607"
     ],
     "works_count": 68
+  },
+  "s. p. macbride": {
+    "institution_ids": [
+      "https://openalex.org/I2800201399"
+    ],
+    "works_count": 51
   },
   "s. prassidis": {
     "institution_ids": [
@@ -49139,6 +51050,12 @@
     ],
     "works_count": 10
   },
+  "sadracd gamez": {
+    "institution_ids": [
+      "https://openalex.org/I20382870"
+    ],
+    "works_count": 2
+  },
   "saeed hashemi sababe": {
     "institution_ids": [
       "https://openalex.org/I154425047"
@@ -49178,6 +51095,12 @@
   "sagnik basu": {
     "institution_ids": [
       "https://openalex.org/I106542073"
+    ],
+    "works_count": 3
+  },
+  "sagun man singh shrestha": {
+    "institution_ids": [
+      "https://openalex.org/I1292875679"
     ],
     "works_count": 3
   },
@@ -49252,6 +51175,12 @@
     ],
     "works_count": 13
   },
+  "sai shankar narasimhan": {
+    "institution_ids": [
+      "https://openalex.org/I86519309"
+    ],
+    "works_count": 13
+  },
   "sai surya duvvuri": {
     "institution_ids": [
       "https://openalex.org/I86519309"
@@ -49261,6 +51190,12 @@
   "sai-chao deng": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "saifeddine ben naamia": {
+    "institution_ids": [
+      "https://openalex.org/I71920554"
+    ],
+    "works_count": 4
   },
   "saikumar chinthakayala": {
     "institution_ids": [
@@ -49379,6 +51314,10 @@
     ],
     "works_count": 1
   },
+  "salma azouzi": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "salma begum tamanna": {
     "institution_ids": [],
     "works_count": 0
@@ -49417,6 +51356,12 @@
     ],
     "works_count": 52
   },
+  "sam kault": {
+    "institution_ids": [
+      "https://openalex.org/I165143802"
+    ],
+    "works_count": 5
+  },
   "sam kirkham": {
     "institution_ids": [
       "https://openalex.org/I28407311",
@@ -49429,6 +51374,12 @@
       "https://openalex.org/I32971472"
     ],
     "works_count": 10
+  },
+  "sam schmidgall": {
+    "institution_ids": [
+      "https://openalex.org/I145311948"
+    ],
+    "works_count": 2
   },
   "sam t. badman": {
     "institution_ids": [
@@ -49824,6 +51775,13 @@
     ],
     "works_count": 249
   },
+  "sandor z. kiss": {
+    "institution_ids": [
+      "https://openalex.org/I29770179",
+      "https://openalex.org/I4387152226"
+    ],
+    "works_count": 107
+  },
   "sandra d. k kingma": {
     "institution_ids": [
       "https://openalex.org/I149213910",
@@ -49916,6 +51874,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "sanjari srivastava": {
+    "institution_ids": [
+      "https://openalex.org/I97018004"
+    ],
+    "works_count": 5
+  },
   "sanjay malisetty": {
     "institution_ids": [],
     "works_count": 0
@@ -49990,6 +51954,12 @@
       "https://openalex.org/I70971781"
     ],
     "works_count": 3
+  },
+  "santai qu": {
+    "institution_ids": [
+      "https://openalex.org/I126520041"
+    ],
+    "works_count": 12
   },
   "santiago akle serano": {
     "institution_ids": [
@@ -50134,6 +52104,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "sarayu pacca": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "sarayu sirikonda": {
     "institution_ids": [
       "https://openalex.org/I95457486"
@@ -50149,6 +52123,12 @@
       "https://openalex.org/I154425047"
     ],
     "works_count": 1
+  },
+  "sarthak batra": {
+    "institution_ids": [
+      "https://openalex.org/I28290843"
+    ],
+    "works_count": 13
   },
   "sarthak bhattarai": {
     "institution_ids": [
@@ -50442,6 +52422,12 @@
     ],
     "works_count": 53
   },
+  "scott d. hughes": {
+    "institution_ids": [
+      "https://openalex.org/I169521973"
+    ],
+    "works_count": 5
+  },
   "scott m. gilmore": {
     "institution_ids": [],
     "works_count": 0
@@ -50599,6 +52585,12 @@
       "https://openalex.org/I106157433"
     ],
     "works_count": 24
+  },
+  "sebastian pusch": {
+    "institution_ids": [
+      "https://openalex.org/I76198965"
+    ],
+    "works_count": 50
   },
   "sebastian r. wain": {
     "institution_ids": [],
@@ -50873,6 +52865,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "serena oduro": {
+    "institution_ids": [
+      "https://openalex.org/I4210137115"
+    ],
+    "works_count": 7
+  },
   "serene feng": {
     "institution_ids": [
       "https://openalex.org/I79576946"
@@ -50903,6 +52901,12 @@
   "sergey v. strelsov": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "sergey zagoruyko": {
+    "institution_ids": [
+      "https://openalex.org/I125989756"
+    ],
+    "works_count": 28
   },
   "sergi burniol clotet": {
     "institution_ids": [
@@ -51111,6 +53115,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "shahd elmahallawy": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "shaheer raza": {
     "institution_ids": [
       "https://openalex.org/I219193219"
@@ -51150,6 +53158,12 @@
       "https://openalex.org/I4210164149"
     ],
     "works_count": 5
+  },
+  "shai bagon": {
+    "institution_ids": [
+      "https://openalex.org/I53964585"
+    ],
+    "works_count": 43
   },
   "shai ben-david": {
     "institution_ids": [
@@ -51982,11 +53996,19 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "sheyril agarwal": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "shi bin hoo": {
     "institution_ids": [
       "https://openalex.org/I161046081"
     ],
     "works_count": 6
+  },
+  "shichang zhai": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "shichao wu": {
     "institution_ids": [
@@ -52004,6 +54026,16 @@
       "https://openalex.org/I2801109035"
     ],
     "works_count": 112
+  },
+  "shiekh saniya": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "shifa hussain": {
+    "institution_ids": [
+      "https://openalex.org/I4210117780"
+    ],
+    "works_count": 4
   },
   "shigemi mizukam": {
     "institution_ids": [],
@@ -52278,6 +54310,10 @@
     ],
     "works_count": 1
   },
+  "shizhe cui": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "shlomo a. perles": {
     "institution_ids": [],
     "works_count": 0
@@ -52297,6 +54333,12 @@
       "https://openalex.org/I4210166566"
     ],
     "works_count": 42
+  },
+  "shokichi takakura": {
+    "institution_ids": [
+      "https://openalex.org/I74801974"
+    ],
+    "works_count": 13
   },
   "sholpan bolatzhanova": {
     "institution_ids": [
@@ -52413,6 +54455,13 @@
     ],
     "works_count": 52
   },
+  "shu-lin shih": {
+    "institution_ids": [
+      "https://openalex.org/I2802331550",
+      "https://openalex.org/I47519274"
+    ],
+    "works_count": 177
+  },
   "shuaichenji jiang": {
     "institution_ids": [],
     "works_count": 0
@@ -52483,6 +54532,12 @@
   "shubhan mital": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "shubhang goswami": {
+    "institution_ids": [
+      "https://openalex.org/I157725225"
+    ],
+    "works_count": 4
   },
   "shubhangi bansude": {
     "institution_ids": [
@@ -52652,6 +54707,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "sibangi subhadarsani": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "sibatmika babu": {
     "institution_ids": [
       "https://openalex.org/I219193219"
@@ -52697,6 +54756,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "siddharta laloux": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "siddharth nagisetty": {
     "institution_ids": [
       "https://openalex.org/I27837315"
@@ -52729,6 +54792,12 @@
       "https://openalex.org/I4210109712"
     ],
     "works_count": 14
+  },
+  "siddheswar kundu": {
+    "institution_ids": [
+      "https://openalex.org/I94234084"
+    ],
+    "works_count": 5
   },
   "siddhi prajapati": {
     "institution_ids": [],
@@ -52799,6 +54868,12 @@
       "https://openalex.org/I57206974"
     ],
     "works_count": 17
+  },
+  "sila mutaf": {
+    "institution_ids": [
+      "https://openalex.org/I27837315"
+    ],
+    "works_count": 2
   },
   "silicon team": {
     "institution_ids": [],
@@ -53042,6 +55117,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "sinhwi kim": {
+    "institution_ids": [
+      "https://openalex.org/I848706"
+    ],
+    "works_count": 10
+  },
   "sioree ansar": {
     "institution_ids": [
       "https://openalex.org/I190082696"
@@ -53126,6 +55207,10 @@
       "https://openalex.org/I5023651"
     ],
     "works_count": 249
+  },
+  "sivakameswara reddy chejarla": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "sivaraaman balakrishnan": {
     "institution_ids": [],
@@ -53287,6 +55372,10 @@
     ],
     "works_count": 15
   },
+  "skylar gu": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "sladjana marčeta-mandić": {
     "institution_ids": [
       "https://openalex.org/I4068193",
@@ -53350,6 +55439,10 @@
       "https://openalex.org/I4210127875"
     ],
     "works_count": 4
+  },
+  "sofia ramos anton": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "sofia scarnicci": {
     "institution_ids": [],
@@ -53506,6 +55599,12 @@
     ],
     "works_count": 5
   },
+  "sophia deng": {
+    "institution_ids": [
+      "https://openalex.org/I69356397"
+    ],
+    "works_count": 26
+  },
   "sophia hartmann": {
     "institution_ids": [
       "https://openalex.org/I4210111828",
@@ -53633,6 +55732,13 @@
       "https://openalex.org/I145311948"
     ],
     "works_count": 14
+  },
+  "soumaya chaffar": {
+    "institution_ids": [
+      "https://openalex.org/I200745827",
+      "https://openalex.org/I3130019198"
+    ],
+    "works_count": 35
   },
   "soumaya cherkaoui": {
     "institution_ids": [
@@ -54075,6 +56181,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "stepan polokhin": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "stepan vysotsky": {
     "institution_ids": [
       "https://openalex.org/I118501908"
@@ -54195,6 +56305,20 @@
       "https://openalex.org/I95457486"
     ],
     "works_count": 1293
+  },
+  "steven giacalone": {
+    "institution_ids": [
+      "https://openalex.org/I122411786",
+      "https://openalex.org/I1334627681",
+      "https://openalex.org/I95457486"
+    ],
+    "works_count": 185
+  },
+  "steven j. nick": {
+    "institution_ids": [
+      "https://openalex.org/I138006243"
+    ],
+    "works_count": 3
   },
   "steven l. richardson": {
     "institution_ids": [
@@ -54609,6 +56733,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "sunil chhita": {
+    "institution_ids": [
+      "https://openalex.org/I190082696"
+    ],
+    "works_count": 21
+  },
   "sunil kumar meena": {
     "institution_ids": [
       "https://openalex.org/I253568910",
@@ -54637,6 +56767,10 @@
     ],
     "works_count": 5
   },
+  "sunoy sanyal": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "sunraj patel": {
     "institution_ids": [
       "https://openalex.org/I94234084"
@@ -54654,6 +56788,10 @@
     "works_count": 84
   },
   "suraaj kanniwadi": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "suraiya shanaz": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -54707,6 +56845,14 @@
     ],
     "works_count": 1
   },
+  "surya ganguli": {
+    "institution_ids": [
+      "https://openalex.org/I4210137306",
+      "https://openalex.org/I95457486",
+      "https://openalex.org/I97018004"
+    ],
+    "works_count": 219
+  },
   "surya harsha": {
     "institution_ids": [
       "https://openalex.org/I1297288678"
@@ -54727,6 +56873,14 @@
   "susan e. mullallym": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "susan syeda": {
+    "institution_ids": [
+      "https://openalex.org/I4210089242",
+      "https://openalex.org/I4210153755",
+      "https://openalex.org/I44260953"
+    ],
+    "works_count": 54
   },
   "susana c. c. barros": {
     "institution_ids": [
@@ -54778,6 +56932,16 @@
       "https://openalex.org/I59270414"
     ],
     "works_count": 4
+  },
+  "suzan halim": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "suzanne sadedin": {
+    "institution_ids": [
+      "https://openalex.org/I56590836"
+    ],
+    "works_count": 61
   },
   "sven jager": {
     "institution_ids": [
@@ -54896,6 +57060,10 @@
       "https://openalex.org/I64189192"
     ],
     "works_count": 6
+  },
+  "syed ahzaz shah": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "syed azmul hasan": {
     "institution_ids": [
@@ -55179,6 +57347,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "taeoh hong": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "taeran yang": {
     "institution_ids": [],
     "works_count": 0
@@ -55355,6 +57527,10 @@
       "https://openalex.org/I158438070"
     ],
     "works_count": 123
+  },
+  "tamas ilcsik": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "tamas keleti": {
     "institution_ids": [
@@ -55577,6 +57753,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "tegawende'e f. bissyande": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "teja kac": {
     "institution_ids": [
       "https://openalex.org/I37696226"
@@ -55686,6 +57866,10 @@
       "https://openalex.org/I4210119507"
     ],
     "works_count": 241
+  },
+  "tessi aigbovbiosa-igbinovia": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "thaddeus d. komacek": {
     "institution_ids": [
@@ -55825,6 +58009,13 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "the lsst dark energy science collaboration": {
+    "institution_ids": [
+      "https://openalex.org/I40120149",
+      "https://openalex.org/I79510175"
+    ],
+    "works_count": 8
+  },
   "the quan bui": {
     "institution_ids": [
       "https://openalex.org/I4210104442",
@@ -55895,6 +58086,10 @@
       "https://openalex.org/I4210107000"
     ],
     "works_count": 1
+  },
+  "theodor brosi": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "theodore glavas": {
     "institution_ids": [
@@ -56164,6 +58359,10 @@
     ],
     "works_count": 2
   },
+  "thomas mousseau": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "thomas nevolianis": {
     "institution_ids": [
       "https://openalex.org/I4210105688"
@@ -56290,11 +58489,21 @@
     ],
     "works_count": 1
   },
+  "thota srinivas": {
+    "institution_ids": [
+      "https://openalex.org/I146416000"
+    ],
+    "works_count": 10
+  },
   "thribhuvan rapolu": {
     "institution_ids": [],
     "works_count": 0
   },
   "tiago cecchi": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "tiago h. s. weirich": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -56479,6 +58688,10 @@
     ],
     "works_count": 1
   },
+  "ties harder": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "tiger hsiao": {
     "institution_ids": [
       "https://openalex.org/I1297127228",
@@ -56575,6 +58788,10 @@
       "https://openalex.org/I1330995197"
     ],
     "works_count": 2
+  },
+  "timo kumkel": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "timo lübbing": {
     "institution_ids": [
@@ -56698,6 +58915,10 @@
     ],
     "works_count": 4
   },
+  "titouan guillou": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "titouan le guillois": {
     "institution_ids": [],
     "works_count": 0
@@ -56820,6 +59041,10 @@
     "works_count": 540
   },
   "todd j rowell": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "toi fujimura": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -57075,6 +59300,10 @@
     ],
     "works_count": 5
   },
+  "toneukarin g. agbeyegbe": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "tong li": {
     "institution_ids": [
       "https://openalex.org/I139024713",
@@ -57170,6 +59399,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "tor kringeland": {
+    "institution_ids": [
+      "https://openalex.org/I204778367"
+    ],
+    "works_count": 4
+  },
   "tor nitayanont": {
     "institution_ids": [
       "https://openalex.org/I95457486"
@@ -57213,6 +59448,12 @@
   "toyibat adele": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "toyota li": {
+    "institution_ids": [
+      "https://openalex.org/I2250653659"
+    ],
+    "works_count": 4
   },
   "tran gia bao ngo": {
     "institution_ids": [
@@ -57603,6 +59844,12 @@
   "twan stolwijk": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "ty brassington": {
+    "institution_ids": [
+      "https://openalex.org/I159129438"
+    ],
+    "works_count": 1
   },
   "tyger peake": {
     "institution_ids": [
@@ -58052,6 +60299,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "valerio triolo": {
+    "institution_ids": [
+      "https://openalex.org/I55143463"
+    ],
+    "works_count": 97
+  },
   "valery gritsenko": {
     "institution_ids": [
       "https://openalex.org/I118501908",
@@ -58207,6 +60460,12 @@
     ],
     "works_count": 46
   },
+  "vasilis avgerinos": {
+    "institution_ids": [
+      "https://openalex.org/I4210135709"
+    ],
+    "works_count": 3
+  },
   "vasilis syrgkanis": {
     "institution_ids": [
       "https://openalex.org/I1290206253",
@@ -58239,6 +60498,12 @@
       "https://openalex.org/I27804330"
     ],
     "works_count": 6
+  },
+  "vatsalya singh": {
+    "institution_ids": [
+      "https://openalex.org/I104917982"
+    ],
+    "works_count": 1
   },
   "vayun goel": {
     "institution_ids": [
@@ -58339,6 +60604,15 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "veronique moriceau": {
+    "institution_ids": [
+      "https://openalex.org/I1294671590",
+      "https://openalex.org/I205747304",
+      "https://openalex.org/I4210119061",
+      "https://openalex.org/I4405258862"
+    ],
+    "works_count": 139
+  },
   "vesa julin": {
     "institution_ids": [
       "https://openalex.org/I94722563"
@@ -58413,6 +60687,13 @@
     ],
     "works_count": 1
   },
+  "victor gutierrez-garcia": {
+    "institution_ids": [
+      "https://openalex.org/I59361560",
+      "https://openalex.org/I68368234"
+    ],
+    "works_count": 11
+  },
   "victor h. f. francheto": {
     "institution_ids": [],
     "works_count": 0
@@ -58445,6 +60726,12 @@
       "https://openalex.org/I84554738"
     ],
     "works_count": 10
+  },
+  "victor rodrigo gonzalez": {
+    "institution_ids": [
+      "https://openalex.org/I8961855"
+    ],
+    "works_count": 1
   },
   "victor shea-jay huang": {
     "institution_ids": [
@@ -58635,6 +60922,10 @@
     ],
     "works_count": 2
   },
+  "vincent gillaspy": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "vincent girouard": {
     "institution_ids": [
       "https://openalex.org/I45683168"
@@ -58656,6 +60947,14 @@
   "vincent li weixin": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "vincent liang": {
+    "institution_ids": [
+      "https://openalex.org/I4210088329",
+      "https://openalex.org/I4210135985",
+      "https://openalex.org/I92039509"
+    ],
+    "works_count": 141
   },
   "vincent roulet": {
     "institution_ids": [
@@ -58885,6 +61184,12 @@
     ],
     "works_count": 38
   },
+  "vladimir verdenko": {
+    "institution_ids": [
+      "https://openalex.org/I135226738"
+    ],
+    "works_count": 1
+  },
   "vladimir y. cherynak": {
     "institution_ids": [],
     "works_count": 0
@@ -59042,7 +61347,17 @@
     ],
     "works_count": 1
   },
+  "wai ka sun": {
+    "institution_ids": [
+      "https://openalex.org/I32971472"
+    ],
+    "works_count": 4
+  },
   "wailiang zhao": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "waiyiu pong": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -59478,6 +61793,10 @@
     ],
     "works_count": 133
   },
+  "wesker zheng": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "wesley fussner": {
     "institution_ids": [
       "https://openalex.org/I202391551",
@@ -59599,6 +61918,10 @@
       "https://openalex.org/I145311948"
     ],
     "works_count": 15
+  },
+  "william g. hernandez-yanes": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "william holman-bissegger": {
     "institution_ids": [
@@ -60911,6 +63234,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "xinlong bu": {
+    "institution_ids": [
+      "https://openalex.org/I172675005"
+    ],
+    "works_count": 1
+  },
   "xinlong man": {
     "institution_ids": [],
     "works_count": 0
@@ -61036,6 +63365,90 @@
       "https://openalex.org/I88830068"
     ],
     "works_count": 350
+  },
+  "xinze cao": {
+    "institution_ids": [
+      "https://openalex.org/I106645853",
+      "https://openalex.org/I108160477",
+      "https://openalex.org/I109935558",
+      "https://openalex.org/I119868032",
+      "https://openalex.org/I1313079697",
+      "https://openalex.org/I131434179",
+      "https://openalex.org/I1334819555",
+      "https://openalex.org/I13850615",
+      "https://openalex.org/I139024713",
+      "https://openalex.org/I139759216",
+      "https://openalex.org/I140221134",
+      "https://openalex.org/I143868143",
+      "https://openalex.org/I150807315",
+      "https://openalex.org/I154893126",
+      "https://openalex.org/I157773358",
+      "https://openalex.org/I158842170",
+      "https://openalex.org/I161350542",
+      "https://openalex.org/I162868743",
+      "https://openalex.org/I180726961",
+      "https://openalex.org/I184490438",
+      "https://openalex.org/I191996457",
+      "https://openalex.org/I194450716",
+      "https://openalex.org/I198091727",
+      "https://openalex.org/I19820366",
+      "https://openalex.org/I204553293",
+      "https://openalex.org/I207528943",
+      "https://openalex.org/I211433327",
+      "https://openalex.org/I24185976",
+      "https://openalex.org/I2799293361",
+      "https://openalex.org/I2799773085",
+      "https://openalex.org/I2800091995",
+      "https://openalex.org/I3019309368",
+      "https://openalex.org/I37796252",
+      "https://openalex.org/I4210089761",
+      "https://openalex.org/I4210095683",
+      "https://openalex.org/I4210096354",
+      "https://openalex.org/I4210103346",
+      "https://openalex.org/I4210106526",
+      "https://openalex.org/I4210106793",
+      "https://openalex.org/I4210109544",
+      "https://openalex.org/I4210110718",
+      "https://openalex.org/I4210111959",
+      "https://openalex.org/I4210127107",
+      "https://openalex.org/I4210129459",
+      "https://openalex.org/I4210138501",
+      "https://openalex.org/I4210139732",
+      "https://openalex.org/I4210140515",
+      "https://openalex.org/I4210144289",
+      "https://openalex.org/I4210144662",
+      "https://openalex.org/I4210145330",
+      "https://openalex.org/I4210151987",
+      "https://openalex.org/I4210160793",
+      "https://openalex.org/I4210165038",
+      "https://openalex.org/I4210167311",
+      "https://openalex.org/I4391012567",
+      "https://openalex.org/I4391767931",
+      "https://openalex.org/I4391768096",
+      "https://openalex.org/I4391768149",
+      "https://openalex.org/I4391768235",
+      "https://openalex.org/I4405265004",
+      "https://openalex.org/I4405271966",
+      "https://openalex.org/I44445938",
+      "https://openalex.org/I4800084",
+      "https://openalex.org/I53411278",
+      "https://openalex.org/I55712492",
+      "https://openalex.org/I58200834",
+      "https://openalex.org/I83519826",
+      "https://openalex.org/I87780372",
+      "https://openalex.org/I881766915",
+      "https://openalex.org/I90259746",
+      "https://openalex.org/I90610280",
+      "https://openalex.org/I9086337",
+      "https://openalex.org/I96908189"
+    ],
+    "works_count": 287
+  },
+  "xinzhuang xiong": {
+    "institution_ids": [
+      "https://openalex.org/I889458895"
+    ],
+    "works_count": 3
   },
   "xiong yang": {
     "institution_ids": [
@@ -61285,6 +63698,10 @@
       "https://openalex.org/I881766915"
     ],
     "works_count": 1
+  },
+  "xurui he": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "y. giomataris": {
     "institution_ids": [
@@ -61572,6 +63989,12 @@
       "https://openalex.org/I94310126"
     ],
     "works_count": 104
+  },
+  "yanxiang zhuang": {
+    "institution_ids": [
+      "https://openalex.org/I75867142"
+    ],
+    "works_count": 2
   },
   "yanye feng": {
     "institution_ids": [
@@ -62245,6 +64668,10 @@
     ],
     "works_count": 1308
   },
+  "yefim nudelman": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "yehia ehab": {
     "institution_ids": [
       "https://openalex.org/I145487455"
@@ -62342,6 +64769,12 @@
     ],
     "works_count": 382
   },
+  "yeqi zeng": {
+    "institution_ids": [
+      "https://openalex.org/I56934997"
+    ],
+    "works_count": 2
+  },
   "yerdanat kurmantayev": {
     "institution_ids": [
       "https://openalex.org/I120250893"
@@ -62397,6 +64830,10 @@
       "https://openalex.org/I196021976"
     ],
     "works_count": 42
+  },
+  "yi nancy li": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "yi xiao": {
     "institution_ids": [
@@ -62888,6 +65325,16 @@
     ],
     "works_count": 6
   },
+  "yinhang tang": {
+    "institution_ids": [
+      "https://openalex.org/I112936343",
+      "https://openalex.org/I1294671590",
+      "https://openalex.org/I180726961",
+      "https://openalex.org/I203339264",
+      "https://openalex.org/I4210155607"
+    ],
+    "works_count": 11
+  },
   "yinhe zheng": {
     "institution_ids": [
       "https://openalex.org/I45928872"
@@ -63255,6 +65702,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "youssef elnahas": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "youssef marzouk": {
     "institution_ids": [
       "https://openalex.org/I1334627681",
@@ -63520,6 +65971,10 @@
       "https://openalex.org/I47689461"
     ],
     "works_count": 72
+  },
+  "yuhei nakasaka": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "yuhito shibaike": {
     "institution_ids": [
@@ -63841,6 +66296,12 @@
     ],
     "works_count": 1
   },
+  "yuta kozaki": {
+    "institution_ids": [
+      "https://openalex.org/I146399215"
+    ],
+    "works_count": 9
+  },
   "yuta kusakabe": {
     "institution_ids": [
       "https://openalex.org/I135598925"
@@ -63992,6 +66453,15 @@
       "https://openalex.org/I56590836"
     ],
     "works_count": 6
+  },
+  "zach liu": {
+    "institution_ids": [
+      "https://openalex.org/I19820366",
+      "https://openalex.org/I4210103115",
+      "https://openalex.org/I4210155857",
+      "https://openalex.org/I4391767780"
+    ],
+    "works_count": 73
   },
   "zach sissman": {
     "institution_ids": [],
@@ -64821,6 +67291,12 @@
     ],
     "works_count": 2
   },
+  "zhaofan qiu": {
+    "institution_ids": [
+      "https://openalex.org/I4210103986"
+    ],
+    "works_count": 75
+  },
   "zhaohan daniel guo": {
     "institution_ids": [
       "https://openalex.org/I1291425158"
@@ -65111,6 +67587,10 @@
     ],
     "works_count": 4
   },
+  "zhen peggy yao": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "zhenchao ge": {
     "institution_ids": [
       "https://openalex.org/I9916479"
@@ -65156,6 +67636,10 @@
     "works_count": 5
   },
   "zhengkai ao": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "zhengmin ni": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -65280,6 +67764,12 @@
   "zhexun hu": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "zheye song": {
+    "institution_ids": [
+      "https://openalex.org/I114027177"
+    ],
+    "works_count": 1
   },
   "zhi-kang qian": {
     "institution_ids": [
@@ -65408,6 +67898,12 @@
       "https://openalex.org/I20231570"
     ],
     "works_count": 2
+  },
+  "zhilong ji": {
+    "institution_ids": [
+      "https://openalex.org/I4210165038"
+    ],
+    "works_count": 48
   },
   "zhiming tong": {
     "institution_ids": [
@@ -66025,6 +68521,10 @@
       "https://openalex.org/I94357780"
     ],
     "works_count": 255
+  },
+  "ziyao mou": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "ziye mei": {
     "institution_ids": [
