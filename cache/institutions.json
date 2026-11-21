@@ -16775,6 +16775,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:department of machine learning, mohamed bin zayed university of artificial intelligence, abu dhabi, united arab emirates": {
+    "display_name": "Mohamed bin Zayed University of Artificial Intelligence",
+    "ror": "https://ror.org/0258gkt32",
+    "country": "AE",
+    "city": "Abu Dhabi",
+    "lat": 24.45118,
+    "lon": 54.39696
+  },
   "aff:department of magnetic measurements and materials, fzu - institute of physics of the czech academy of sciences": {
     "display_name": "FZU - Institute of Physics of the Czech Academy of Sciences",
     "ror": "https://ror.org/02yhj4v17",
@@ -17391,6 +17399,14 @@
     "lat": 45.40797,
     "lon": 11.88586
   },
+  "aff:department of mathematics ”guido castelnuovo”, sapienza university of rome, piazzale aldo moro 5, 00185 rome, italy": {
+    "display_name": "Sapienza University of Rome",
+    "ror": "https://ror.org/02be6w209",
+    "country": "IT",
+    "city": "Rome",
+    "lat": 41.89193,
+    "lon": 12.51133
+  },
   "aff:department of mathematics, aarhus university": {
     "display_name": "Aarhus University",
     "ror": "https://ror.org/01aj84f44",
@@ -17406,6 +17422,14 @@
     "city": "Thessaloniki",
     "lat": 40.64361,
     "lon": 22.93086
+  },
+  "aff:department of mathematics, beijing institute of technology, beijing 100081": {
+    "display_name": "Beijing Institute of Technology",
+    "ror": "https://ror.org/01skt4w74",
+    "country": "CN",
+    "city": "Beijing",
+    "lat": 39.9075,
+    "lon": 116.39723
   },
   "aff:department of mathematics, boise state university": {
     "display_name": "Boise State University",
@@ -26815,6 +26839,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:dipartimento di matematica, universitá degli studi di padova, via trieste, 63, 35131 padova pd, italy": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:dipartimento di scienza e alta tecnologia, università degli studi dell’insubria": {
     "display_name": "",
     "ror": null,
@@ -33015,6 +33047,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:hse university, moscow, russia": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:https://research.nvidia.com/labs/sil/projects/metrictrail/": {
     "display_name": "",
     "ror": null,
@@ -34158,6 +34198,14 @@
     "city": "Hohhot",
     "lat": 40.8105583190918,
     "lon": 111.6522216796875
+  },
+  "aff:innopolis university, innopolis, russia": {
+    "display_name": "Innopolis University",
+    "ror": "https://ror.org/02b7jh107",
+    "country": "RU",
+    "city": "Innopolis",
+    "lat": 55.74982070922851,
+    "lon": 48.74753952026367
   },
   "aff:innorenew coe, up iam and up famnit, university of primorska, titov trg 4, koper, 6000,slovenia": {
     "display_name": "InnoRenew CoE",
@@ -36470,6 +36518,14 @@
     "city": "Moscow",
     "lat": 55.75222,
     "lon": 37.61556
+  },
+  "aff:institute for information transmission problems of the russian academy of sciences, moscow, russia": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:institute for integrated natural sciences, physics department, university of koblenz, universitätsstraße 1, 56070 koblenz, germany": {
     "display_name": "",
@@ -43607,6 +43663,14 @@
     "lat": 40.34872,
     "lon": -74.65905
   },
+  "aff:jožef stefan institute, department of computer systems, ljubljana, slovenia": {
+    "display_name": "Jožef Stefan Institute",
+    "ror": "https://ror.org/05060sz93",
+    "country": "SI",
+    "city": "Ljubljana",
+    "lat": 46.05107879638672,
+    "lon": 14.50512981414795
+  },
   "aff:jožef stefan institute, ljubljana, slovenia": {
     "display_name": "Jožef Stefan Institute",
     "ror": "https://ror.org/05060sz93",
@@ -50551,6 +50615,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:moscow independent research institute of artificial intelligence, moscow, russia": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:moscow institute of physics and technology, 141700 moscow, russia": {
     "display_name": "Moscow Institute of Physics and Technology",
     "ror": "https://ror.org/00v0z9322",
@@ -52624,6 +52696,14 @@
     "lon": 11.96679
   },
   "aff:nokia bell labs, cambridge, united kingdom": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:nokia bell labs, stuttgart, germany": {
     "display_name": "",
     "ror": null,
     "country": null,
@@ -64583,6 +64663,14 @@
     "lat": 45.50884,
     "lon": -73.58781
   },
+  "aff:trusted ai research center ras, moscow, russia": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:trustworthy and secure ai lab, university of new brunswick, canada": {
     "display_name": "University of New Brunswick",
     "ror": "https://ror.org/05nkf0n29",
@@ -65934,6 +66022,14 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:university of applied sciences and arts northwestern switzerland fhnw": {
+    "display_name": "FHNW University of Applied Sciences and Arts Northwestern Switzerland",
+    "ror": "https://ror.org/04mq2g308",
+    "country": "CH",
+    "city": "Windisch",
+    "lat": 47.47899,
+    "lon": 8.21842
   },
   "aff:university of applied sciences and arts northwestern switzerland fhnw, switzerland": {
     "display_name": "FHNW University of Applied Sciences and Arts Northwestern Switzerland",
@@ -67864,6 +67960,14 @@
     "lon": 5.567490100860596
   },
   "aff:university of ljubljana": {
+    "display_name": "University of Ljubljana",
+    "ror": "https://ror.org/05njb9z20",
+    "country": "SI",
+    "city": "Ljubljana",
+    "lat": 46.05108,
+    "lon": 14.50513
+  },
+  "aff:university of ljubljana, faculty of computer and information science, ljubljana, slovenia": {
     "display_name": "University of Ljubljana",
     "ror": "https://ror.org/05njb9z20",
     "country": "SI",
@@ -72886,6 +72990,14 @@
     "city": "Worcester",
     "lat": 42.26259,
     "lon": -71.80229
+  },
+  "aff:work partly done while the author was an intern at nokia bell labs": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:world resources institute": {
     "display_name": "World Resources Institute",
@@ -80335,6 +80447,14 @@
     "lat": 34.69379,
     "lon": 135.50107
   },
+  "https://openalex.org/I4405286242": {
+    "display_name": "IDEAS Research Institute",
+    "ror": "https://ror.org/01k9ej520",
+    "country": "PL",
+    "city": "Warsaw",
+    "lat": 52.22977,
+    "lon": 21.01178
+  },
   "https://openalex.org/I4405286309": {
     "display_name": "RIKEN Pioneering Research Institute",
     "ror": "https://ror.org/01s6zhz21",
@@ -80350,6 +80470,14 @@
     "city": "Kōriyama",
     "lat": 37.4,
     "lon": 140.38333
+  },
+  "https://openalex.org/I4405286446": {
+    "display_name": "Institute of Mathematics for Industry, Kyushu University",
+    "ror": "https://ror.org/0257yze86",
+    "country": "JP",
+    "city": "Fukuoka",
+    "lat": 33.6,
+    "lon": 130.41667
   },
   "https://openalex.org/I4405286593": {
     "display_name": "The University of Tokyo Institutes for Advanced Study",
