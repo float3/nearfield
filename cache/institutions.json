@@ -33199,6 +33199,14 @@
     "lat": 47.49835,
     "lon": 19.04045
   },
+  "aff:hun-ren rényi institute of mathematics, h-1053 budapest, reáltanoda utca 13–15, hungary": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:hun-ren wigner research centre for physics": {
     "display_name": "HUN-REN Wigner Research Centre for Physics",
     "ror": "https://ror.org/035dsb084",
@@ -36214,6 +36222,14 @@
     "city": "Durham",
     "lat": 54.77676,
     "lon": -1.57566
+  },
+  "aff:institute for computational visualistics, university of koblenz": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:institute for cosmic ray research, kashiwa, japan": {
     "display_name": "Institute for Cosmic Ray Research",
@@ -45599,6 +45615,14 @@
     "lat": 51.48158,
     "lon": 11.97947
   },
+  "aff:l. l. cobigo: eberhard karls universität tübingen, fachbereich mathematik, auf der morgenstelle 10, 72076 tübingen, germany": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:l. secciadepartment of mathematics and statistics": {
     "display_name": "",
     "ror": null,
@@ -47726,6 +47750,14 @@
     "city": "Paris",
     "lat": 48.85341,
     "lon": 2.3488
+  },
+  "aff:m. a. hahn: school of mathematics, 17 westland row, trinity college dublin, dublin 2, ireland": {
+    "display_name": "Trinity College Dublin",
+    "ror": "https://ror.org/02tyrky19",
+    "country": "IE",
+    "city": "Dublin",
+    "lat": 53.33306121826172,
+    "lon": -6.248889923095703
   },
   "aff:m. douchainstitute of mathematics, czech academy of sciences, žitná 25, 115 67 praha 1, czechia": {
     "display_name": "Czech Academy of Sciences",
@@ -52358,6 +52390,14 @@
     "city": "Beijing",
     "lat": 39.9075,
     "lon": 116.39723
+  },
+  "aff:new jersey institute of technology": {
+    "display_name": "New Jersey Institute of Technology",
+    "ror": "https://ror.org/05e74xb87",
+    "country": "US",
+    "city": "Newark",
+    "lat": 40.73566,
+    "lon": -74.17237
   },
   "aff:new jersey institute of technology, usa": {
     "display_name": "New Jersey Institute of Technology",
@@ -68831,6 +68871,22 @@
     "lat": 43.70853,
     "lon": 10.4036
   },
+  "aff:university of pisa & isti-cnr, pisa, italy": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
+  "aff:university of pisa , pisa, italy": {
+    "display_name": "University of Pisa",
+    "ror": "https://ror.org/03ad39j10",
+    "country": "IT",
+    "city": "Pisa",
+    "lat": 43.70853,
+    "lon": 10.4036
+  },
   "aff:university of pisa, pisa, italy": {
     "display_name": "University of Pisa",
     "ror": "https://ror.org/03ad39j10",
@@ -69270,6 +69326,14 @@
     "city": "Los Angeles",
     "lat": 34.05223,
     "lon": -118.24368
+  },
+  "aff:university of southern denmark": {
+    "display_name": "University of Southern Denmark",
+    "ror": "https://ror.org/03yrrjy16",
+    "country": "DK",
+    "city": "Odense",
+    "lat": 55.39594,
+    "lon": 10.38831
   },
   "aff:university of southern denmark, department of physics, chemistry and pharmacy, sdu-galaxy, campusvej 55, 5230 odense m, denmark": {
     "display_name": "University of Southern Denmark",
@@ -80447,6 +80511,22 @@
     "lat": 34.69379,
     "lon": 135.50107
   },
+  "https://openalex.org/I4405286055": {
+    "display_name": "Fiocruz Rondônia",
+    "ror": "https://ror.org/0120tkg95",
+    "country": "BR",
+    "city": "Porto Velho",
+    "lat": -8.76194,
+    "lon": -63.90389
+  },
+  "https://openalex.org/I4405286155": {
+    "display_name": "International Center for Biotechnology, The University of Osaka",
+    "ror": "https://ror.org/019pk0n26",
+    "country": "JP",
+    "city": "Suita",
+    "lat": 34.76143,
+    "lon": 135.51567
+  },
   "https://openalex.org/I4405286242": {
     "display_name": "IDEAS Research Institute",
     "ror": "https://ror.org/01k9ej520",
@@ -80519,6 +80599,14 @@
     "lat": 35.86224,
     "lon": 139.97732
   },
+  "https://openalex.org/I4405286750": {
+    "display_name": "Quantum-Phase Electronics Center, School of Engineering, The University of Tokyo",
+    "ror": "https://ror.org/030a5h348",
+    "country": "JP",
+    "city": "Tokyo",
+    "lat": 35.6895,
+    "lon": 139.69171
+  },
   "https://openalex.org/I4405286848": {
     "display_name": "International Center for Hadron Astrophysics, Chiba University",
     "ror": "https://ror.org/03a1rrk46",
@@ -80566,6 +80654,14 @@
     "city": "Tokyo",
     "lat": 35.6895,
     "lon": 139.69171
+  },
+  "https://openalex.org/I4405287307": {
+    "display_name": "Institutes of Innovation for Future Society, Nagoya University",
+    "ror": "https://ror.org/04s11vt95",
+    "country": "JP",
+    "city": "Nagoya",
+    "lat": 35.18147,
+    "lon": 136.90641
   },
   "https://openalex.org/I4405287414": {
     "display_name": "NSF-Simons AI Institute for the Sky",
