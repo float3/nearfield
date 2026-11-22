@@ -44,13 +44,13 @@
   {
     "date": "2026-11-09",
     "papers": 2731,
-    "located": 2670,
+    "located": 2672,
     "nearest_km": 0.0266642054371607
   },
   {
     "date": "2026-11-08",
     "papers": 1256,
-    "located": 1232,
+    "located": 1233,
     "nearest_km": 0.0266642054371607
   },
   {
@@ -80,25 +80,25 @@
   {
     "date": "2026-11-01",
     "papers": 1341,
-    "located": 1317,
+    "located": 1318,
     "nearest_km": 0.0266642054371607
   },
   {
     "date": "2026-10-29",
     "papers": 2658,
-    "located": 2602,
+    "located": 2605,
     "nearest_km": 0.0266642054371607
   },
   {
     "date": "2026-10-27",
     "papers": 1610,
-    "located": 1567,
+    "located": 1568,
     "nearest_km": 0.0266642054371607
   },
   {
     "date": "2026-10-26",
     "papers": 2447,
-    "located": 2375,
+    "located": 2381,
     "nearest_km": 0.0266642054371607
   },
   {
@@ -116,7 +116,7 @@
   {
     "date": "2026-10-21",
     "papers": 1341,
-    "located": 1311,
+    "located": 1312,
     "nearest_km": 0.0266642054371607
   },
   {
@@ -128,7 +128,7 @@
   {
     "date": "2026-10-19",
     "papers": 2757,
-    "located": 2709,
+    "located": 2712,
     "nearest_km": 0.0266642054371607
   },
   {
@@ -140,7 +140,7 @@
   {
     "date": "2026-10-15",
     "papers": 1601,
-    "located": 1580,
+    "located": 1583,
     "nearest_km": 0.0266642054371607
   }
 ]
