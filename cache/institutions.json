@@ -1431,6 +1431,14 @@
     "lat": 50.061431884765625,
     "lon": 19.936580657958984
   },
+  "aff:agh university of krakow, faculty of physics and applied computer science, al. a. mickiewicza 30, 30-059 krakow, poland": {
+    "display_name": "AGH University of Krakow",
+    "ror": "https://ror.org/00bas1c41",
+    "country": "PL",
+    "city": "Krakow",
+    "lat": 50.061431884765625,
+    "lon": 19.936580657958984
+  },
   "aff:agh university of krakow, krakow, poland": {
     "display_name": "AGH University of Krakow",
     "ror": "https://ror.org/00bas1c41",
@@ -1510,6 +1518,14 @@
     "city": "Beijing",
     "lat": 39.907501220703125,
     "lon": 116.39723205566406
+  },
+  "aff:aims group, department of electrical engineering, eindhoven university of technology": {
+    "display_name": "Eindhoven University of Technology",
+    "ror": "https://ror.org/02c2kyt77",
+    "country": "NL",
+    "city": "Eindhoven",
+    "lat": 51.44083,
+    "lon": 5.47778
   },
   "aff:air force research laboratory": {
     "display_name": "United States Air Force Research Laboratory",
@@ -5527,6 +5543,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:category labs": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:catholic university of america, 620 michigan ave. ne, washington, dc 20064": {
     "display_name": "Catholic University of America",
     "ror": "https://ror.org/047yk3s18",
@@ -6926,6 +6950,14 @@
     "city": "Villigen",
     "lat": 47.52682,
     "lon": 8.21486
+  },
+  "aff:center for quantum devices, niels bohr institute, university of copenhagen, 2100 copenhagen, denmark": {
+    "display_name": "University of Copenhagen",
+    "ror": "https://ror.org/035b05819",
+    "country": "DK",
+    "city": "Copenhagen",
+    "lat": 55.67594,
+    "lon": 12.56553
   },
   "aff:center for quantum phenomena, department of physics, new york university, 726 broadway, new york, new york 10003, usa": {
     "display_name": "New York University",
@@ -16647,6 +16679,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:department of energy conversion and storage, technical university of denmark, 2800 kgs.lyngby, denmark": {
+    "display_name": "Technical University of Denmark",
+    "ror": "https://ror.org/04qtj9h94",
+    "country": "DK",
+    "city": "Kongens Lyngby",
+    "lat": 55.77044,
+    "lon": 12.50378
+  },
   "aff:department of energy conversion and storage, technical university of denmark, lyngby, denmark": {
     "display_name": "Technical University of Denmark",
     "ror": "https://ror.org/04qtj9h94",
@@ -19398,6 +19438,14 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:department of microtechnology and nanoscience (mc2), chalmers university of technology, 41296 gothenburg, sweden": {
+    "display_name": "Chalmers University of Technology",
+    "ror": "https://ror.org/040wg7k59",
+    "country": "SE",
+    "city": "Gothenburg",
+    "lat": 57.70716,
+    "lon": 11.96679
   },
   "aff:department of microtechnology and nanoscience (mc2), chalmers university of technology, se-41296 gothenburg, sweden": {
     "display_name": "Chalmers University of Technology",
@@ -28246,6 +28294,14 @@
     "city": null,
     "lat": null,
     "lon": null
+  },
+  "aff:division of computing and mathematical sciences, mohamed bin zayed university of artificial intelligence, abu dhabi, united arab emirates": {
+    "display_name": "Mohamed bin Zayed University of Artificial Intelligence",
+    "ror": "https://ror.org/0258gkt32",
+    "country": "AE",
+    "city": "Abu Dhabi",
+    "lat": 24.45118,
+    "lon": 54.39696
   },
   "aff:division of engineering and applied science, california institute of technology, pasadena, california 91125, usa": {
     "display_name": "California Institute of Technology",
@@ -47431,6 +47487,14 @@
     "lat": 43.60426,
     "lon": 1.44367
   },
+  "aff:laboratoire albert fert, cnrs, thales, université paris-saclay, 91767 palaiseau, france": {
+    "display_name": "Laboratoire Albert Fert",
+    "ror": "https://ror.org/02erddr56",
+    "country": "FR",
+    "city": "Palaiseau",
+    "lat": 48.71828,
+    "lon": 2.2498
+  },
   "aff:laboratoire apc, université paris cité, paris, france": {
     "display_name": "Université Paris Cité",
     "ror": "https://ror.org/05f82e368",
@@ -47542,6 +47606,14 @@
     "city": "Ouagadougou",
     "lat": 12.365659713745115,
     "lon": -1.5338799953460691
+  },
+  "aff:laboratoire de physique et d’etude des matériaux, espci paris, université psl, cnrs, sorbonne université, paris, france": {
+    "display_name": "Laboratoire de Physique et d’Étude des Matériaux",
+    "ror": "https://ror.org/00a72jq18",
+    "country": "FR",
+    "city": "Paris",
+    "lat": 48.85341,
+    "lon": 2.3488
   },
   "aff:laboratoire de physique nucléaire et de hautes energies (lpnhe), sorbonne université, université de paris, cnrs-in2p3, paris, france": {
     "display_name": "Sorbonne Université",
