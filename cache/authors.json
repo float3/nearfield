@@ -6038,6 +6038,15 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "anna driutti": {
+    "institution_ids": [
+      "https://openalex.org/I108290504",
+      "https://openalex.org/I146655781",
+      "https://openalex.org/I160013858",
+      "https://openalex.org/I4210160382"
+    ],
+    "works_count": 173
+  },
   "anna ettorre": {
     "institution_ids": [
       "https://openalex.org/I4210146357"
@@ -8524,6 +8533,13 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "b. g. lenardo": {
+    "institution_ids": [
+      "https://openalex.org/I2801935854",
+      "https://openalex.org/I97018004"
+    ],
+    "works_count": 107
+  },
   "b. i. suleimanov": {
     "institution_ids": [
       "https://openalex.org/I4210131335"
@@ -8533,6 +8549,12 @@
   "b. m. marosi": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "b. mong": {
+    "institution_ids": [
+      "https://openalex.org/I2801935854"
+    ],
+    "works_count": 83
   },
   "b. n. hauptmann": {
     "institution_ids": [],
@@ -17354,6 +17376,10 @@
     ],
     "works_count": 540
   },
+  "dudle stewart": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "dugald macpherson": {
     "institution_ids": [
       "https://openalex.org/I130828816"
@@ -21352,6 +21378,10 @@
       "https://openalex.org/I86987016"
     ],
     "works_count": 167
+  },
+  "florian k. r. gaeremynck": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "florian le guillou": {
     "institution_ids": [
@@ -30933,6 +30963,12 @@
     ],
     "works_count": 1
   },
+  "jason crnkovic": {
+    "institution_ids": [
+      "https://openalex.org/I1314696892"
+    ],
+    "works_count": 52
+  },
   "jason h. k. siu": {
     "institution_ids": [
       "https://openalex.org/I122411786"
@@ -37223,6 +37259,10 @@
     "works_count": 38
   },
   "katherine charbonneau": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "katherine ferraby": {
     "institution_ids": [],
     "works_count": 0
   },
@@ -45979,6 +46019,10 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "mathew j. marsee": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "mathew m. kim": {
     "institution_ids": [],
     "works_count": 0
@@ -47545,6 +47589,12 @@
       "https://openalex.org/I47720641"
     ],
     "works_count": 13
+  },
+  "mengsi lyu": {
+    "institution_ids": [
+      "https://openalex.org/I4210100255"
+    ],
+    "works_count": 3
   },
   "merce alvarez": {
     "institution_ids": [
@@ -49679,6 +49729,12 @@
   "mona lehto": {
     "institution_ids": [],
     "works_count": 0
+  },
+  "monerah almohideb": {
+    "institution_ids": [
+      "https://openalex.org/I28022161"
+    ],
+    "works_count": 2
   },
   "monia lonn": {
     "institution_ids": [],
@@ -57760,6 +57816,13 @@
     ],
     "works_count": 67
   },
+  "r. maclellan": {
+    "institution_ids": [
+      "https://openalex.org/I143302722",
+      "https://openalex.org/I189957204"
+    ],
+    "works_count": 108
+  },
   "r. michael buehrer": {
     "institution_ids": [
       "https://openalex.org/I859038795"
@@ -64171,6 +64234,12 @@
     "institution_ids": [],
     "works_count": 0
   },
+  "shahad alhomaiani": {
+    "institution_ids": [
+      "https://openalex.org/I179331831"
+    ],
+    "works_count": 5
+  },
   "shahaf valencia levy": {
     "institution_ids": [],
     "works_count": 0
@@ -68540,6 +68609,10 @@
     ],
     "works_count": 67
   },
+  "surya kartheek birudukota": {
+    "institution_ids": [],
+    "works_count": 0
+  },
   "surya parimi": {
     "institution_ids": [
       "https://openalex.org/I133999245"
@@ -70940,6 +71013,12 @@
     ],
     "works_count": 1
   },
+  "tinghao feng": {
+    "institution_ids": [
+      "https://openalex.org/I86987016"
+    ],
+    "works_count": 22
+  },
   "tingran gan": {
     "institution_ids": [],
     "works_count": 0
@@ -72660,6 +72739,10 @@
       "https://openalex.org/I154570441"
     ],
     "works_count": 4
+  },
+  "valerii yu. lyakhno": {
+    "institution_ids": [],
+    "works_count": 0
   },
   "valeriia bezklynska": {
     "institution_ids": [],
@@ -77306,6 +77389,10 @@
     "works_count": 1
   },
   "yasmine ben mechlia": {
+    "institution_ids": [],
+    "works_count": 0
+  },
+  "yasmine kroknes-gomez": {
     "institution_ids": [],
     "works_count": 0
   },
