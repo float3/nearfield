@@ -57623,6 +57623,14 @@
     "lat": 39.9075,
     "lon": 116.39723
   },
+  "aff:national institute of standards and technology, 100 bureau dr., gaithersburg, md 20899, usa": {
+    "display_name": "National Institute of Standards and Technology",
+    "ror": "https://ror.org/05xpvk416",
+    "country": "US",
+    "city": "Gaithersburg",
+    "lat": 39.14344,
+    "lon": -77.20137
+  },
   "aff:national institute of standards and technology, boulder, co, 80303": {
     "display_name": "National Institute of Standards and Technology",
     "ror": "https://ror.org/05xpvk416",
@@ -68207,6 +68215,14 @@
     "lat": 37.42411,
     "lon": -122.16608
   },
+  "aff:stanford university, stanford, usa": {
+    "display_name": "Stanford University",
+    "ror": "https://ror.org/00f54p054",
+    "country": "US",
+    "city": "Stanford",
+    "lat": 37.42411,
+    "lon": -122.16608
+  },
   "aff:stanford university, usa": {
     "display_name": "Stanford University",
     "ror": "https://ror.org/00f54p054",
@@ -70416,6 +70432,14 @@
     "lon": 34.78057
   },
   "aff:tel aviv university, israel": {
+    "display_name": "Tel Aviv University",
+    "ror": "https://ror.org/04mhzgx49",
+    "country": "IL",
+    "city": "Tel Aviv",
+    "lat": 32.08088,
+    "lon": 34.78057
+  },
+  "aff:tel aviv university, tel aviv, israel": {
     "display_name": "Tel Aviv University",
     "ror": "https://ror.org/04mhzgx49",
     "country": "IL",
@@ -88774,6 +88798,22 @@
     "city": "Shenzhen",
     "lat": 22.54554,
     "lon": 114.0683
+  },
+  "https://openalex.org/I4405289061": {
+    "display_name": "Denovo Sciences",
+    "ror": "https://ror.org/01c57ax14",
+    "country": "US",
+    "city": "Lewes",
+    "lat": 38.77456,
+    "lon": -75.13935
+  },
+  "https://openalex.org/I4405291887": {
+    "display_name": "International Occultation Timing Association",
+    "ror": "https://ror.org/04dktc594",
+    "country": "US",
+    "city": "Fountain Hills",
+    "lat": 33.61171,
+    "lon": -111.71736
   },
   "https://openalex.org/I44445938": {
     "display_name": "Shandong Jianzhu University",
