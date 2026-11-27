@@ -223,6 +223,14 @@
     "lat": 53.7446,
     "lon": -0.33525
   },
+  "aff:150 n university street": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:1paluno – the ruhr institute for software technology, university of duisburg-essen, germany": {
     "display_name": "University of Duisburg-Essen",
     "ror": "https://ror.org/04mz5ra38",
@@ -4550,6 +4558,14 @@
     "city": "Newark",
     "lat": 39.68372,
     "lon": -75.74966
+  },
+  "aff:baruch college": {
+    "display_name": "Baruch College",
+    "ror": "https://ror.org/023qavy03",
+    "country": "US",
+    "city": "New York",
+    "lat": 40.71427,
+    "lon": -74.00597
   },
   "aff:baruch college, city university of new york, new york, usa": {
     "display_name": "Baruch College",
@@ -11990,6 +12006,14 @@
     "city": "New York",
     "lat": 40.728702545166016,
     "lon": -73.9957275390625
+  },
+  "aff:courant institute school of mathematics, computing, and data science, new york university, new york, us (, , )": {
+    "display_name": "New York University",
+    "ror": "https://ror.org/0190ak572",
+    "country": "US",
+    "city": "New York",
+    "lat": 40.71427,
+    "lon": -74.00597
   },
   "aff:cp3-origins, university of southern denmark, campusvej 55, 5230 odense, denmark": {
     "display_name": "University of Southern Denmark",
@@ -39999,6 +40023,14 @@
     "lat": 43.60426,
     "lon": 1.44367
   },
+  "aff:institut de recherche mathématique avancée": {
+    "display_name": "Institut de Recherche Mathématique Avancée",
+    "ror": "https://ror.org/02hwgty18",
+    "country": "FR",
+    "city": "Strasbourg",
+    "lat": 48.58392,
+    "lon": 7.74553
+  },
   "aff:institut de recherche mathématique avancée, umr 7501, université de strasbourg et cnrs, 7 rue rené descartes, 67000 strasbourg, france": {
     "display_name": "Institut de Recherche Mathématique Avancée",
     "ror": "https://ror.org/02hwgty18",
@@ -40550,6 +40582,14 @@
     "city": "Berlin",
     "lat": 52.52437,
     "lon": 13.41053
+  },
+  "aff:institut für mathematik, ruprecht-karls-universität heidelberg, heidelberg, germany ()": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
   },
   "aff:institut für mathematik, technische universität berlin, germany (alexander.lindermayr@tu-berlin.de)": {
     "display_name": "Technische Universität Berlin",
@@ -63103,6 +63143,14 @@
     "lat": 19.428470611572266,
     "lon": -99.1276626586914
   },
+  "aff:qatar computing research institute, hamad bin khalifa university": {
+    "display_name": "Hamad bin Khalifa University",
+    "ror": "https://ror.org/03eyq4y97",
+    "country": "QA",
+    "city": "Doha",
+    "lat": 25.28545,
+    "lon": 51.53096
+  },
   "aff:qingdao innovation and development center, harbin engineering university, qingdao, 266000, china": {
     "display_name": "Harbin Engineering University",
     "ror": "https://ror.org/03x80pn82",
@@ -74999,6 +75047,14 @@
     "lat": null,
     "lon": null
   },
+  "aff:umr 7501 université de strasbourg et cnrs": {
+    "display_name": "",
+    "ror": null,
+    "country": null,
+    "city": null,
+    "lat": null,
+    "lon": null
+  },
   "aff:unidad profesional interdisciplinaria en ingeniería y tecnologías avanzadas del instituto politécnico nacional (upiita-ipn), méxico, d.f., méxico": {
     "display_name": "",
     "ror": null,
@@ -80096,6 +80152,14 @@
     "lon": null
   },
   "aff:university of toronto, toronto, canada": {
+    "display_name": "University of Toronto",
+    "ror": "https://ror.org/03dbr7087",
+    "country": "CA",
+    "city": "Toronto",
+    "lat": 43.70643,
+    "lon": -79.39864
+  },
+  "aff:university of toronto, toronto, ontario, canada": {
     "display_name": "University of Toronto",
     "ror": "https://ror.org/03dbr7087",
     "country": "CA",
@@ -91559,6 +91623,14 @@
     "lat": 48.85341,
     "lon": 2.3488
   },
+  "https://openalex.org/I4405286623": {
+    "display_name": "Center for Computational Sciences, University of Tsukuba",
+    "ror": "https://ror.org/02np82b78",
+    "country": "JP",
+    "city": "Tsukuba",
+    "lat": 36.08333,
+    "lon": 140.11667
+  },
   "https://openalex.org/I4405286694": {
     "display_name": "University of Medicine and Dentistry of New Jersey",
     "ror": "https://ror.org/02tvvmk84",
@@ -91679,6 +91751,14 @@
     "lat": 35.6895,
     "lon": 139.69171
   },
+  "https://openalex.org/I4405287578": {
+    "display_name": "Center for Quantum Information and Quantum Biology, The University of Osaka",
+    "ror": "https://ror.org/05k80rr73",
+    "country": "JP",
+    "city": "Toyonaka",
+    "lat": 34.78244,
+    "lon": 135.46932
+  },
   "https://openalex.org/I4405287589": {
     "display_name": "Honor Device (China)",
     "ror": "https://ror.org/05m3v9803",
@@ -91702,6 +91782,22 @@
     "city": "Lewes",
     "lat": 38.77456,
     "lon": -75.13935
+  },
+  "https://openalex.org/I4405289999": {
+    "display_name": "Xavier Institute of Engineering",
+    "ror": "https://ror.org/02bp1ys20",
+    "country": "IN",
+    "city": "Mumbai",
+    "lat": 19.07283,
+    "lon": 72.88261
+  },
+  "https://openalex.org/I4405291588": {
+    "display_name": "Venturus Centro de Inovação Tecnológica",
+    "ror": "https://ror.org/0430mq634",
+    "country": "BR",
+    "city": "Campinas",
+    "lat": -22.90556,
+    "lon": -47.06083
   },
   "https://openalex.org/I4405291887": {
     "display_name": "International Occultation Timing Association",
